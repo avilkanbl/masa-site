@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Masa – Gece için grubunu kur</title>
+<style>
+:root{--bg:#f6f3ee;--surface:#fff;--ink:#241a33;--mute:#6d6479;--line:#ded8e4;--acc:#5b2a86;--acc-ink:#fff;--warn:#b3361f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1427;--surface:#271d38;--ink:#f1ecf7;--mute:#a99dbb;--line:#3a2d4f;--acc:#e6b94f;--acc-ink:#1b1427;--warn:#ff8a73}}
+:root[data-theme="dark"]{--bg:#1b1427;--surface:#271d38;--ink:#f1ecf7;--mute:#a99dbb;--line:#3a2d4f;--acc:#e6b94f;--acc-ink:#1b1427;--warn:#ff8a73}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Trebuchet MS",system-ui,sans-serif}
+main{max-width:760px;margin:0 auto;padding:20px 16px 60px}
+h1{font:700 2.1rem/1.15 Georgia,serif;margin:.2em 0 .3em}
+h2{font:700 1.2rem Georgia,serif;margin:1.6em 0 .6em}
+p{margin:.3em 0}.mute{color:var(--mute);font-size:.92rem}
+header{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.logo{font:700 1.3rem Georgia,serif}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;border:1px solid var(--line);background:var(--surface);padding:9px 14px;border-radius:8px}
+button.p{background:var(--acc);color:var(--acc-ink);border-color:var(--acc);font-weight:700}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.room{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0}
+.room h3{margin:0;font-size:1.05rem}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.seat{display:inline-block;padding:2px 10px;border-radius:99px;border:1px solid var(--line);font-size:.88rem}
+form{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:12px;grid-template-columns:1fr 1fr}
+form label{display:grid;gap:4px;font-size:.9rem;color:var(--mute)}
+form .full{grid-column:1/-1}
+input,select{padding:9px;border:1px solid var(--line);border-radius:8px;background:var(--bg);width:100%}
+.bar{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.rules{margin:0;padding-left:1.1em;font-size:.92rem}
+dialog{border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);max-width:420px;width:calc(100% - 32px)}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+.tabs{display:flex;gap:6px;margin:14px 0 4px}.tabs button[aria-pressed="true"]{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:8px;display:none;max-width:90%}
+@media(max-width:520px){form{grid-template-columns:1fr}}
+.msgs{max-height:200px;overflow:auto;border:1px solid var(--line);border-radius:8px;padding:8px;margin:8px 0;background:var(--bg)}.msgs p{margin:.2em 0}.msgs p.me{text-align:right}
+</style>
+</head>
+<body>
+<main>
+<header><span class="logo">Masa</span><button id="theme" aria-label="Tema değiştir">Tema</button></header>
+<h1>Cumartesi için masanı kur, ekibini tamamla.</h1>
+<p class="mute">Mekanı seç, kaç kişi aradığını yaz, onayladığın kişilerle buluş. Herkes kendi hesabını öder; uygulama içinde para alışverişi yoktur.</p>
+
+<div class="bar" style="margin-top:16px">
+  <div><strong id="stTitle">Bakiye: 0 jeton</strong><div class="mute" id="stSub">Odalara bakmak ücretsiz. Bir odaya katılmak 20 jeton.</div></div>
+  <button class="p" id="sub">Jeton al</button>
+</div>
+
+<h2>Açık odalar</h2>
+<div class="tabs" role="group" aria-label="Filtre">
+  <button data-f="all" aria-pressed="true">Tümü</button>
+  <button data-f="Kadın" aria-pressed="false">Kadın arıyor</button>
+  <button data-f="Erkek" aria-pressed="false">Erkek arıyor</button>
+</div>
+<div id="rooms"></div>
+
+<h2>Oda kur</h2>
+<form id="f">
+  <label class="full">Oda adı<input name="t" required maxlength="50" placeholder="Cumartesi kokteyl gecesi"></label>
+  <label>Mekan<input name="v" required placeholder="Mekan adı, semt"></label>
+  <label>Tarih ve saat<input name="d" type="datetime-local" required></label>
+  <label>Ben<select name="me"><option>Kadın</option><option>Erkek</option></select></label>
+  <label>Aradığım kişi sayısı<select name="n"><option>1</option><option>2</option><option>3</option><option selected>4</option><option>5</option></select></label>
+  <label class="full">Not<input name="o" maxlength="120" placeholder="Müzik tarzı, yaş aralığı, buluşma saati"></label>
+  <div class="full"><button class="p" type="submit">Odayı yayınla</button></div>
+</form>
+
+<h2>Odalarım (oda sahibi görünümü)</h2>
+<div id="mine"></div>
+
+<h2>Oda içi mesajlar</h2>
+<div id="chat" class="room"></div>
+
+<h2>Güvenlik kuralları</h2>
+<ul class="rules">
+  <li>Yalnızca 18 yaş üstü, kimlik ve selfie ile doğrulanmış üyeler katılabilir.</li>
+  <li>Katılım isteğini oda sahibi onaylar; buluşma kamuya açık mekanda olur.</li>
+  <li>Hesaplar kişiye özeldir. Para karşılığı buluşma ya da ödeme teklifi yasaktır ve hesabı kapatır.</li>
+  <li>Her profilde ve odada şikâyet et ve engelle düğmesi bulunur.</li>
+</ul>
+</main>
+
+<dialog id="dlg">
+  <h3 style="margin-top:0">Jeton paketi</h3>
+  <p><strong>40 jeton: 100 ₺</strong></p>
+  <p class="mute">Bir odaya katılma isteği 20 jeton tutar. Jetonlar kullanıcılar arasında aktarılamaz ve oda sahibine ödenmez. Bu prototipte ödeme ve kimlik doğrulama simüle edilir.</p>
+  <div class="row" style="justify-content:flex-end"><button id="no">Vazgeç</button><button class="p" id="yes">100 ₺ öde, 40 jeton al</button></div>
+</dialog>
+<div id="toast" role="status"></div>
+
+<script>
+const COST=20,PACK=40,PRICE=100;
+const state={member:false,tokens:0,filter:"all",pend:{},rooms:[
+ {id:1,t:"Cumartesi kokteyl gecesi",v:"Moda Sahil Bar, Kadıköy",d:"Cmt 21:30",me:"Kadın",n:4,got:1,o:"28–35 yaş, sakin müzik"},
+ {id:2,t:"Canlı müzik ve bira",v:"Kemancı, Beyoğlu",d:"Cmt 22:00",me:"Erkek",n:4,got:2,o:"Rock ve indie sevenler"},
+ {id:3,t:"Doğum günü masası",v:"Roof 360, Beşiktaş",d:"Cum 21:00",me:"Kadın",n:2,got:0,o:"Kalabalık değil, sohbet odaklı"}
+],reqs:{}};
+const $=s=>document.querySelector(s);
+function toast(m){const t=$("#toast");t.textContent=m;t.style.display="block";clearTimeout(toast.h);toast.h=setTimeout(()=>t.style.display="none",2600)}
+function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function other(g){return g==="Kadın"?"Erkek":"Kadın"}
+function render(){
+ const list=state.rooms.filter(r=>state.filter==="all"||other(r.me)===state.filter);
+ $("#rooms").innerHTML=list.length?list.map(r=>`<article class="room"><h3>${esc(r.t)}</h3>
+ <p class="mute">${esc(r.v)} · ${esc(r.d)}</p>
+ <div class="row"><span class="seat">${other(r.me)} aranıyor: ${r.got}/${r.n}</span><span class="seat">Oda sahibi: ${r.me}</span></div>
+ ${r.o?`<p style="margin-top:8px">${esc(r.o)}</p>`:""}
+ <div class="row"><button class="p" data-j="${r.id}" ${state.reqs[r.id]?"disabled":""}>${state.reqs[r.id]?"İstek gönderildi":"Katıl (20 jeton)"}</button>${state.reqs[r.id]?`<button data-c="${r.id}">İsteği geri çek</button>`:""}<button data-r="${r.id}">Şikâyet et</button></div></article>`).join(""):'<p class="mute">Bu filtrede oda yok. İlk odayı sen kur.</p>';
+ $("#stTitle").textContent="Bakiye: "+state.tokens+" jeton";
+ $("#stSub").textContent=state.member?"Katılım isteği 20 jeton. Oda sahibi reddederse ya da geri çekersen jetonun iade edilir.":"Odalara bakmak ücretsiz. Katılmak için jeton al ve kimliğini doğrula.";
+}
+function gate(fn,cost){cost=cost||0;if(state.member&&state.tokens>=cost)return fn();state.after=fn;state.need=cost;$("#dlg").showModal()}
+$("#sub").onclick=()=>$("#dlg").showModal();
+$("#no").onclick=()=>$("#dlg").close();
+$("#yes").onclick=()=>{state.member=true;state.tokens+=PACK;$("#dlg").close();render();toast("40 jeton eklendi. Doğrulama tamamlandı (simülasyon).");if(state.after&&state.tokens>=(state.need||0)){const f=state.after;state.after=null;f()}};
+document.addEventListener("click",e=>{
+ const b=e.target.closest("button");if(!b)return;
+ if(b.dataset.f){state.filter=b.dataset.f;document.querySelectorAll(".tabs button").forEach(x=>x.setAttribute("aria-pressed",x===b));render()}
+ if(b.dataset.j)gate(()=>{state.tokens-=COST;state.reqs[b.dataset.j]=1;render();toast("İstek gönderildi, 20 jeton ayrıldı. Oda sahibinin onayını bekle.")},COST);
+ if(b.dataset.c){delete state.reqs[b.dataset.c];state.tokens+=COST;render();toast("İstek geri çekildi, 20 jeton iade edildi.")}
+ if(b.dataset.r)toast("Şikâyetin kaydedildi. Ekibimiz inceleyecek.");
+});
+$("#f").onsubmit=e=>{e.preventDefault();const f=new FormData(e.target);
+ gate(()=>{const d=new Date(f.get("d"));
+  const nr={id:Date.now(),t:f.get("t"),v:f.get("v"),d:d.toLocaleString("tr-TR",{weekday:"short",hour:"2-digit",minute:"2-digit"}),me:f.get("me"),n:+f.get("n"),got:0,o:f.get("o")||""};state.rooms.unshift(nr);addMine(nr);
+  e.target.reset();render();toast("Oda yayınlandı.");window.scrollTo({top:0,behavior:"smooth"})})};
+$("#theme").onclick=()=>{const r=document.documentElement,dark=getComputedStyle(r).getPropertyValue("--bg").trim()==="#1b1427";r.dataset.theme=dark?"light":"dark"};
+const NAMES={Erkek:[["Emre",29],["Can",32],["Burak",27]],Kadın:[["Elif",28],["Zeynep",30],["Selin",26]]};
+state.mine=[];
+function addMine(r){const g=other(r.me);state.mine.push({id:r.id,t:r.t,n:r.n,got:r.got,me:r.me,members:[],reqs:NAMES[g].map(x=>({name:x[0],age:x[1]})),msgs:[]});state.chat=r.id}
+function renderMine(){
+ $("#mine").innerHTML=state.mine.map(m=>`<article class="room"><h3>${esc(m.t)}</h3><p class="mute">Onaylanan: ${m.got}/${m.n}</p>
+ ${m.reqs.length?m.reqs.map(q=>`<div class="row"><span><strong>${esc(q.name)}</strong>, ${q.age} <span class="seat">Kimliği doğrulandı</span></span><button class="p" data-a="${m.id}|${q.name}">Onayla</button><button data-x="${m.id}|${q.name}">Reddet</button><button data-rp="${q.name}">Şikâyet</button></div>`).join(""):'<p class="mute">Bekleyen istek yok.</p>'}
+ <div class="row"><button data-chat="${m.id}">Mesajlara git</button></div></article>`).join("")||'<p class="mute">Henüz odan yok. Yukarıdan oda kur.</p>';
+ renderChat();
+}
+function curRoom(){return state.mine.find(x=>x.id===state.chat)||state.mine[0]}
+function renderChat(){
+ const m=curRoom(),el=$("#chat");
+ if(!m){el.innerHTML='<p class="mute">Oda kurunca mesajlaşma burada açılır.</p>';return}
+ el.innerHTML=`<h3>${esc(m.t)}</h3><p class="mute">Üyeler: Sen${m.members.map(x=>", "+esc(x.name)).join("")}. Mesajlaşma yalnızca onaylananlara açıktır.</p>
+ <div class="msgs" aria-live="polite">${m.msgs.map(g=>`<p class="${g.me?"me":""}"><strong>${esc(g.from)}:</strong> ${esc(g.t)}</p>`).join("")||'<p class="mute">Henüz mesaj yok.</p>'}</div>
+ <div class="row"><input id="mi" placeholder="Mesaj yaz" maxlength="200" aria-label="Mesaj" style="flex:1"><button class="p" data-send="1">Gönder</button></div>
+ <div class="row">${m.members.map(x=>`<button data-rp="${esc(x.name)}">Şikâyet: ${esc(x.name)}</button><button data-bl="${esc(x.name)}">Engelle: ${esc(x.name)}</button>`).join("")}</div>`;
+ const s=el.querySelector(".msgs");s.scrollTop=s.scrollHeight;
+}
+function send(){
+ const i=$("#mi"),m=curRoom();if(!i||!m||!i.value.trim())return;
+ m.msgs.push({from:"Sen",me:1,t:i.value.trim()});renderChat();$("#mi").focus();
+ if(m.members.length)setTimeout(()=>{m.msgs.push({from:m.members[0].name,t:"Tamamdır, görüşürüz."});if(curRoom()===m)renderChat()},1000);
+}
+document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.id==="mi"){e.preventDefault();send()}});
+document.addEventListener("click",e=>{
+ const b=e.target.closest("button");if(!b)return;
+ const d=b.dataset;
+ if(d.a||d.x){
+  const [id,name]=(d.a||d.x).split("|"),m=state.mine.find(x=>String(x.id)===id),q=m.reqs.find(x=>x.name===name);
+  if(d.a&&m.got>=m.n){toast("Oda dolu. Yeni onay için kontenjan yok.");return}
+  m.reqs=m.reqs.filter(x=>x!==q);
+  if(d.a){m.members.push(q);m.got++;const r=state.rooms.find(x=>x.id===m.id);if(r)r.got=m.got;state.chat=m.id;m.msgs.push({from:"Sistem",t:q.name+" odaya katıldı."});toast(q.name+" onaylandı ve mesaj odasına eklendi.")}
+  else toast(q.name+" reddedildi. Jetonu otomatik iade edildi.");
+  render();
+ }
+ if(d.chat){state.chat=+d.chat||d.chat;renderChat();document.querySelector("#chat").scrollIntoView({behavior:"smooth"})}
+ if(d.send)send();
+ if(d.rp)toast(d.rp+" için şikâyetin kaydedildi.");
+ if(d.bl){const m=curRoom();m.members=m.members.filter(x=>x.name!==d.bl);m.got=Math.max(0,m.got-1);const r=state.rooms.find(x=>x.id===m.id);if(r)r.got=m.got;render();toast(d.bl+" engellendi ve odadan çıkarıldı.")}
+});
+const _r=render;render=function(){_r();renderMine()};
+addMine(state.rooms[0]);{const m=state.mine[0];m.reqs=NAMES.Erkek.map(x=>({name:x[0],age:x[1]}));m.members=[{name:"Kerem",age:30}];m.msgs=[{from:"Kerem",t:"Merhaba, cumartesi 21:30 Moda'da buluşuruz?"}]}
+render();
+</script>
+</body>
+</html>
