@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Masa | Gece için masanı kur, ekibini tamamla</title>
+<meta name="description" content="Masa, gece hayatında yeni insanlarla güvenle buluşmak isteyen yetişkinler için grup buluşma platformudur.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
+<style>
+:root{--navy:#0f1a33;--navy2:#1a2848;--gold:#c9a24b;--gold-d:#9c7a2c;--ivory:#f8f5ee;--ink:#1c2236;--mute:#5d6578;--line:#e2dccd;--card:#fff;color-scheme:light}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--ivory);color:var(--ink);font:17px/1.65 "Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.2;margin:0 0 .5em}
+h2{font-size:clamp(1.7rem,3.5vw,2.3rem)}a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+.eyebrow{color:var(--gold-d);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:8px}
+.lead{color:var(--mute);max-width:640px}
+button,.btn{font:inherit;cursor:pointer;border-radius:8px;padding:11px 22px;border:1px solid var(--navy);background:transparent;color:var(--navy);text-decoration:none;display:inline-block;font-weight:600}
+.btn-g{background:var(--gold);border-color:var(--gold);color:var(--navy)}.btn-g:hover{background:#d8b45e}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+button:disabled{opacity:.55;cursor:not-allowed}
+/* header */
+header{position:sticky;top:0;z-index:20;background:rgba(15,26,51,.96);backdrop-filter:blur(8px)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+.logo{font:700 1.5rem Georgia,serif;color:#fff;text-decoration:none;letter-spacing:.02em}.logo span{color:var(--gold)}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+nav a{color:#d6dbea;text-decoration:none;font-size:.95rem}nav a:hover{color:var(--gold)}
+.navbtn{display:flex;gap:8px}.navbtn button{padding:8px 16px;color:#fff;border-color:#4a5a85;font-size:.92rem}
+.navbtn .btn-g{color:var(--navy);border-color:var(--gold)}
+@media(max-width:860px){nav{display:none}}
+/* slider */
+.hero{position:relative;color:#fff;background:var(--navy);overflow:hidden;min-height:560px;padding:0}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1s;display:flex;align-items:center}
+.slide.on{opacity:1;z-index:1}
+.slide svg{position:absolute;inset:0;width:100%;height:100%}
+.slide:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,26,51,.92) 20%,rgba(15,26,51,.35))}
+.slide .wrap{position:relative;z-index:2;width:100%}
+.slide h1{font-size:clamp(2rem,5vw,3.4rem);max-width:680px}
+.slide p{font-size:1.15rem;max-width:520px;color:#dfe4f2}
+.ctl{position:absolute;bottom:22px;left:0;right:0;z-index:5;display:flex;justify-content:center;align-items:center;gap:10px}
+.dot{width:10px;height:10px;padding:0;border-radius:50%;border:1px solid #fff;background:transparent}.dot[aria-current="true"]{background:var(--gold);border-color:var(--gold);width:28px;border-radius:6px}
+.arrow{position:absolute;top:50%;z-index:5;width:44px;height:44px;padding:0;border-radius:50%;color:#fff;border-color:rgba(255,255,255,.4);background:rgba(15,26,51,.5)}
+.arrow.l{left:14px}.arrow.r{right:14px}
+@media(max-width:700px){.arrow{display:none}.hero{min-height:520px}}
+/* cards */
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-top:32px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
+.num{width:42px;height:42px;border-radius:50%;background:var(--navy);color:var(--gold);display:grid;place-items:center;font:700 1.2rem Georgia,serif;margin-bottom:14px}
+.card h3{font-size:1.2rem}.card p{margin:0;color:var(--mute);font-size:.97rem}
+.dark{background:var(--navy);color:#fff}.dark .lead,.dark .card p{color:#c3cae0}
+.dark .card{background:var(--navy2);border-color:#2c3c66}.dark .eyebrow{color:var(--gold)}
+.pack{text-align:center;position:relative}.pack .amt{font:700 2.6rem Georgia,serif;color:var(--gold-d)}
+.pack .price{font-size:1.5rem;font-weight:700}.pack small{display:block;color:var(--mute);margin:4px 0 18px}
+.pack.best{border:2px solid var(--gold)}.tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-size:.75rem;font-weight:700;padding:3px 12px;border-radius:99px}
+.room h3{font-size:1.1rem;margin-bottom:2px}.room .meta{color:var(--mute);font-size:.9rem}
+.chip{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:2px 12px;font-size:.84rem;margin:10px 6px 12px 0}
+.note{background:#fff8e6;border:1px solid #ecd9a3;border-radius:10px;padding:14px 18px;font-size:.95rem;margin-top:24px}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:10px 0}
+summary{cursor:pointer;font-weight:600}details p{margin:.6em 0 0;color:var(--mute)}
+footer{background:#0a1226;color:#a9b2cc;padding:44px 0;font-size:.92rem}
+footer a{color:#d6dbea;margin-right:18px;cursor:pointer}footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px}
+/* dialog */
+dialog{border:0;border-radius:16px;padding:28px;max-width:440px;width:calc(100% - 28px);background:#fff;color:var(--ink)}
+dialog::backdrop{background:rgba(10,18,38,.65)}
+dialog.wide{max-width:640px}
+.tabs{display:flex;gap:6px;margin-bottom:16px}.tabs button{flex:1;padding:9px}.tabs button[aria-selected="true"]{background:var(--navy);color:#fff}
+label{display:block;font-size:.88rem;color:var(--mute);margin-top:12px}
+input,select{width:100%;padding:10px;border:1px solid #cfc8b6;border-radius:8px;font:inherit;margin-top:4px;background:#fff}
+.chk{display:flex;gap:8px;align-items:flex-start;font-size:.88rem;margin-top:12px;color:var(--ink)}.chk input{width:auto;margin-top:5px}
+.msg{margin-top:12px;font-size:.92rem;padding:10px 12px;border-radius:8px;display:none}.msg.ok{display:block;background:#e8f6ec;color:#15602e}.msg.err{display:block;background:#fdecea;color:#9b2216}
+.close{float:right;padding:2px 10px;border:0;font-size:1.4rem}
+.legal h3{font-size:1.05rem;margin-top:1.2em}.legal p{font-size:.93rem;color:var(--mute)}
+@media(prefers-reduced-motion:reduce){.slide{transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="logo" href="#top">Masa<span>.</span></a>
+<nav aria-label="Ana menü"><ul>
+<li><a href="#nasil">Nasıl çalışır</a></li><li><a href="#odalar">Odalar</a></li><li><a href="#jetonlar">Jetonlar</a></li><li><a href="#hakkimizda">Hakkımızda</a></li><li><a href="#sss">Sık sorulanlar</a></li></ul></nav>
+<div class="navbtn" id="navbtn"><button data-auth="login">Giriş yap</button><button class="btn-g" data-auth="register">Üye ol</button></div>
+</div></header>
+
+<main id="top">
+<div class="hero" role="region" aria-roledescription="carousel" aria-label="Öne çıkanlar" id="hero"></div>
+
+<section id="nasil"><div class="wrap">
+<div class="eyebrow">Nasıl çalışır</div><h2>Üç adımda masana otur</h2>
+<p class="lead">Masa, gece hayatında yeni insanlarla tanışmak isteyen yetişkinleri, herkesin onayıyla küçük gruplar hâlinde buluşturur.</p>
+<div class="grid">
+<div class="card"><div class="num">1</div><h3>Üye ol ve profilini onaylat</h3><p>Kayıt ol, kendi çektiğin bir fotoğrafı gönder. Ekibimiz inceler ve onaylar. Onaylanmış üyeler rozet taşır.</p></div>
+<div class="card"><div class="num">2</div><h3>Odanı kur ya da bir odaya katıl</h3><p>Mekânı, günü ve kaç kişi aradığını yaz. Ya da açık odalara göz at ve katılma isteği gönder.</p></div>
+<div class="card"><div class="num">3</div><h3>Onayla, yaz, buluş</h3><p>Oda sahibi isteği onaylar, grup mesajlaşma açılır. Herkes kamuya açık mekânda, kendi hesabını ödeyerek buluşur.</p></div>
+</div></div></section>
+
+<section class="dark" id="guven"><div class="wrap">
+<div class="eyebrow">Güvenlik</div><h2>Güven, buluşmanın ilk şartı</h2>
+<div class="grid">
+<div class="card"><h3>18 yaş sınırı</h3><p>Yalnızca 18 yaşını doldurmuş kişiler üye olabilir.</p></div>
+<div class="card"><h3>Onaylı profiller</h3><p>Her üyenin fotoğrafı insan gözüyle incelenir. Sahte profile yer yok.</p></div>
+<div class="card"><h3>Onaylı katılım</h3><p>Odaya yalnızca oda sahibinin onayladığı kişiler girer ve mesaj yazabilir.</p></div>
+<div class="card"><h3>Şikâyet ve engelleme</h3><p>Rahatsız eden herkesi tek dokunuşla bildir, engelle. Hesaplar incelenir.</p></div>
+</div></div></section>
+
+<section id="odalar"><div class="wrap">
+<div class="eyebrow">Odalar</div><h2>Bu hafta açılan masalar</h2>
+<p class="lead">Aşağıdakiler örnek odalardır. Üye olunca gerçek odaları görür ve kendi odanı kurarsın.</p>
+<div class="grid">
+<article class="card room"><h3>Kokteyl akşamı</h3><div class="meta">Kadıköy · Cumartesi 21:30</div><span class="chip">4 kişi aranıyor</span><span class="chip">Sakin müzik</span><br><button data-auth="login">Katılmak için giriş yap</button></article>
+<article class="card room"><h3>Canlı müzik gecesi</h3><div class="meta">Beyoğlu · Cumartesi 22:00</div><span class="chip">3 kişi aranıyor</span><span class="chip">Rock, indie</span><br><button data-auth="login">Katılmak için giriş yap</button></article>
+<article class="card room"><h3>Doğum günü masası</h3><div class="meta">Beşiktaş · Cuma 21:00</div><span class="chip">2 kişi aranıyor</span><span class="chip">Sohbet odaklı</span><br><button data-auth="login">Katılmak için giriş yap</button></article>
+</div></div></section>
+
+<section class="dark" id="jetonlar"><div class="wrap">
+<div class="eyebrow">Jetonlar</div><h2>Sadece katıldığında öde</h2>
+<p class="lead">Odalara göz atmak ve oda kurmak ücretsiz. Bir odaya katılma isteği 20 jeton. Oda sahibi isteği reddederse ya da isteğini geri çekersen jetonun iade edilir.</p>
+<div class="grid">
+<div class="card pack"><div class="amt">40</div><div class="price">120 ₺</div><small>Jeton başına 3,00 ₺ · 2 odaya katılım</small><button disabled>Yakında</button></div>
+<div class="card pack best"><span class="tag">En çok tercih edilen</span><div class="amt">60</div><div class="price">150 ₺</div><small>Jeton başına 2,50 ₺ · 3 odaya katılım</small><button disabled>Yakında</button></div>
+<div class="card pack"><div class="amt">100</div><div class="price">200 ₺</div><small>Jeton başına 2,00 ₺ · 5 odaya katılım</small><button disabled>Yakında</button></div>
+</div>
+<p class="lead" style="margin-top:20px">Jeton satın alma çok yakında açılıyor. Jetonlar yalnızca Masa üzerinde kullanılır; kullanıcılar arasında aktarılamaz ve nakde çevrilemez.</p>
+</div></section>
+
+<section id="hakkimizda"><div class="wrap">
+<div class="eyebrow">Hakkımızda</div><h2>Yalnız gitmek zorunda değilsin</h2>
+<p class="lead">Masa, gece dışarı çıkmak isteyip yanında kimse olmayan ya da yeni insanlarla tanışmak isteyen yetişkinler için kuruldu. Amacımız basit: güvenli, saygılı ve ölçülü bir ortamda küçük grupların bir araya gelmesi.</p>
+<div class="grid">
+<div class="card"><h3>Saygı ilk kural</h3><p>Rıza ve saygı olmadan masa kurulmaz. Taciz eden hesaplar kalıcı olarak kapatılır.</p></div>
+<div class="card"><h3>Ücretli buluşma yok</h3><p>Masa’da para karşılığı buluşma, eşlik ya da ödeme teklifi yasaktır. Gelirimiz yalnızca jeton satışından gelir.</p></div>
+<div class="card"><h3>Herkes kendi hesabını öder</h3><p>Mekân adına ya da kişi adına hiçbir ödeme Masa üzerinden yapılmaz.</p></div>
+</div></div></section>
+
+<section id="sss" style="padding-top:0"><div class="wrap">
+<div class="eyebrow">Sık sorulanlar</div><h2>Merak edilenler</h2>
+<details><summary>Üyelik ücretsiz mi?</summary><p>Evet. Kayıt, odalara göz atma ve oda kurma ücretsizdir. Yalnızca bir odaya katılma isteği jeton gerektirir.</p></details>
+<details><summary>Fotoğrafımı kimler görür?</summary><p>Doğrulama için gönderdiğin fotoğrafı yalnızca sen ve inceleyen ekip görür. Başka üyelere gösterilmez.</p></details>
+<details><summary>Jetonum ne zaman iade edilir?</summary><p>Oda sahibi isteğini reddederse ya da onaylanmadan önce isteğini geri çekersen jetonun hesabına geri yüklenir.</p></details>
+<details><summary>Para karşılığı buluşmaya izin var mı?</summary><p>Hayır. Böyle bir teklif yapan hesap kapatılır. Masa yalnızca karşılıklı rızayla, ücret karşılığı olmayan sosyal buluşmalar içindir.</p></details>
+<details><summary>Rahatsız edici biriyle karşılaşırsam ne yaparım?</summary><p>Profilindeki ya da odadaki şikâyet düğmesini kullan ve kişiyi engelle. Bildirimler ekibimizce incelenir.</p></details>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+<div class="row"><div><strong style="color:#fff;font-family:Georgia,serif;font-size:1.3rem">Masa.</strong><br>Yalnızca 18 yaş ve üzeri içindir.<br>İletişim: iletisim@isdambul.com.tr</div>
+<div><a data-legal="1">Kullanım koşulları</a><a data-legal="1">Gizlilik ve KVKK</a></div></div>
+<p style="margin-top:24px;font-size:.84rem">© 2026 Masa. Tüm hakları saklıdır. Aşırı alkol tüketimi sağlığa zararlıdır; sorumlu davranın.</p>
+</div></footer>
+
+<dialog id="authd" aria-labelledby="atitle"><button class="close" aria-label="Kapat" data-close>&times;</button>
+<h3 id="atitle">Masa’ya hoş geldin</h3>
+<div class="tabs" role="tablist"><button role="tab" id="tl" aria-selected="true">Giriş yap</button><button role="tab" id="tr" aria-selected="false">Üye ol</button></div>
+<form id="lf"><label>E-posta<input type="email" name="e" required autocomplete="email"></label>
+<label>Şifre<input type="password" name="p" required autocomplete="current-password"></label>
+<div style="margin-top:16px"><button class="btn-g" type="submit">Giriş yap</button></div></form>
+<form id="rf" hidden>
+<label>Görünen ad<input name="n" required minlength="2" maxlength="30" autocomplete="nickname"></label>
+<label>Cinsiyet<select name="g" required><option value="">Seçin</option><option>Kadın</option><option>Erkek</option></select></label>
+<label>Doğum tarihi<input type="date" name="b" required></label>
+<label>E-posta<input type="email" name="e" required autocomplete="email"></label>
+<label>Şifre (en az 8 karakter)<input type="password" name="p" required minlength="8" autocomplete="new-password"></label>
+<div class="chk"><input type="checkbox" name="a" id="a18" required><label for="a18" style="margin:0;color:var(--ink)">18 yaşını doldurduğumu beyan ederim.</label></div>
+<div class="chk"><input type="checkbox" name="k" id="kv" required><label for="kv" style="margin:0;color:var(--ink)">Kullanım koşullarını ve gizlilik metnini okudum, kabul ediyorum.</label></div>
+<div style="margin-top:16px"><button class="btn-g" type="submit">Üye ol</button></div></form>
+<div class="msg" id="amsg" role="status"></div></dialog>
+
+<dialog id="accd" aria-labelledby="acct"><button class="close" aria-label="Kapat" data-close>&times;</button>
+<h3 id="acct">Hesabım</h3><div id="accb">Yükleniyor…</div><div class="msg" id="accm" role="status"></div></dialog>
+
+<dialog id="legd" class="wide legal"><button class="close" aria-label="Kapat" data-close>&times;</button>
+<h3>Kullanım koşulları (özet)</h3>
+<p>Masa’ya yalnızca 18 yaşını doldurmuş kişiler üye olabilir. Üyeler doğru bilgi vermekle yükümlüdür. Taciz, tehdit, sahte profil, ücret karşılığı buluşma ya da ödeme teklifi yasaktır ve hesabın kapatılmasına yol açar. Jetonlar yalnızca platformda kullanılır, devredilemez ve nakde çevrilemez. Buluşmalar üyelerin kendi sorumluluğundadır; kamuya açık mekânlar tercih edilmelidir.</p>
+<h3>Gizlilik ve KVKK (özet)</h3>
+<p>Ad, e-posta, doğum tarihi ve doğrulama fotoğrafı yalnızca hesabını yönetmek ve güvenliği sağlamak için işlenir. Fotoğraf diğer üyelere gösterilmez, yalnızca inceleme ekibi görür. Verilerin silinmesini ya da düzeltilmesini iletisim@isdambul.com.tr adresinden talep edebilirsin.</p></dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+/* === AYAR: Supabase bilgilerini buraya yapıştırın (tırnakların içine) === */
+const SUPABASE_URL="";
+const SUPABASE_ANON_KEY="";
+/* ========================================================================= */
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
+const sb=(SUPABASE_URL&&SUPABASE_ANON_KEY&&window.supabase)?supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY):null;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* ---- Slider ---- */
+const S=[
+ {h:262,t:"Cumartesi akşamı yalnız gitmek zorunda değilsin.",p:"Mekânı seç, masanı kur, ekibini tamamla."},
+ {h:35,t:"Bir masa, dört yeni sohbet.",p:"Küçük, onaylı gruplarla rahat ve güvenli buluşmalar."},
+ {h:205,t:"Eski dostlar gibi başlayan geceler.",p:"Herkes kendi hesabını öder, kimse yalnız kalmaz."},
+ {h:330,t:"Önce onay, sonra masa.",p:"Odaya yalnızca oda sahibinin onayladığı kişiler katılır."}];
+function scene(h,seed){let s=seed,r=()=>(s=(s*9301+49297)%233280)/233280,c="";
+ for(let i=0;i<30;i++)c+=`<circle cx="${r()*100}%" cy="${r()*100}%" r="${1.5+r()*7}%" fill="hsl(${h+r()*60-15} 85% 62%)" opacity="${.1+r()*.3}"/>`;
+ return `<svg aria-hidden="true"><defs><linearGradient id="g${seed}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="hsl(${h} 55% 14%)"/><stop offset="1" stop-color="hsl(${h+40} 60% 24%)"/></linearGradient><filter id="f${seed}"><feGaussianBlur stdDeviation="7"/></filter></defs><rect width="100%" height="100%" fill="url(#g${seed})"/><g filter="url(#f${seed})">${c}</g></svg>`}
+const hero=$("#hero");
+hero.innerHTML=S.map((x,i)=>`<div class="slide${i?"":" on"}" aria-hidden="${i?"true":"false"}">${scene(x.h,i+3)}<div class="wrap"><h1>${x.t}</h1><p>${x.p}</p><p style="margin-top:22px"><button class="btn-g" data-auth="register">Ücretsiz üye ol</button> <a class="btn" style="color:#fff;border-color:#fff" href="#nasil">Nasıl çalışır?</a></p></div></div>`).join("")+
+ `<button class="arrow l" aria-label="Önceki">&#8249;</button><button class="arrow r" aria-label="Sonraki">&#8250;</button><div class="ctl">${S.map((_,i)=>`<button class="dot" aria-label="${i+1}. slayt" aria-current="${i==0}"></button>`).join("")}</div>`;
+let cur=0,timer;
+function go(n){cur=(n+S.length)%S.length;$$(".slide").forEach((e,i)=>{e.classList.toggle("on",i==cur);e.setAttribute("aria-hidden",i!=cur)});$$(".dot").forEach((e,i)=>e.setAttribute("aria-current",i==cur))}
+function play(){stop();if(!matchMedia("(prefers-reduced-motion:reduce)").matches)timer=setInterval(()=>go(cur+1),6000)}
+function stop(){clearInterval(timer)}
+$(".arrow.l").onclick=()=>go(cur-1);$(".arrow.r").onclick=()=>go(cur+1);
+$$(".dot").forEach((d,i)=>d.onclick=()=>go(i));
+hero.onmouseenter=stop;hero.onmouseleave=play;hero.onfocusin=stop;hero.onfocusout=play;play();
+
+/* ---- Diyaloglar ---- */
+function msg(el,t,ok){el.className="msg "+(ok?"ok":"err");el.textContent=t}
+function tab(reg){$("#lf").hidden=reg;$("#rf").hidden=!reg;$("#tl").setAttribute("aria-selected",!reg);$("#tr").setAttribute("aria-selected",reg);$("#amsg").className="msg"}
+$("#tl").onclick=()=>tab(false);$("#tr").onclick=()=>tab(true);
+document.addEventListener("click",async e=>{
+ const a=e.target.closest("[data-auth]");
+ if(a){const u=await user();if(u)return openAcc();tab(a.dataset.auth==="register");$("#authd").showModal();
+  if(!sb)msg($("#amsg"),"Üyelik sistemi çok yakında açılıyor. Lütfen daha sonra tekrar deneyin.",false)}
+ if(e.target.closest("[data-close]"))e.target.closest("dialog").close();
+ if(e.target.closest("[data-legal]"))$("#legd").showModal();
+});
+
+/* ---- Üyelik ---- */
+async function user(){if(!sb)return null;const{data}=await sb.auth.getSession();return data.session?data.session.user:null}
+function adult(b){const d=new Date(b),n=new Date();let y=n.getFullYear()-d.getFullYear();if(n<new Date(n.getFullYear(),d.getMonth(),d.getDate()))y--;return y>=18}
+$("#rf").onsubmit=async e=>{e.preventDefault();const m=$("#amsg");if(!sb)return msg(m,"Üyelik sistemi henüz açık değil.",false);
+ const f=new FormData(e.target);
+ if(!adult(f.get("b")))return msg(m,"Üye olmak için 18 yaşını doldurmuş olmalısın.",false);
+ const{error}=await sb.auth.signUp({email:f.get("e"),password:f.get("p"),options:{data:{display_name:f.get("n").trim(),gender:f.get("g"),birth_date:f.get("b")}}});
+ if(error)return msg(m,"Kayıt yapılamadı: "+error.message,false);
+ msg(m,"Kaydın alındı. E-postana bir onay bağlantısı gönderdik; onayladıktan sonra giriş yapabilirsin.",true);e.target.reset()};
+$("#lf").onsubmit=async e=>{e.preventDefault();const m=$("#amsg");if(!sb)return msg(m,"Üyelik sistemi henüz açık değil.",false);
+ const f=new FormData(e.target);
+ const{error}=await sb.auth.signInWithPassword({email:f.get("e"),password:f.get("p")});
+ if(error)return msg(m,"Giriş yapılamadı. E-posta ve şifreni kontrol et.",false);
+ await ensureProfile();$("#authd").close();refreshNav();openAcc()};
+async function ensureProfile(){const u=await user();if(!u)return null;
+ let{data}=await sb.from("profiles").select("*").eq("id",u.id).maybeSingle();
+ if(!data){const md=u.user_metadata||{};
+  const r=await sb.from("profiles").insert({id:u.id,display_name:md.display_name||"Üye",gender:md.gender,birth_date:md.birth_date}).select().single();data=r.data}
+ return data}
+const ST={none:"Fotoğrafın henüz gönderilmedi.",pending:"Fotoğrafın inceleniyor. Sonuç en kısa sürede hesabına yansır.",approved:"Profilin onaylandı. Artık oda kurabilir ve katılma isteği gönderebilirsin.",rejected:"Fotoğrafın uygun bulunmadı. Yüzünün net göründüğü yeni bir fotoğraf gönderebilirsin."};
+async function openAcc(){$("#accd").showModal();$("#accm").className="msg";
+ const p=await ensureProfile();if(!p){$("#accb").textContent="Profil yüklenemedi. Lütfen sayfayı yenile.";return}
+ const canUp=p.photo_status!=="pending"&&p.photo_status!=="approved";
+ $("#accb").innerHTML=`<p><strong>${esc(p.display_name)}</strong>${p.verified?" · <span style='color:#15602e'>Onaylı üye</span>":""}</p><p style="color:var(--mute)">${ST[p.photo_status]}</p>
+ ${canUp?`<label>Kendi çektiğin bir fotoğraf (yüzün net görünmeli)<input type="file" id="ph" accept="image/*" capture="user"></label><div style="margin-top:14px"><button class="btn-g" id="up">Fotoğrafı gönder</button></div>`:""}
+ <div style="margin-top:18px"><button id="out">Çıkış yap</button></div>`;
+ $("#out").onclick=async()=>{await sb.auth.signOut();$("#accd").close();refreshNav()};
+ const up=$("#up");if(up)up.onclick=async()=>{const fl=$("#ph").files[0],m=$("#accm");
+  if(!fl)return msg(m,"Önce bir fotoğraf seç.",false);
+  if(fl.size>6*1024*1024)return msg(m,"Fotoğraf 6 MB’tan küçük olmalı.",false);
+  const u=await user(),ext=(fl.name.split(".").pop()||"jpg").toLowerCase().replace(/[^a-z0-9]/g,""),path=u.id+"/"+Date.now()+"."+ext;
+  up.disabled=true;
+  const a=await sb.storage.from("selfies").upload(path,fl);
+  if(a.error){up.disabled=false;return msg(m,"Yüklenemedi: "+a.error.message,false)}
+  const b=await sb.rpc("submit_photo",{p_path:path});
+  if(b.error){up.disabled=false;return msg(m,"Gönderilemedi: "+b.error.message,false)}
+  openAcc()}}
+async function refreshNav(){const u=await user();
+ $("#navbtn").innerHTML=u?`<button class="btn-g" data-auth="account">Hesabım</button>`:`<button data-auth="login">Giriş yap</button><button class="btn-g" data-auth="register">Üye ol</button>`}
+if(sb){refreshNav();sb.auth.onAuthStateChange(()=>refreshNav())}
+</script>
+</body>
+</html>
