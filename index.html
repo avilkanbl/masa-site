@@ -588,5 +588,43 @@ $("#sn1").textContent=CITIES.length;$("#sn2").textContent=VENUES.length;
  $("#ageyes").onclick=()=>{try{localStorage.setItem("age18","1")}catch(e){}d.close()};
  $("#ageno").onclick=()=>{d.querySelector("p").textContent="Üzgünüz, bu siteye yalnızca 18 yaş ve üzeri kişiler girebilir.";$("#ageyes").remove();$("#ageno").remove()}})();
 </script>
+ <script>
+  // Supabase'i başlatıyoruz
+  const { createClient } = supabase;
+  
+  const SUPABASE_URL = 'https://pxfeaepuwuagwbgqxpqe.supabase.co'; 
+  const SUPABASE_ANON_KEY = 'sb_publishable_HVN_KUmhZAkYKieKdYR8PQ_HRgRj'; // Senin Publishable key'in eklenmiştir
+
+  const _supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  // Kayıt Olma Fonksiyonu
+  async function siteyeKayitOl(email, sifre) {
+    const { data, error } = await _supabase.auth.signUp({
+      email: email,
+      password: sifre,
+    });
+
+    if (error) {
+      alert('Kayıt olunamadı: ' + error.message);
+    } else {
+      alert('Kayıt başarılı! Lütfen e-postanı kontrol et.');
+    }
+  }
+
+  // Giriş Yapma Fonksiyonu
+  async function siteyeGirisYap(email, sifre) {
+    const { data, error } = await _supabase.auth.signInWithPassword({
+      email: email,
+      password: sifre,
+    });
+
+    if (error) {
+      alert('Giriş başarısız: ' + error.message);
+    } else {
+      alert('Giriş başarılı! Hoş geldiniz.');
+    }
+  }
+</script>
 </body>
 </html>
+
