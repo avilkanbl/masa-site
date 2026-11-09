@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ISDAMBUL | Gece için masanı kur, ekibini tamamla</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <meta name="description" content="ISDAMBUL, gece hayatında yeni insanlarla güvenle buluşmak isteyen yetişkinler için grup buluşma platformudur.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#0f1a33">
@@ -586,6 +587,43 @@ $("#sn1").textContent=CITIES.length;$("#sn2").textContent=VENUES.length;
 (function(){let ok=false;try{ok=localStorage.getItem("age18")==="1"}catch(e){}
  if(ok)return;const d=$("#ageg");d.addEventListener("cancel",e=>e.preventDefault());d.showModal();
  $("#ageyes").onclick=()=>{try{localStorage.setItem("age18","1")}catch(e){}d.close()};
+<script>
+  // Supabase'i başlatıyoruz
+  const { createClient } = supabase;
+  
+  const SUPABASE_URL = 'https://pxfeaepuwuagwbgqxpqe.supabase.co'; 
+  const SUPABASE_ANON_KEY = 'sb_publishable_HVN_KUmhZAkYKieKdYR8PQ_HRgRj...'; // Kendi Publishable key'ini buraya yapıştır
+
+  const _supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  // Kayıt Olma Fonksiyonu
+  async function siteyeKayitOl(email, sifre) {
+    const { data, error } = await _supabase.auth.signUp({
+      email: email,
+      password: sifre,
+    });
+
+    if (error) {
+      alert('Kayıt olunamadı: ' + error.message);
+    } else {
+      alert('Kayıt başarılı! Lütfen e-postanı kontrol et.');
+    }
+  }
+
+  // Giriş Yapma Fonksiyonu
+  async function siteyeGirisYap(email, sifre) {
+    const { data, error } = await _supabase.auth.signInWithPassword({
+      email: email,
+      password: sifre,
+    });
+
+    if (error) {
+      alert('Giriş başarısız: ' + error.message);
+    } else {
+      alert('Giriş başarılı! Hoş geldiniz.');
+    }
+  }
+</script>
  $("#ageno").onclick=()=>{d.querySelector("p").textContent="Üzgünüz, bu siteye yalnızca 18 yaş ve üzeri kişiler girebilir.";$("#ageyes").remove();$("#ageno").remove()}})();
 </script>
 </body>
