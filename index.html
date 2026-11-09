@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ISDAMBUL | Gece için masanı kur, ekibini tamamla</title>
+<meta name="description" content="ISDAMBUL, gece hayatında yeni insanlarla güvenle buluşmak isteyen yetişkinler için grup buluşma platformudur.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0f1a33">
+<meta property="og:type" content="website"><meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="ISDAMBUL | Gece için masanı kur, ekibini tamamla">
+<meta property="og:description" content="İstanbul, Ankara, İzmir, Bursa, Antalya, Muğla, Eskişehir ve Kocaeli’nin gece mekânlarında küçük, onaylı gruplarla güvenle buluş.">
+<meta property="og:image" content="https://isdambul.com.tr/og.png"><meta name="twitter:card" content="summary_large_image">
+<style>
+:root{--navy:#0f1a33;--navy2:#1a2848;--gold:#c9a24b;--gold-d:#7a5c14;--ivory:#f8f5ee;--ink:#1c2236;--mute:#5d6578;--line:#e2dccd;--card:#fff;color-scheme:light}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--ivory);color:var(--ink);font:17px/1.65 "Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.2;margin:0 0 .5em}
+h2{font-size:clamp(1.7rem,3.5vw,2.3rem)}a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+.eyebrow{color:var(--gold-d);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:8px}
+.lead{color:var(--mute);max-width:640px}
+button,.btn{font:inherit;cursor:pointer;border-radius:8px;padding:11px 22px;border:1px solid var(--navy);background:transparent;color:var(--navy);text-decoration:none;display:inline-block;font-weight:600}
+.btn-g{background:var(--gold);border-color:var(--gold);color:var(--navy)}.btn-g:hover{background:#d8b45e}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+button:disabled{opacity:.55;cursor:not-allowed}
+/* header */
+header{position:sticky;top:0;z-index:20;background:rgba(15,26,51,.96);backdrop-filter:blur(8px)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+.logo{font:700 1.5rem Georgia,serif;color:#fff;text-decoration:none;letter-spacing:.02em}.logo{display:flex;align-items:center;gap:10px;letter-spacing:.16em;font-size:1.15rem}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+nav a{color:#d6dbea;text-decoration:none;font-size:.95rem}nav a:hover{color:var(--gold)}
+.navbtn{display:flex;gap:8px}.navbtn button{padding:8px 16px;color:#fff;border-color:#4a5a85;font-size:.92rem}
+.navbtn .btn-g{color:var(--navy);border-color:var(--gold)}
+nav ul{gap:18px}.burger{display:none;width:44px;height:44px;padding:0;color:#fff;border-color:#4a5a85;font-size:1.4rem;line-height:1}
+.mnav{background:var(--navy);border-top:1px solid #2c3c66}.mnav ul{list-style:none;margin:0;padding:10px 0}.mnav li a{display:block;padding:12px 0;color:#e6eaf6;text-decoration:none;border-bottom:1px solid #22325a}
+.mnav #mauth{display:flex;gap:10px;padding:14px 0 18px}.mnav #mauth button{color:#fff;border-color:#4a5a85}.mnav #mauth .btn-g{color:var(--navy)}
+@media(max-width:1100px){nav,.navbtn{display:none}.burger{display:block}}
+/* slider */
+.hero{position:relative;color:#fff;background:var(--navy);overflow:hidden;min-height:clamp(500px,80vh,700px);padding:0}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1s;display:flex;align-items:center}
+.slide.on{opacity:1;z-index:1}
+.slide svg{position:absolute;inset:0;width:100%;height:100%}
+.slide:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,26,51,.92) 20%,rgba(15,26,51,.35))}
+.slide .wrap{position:relative;z-index:2;width:100%}
+.slide h1{font-size:clamp(2rem,5vw,3.4rem);max-width:680px}
+.slide p{font-size:1.15rem;max-width:520px;color:#dfe4f2}
+.ctl{position:absolute;bottom:22px;left:0;right:0;z-index:5;display:flex;justify-content:center;align-items:center;gap:10px}
+.dot{width:10px;height:10px;padding:0;border-radius:50%;border:1px solid #fff;background:transparent}.dot[aria-current="true"]{background:var(--gold);border-color:var(--gold);width:28px;border-radius:6px}
+.arrow{position:absolute;top:50%;z-index:5;width:44px;height:44px;padding:0;border-radius:50%;color:#fff;border-color:rgba(255,255,255,.4);background:rgba(15,26,51,.5)}
+.arrow.l{left:14px}.arrow.r{right:14px}
+@media(max-width:700px){.arrow{display:none}.hero{min-height:560px}}
+/* cards */
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-top:32px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
+.num{width:42px;height:42px;border-radius:50%;background:var(--navy);color:var(--gold);display:grid;place-items:center;font:700 1.2rem Georgia,serif;margin-bottom:14px}
+.card h3{font-size:1.2rem}.card p{margin:0;color:var(--mute);font-size:.97rem}
+.dark{background:var(--navy);color:#fff}.dark .lead,.dark .card p{color:#c3cae0}
+.dark .card{background:var(--navy2);border-color:#2c3c66}.dark .eyebrow{color:var(--gold)}
+.pack{text-align:center;position:relative}.pack .amt{font:700 2.6rem Georgia,serif;color:var(--gold-d)}
+.pack .price{font-size:1.5rem;font-weight:700}.pack small{display:block;color:var(--mute);margin:4px 0 18px}
+.pack.best{border:2px solid var(--gold)}.tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-size:.75rem;font-weight:700;padding:3px 12px;border-radius:99px}
+.room h3{font-size:1.1rem;margin-bottom:2px}.room .meta{color:var(--mute);font-size:.9rem}
+.chip{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:2px 12px;font-size:.84rem;margin:10px 6px 12px 0}
+.note{background:#fff8e6;border:1px solid #ecd9a3;border-radius:10px;padding:14px 18px;font-size:.95rem;margin-top:24px}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:10px 0}
+summary{cursor:pointer;font-weight:600}details p{margin:.6em 0 0;color:var(--mute)}
+footer{background:#0a1226;color:#a9b2cc;padding:44px 0;font-size:.92rem}
+footer a{color:#d6dbea;margin-right:18px;cursor:pointer}footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px}
+/* dialog */
+dialog{border:0;border-radius:16px;padding:28px;max-width:440px;width:calc(100% - 28px);background:#fff;color:var(--ink)}
+dialog::backdrop{background:rgba(10,18,38,.65)}
+dialog.wide{max-width:640px}
+.tabs{display:flex;gap:6px;margin-bottom:16px}.tabs button{flex:1;padding:9px}.tabs button[aria-selected="true"]{background:var(--navy);color:#fff}
+label{display:block;font-size:.88rem;color:var(--mute);margin-top:12px}
+input,select{width:100%;padding:10px;border:1px solid #cfc8b6;border-radius:8px;font:inherit;margin-top:4px;background:#fff}
+.chk{display:flex;gap:8px;align-items:flex-start;font-size:.88rem;margin-top:12px;color:var(--ink)}.chk input{width:auto;margin-top:5px}
+.msg{margin-top:12px;font-size:.92rem;padding:10px 12px;border-radius:8px;display:none}.msg.ok{display:block;background:#e8f6ec;color:#15602e}.msg.err{display:block;background:#fdecea;color:#9b2216}
+.close{float:right;padding:2px 10px;border:0;font-size:1.4rem}
+.legal h3{font-size:1.05rem;margin-top:1.2em}.legal p{font-size:.93rem;color:var(--mute)}
+@media(prefers-reduced-motion:reduce){.slide{transition:none}html{scroll-behavior:auto}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.fc{padding:6px 14px;border-radius:99px;border:1px solid var(--line);background:#fff;font-size:.9rem;font-weight:500}
+.fc[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.filters{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin-top:10px}
+.filters label{margin:0}
+.cform{display:grid;gap:4px 16px;grid-template-columns:1fr 1fr;margin-top:24px}.cform .full{grid-column:1/-1}
+@media(max-width:640px){.cform{grid-template-columns:1fr}}
+.vinfo{font-size:.88rem;color:var(--mute);margin-top:6px;min-height:1.3em}
+.empty{color:var(--mute);padding:20px 0}
+section{scroll-margin-top:70px}
+.dark button:not(.btn-g){color:#fff;border-color:#4a5a85}.dark button:disabled{opacity:.7}
+.dark .pack small{color:#aab3cf}.dark .pack .amt{color:var(--gold)}
+.vimg{position:relative;height:130px;display:grid;place-items:center;overflow:hidden}
+.vimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vimg svg{width:46px;height:46px;stroke:#fff;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;opacity:.85}
+.room .vimg{margin:-26px -26px 16px;height:140px;border-radius:13px 13px 0 0}
+.slide .hi{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vgrid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));margin-top:28px}
+.vc{background:var(--navy2);border:1px solid #2c3c66;border-radius:14px;overflow:hidden}
+.vc .b{padding:14px 16px 16px}.vc h3{font-size:1.02rem;margin:0}.vc .m{color:#aab3cf;font-size:.86rem}
+.vc .chip{border-color:#3a4a78;color:#d6dbea;margin:8px 4px 0 0;font-size:.78rem;padding:1px 10px}
+.vc button{padding:8px 14px;font-size:.9rem}
+.mt{margin-top:24px}
+.todo{background:#fff3b0;color:#5c4a00;padding:1px 5px;border-radius:3px;font-size:.84rem}
+.flinks{display:flex;flex-wrap:wrap;gap:8px 18px;max-width:420px;align-content:flex-start}.flinks a{margin:0}
+.ckbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:30;background:var(--navy);color:#e6eaf6;border:1px solid #2c3c66;border-radius:12px;padding:12px 16px;display:flex;gap:14px;align-items:center;justify-content:space-between;max-width:760px;margin:0 auto;font-size:.9rem;box-shadow:0 8px 30px rgba(0,0,0,.35)}
+.ckbar[hidden]{display:none}.ckbar p{margin:0}.ckbar a{color:var(--gold)}.ckbar button{padding:7px 16px;white-space:nowrap}
+/* hero v2 */
+.slide:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(8,14,30,.88),transparent 48%)}
+.slide .hi{object-position:center 30%}
+.slide.on .hi{animation:kb 16s ease-out both}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.13)}}
+.slide .kick{display:flex;align-items:center;gap:12px;margin-bottom:18px;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:#e9d9a8}
+.slide .kick b{font:700 .95rem Georgia,serif;letter-spacing:.3em;color:#fff}
+.slide .kick i{width:38px;height:1px;background:var(--gold)}
+.slide h1{text-shadow:0 2px 24px rgba(0,0,0,.45);letter-spacing:-.005em}
+.slide .cta{margin-top:26px;max-width:none}
+.btn.ghost{color:#fff;border-color:rgba(255,255,255,.7)}.btn.ghost:hover{background:rgba(255,255,255,.12)}
+.slide .vtag{display:inline-block;margin-top:26px;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#cfd6ea;border-left:2px solid var(--gold);padding-left:10px}
+.slide .bar{position:absolute;left:0;bottom:0;height:3px;width:100%;transform-origin:left;transform:scaleX(0);background:var(--gold);z-index:6}
+.slide.on .bar{animation:fill 7s linear forwards}
+@keyframes fill{to{transform:scaleX(1)}}
+@media(hover:hover){.hero:hover .slide .bar{animation-play-state:paused}}
+.hero.paused .slide .bar,.hero.paused .slide.on .hi{animation-play-state:paused}
+.wm{position:absolute;right:2%;bottom:.1em;z-index:1;pointer-events:none;user-select:none;font:700 clamp(4.5rem,15vw,12rem)/1 Georgia,"Times New Roman",serif;letter-spacing:.08em;color:transparent;-webkit-text-stroke:1px rgba(201,162,75,.3)}
+.ctl{bottom:26px}.cnt{font:600 .8rem/1 "Segoe UI",sans-serif;letter-spacing:.14em;color:#e9d9a8;margin-right:8px}
+.pp{width:34px;height:34px;padding:0;border-radius:50%;color:#fff;border-color:rgba(255,255,255,.45);background:rgba(15,26,51,.5);font-size:.7rem;margin-left:8px}
+.strip{background:var(--navy2);color:#fff;border-bottom:1px solid #2c3c66}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.strip .it{padding:22px 10px;text-align:center;border-right:1px solid #2c3c66}.strip .it:last-child{border:0}
+.strip b{display:block;font:700 1.9rem Georgia,serif;color:var(--gold);line-height:1.1}
+.strip span{font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:#aab3cf}
+@media(max-width:700px){.strip .wrap{grid-template-columns:1fr 1fr}.strip .it:nth-child(2){border-right:0}.strip .it{border-bottom:1px solid #2c3c66}.slide h1{font-size:1.9rem}}
+@media(prefers-reduced-motion:reduce){.slide .bar{display:none}.slide.on .hi{animation:none}}
+select:disabled{opacity:.6;background:#f1eee5;cursor:not-allowed}
+.dark label{color:#c3cae0}.dark select,.dark input{background:var(--navy2);color:#fff;border-color:#3a4a78}
+.dark select:disabled{opacity:.55}.dark .empty{color:#c3cae0}
+.vfil{margin-bottom:6px}.vcount{color:#aab3cf;font-size:.88rem;margin:12px 0 0}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="logo" href="#top" aria-label="ISDAMBUL ana sayfa"><svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path d="M21 4a12 12 0 1 0 7 21A10 10 0 0 1 21 4z" fill="#c9a24b"/><circle cx="25" cy="9" r="1.7" fill="#c9a24b"/></svg><span>ISDAMBUL</span></a>
+<nav aria-label="Ana menü"><ul><li><a href="#odalar">Oda ara</a></li><li><a href="#oda-kur">Oda kur</a></li><li><a href="#mekanlar">Mekânlar</a></li><li><a href="#nasil">Nasıl çalışır</a></li><li><a href="#coin">Coin</a></li><li><a href="#hakkimizda">Hakkımızda</a></li></ul></nav>
+<div class="navbtn" id="navbtn"><button data-auth="login">Giriş yap</button><button class="btn-g" data-auth="register">Üye ol</button></div>
+<button class="burger" id="burger" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mnav">&#9776;</button></div>
+<div class="mnav" id="mnav" hidden><div class="wrap"><ul><li><a href="#odalar">Oda ara</a></li><li><a href="#oda-kur">Oda kur</a></li><li><a href="#mekanlar">Mekânlar</a></li><li><a href="#nasil">Nasıl çalışır</a></li><li><a href="#coin">Coin</a></li><li><a href="#hakkimizda">Hakkımızda</a></li><li><a href="#sss">Sık sorulanlar</a></li></ul><div id="mauth"></div></div></div></header>
+
+<main id="top">
+<div class="hero" role="region" aria-roledescription="carousel" aria-label="Öne çıkanlar" id="hero"></div>
+<div class="strip"><div class="wrap">
+<div class="it"><b id="sn1">6</b><span>büyükşehir</span></div>
+<div class="it"><b id="sn2">100+</b><span>seçkin mekân</span></div>
+<div class="it"><b>18+</b><span>yaş sınırı</span></div>
+<div class="it"><b>Onaylı</b><span>profiller</span></div>
+</div></div>
+
+<section id="odalar"><div class="wrap">
+<div class="eyebrow">Odalar</div><h2>Mekânına göre masanı bul</h2>
+<p class="lead" id="rlead">Tür, il, ilçe ya da mekâna göre filtrele; sana uygun odaya katılma isteği gönder.</p>
+<div class="chips" id="fchips" role="group" aria-label="Mekân türü"></div>
+<div class="filters">
+<label>İl<select id="fs"><option value="">Tümü</option></select></label>
+<label>İlçe<select id="fd" disabled><option value="">Önce il seçin</option></select></label>
+<label>Mekân<select id="fv"><option value="">Tümü</option></select></label>
+<label>Oda ya da mekân adı ara<input id="fq" type="search" placeholder="Örn. Kordon, Nardis, rakı"></label>
+<label>Kim aranıyor?<select id="fg"><option value="">Hepsi</option><option>Kadın</option><option>Erkek</option></select></label>
+</div>
+<div class="msg" id="rmsg" role="status"></div>
+<div class="grid" id="rooms" aria-live="polite"></div>
+</div></section>
+
+<section id="oda-kur" style="padding-top:0"><div class="wrap">
+<div class="eyebrow">Oda kur</div><h2>Mekânı listeden seç, odanı aç</h2>
+<p class="lead">Odalar yalnızca listedeki mekânlar için kurulabilir. Önce türü, ili ve ilçeyi seçerek listeyi daralt.</p>
+<div class="chips" id="cchips" role="group" aria-label="Mekân türü seç"></div>
+<form id="cf" class="cform">
+<label class="full">Oda başlığı<input name="t" required minlength="3" maxlength="50" placeholder="Cumartesi kokteyl akşamı"></label>
+<label>İl<select id="ccity"><option value="">İl seçin</option></select></label>
+<label>İlçe<select id="cd" disabled><option value="">Önce il seçin</option></select></label>
+<label class="full">Mekân<select name="v" id="cv" required></select></label>
+<div class="vinfo full" id="cvi"></div>
+<label>Tarih ve saat<input type="datetime-local" name="s" id="cs" required></label>
+<label>Aranan kişi sayısı<select name="n"><option>1</option><option>2</option><option>3</option><option selected>4</option><option>5</option></select></label>
+<label class="full">Not (isteğe bağlı)<input name="o" maxlength="120" placeholder="Yaş aralığı, müzik tarzı, buluşma saati"></label>
+<div class="full" style="margin-top:14px"><button class="btn-g" type="submit">Odayı yayınla</button></div>
+</form>
+<div class="msg" id="cmsg" role="status"></div>
+<p class="vinfo">Aradığın mekân listede yok mu? Listeyi düzenli olarak genişletiyoruz; isdambul.info@gmail.com adresine yazabilirsin. ISDAMBUL listedeki mekânlarla bağlantılı ya da onların ortağı değildir.</p>
+</div></section>
+
+<section class="dark" id="mekanlar"><div class="wrap">
+<div class="eyebrow">Mekânlar</div><h2>Büyük şehirlerin gecesi, tek listede</h2>
+<p class="lead">Odalar yalnızca bu mekânlarda kurulur. Önce ili ve ilçeyi seç, sonra bir mekâna dokun; o mekândaki odaları gör.</p>
+<div class="filters vfil">
+<label>İl<select id="vs"><option value="">Tümü</option></select></label>
+<label>İlçe<select id="vd" disabled><option value="">Önce il seçin</option></select></label>
+<label>Mekân ara<input id="vq" type="search" placeholder="Mekân adı yaz"></label>
+</div>
+<p class="vcount" id="vcount" aria-live="polite"></p>
+<div class="vgrid" id="vgrid"></div><p class="mt"><button id="vmore"></button></p></div></section>
+
+<section id="nasil"><div class="wrap">
+<div class="eyebrow">Nasıl çalışır</div><h2>Üç adımda masana otur</h2>
+<p class="lead">ISDAMBUL, gece hayatında yeni insanlarla tanışmak isteyen yetişkinleri, herkesin onayıyla küçük gruplar hâlinde buluşturur.</p>
+<div class="grid">
+<div class="card"><div class="num">1</div><h3>Üye ol ve profilini onaylat</h3><p>Kayıt ol, kendi çektiğin bir fotoğrafı gönder. Ekibimiz inceler ve onaylar. Onaylanmış üyeler rozet taşır.</p></div>
+<div class="card"><div class="num">2</div><h3>Odanı kur ya da bir odaya katıl</h3><p>Mekânı, günü ve kaç kişi aradığını yaz. Ya da açık odalara göz at ve katılma isteği gönder.</p></div>
+<div class="card"><div class="num">3</div><h3>Onayla, yaz, buluş</h3><p>Oda sahibi isteği onaylar, grup mesajlaşma açılır. Herkes kamuya açık mekânda, kendi hesabını ödeyerek buluşur.</p></div>
+</div></div></section>
+
+<section class="dark" id="guven"><div class="wrap">
+<div class="eyebrow">Güvenlik</div><h2>Güven, buluşmanın ilk şartı</h2>
+<div class="grid">
+<div class="card"><h3>18 yaş sınırı</h3><p>Yalnızca 18 yaşını doldurmuş kişiler üye olabilir.</p></div>
+<div class="card"><h3>Onaylı profiller</h3><p>Her üyenin fotoğrafı insan gözüyle incelenir. Sahte profile yer yok.</p></div>
+<div class="card"><h3>Onaylı katılım</h3><p>Odaya yalnızca oda sahibinin onayladığı kişiler girer ve mesaj yazabilir.</p></div>
+<div class="card"><h3>Şikâyet ve engelleme</h3><p>Rahatsız eden herkesi tek dokunuşla bildir, engelle. Hesaplar incelenir.</p></div>
+</div></div></section>
+
+<section id="hakkimizda"><div class="wrap">
+<div class="eyebrow">Hakkımızda</div><h2>Yalnız gitmek zorunda değilsin</h2>
+<p class="lead">ISDAMBUL, gece dışarı çıkmak isteyip yanında kimse olmayan ya da yeni insanlarla tanışmak isteyen yetişkinler için kuruldu. Amacımız basit: güvenli, saygılı ve ölçülü bir ortamda küçük grupların bir araya gelmesi.</p>
+<div class="grid">
+<div class="card"><h3>Saygı ilk kural</h3><p>Rıza ve saygı olmadan masa kurulmaz. Taciz eden hesaplar kalıcı olarak kapatılır.</p></div>
+<div class="card"><h3>Ücretli buluşma yok</h3><p>ISDAMBUL’da para karşılığı buluşma, eşlik ya da ödeme teklifi yasaktır. Gelirimiz yalnızca coin satışından gelir.</p></div>
+<div class="card"><h3>Herkes kendi hesabını öder</h3><p>Mekân adına ya da kişi adına hiçbir ödeme ISDAMBUL üzerinden yapılmaz.</p></div>
+</div>
+<div class="card" style="margin-top:20px;display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;justify-content:space-between">
+<div><h3 style="margin:0 0 4px">Bize ulaşabilirsiniz</h3><p style="margin:0">Soru, öneri, şikâyet ya da hukuka aykırı içerik bildirimi için yazın; en kısa sürede dönüş yapıyoruz.</p></div>
+<a class="btn btn-g" href="mailto:isdambul.info@gmail.com">isdambul.info@gmail.com</a>
+</div></div></section>
+
+<section class="dark" id="coin"><div class="wrap">
+<div class="eyebrow">Coin</div><h2>Sadece katıldığında öde</h2>
+<p class="lead">Odalara göz atmak ve oda kurmak ücretsiz. Bir odaya katılma isteği 20 coin. Oda sahibi isteği reddederse ya da isteğini geri çekersen coinin iade edilir.</p>
+<div class="grid">
+<div class="card pack"><div class="amt">40</div><div class="price">99 ₺</div><small>Coin başına ≈ 2,48 ₺ · 2 odaya katılım</small><button disabled>Yakında</button></div>
+<div class="card pack best"><span class="tag">En çok tercih edilen</span><div class="amt">120</div><div class="price">199 ₺</div><small>Coin başına ≈ 1,66 ₺ · 6 odaya katılım</small><button disabled>Yakında</button></div>
+<div class="card pack"><div class="amt">300</div><div class="price">299 ₺</div><small>Coin başına ≈ 1,00 ₺ · 15 odaya katılım</small><button disabled>Yakında</button></div>
+</div>
+<p class="lead" style="margin-top:20px">Coin satın alma çok yakında açılıyor. Fiyatlara KDV dahildir. Coinler yalnızca ISDAMBUL üzerinde kullanılır; kullanıcılar arasında aktarılamaz ve nakde çevrilemez. Ayrıntılar için <a href="mesafeli-satis.html" style="color:var(--gold)">Mesafeli Satış Sözleşmesi</a> ve <a href="iade-ve-coin.html" style="color:var(--gold)">Coin ve iade koşulları</a> sayfalarına bakabilirsin.</p>
+</div></section>
+
+<section id="sss" style="padding-top:0"><div class="wrap">
+<div class="eyebrow">Sık sorulanlar</div><h2>Merak edilenler</h2>
+<details><summary>Üyelik ücretsiz mi?</summary><p>Evet. Kayıt, odalara göz atma ve oda kurma ücretsizdir. Yalnızca bir odaya katılma isteği coin gerektirir.</p></details>
+<details><summary>Fotoğrafımı kimler görür?</summary><p>Doğrulama için gönderdiğin fotoğrafı yalnızca sen ve inceleyen ekip görür. Başka üyelere gösterilmez.</p></details>
+<details><summary>Coinim ne zaman iade edilir?</summary><p>Oda sahibi isteğini reddederse ya da onaylanmadan önce isteğini geri çekersen coinin hesabına geri yüklenir. Ayrıntılar için <a href="iade-ve-coin.html">Coin ve iade koşulları</a> sayfasına bak.</p></details>
+<details><summary>ISDAMBUL listedeki mekânlarla bağlantılı mı?</summary><p>Hayır. Mekânlar, kullanıcıların buluşma yeri seçebilmesi için bilgi amaçlı listelenir. ISDAMBUL bu mekânların ortağı, temsilcisi ya da reklamcısı değildir; mekânlarda satış veya rezervasyon yapmaz.</p></details>
+<details><summary>Kişisel verilerim nasıl korunuyor?</summary><p>Verilerin 6698 sayılı KVKK’ya uygun işlenir. Hangi verilerin neden işlendiğini, saklama sürelerini ve haklarını <a href="gizlilik-kvkk.html">KVKK Aydınlatma Metni</a>’nde bulabilirsin.</p></details>
+<details><summary>Para karşılığı buluşmaya izin var mı?</summary><p>Hayır. Böyle bir teklif yapan hesap kapatılır. ISDAMBUL yalnızca karşılıklı rızayla, ücret karşılığı olmayan sosyal buluşmalar içindir.</p></details>
+<details><summary>Rahatsız edici biriyle karşılaşırsam ne yaparım?</summary><p>Profilindeki ya da odadaki şikâyet düğmesini kullan ve kişiyi engelle. Bildirimler ekibimizce incelenir.</p></details>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+<div class="row"><div><strong style="color:#fff;font-family:Georgia,serif;font-size:1.3rem;letter-spacing:.14em">ISDAMBUL</strong><br>Yalnızca 18 yaş ve üzeri içindir.<br>İletişim: <a href="mailto:isdambul.info@gmail.com">isdambul.info@gmail.com</a><br><span class="todo">[Ticari ünvan / ad-soyad] · [Adres] · [Vergi dairesi ve no] · [MERSİS no] · [KEP adresi]</span></div>
+<div class="flinks"><a href="kullanim-kosullari.html">Kullanım koşulları</a><a href="gizlilik-kvkk.html">Gizlilik ve KVKK</a><a href="cerez-politikasi.html">Çerez politikası</a><a href="mesafeli-satis.html">Mesafeli satış sözleşmesi</a><a href="iade-ve-coin.html">Coin ve iade</a></div></div>
+<p style="margin-top:24px;font-size:.84rem">© 2026 ISDAMBUL. Tüm hakları saklıdır. Listelenen mekânlar bilgi amaçlıdır; ISDAMBUL bu mekânlarla bağlantılı değildir. Aşırı alkol tüketimi sağlığa zararlıdır; sorumlu davranın.</p>
+</div></footer>
+
+<div class="ckbar" id="ckbar" hidden role="region" aria-label="Çerez bilgilendirmesi"><p>Bu sitede yalnızca oturum ve yaş onayı gibi zorunlu çerez/yerel depolama kullanılır. <a href="cerez-politikasi.html">Ayrıntılar</a></p><button class="btn-g" id="ckok">Tamam</button></div>
+
+<dialog id="authd" aria-labelledby="atitle"><button class="close" aria-label="Kapat" data-close>&times;</button>
+<h3 id="atitle">ISDAMBUL’a hoş geldin</h3>
+<div class="tabs" role="tablist"><button role="tab" id="tl" aria-selected="true">Giriş yap</button><button role="tab" id="tr" aria-selected="false">Üye ol</button></div>
+<form id="lf"><label>E-posta<input type="email" name="e" required autocomplete="email"></label>
+<label>Şifre<input type="password" name="p" required autocomplete="current-password"></label>
+<div style="margin-top:16px"><button class="btn-g" type="submit">Giriş yap</button></div><p style="margin:12px 0 0;font-size:.9rem"><a href="#" id="forgot">Şifremi unuttum</a></p></form>
+<form id="rf" hidden>
+<label>Görünen ad<input name="n" required minlength="2" maxlength="30" autocomplete="nickname"></label>
+<label>Cinsiyet<select name="g" required><option value="">Seçin</option><option>Kadın</option><option>Erkek</option></select></label>
+<label>Doğum tarihi<input type="date" name="b" required></label>
+<label>E-posta<input type="email" name="e" required autocomplete="email"></label>
+<label>Şifre (en az 8 karakter)<input type="password" name="p" required minlength="8" autocomplete="new-password"></label>
+<div class="chk"><input type="checkbox" name="a" id="a18" required><label for="a18" style="margin:0;color:var(--ink)">18 yaşını doldurduğumu beyan ederim.</label></div>
+<div class="chk"><input type="checkbox" name="k" id="kv" required><label for="kv" style="margin:0;color:var(--ink)"><a href="kullanim-kosullari.html" target="_blank" rel="noopener">Kullanım koşullarını</a> kabul ediyor, <a href="gizlilik-kvkk.html" target="_blank" rel="noopener">KVKK Aydınlatma Metni</a>’ni okuduğumu beyan ediyorum.</label></div>
+<div class="chk"><input type="checkbox" name="m" id="mk"><label for="mk" style="margin:0;color:var(--ink)">Kampanya ve duyurularla ilgili ticari elektronik ileti almak istiyorum (isteğe bağlı, istediğin zaman vazgeçebilirsin).</label></div>
+<div style="margin-top:16px"><button class="btn-g" type="submit">Üye ol</button></div></form>
+<div class="msg" id="amsg" role="status"></div></dialog>
+
+<dialog id="accd" aria-labelledby="acct"><button class="close" aria-label="Kapat" data-close>&times;</button>
+<h3 id="acct">Hesabım</h3><div id="accb">Yükleniyor…</div><div class="msg" id="accm" role="status"></div></dialog>
+
+
+<dialog id="ageg" aria-labelledby="agt"><h3 id="agt">Yalnızca 18 yaş ve üzeri için</h3>
+<p>ISDAMBUL, mekânlarda buluşmak isteyen yetişkinler içindir. 18 yaşını doldurdunuz mu?</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><button class="btn-g" id="ageyes">Evet, 18 yaşından büyüğüm</button><button id="ageno">Hayır</button></div>
+<p style="font-size:.82rem;color:var(--mute);margin-top:16px">Aşırı alkol tüketimi sağlığa zararlıdır.</p></dialog>
+<dialog id="pwd" aria-labelledby="pwt"><button class="close" aria-label="Kapat" data-close>&times;</button><h3 id="pwt">Yeni şifre belirle</h3>
+<form id="pf"><label>Yeni şifre (en az 8 karakter)<input type="password" name="p" required minlength="8" autocomplete="new-password"></label>
+<div style="margin-top:16px"><button class="btn-g" type="submit">Şifreyi kaydet</button></div></form><div class="msg" id="pmsg" role="status"></div></dialog>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+/* === AYAR: Supabase bilgilerini buraya yapıştırın (tırnakların içine) === */
+const SUPABASE_URL="";
+const SUPABASE_ANON_KEY="";
+/* ========================================================================= */
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
+const sb=(SUPABASE_URL&&SUPABASE_ANON_KEY&&window.supabase)?supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY):null;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* ---- Slider ---- */
+const S=[
+ {h:262,k:"Mekâna yalnız gitme",t:"Artık mekâna giderken dam aramaya son.",p:"Gideceğin mekânı seç, masanı kur; ekibin seni orada beklesin.",v:"ISDAMBUL ile tanış",l:"#nasil",lt:"Nasıl çalışır?"},
+ {h:285,k:"Üç adımda masana otur",t:"Üye ol, mekânı seç, onayla ve buluş.",p:"Odanı kur ya da açık bir odaya katıl. Herkes kamuya açık mekânda, kendi hesabını ödeyerek buluşur.",v:"1 · Üye ol  2 · Oda kur  3 · Buluş",l:"#oda-kur",lt:"Oda kur"},
+ {h:215,k:"Boğaz’ın gecesi",t:"Boğaz’ın ışıkları altında yeni sohbetler.",p:"Kuruçeşme’nin seçkin mekânlarında küçük, onaylı gruplarla buluş.",v:"İstanbul · Kuruçeşme"},
+ {h:330,k:"Canlı müzik, açık masa",t:"Moda’dan Nişantaşı’na, geceye bir masa ekle.",p:"Canlı müzik, rooftop’lar ve kalabalık sokaklar arasında senin masan hazır.",v:"İstanbul · Kadıköy · Nişantaşı"},
+ {h:195,k:"Sadece İstanbul değil",t:"İzmir, Ankara, Bursa, Antalya, Bodrum, Eskişehir, İzmit…",p:"Büyük şehirlerin seçkin mekânlarında oda kur ya da bir odaya katıl.",v:"8 büyükşehir · 130+ mekân",l:"#mekanlar",lt:"Mekânlara göz at"},
+ {h:35,k:"Önce onay, sonra masa",t:"Odaya yalnızca oda sahibinin onayladığı kişiler katılır.",p:"18 yaş sınırı, onaylı profiller, şikâyet ve engelleme: güven buluşmanın ilk şartı.",v:"Güvenli buluşma",l:"#guven",lt:"Güvenlik"},
+ {h:150,k:"Sadece katıldığında öde",t:"Göz atmak ve oda kurmak ücretsiz.",p:"Katılma isteği 20 coin. Reddedilirse ya da geri çekersen coinin iade edilir.",v:"40 coin 99 ₺ · 120 coin 199 ₺ · 300 coin 299 ₺",l:"#coin",lt:"Coin paketleri"}];
+function scene(h,seed){let s=seed,r=()=>(s=(s*9301+49297)%233280)/233280,c="";
+ for(let i=0;i<30;i++)c+=`<circle cx="${r()*100}%" cy="${r()*100}%" r="${1.5+r()*7}%" fill="hsl(${h+r()*60-15} 85% 62%)" opacity="${.1+r()*.3}"/>`;
+ return `<svg aria-hidden="true"><defs><linearGradient id="g${seed}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="hsl(${h} 55% 14%)"/><stop offset="1" stop-color="hsl(${h+40} 60% 24%)"/></linearGradient><filter id="f${seed}"><feGaussianBlur stdDeviation="7"/></filter></defs><rect width="100%" height="100%" fill="url(#g${seed})"/><g filter="url(#f${seed})">${c}</g></svg>`}
+const hero=$("#hero"),pad=n=>String(n).padStart(2,"0");
+hero.innerHTML=`<div class="wm" aria-hidden="true">ISDAMBUL</div>`+S.map((x,i)=>`<div class="slide${i?"":" on"}" aria-hidden="${i?"true":"false"}">${scene(x.h,i+3)}<img class="hi" src="img/hero-${i+1}.jpg" alt="" ${i?'loading="lazy" ':''}onerror="this.remove()"><div class="wrap"><div class="kick"><b>ISDAMBUL</b><i></i><span>${x.k}</span></div><h1>${x.t}</h1><p>${x.p}</p><p class="cta"><button class="btn-g" data-auth="register">Ücretsiz üye ol</button> <a class="btn ghost" href="${x.l||"#odalar"}">${x.lt||"Oda ara"}</a></p><div class="vtag">${x.v}</div></div><div class="bar"></div></div>`).join("")+
+ `<button class="arrow l" aria-label="Önceki">&#8249;</button><button class="arrow r" aria-label="Sonraki">&#8250;</button><div class="ctl"><span class="cnt" id="cnt">01 / ${pad(S.length)}</span>${S.map((_,i)=>`<button class="dot" aria-label="${i+1}. slayt" aria-current="${i==0}"></button>`).join("")}<button class="pp" id="pp" aria-label="Otomatik geçişi duraklat">&#10074;&#10074;</button></div>`;
+let cur=0;
+function go(n){cur=(n+S.length)%S.length;$$(".slide").forEach((e,i)=>{e.classList.toggle("on",i==cur);e.setAttribute("aria-hidden",i!=cur)});$$(".dot").forEach((e,i)=>e.setAttribute("aria-current",i==cur));$("#cnt").textContent=pad(cur+1)+" / "+pad(S.length)}
+$$(".slide .bar").forEach(b=>b.addEventListener("animationend",()=>go(cur+1)));
+$(".arrow.l").onclick=()=>go(cur-1);$(".arrow.r").onclick=()=>go(cur+1);
+$$(".dot").forEach((d,i)=>d.onclick=()=>go(i));
+$("#pp").onclick=()=>{const q=hero.classList.toggle("paused");$("#pp").innerHTML=q?"&#9654;":"&#10074;&#10074;";$("#pp").setAttribute("aria-label",q?"Otomatik geçişi başlat":"Otomatik geçişi duraklat")};
+
+const CATS={kokteyl:"Kokteyl",kulup:"Kulüp",bar:"Bar",pub:"Pub",raki:"Rakı masası",meyhane:"Yeni nesil meyhane",techno:"Techno",canli:"Canlı müzik",rooftop:"Rooftop"};
+const VENUES=[{"id": "360", "n": "360 İstanbul", "d": "Beyoğlu", "c": ["rooftop", "kulup", "kokteyl"]}, {"id": "mikla", "n": "Mikla Rooftop Bar", "d": "Beyoğlu", "c": ["rooftop", "kokteyl"]}, {"id": "summit", "n": "Summit Bar & Terrace", "d": "Beyoğlu", "c": ["rooftop", "kokteyl", "bar"]}, {"id": "nardis", "n": "Nardis Jazz Club (Galata)", "d": "Beyoğlu", "c": ["canli", "bar"]}, {"id": "kum-saati", "n": "Kum Saati Caz Blues", "d": "Beyoğlu", "c": ["canli", "bar"]}, {"id": "rock-n-rolla", "n": "Rock'N Rolla Beyoğlu", "d": "Beyoğlu", "c": ["pub", "canli"]}, {"id": "minimuzikhol", "n": "Minimüzikhol (Cihangir)", "d": "Beyoğlu", "c": ["techno", "kulup"]}, {"id": "moretenders", "n": "Moretenders (Cihangir)", "d": "Beyoğlu", "c": ["kokteyl", "bar"]}, {"id": "geyik", "n": "Geyik Coffee & Cocktail Bar (Cihangir)", "d": "Beyoğlu", "c": ["kokteyl", "bar"]}, {"id": "kulp", "n": "Kulp (Şehbender)", "d": "Beyoğlu", "c": ["kulup"]}, {"id": "escape", "n": "Escape Club İstanbul (Taksim)", "d": "Beyoğlu", "c": ["kulup"]}, {"id": "monkey", "n": "Monkey İstanbul (Karaköy)", "d": "Beyoğlu", "c": ["rooftop", "kokteyl"]}, {"id": "asmali-cavit", "n": "Asmalı Cavit (Asmalımescit)", "d": "Beyoğlu", "c": ["raki", "meyhane"]}, {"id": "sofyali-9", "n": "Sofyalı 9 (Asmalımescit)", "d": "Beyoğlu", "c": ["raki", "meyhane"]}, {"id": "refik", "n": "Refik (Asmalımescit)", "d": "Beyoğlu", "c": ["raki"]}, {"id": "imroz", "n": "İmroz (Balık Pazarı)", "d": "Beyoğlu", "c": ["raki"]}, {"id": "cumhuriyet", "n": "Cumhuriyet Meyhanesi (Nevizade)", "d": "Beyoğlu", "c": ["raki"]}, {"id": "yakup-2", "n": "Yakup 2 (Asmalımescit)", "d": "Beyoğlu", "c": ["raki"]}, {"id": "nevizade", "n": "Nevizade Sokağı", "d": "Beyoğlu", "c": ["raki", "meyhane"]}, {"id": "yeni-lokanta", "n": "Yeni Lokanta (Karaköy)", "d": "Beyoğlu", "c": ["meyhane"]}, {"id": "despina", "n": "Despina (Kurtuluş)", "d": "Şişli", "c": ["raki", "meyhane"]}, {"id": "klein", "n": "Klein (Harbiye)", "d": "Şişli", "c": ["techno", "kulup"]}, {"id": "babylon", "n": "Babylon Bomonti", "d": "Şişli", "c": ["canli", "kulup"]}, {"id": "lucca", "n": "Lucca (Bebek)", "d": "Beşiktaş", "c": ["bar", "kokteyl"]}, {"id": "ruby", "n": "Ruby İstanbul (Ortaköy)", "d": "Beşiktaş", "c": ["kulup"]}, {"id": "akaretler", "n": "Akaretler Caddesi", "d": "Beşiktaş", "c": ["bar", "kokteyl"]}, {"id": "lelabbo", "n": "Lelabbo Moda", "d": "Kadıköy", "c": ["kokteyl", "bar"]}, {"id": "fahri-konsolos", "n": "Fahri Konsolos", "d": "Kadıköy", "c": ["kokteyl", "bar"]}, {"id": "townhouse", "n": "The Townhouse (Suadiye)", "d": "Kadıköy", "c": ["kokteyl", "bar"]}, {"id": "popmod", "n": "PopMod (Moda)", "d": "Kadıköy", "c": ["kulup", "pub"]}, {"id": "zeplin", "n": "Zeplin", "d": "Kadıköy", "c": ["bar", "canli"]}, {"id": "kadife", "n": "Kadife Sokağı (Barlar Sokağı)", "d": "Kadıköy", "c": ["bar", "pub"]}, {"id": "caddebostan", "n": "Caddebostan Bar Caddesi", "d": "Kadıköy", "c": ["bar", "kulup"]}, {"id": "sortie", "n": "Sortie (Kuruçeşme)", "d": "Beşiktaş", "c": ["kulup"]}, {"id": "noir", "n": "Noir Club İstanbul (Kuruçeşme)", "d": "Beşiktaş", "c": ["kulup"]}, {"id": "oligark", "n": "Oligark Club İstanbul (Kuruçeşme)", "d": "Beşiktaş", "c": ["kulup"]}, {"id": "ezberbozan", "n": "Ezberbozan Meyhane Sortie (Kuruçeşme)", "d": "Beşiktaş", "c": ["meyhane", "raki"]}, {"id": "alaf-2tek", "n": "ALAF 2TEK (Kuruçeşme)", "d": "Beşiktaş", "c": ["meyhane", "raki"]}, {"id": "incirli", "n": "İncirli Şaraphane (Kuruçeşme)", "d": "Beşiktaş", "c": ["bar"]}, {"id": "niwa", "n": "Sortie Niwa Bar (Kuruçeşme)", "d": "Beşiktaş", "c": ["bar", "kokteyl"]}, {"id": "la-bouteille", "n": "La Bouteille (Kuruçeşme)", "d": "Beşiktaş", "c": ["bar"]}, {"id": "o-maestros", "n": "O Maestros (Arnavutköy)", "d": "Beşiktaş", "c": ["meyhane", "raki"]}, {"id": "arkaoda", "n": "Arkaoda (Kadife Sokak)", "d": "Kadıköy", "c": ["kulup", "techno", "canli"]}, {"id": "karga", "n": "Karga Bar (Kadife Sokak)", "d": "Kadıköy", "c": ["bar", "kulup", "canli"]}, {"id": "monks", "n": "Monks (Moda)", "d": "Kadıköy", "c": ["kulup", "bar"]}, {"id": "zor", "n": "Zor (Moda)", "d": "Kadıköy", "c": ["kulup"]}, {"id": "bakkal", "n": "Bakkal Cocktail Bar (Moda)", "d": "Kadıköy", "c": ["kokteyl", "bar"]}, {"id": "mathilda", "n": "Mathilda’s Cocktail Bar (Moda)", "d": "Kadıköy", "c": ["kokteyl", "bar"]}, {"id": "ayi-disko", "n": "Ayı Disko (Moda)", "d": "Kadıköy", "c": ["pub", "canli"]}, {"id": "belfast", "n": "Belfast Irish Pub", "d": "Kadıköy", "c": ["pub"]}, {"id": "dorock", "n": "Dorock XL", "d": "Kadıköy", "c": ["canli", "kulup"]}, {"id": "kadikoy-sahne", "n": "Kadıköy Sahne", "d": "Kadıköy", "c": ["canli"]}, {"id": "hane", "n": "Hane Kadıköy", "d": "Kadıköy", "c": ["meyhane", "raki"]}, {"id": "perihan", "n": "Perihan Meyhane", "d": "Kadıköy", "c": ["meyhane", "raki"]}, {"id": "yelkenci", "n": "Yelkenci Karaköy", "d": "Beyoğlu", "c": ["raki", "meyhane"]}, {"id": "moise", "n": "Moise Karaköy", "d": "Beyoğlu", "c": ["meyhane", "raki"]}, {"id": "tershane", "n": "Tershane Karaköy", "d": "Beyoğlu", "c": ["meyhane", "raki"]}, {"id": "bonn", "n": "BONN Karaköy", "d": "Beyoğlu", "c": ["meyhane", "raki"]}, {"id": "karakoy-dem", "n": "Karaköy Dem Meyhanesi", "d": "Beyoğlu", "c": ["raki", "meyhane"]}, {"id": "veranda-pera", "n": "Veranda Pera", "d": "Beyoğlu", "c": ["meyhane", "raki"]}, {"id": "perri", "n": "Perri (Karaköy)", "d": "Beyoğlu", "c": ["meyhane", "rooftop", "raki"]}, {"id": "vertical", "n": "Vertical İstanbul (Caddebostan)", "d": "Kadıköy", "c": ["kokteyl", "bar"]}, {"id": "peat-and-sherry", "n": "Peat and Sherry (Caddebostan)", "d": "Kadıköy", "c": ["bar"]}, {"id": "zest-society", "n": "Zest Society (Caddebostan)", "d": "Kadıköy", "c": ["kokteyl", "bar"]}, {"id": "cheerz", "n": "Cheerz Caddebostan", "d": "Kadıköy", "c": ["kokteyl", "pub"]}, {"id": "bibucuk", "n": "BiBuçuk Caddebostan", "d": "Kadıköy", "c": ["pub", "bar"]}, {"id": "rakkas", "n": "Rakkas Bar & Restaurant (Caddebostan)", "d": "Kadıköy", "c": ["bar", "canli"]}, {"id": "paolina", "n": "Paolina Cocktail & Kitchen (Bağdat Caddesi)", "d": "Kadıköy", "c": ["kokteyl", "bar"]}, {"id": "gou-society", "n": "GOU Society (Bağdat Caddesi)", "d": "Kadıköy", "c": ["kokteyl", "bar"]}, {"id": "zurafa", "n": "Zurafa No203 Kitchen & Cocktail (Göztepe)", "d": "Kadıköy", "c": ["kokteyl", "bar"]}, {"id": "allen", "n": "Allen Kitchen & Cocktail (Suadiye)", "d": "Kadıköy", "c": ["kokteyl", "bar"]}];
+VENUES.forEach(v=>v.s="İstanbul");
+const V2=(s,a)=>a.map(([id,n,d,c])=>({id,n,d,c,s}));
+VENUES.push(
+...V2("İstanbul",[
+ ["boaz-middle","Boâz Middle (Kuruçeşme)","Beşiktaş",["kulup","canli"]],
+ ["boaz-live","Boaz Live (Kuruçeşme)","Beşiktaş",["canli"]],
+ ["kloud","Kloud (Kuruçeşme)","Beşiktaş",["kulup","techno"]],
+ ["blackk","Blackk (Kuruçeşme)","Beşiktaş",["kulup","meyhane"]],
+ ["suada","Suada Club (Kuruçeşme)","Beşiktaş",["bar","kokteyl"]],
+ ["el-beso","El Beso Restaurant & Club (Kuruçeşme)","Beşiktaş",["kulup","bar"]],
+ ["goose25","Goose No.25 (Kuruçeşme)","Beşiktaş",["bar","canli"]],
+ ["16roof","16ROOF (Swissôtel)","Beşiktaş",["rooftop","kokteyl"]],
+ ["galium","Galium (Kuruçeşme)","Beşiktaş",["kulup"]],
+ ["avalon","Avalon (Kadıköy)","Kadıköy",["kulup"]],
+ ["dunia","Dunia (Kadıköy)","Kadıköy",["bar","kulup"]]
+]),
+...V2("İstanbul",[
+ ["frankie","Frankie (Sofa Hotel, Teşvikiye)","Şişli",["rooftop","kokteyl"]],
+ ["kozmonot","Kozmonot (Topağacı)","Şişli",["bar","pub"]],
+ ["divine","Divine Brasserie & Jazz Club (Nişantaşı)","Şişli",["canli","bar"]],
+ ["biber-bar","Biber Bar (Abdi İpekçi)","Şişli",["bar","canli"]],
+ ["sess-nisantasi","Sess Nişantaşı","Şişli",["kulup"]],
+ ["tango-cash","Tango&Cash (Nişantaşı)","Şişli",["bar"]],
+ ["tuzla-marina","Viaport Marina (Tuzla)","Tuzla",["bar","canli"]],
+ ["blu-breeze","Blu Breeze Bar & Lounge (Radisson Blu Tuzla)","Tuzla",["bar"]]
+]),
+...V2("Eskişehir",[
+ ["esk-barlar","Barlar Sokağı (Vural Sokak)","Tepebaşı",["bar","pub","canli"]],
+ ["cave","The Cave Event Hall & Club","Tepebaşı",["kulup"]],
+ ["travelers","Travelers Irish Pub","Tepebaşı",["pub"]],
+ ["varuna","Varuna Memphis Pub","Tepebaşı",["pub"]]
+]),
+...V2("Kocaeli",[
+ ["baron-bar","Baron Bar (İzmit)","İzmit",["bar","kulup"]],
+ ["doping","Doping Bar (İzmit)","İzmit",["bar","pub"]],
+ ["izmit-barlar","İzmit Barlar Sokağı","İzmit",["bar","pub","canli"]]
+]),
+...V2("Ankara",[
+ ["if-performance","IF Performance Hall (Kavaklıdere)","Çankaya",["canli","kulup"]],
+ ["rabarba","Rabarba (Tunus Caddesi)","Çankaya",["kulup","techno"]],
+ ["jolly-joker-ankara","Jolly Joker Ankara (Kavaklıdere)","Çankaya",["canli","kulup"]],
+ ["siyah-beyaz","Siyah Beyaz (Kavaklıdere)","Çankaya",["canli","bar"]],
+ ["la-bebe","La Bebe (Bestekar Sokak)","Çankaya",["bar","canli"]],
+ ["tektekci","Tektekçi (Bestekar Sokak)","Çankaya",["pub"]],
+ ["corvus","Corvus Pub (Bestekar Sokak)","Çankaya",["pub"]],
+ ["november","November Pub (Üsküp Caddesi)","Çankaya",["pub"]],
+ ["newcastle","Newcastle Pub (Tunus Caddesi)","Çankaya",["pub","kulup"]],
+ ["ruhi-bey","Ruhi Bey Meyhanesi (Kavaklıdere)","Çankaya",["raki","meyhane"]],
+ ["terradan","Terradan Vegan Pub (Ayrancı)","Çankaya",["pub"]],
+ ["bestekar","Bestekar Sokak (Tunalı)","Çankaya",["bar","pub","canli"]],
+ ["tunali","Tunalı Hilmi Caddesi","Çankaya",["bar","kokteyl"]],
+ ["sakarya","Sakarya Caddesi (Kızılay)","Çankaya",["bar","pub"]]
+]),
+...V2("İzmir",[
+ ["1888","1888 Bar & Lounge (Alsancak)","Konak",["kulup","bar"]],
+ ["sakiz-alsancak","Sakız Alsancak (Kordon)","Konak",["raki","meyhane"]],
+ ["clup-ali","Clup Ali (Alsancak)","Konak",["raki","meyhane"]],
+ ["deniz-kordon","Deniz Restaurant (Kordon)","Konak",["raki"]],
+ ["hayyam","Hayyam Meyhanesi (Basmane)","Konak",["raki","meyhane"]],
+ ["madam-bordo","Madam Bordo Şarap Evi & Bar (Alsancak)","Konak",["bar"]],
+ ["0andmore","0ANDMORE (Alsancak)","Konak",["kokteyl","bar"]],
+ ["kibris-sehitleri","Kıbrıs Şehitleri Caddesi (Alsancak)","Konak",["bar","kulup","pub"]],
+ ["kordon-izmir","Kordon Boyu (Alsancak)","Konak",["bar","pub"]],
+ ["tac-mahal","Tac Mahal (Bayraklı)","Bayraklı",["kulup"]],
+ ["ooze","Ooze Venue (Bornova)","Bornova",["canli","bar"]],
+ ["645-kaybedenler","6:45 Kaybedenler Kulübü (Bornova)","Bornova",["kulup"]],
+ ["karaf","Karaf Meyhane (Bostanlı)","Karşıyaka",["raki","meyhane"]],
+ ["kuntra","Kuntra Wine Bar (Atakent)","Karşıyaka",["bar"]],
+ ["milos-balik","Milos Balık (Sığacık)","Seferihisar",["raki","meyhane"]],
+ ["letafet","Letafet Meyhane (Eski Foça)","Foça",["raki","meyhane"]],
+ ["alacati-barlar","Alaçatı Barlar Sokağı","Çeşme",["bar","kulup","kokteyl"]],
+ ["scatola","Scatola (Alaçatı)","Çeşme",["bar","kokteyl"]]
+]),
+...V2("Bursa",[
+ ["arap-sukru","Arap Şükrü Sokağı","Osmangazi",["raki","meyhane"]],
+ ["sess16","Sess 16 Club","Osmangazi",["kulup"]],
+ ["inferno-bursa","Club Inferno Bursa","Nilüfer",["kulup"]],
+ ["tren-bursa","Tren Bursa","Nilüfer",["kulup"]],
+ ["jazzy-pub","Jazzy Pub (Özlüce)","Nilüfer",["canli","pub"]],
+ ["my-pub","My Pub Gastrohouse","Nilüfer",["pub","canli"]],
+ ["just-pub","Just Pub (Özlüce)","Nilüfer",["pub"]]
+]),
+...V2("Antalya",[
+ ["club-arma","Club Arma (Kaleiçi Yat Limanı)","Muratpaşa",["kulup"]],
+ ["inferno-antalya","Club Inferno (Lara)","Muratpaşa",["kulup"]],
+ ["kaleici-barlar","Kaleiçi Bar Sokakları","Muratpaşa",["bar","kokteyl","canli"]],
+ ["pause","Pause Club (Konyaaltı)","Konyaaltı",["techno","kulup"]]
+]),
+...V2("Muğla",[
+ ["halikarnas","Halikarnas Disco (Bodrum)","Bodrum",["kulup"]],
+ ["catamaran","Club Catamaran (Bodrum)","Bodrum",["kulup"]],
+ ["bodrum-barlar","Bodrum Barlar Sokağı","Bodrum",["bar","kulup","pub"]],
+ ["marmaris-barlar","Marmaris Barlar Sokağı","Marmaris",["bar","kulup","pub"]]
+])
+);
+const VM=Object.fromEntries(VENUES.map(v=>[v.id,v]));
+const ORDER=["İstanbul","Ankara","İzmir","Bursa","Antalya","Muğla","Eskişehir","Kocaeli"];
+const CITIES=[...new Set(VENUES.map(v=>v.s))].sort((a,b)=>{const i=ORDER.indexOf(a),j=ORDER.indexOf(b);return (i<0?99:i)-(j<0?99:j)||a.localeCompare(b,"tr")});
+const other=g=>g==="Kadın"?"Erkek":"Kadın";
+function imgFb(i,k){if(i.dataset.f){i.remove()}else{i.dataset.f=1;i.src="img/cat-"+k+".jpg"}}
+const ICONS={kokteyl:'<path d="M5 5h14l-7 8z"/><path d="M12 13v7M8 20h8"/>',kulup:'<circle cx="12" cy="12" r="7"/><path d="M5 12h14M12 5c3 3 3 11 0 14M12 5c-3 3-3 11 0 14"/>',bar:'<path d="M7 4h10l-1.5 16h-7z"/><path d="M7.5 9h9"/>',pub:'<path d="M6 6h9v12H6z"/><path d="M15 9h3a2 2 0 0 1 0 5h-3"/>',raki:'<path d="M10 3h4v4l2 3v10H8V10l2-3z"/>',meyhane:'<circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2.5"/>',techno:'<path d="M3 12h2l2-6 3 12 3-9 2 6 2-3h4"/>',canli:'<path d="M9 18V6l10-2v12"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="16" r="2"/>',rooftop:'<path d="M4 20V10h5v10M9 20V5h6v15M15 20v-8h5v8M3 20h18"/>'};
+const HUE={kokteyl:330,kulup:270,bar:20,pub:35,raki:195,meyhane:160,techno:250,canli:300,rooftop:215};
+function vimg(v){const k=v.c[0],x=HUE[k]||250;return `<div class="vimg" style="background:linear-gradient(135deg,hsl(${x} 55% 20%),hsl(${x+40} 60% 34%))"><svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[k]||""}</svg><img src="img/${v.id}.jpg" alt="${esc(v.n)}" loading="lazy" onerror="imgFb(this,'${k}')"></div>`}
+const F={cat:"",s:"",d:"",v:"",q:"",g:""},C={cat:""};
+let ROOMS=[],isDemo=true;
+function chips(el,cur,attr){el.innerHTML=[["","Tümü"],...Object.entries(CATS)].map(([k,l])=>`<button type="button" class="fc" ${attr}="${k}" aria-pressed="${cur===k}">${l}</button>`).join("")}
+function fillCity(sel,ph){sel.innerHTML=`<option value="">${ph}</option>`+CITIES.map(c=>`<option>${c}</option>`).join("")}
+function fillDist(sel,c){if(!c){sel.innerHTML='<option value="">Önce il seçin</option>';sel.disabled=true;return}
+ const D=[...new Set(VENUES.filter(v=>v.s===c).map(v=>v.d))].sort((a,b)=>a.localeCompare(b,"tr"));
+ sel.disabled=false;sel.innerHTML='<option value="">Tümü</option>'+D.map(d=>`<option>${d}</option>`).join("")}
+function venOpts(L,c){const g={};L.forEach(v=>{const k=c?v.d:v.s+" · "+v.d;(g[k]=g[k]||{k,o:c?0:(ORDER.indexOf(v.s)+1||99),a:[]}).a.push(v)});
+ return Object.values(g).sort((a,b)=>a.o-b.o||a.k.localeCompare(b.k,"tr")).map(x=>`<optgroup label="${esc(x.k)}">${x.a.map(v=>`<option value="${v.id}">${esc(v.n)}</option>`).join("")}</optgroup>`).join("")}
+function fillFV(){const L=VENUES.filter(v=>(!F.s||v.s===F.s)&&(!F.d||v.d===F.d)&&(!F.cat||v.c.includes(F.cat)));
+ if(F.v&&!L.some(v=>v.id===F.v))F.v="";
+ $("#fv").innerHTML=`<option value="">Tümü (${L.length})</option>`+venOpts(L,F.s);$("#fv").value=F.v}
+function demoRooms(){const D=[["Cumartesi kokteyl akşamı","lelabbo","Cmt 21:30","Kadın",4,1],["Canlı caz gecesi","nardis","Cmt 21:00","Erkek",3,0],["Rakı masası, sohbet odaklı","asmali-cavit","Cum 20:30","Kadın",4,2],["Techno gecesi","minimuzikhol","Cmt 23:00","Erkek",2,1],["Gün batımında rooftop","summit","Cmt 19:30","Kadın",3,1],["Pub akşamı","rock-n-rolla","Cum 21:00","Erkek",4,1],["Kordon’da rakı masası","sakiz-alsancak","Cum 20:30","Kadın",4,1],["Bestekar’da pub akşamı","corvus","Cmt 21:30","Erkek",3,1],["Arap Şükrü’de meze akşamı","arap-sukru","Cmt 20:30","Kadın",4,0],["Kaleiçi’nde kokteyl gecesi","kaleici-barlar","Cum 22:00","Erkek",3,1],["Teşvikiye’de rooftop akşamı","frankie","Cmt 20:00","Kadın",3,1],["Barlar Sokağı’nda pub gecesi","esk-barlar","Cmt 21:00","Erkek",4,2],["İzmit’te bar akşamı","baron-bar","Cum 21:30","Kadın",3,0]];
+ return D.map((r,i)=>{const v=VM[r[1]];return{id:"demo"+i,t:r[0],v:v.n,s:v.s,d:v.d,c:v.c,w:r[2],og:r[3],n:r[4],got:r[5],by:"Örnek",vid:r[1]}})}
+async function loadRooms(){isDemo=true;ROOMS=demoRooms();
+ if(sb&&await user()){const{data,error}=await sb.rpc("list_open_rooms");
+  if(!error&&data){isDemo=false;ROOMS=data.map(r=>({id:r.id,vid:r.venue_id,t:r.title,v:r.venue,s:(VM[r.venue_id]||{}).s||"İstanbul",d:r.district,c:r.categories||[],w:new Date(r.starts_at).toLocaleString("tr-TR",{weekday:"short",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}),og:r.owner_gender,n:r.seeking_count,got:r.approved_count,by:r.owner_name}))}}
+ $("#rlead").textContent=isDemo?"Aşağıdakiler örnek odalardır. Üye olup giriş yapınca gerçek odaları görürsün.":"Tür, il, ilçe ya da mekâna göre filtrele; sana uygun odaya katılma isteği gönder.";
+ drawRooms()}
+function drawRooms(){const q=F.q.trim().toLocaleLowerCase("tr");
+ const L=ROOMS.filter(r=>(!F.cat||r.c.includes(F.cat))&&(!F.s||r.s===F.s)&&(!F.d||r.d===F.d)&&(!F.v||r.vid===F.v)&&(!F.g||other(r.og)===F.g)&&(!q||(r.v+" "+r.t).toLocaleLowerCase("tr").includes(q)));
+ $("#rooms").innerHTML=L.length?L.map(r=>`<article class="card room">${r.vid&&VM[r.vid]?vimg(VM[r.vid]):""}<h3>${esc(r.t)}</h3><div class="meta">${esc(r.v)} · ${esc(r.s||"")}, ${esc(r.d)}<br>${esc(r.w)} · oda sahibi ${esc(r.by)}</div><div>${r.c.map(k=>`<span class="chip">${CATS[k]||esc(k)}</span>`).join("")}<span class="chip">${other(r.og)} aranıyor: ${r.got}/${r.n}</span></div><button class="btn-g" data-join="${r.id}">Katıl</button></article>`).join(""):'<p class="empty">Bu filtrelere uyan oda yok. İlk odayı sen kurabilirsin.</p>'}
+function fillVenues(){const c=$("#ccity").value,d=$("#cd").value,L=VENUES.filter(v=>(!c||v.s===c)&&(!C.cat||v.c.includes(C.cat))&&(!d||v.d===d));
+ $("#cv").innerHTML=`<option value="">Mekân seçin (${L.length})</option>`+venOpts(L,c);
+ $("#cvi").textContent=""}
+chips($("#fchips"),"","data-fc");chips($("#cchips"),"","data-cc");fillCity($("#fs"),"Tümü");fillCity($("#ccity"),"İl seçin");fillCity($("#vs"),"Tümü");fillDist($("#fd"),"");fillDist($("#cd"),"");fillDist($("#vd"),"");fillFV();fillVenues();
+{const n=new Date(Date.now()-new Date().getTimezoneOffset()*6e4+36e5).toISOString().slice(0,16);$("#cs").min=n}
+$("#fs").onchange=e=>{F.s=e.target.value;F.d="";F.v="";fillDist($("#fd"),F.s);fillFV();drawRooms()};
+$("#fd").onchange=e=>{F.d=e.target.value;F.v="";fillFV();drawRooms()};
+$("#fv").onchange=e=>{F.v=e.target.value;drawRooms()};
+$("#fq").oninput=e=>{F.q=e.target.value;drawRooms()};
+$("#fg").onchange=e=>{F.g=e.target.value;drawRooms()};
+$("#ccity").onchange=()=>{fillDist($("#cd"),$("#ccity").value);fillVenues()};
+$("#cd").onchange=fillVenues;
+$("#cv").onchange=e=>{const v=VM[e.target.value];$("#cvi").textContent=v?"Türü: "+v.c.map(k=>CATS[k]).join(", ")+" · "+v.s+", "+v.d:""};
+document.addEventListener("click",async e=>{
+ const a=e.target.closest("[data-fc]"),c=e.target.closest("[data-cc]"),j=e.target.closest("[data-join]");
+ if(a){F.cat=a.dataset.fc;chips($("#fchips"),F.cat,"data-fc");fillFV();drawRooms()}
+ if(c){C.cat=c.dataset.cc;chips($("#cchips"),C.cat,"data-cc");fillVenues()}
+ if(j){const m=$("#rmsg");
+  if(!sb||isDemo){msg(m,"Bu örnek bir odadır. Üyelik açılıp giriş yapınca gerçek odalara katılabilirsin.",false);return}
+  const{error}=await sb.rpc("request_join",{rid:j.dataset.join});
+  msg(m,error?error.message:"Katılma isteğin oda sahibine iletildi.",!error)}});
+$("#cf").onsubmit=async e=>{e.preventDefault();const m=$("#cmsg"),f=new FormData(e.target);
+ if(!sb)return msg(m,"Oda kurma, üyelik sistemi açıldığında etkinleşecek.",false);
+ if(!await user()){tab(false);$("#authd").showModal();return}
+ const st=new Date(f.get("s"));if(!(st>new Date()))return msg(m,"Tarih ve saat ileri bir zaman olmalı.",false);
+ const{error}=await sb.rpc("create_room",{p_title:f.get("t").trim(),p_venue_id:f.get("v"),p_starts:st.toISOString(),p_seeking:+f.get("n"),p_note:(f.get("o")||"").trim()||null});
+ if(error)return msg(m,error.message,false);
+ msg(m,"Odan yayınlandı.",true);e.target.reset();fillDist($("#cd"),"");fillVenues();loadRooms()};
+loadRooms();
+if(sb)sb.auth.onAuthStateChange(()=>loadRooms());
+/* ---- Diyaloglar ---- */
+function msg(el,t,ok){el.className="msg "+(ok?"ok":"err");el.textContent=t}
+function tab(reg){$("#lf").hidden=reg;$("#rf").hidden=!reg;$("#tl").setAttribute("aria-selected",!reg);$("#tr").setAttribute("aria-selected",reg);$("#amsg").className="msg"}
+$("#tl").onclick=()=>tab(false);$("#tr").onclick=()=>tab(true);
+document.addEventListener("click",async e=>{
+ const a=e.target.closest("[data-auth]");
+ if(a){const u=await user();if(u)return openAcc();tab(a.dataset.auth==="register");$("#authd").showModal();
+  if(!sb)msg($("#amsg"),"Üyelik sistemi çok yakında açılıyor. Lütfen daha sonra tekrar deneyin.",false)}
+ if(e.target.closest("[data-close]"))e.target.closest("dialog").close();
+
+});
+
+/* ---- Üyelik ---- */
+async function user(){if(!sb)return null;const{data}=await sb.auth.getSession();return data.session?data.session.user:null}
+function adult(b){const d=new Date(b),n=new Date();let y=n.getFullYear()-d.getFullYear();if(n<new Date(n.getFullYear(),d.getMonth(),d.getDate()))y--;return y>=18}
+$("#rf").onsubmit=async e=>{e.preventDefault();const m=$("#amsg");if(!sb)return msg(m,"Üyelik sistemi henüz açık değil.",false);
+ const f=new FormData(e.target);
+ if(!adult(f.get("b")))return msg(m,"Üye olmak için 18 yaşını doldurmuş olmalısın.",false);
+ const{error}=await sb.auth.signUp({email:f.get("e"),password:f.get("p"),options:{emailRedirectTo:location.origin+location.pathname,data:{display_name:f.get("n").trim(),gender:f.get("g"),birth_date:f.get("b"),marketing:!!f.get("m")}}});
+ if(error)return msg(m,"Kayıt yapılamadı: "+error.message,false);
+ msg(m,"Kaydın alındı. E-postana bir onay bağlantısı gönderdik; onayladıktan sonra giriş yapabilirsin.",true);e.target.reset()};
+$("#lf").onsubmit=async e=>{e.preventDefault();const m=$("#amsg");if(!sb)return msg(m,"Üyelik sistemi henüz açık değil.",false);
+ const f=new FormData(e.target);
+ const{error}=await sb.auth.signInWithPassword({email:f.get("e"),password:f.get("p")});
+ if(error)return msg(m,"Giriş yapılamadı. E-posta ve şifreni kontrol et.",false);
+ await ensureProfile();$("#authd").close();refreshNav();openAcc()};
+async function ensureProfile(){const u=await user();if(!u)return null;
+ let{data}=await sb.from("profiles").select("*").eq("id",u.id).maybeSingle();
+ if(!data){const md=u.user_metadata||{};
+  const r=await sb.from("profiles").insert({id:u.id,display_name:md.display_name||"Üye",gender:md.gender,birth_date:md.birth_date}).select().single();data=r.data}
+ return data}
+const ST={none:"Fotoğrafın henüz gönderilmedi.",pending:"Fotoğrafın inceleniyor. Sonuç en kısa sürede hesabına yansır.",approved:"Profilin onaylandı. Artık oda kurabilir ve katılma isteği gönderebilirsin.",rejected:"Fotoğrafın uygun bulunmadı. Yüzünün net göründüğü yeni bir fotoğraf gönderebilirsin."};
+const RS={pending:"Bekliyor",approved:"Onaylandı",rejected:"Reddedildi",withdrawn:"Geri çekildi"};
+async function openAcc(){$("#accd").showModal();$("#accm").className="msg";
+ const p=await ensureProfile(),u=await user();if(!p){$("#accb").textContent="Profil yüklenemedi. Lütfen sayfayı yenile.";return}
+ let bal=0,reqs=[];
+ try{const r=await sb.from("my_token_balance").select("balance").single();bal=r.data?r.data.balance:0}catch(e){}
+ try{const r=await sb.from("room_requests").select("id,status,rooms(title,venue)").order("created_at",{ascending:false}).limit(8);reqs=r.data||[]}catch(e){}
+ const canUp=p.photo_status!=="pending"&&p.photo_status!=="approved";
+ $("#accb").innerHTML=`<p><strong>${esc(p.display_name)}</strong>${p.verified?" · <span style='color:#15602e'>Onaylı üye</span>":""}<br><span style="color:var(--mute);font-size:.9rem">${esc(u.email)}</span></p>
+ <p style="color:var(--mute)">${ST[p.photo_status]}</p>
+ ${canUp?`<label>Kendi çektiğin bir fotoğraf (yüzün net görünmeli)<input type="file" id="ph" accept="image/*" capture="user"></label><div class="chk"><input type="checkbox" id="phc"><label for="phc" style="margin:0;color:var(--ink)">Yüzümün göründüğü fotoğrafımın yalnızca profil doğrulaması amacıyla ISDAMBUL ekibince incelenmesine ve saklanmasına açık rıza veriyorum. <a href="gizlilik-kvkk.html" target="_blank" rel="noopener">Aydınlatma Metni</a></label></div><div style="margin-top:14px"><button class="btn-g" id="up">Fotoğrafı gönder</button></div>`:""}
+ <p style="margin-top:16px"><strong>Coin bakiyesi:</strong> ${bal}</p>
+ <h4 style="margin:18px 0 6px;font-family:Georgia,serif">Katılma isteklerim</h4>
+ ${reqs.length?reqs.map(q=>`<div style="display:flex;justify-content:space-between;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);font-size:.92rem"><span>${esc(q.rooms?q.rooms.title:"Oda")}<br><span style="color:var(--mute)">${esc(q.rooms?q.rooms.venue:"")} · ${RS[q.status]||q.status}</span></span>${q.status==="pending"?`<button data-wd="${q.id}" style="padding:5px 10px;font-size:.85rem">Geri çek</button>`:""}</div>`).join(""):'<p style="color:var(--mute);font-size:.92rem">Henüz isteğin yok.</p>'}
+ <div style="margin-top:18px"><button id="out">Çıkış yap</button></div>`;
+ $("#out").onclick=async()=>{await sb.auth.signOut();$("#accd").close();refreshNav()};
+ $$("#accb [data-wd]").forEach(b=>b.onclick=async()=>{const r=await sb.rpc("withdraw_request",{req_id:b.dataset.wd});msg($("#accm"),r.error?r.error.message:"İstek geri çekildi.",!r.error);if(!r.error)openAcc()});
+ const up=$("#up");if(up)up.onclick=async()=>{const fl=$("#ph").files[0],m=$("#accm");
+  if(!$("#phc").checked)return msg(m,"Devam etmek için açık rıza kutusunu işaretlemelisin.",false);
+  if(!fl)return msg(m,"Önce bir fotoğraf seç.",false);
+  if(fl.size>6*1024*1024)return msg(m,"Fotoğraf 6 MB’tan küçük olmalı.",false);
+  const ext=(fl.name.split(".").pop()||"jpg").toLowerCase().replace(/[^a-z0-9]/g,""),path=u.id+"/"+Date.now()+"."+ext;
+  up.disabled=true;
+  const a=await sb.storage.from("selfies").upload(path,fl);
+  if(a.error){up.disabled=false;return msg(m,"Yüklenemedi: "+a.error.message,false)}
+  const b=await sb.rpc("submit_photo",{p_path:path});
+  if(b.error){up.disabled=false;return msg(m,"Gönderilemedi: "+b.error.message,false)}
+  openAcc()}}
+async function refreshNav(){const u=await user();
+ const x=u?`<button class="btn-g" data-auth="account">Hesabım</button>`:`<button data-auth="login">Giriş yap</button><button class="btn-g" data-auth="register">Üye ol</button>`;
+ $("#navbtn").innerHTML=x;$("#mauth").innerHTML=x}
+if(sb){refreshNav();sb.auth.onAuthStateChange((ev)=>{refreshNav();if(ev==="PASSWORD_RECOVERY")$("#pwd").showModal()})}
+$("#mauth").innerHTML=$("#navbtn").innerHTML;
+/* mobil menü */
+const bg=$("#burger"),mn=$("#mnav");
+function menu(o){mn.hidden=!o;bg.setAttribute("aria-expanded",o);bg.innerHTML=o?"&times;":"&#9776;";bg.setAttribute("aria-label",o?"Menüyü kapat":"Menüyü aç")}
+bg.onclick=()=>menu(mn.hidden);
+mn.addEventListener("click",e=>{if(e.target.closest("a")||e.target.closest("button"))menu(false)});
+/* şifre sıfırlama */
+$("#forgot").onclick=async e=>{e.preventDefault();const m=$("#amsg"),em=$("#lf [name=e]").value.trim();
+ if(!sb)return msg(m,"Üyelik sistemi henüz açık değil.",false);
+ if(!em)return msg(m,"Önce e-posta adresini yaz.",false);
+ const{error}=await sb.auth.resetPasswordForEmail(em,{redirectTo:location.origin+location.pathname});
+ msg(m,error?"Gönderilemedi: "+error.message:"Şifre yenileme bağlantısı e-postana gönderildi.",!error)};
+$("#pf").onsubmit=async e=>{e.preventDefault();const m=$("#pmsg");
+ const{error}=await sb.auth.updateUser({password:new FormData(e.target).get("p")});
+ if(error)return msg(m,"Şifre değiştirilemedi: "+error.message,false);
+ msg(m,"Şifren güncellendi.",true);setTimeout(()=>$("#pwd").close(),1500)};
+/* mekânlar */
+let vAll=false;const V={s:"",d:"",q:""};
+function vcard(v){return `<article class="vc">${vimg(v)}<div class="b"><h3>${esc(v.n)}</h3><div class="m">${esc(v.s)} · ${esc(v.d)}</div><div>${v.c.map(k=>`<span class="chip">${CATS[k]}</span>`).join("")}</div><p style="margin:12px 0 0"><button data-vq="${v.id}">Bu mekânda oda ara</button></p></div></article>`}
+function renderVenues(){const q=V.q.trim().toLocaleLowerCase("tr"),fil=!!(V.s||V.d||q);
+ let L=VENUES.filter(v=>(!V.s||v.s===V.s)&&(!V.d||v.d===V.d)&&(!q||v.n.toLocaleLowerCase("tr").includes(q)));
+ const total=L.length;
+ if(!fil&&!vAll){const o=[];for(let i=0;i<2;i++)CITIES.forEach(c=>{const x=VENUES.filter(v=>v.s===c)[i];if(x)o.push(x)});L=o}
+ $("#vgrid").innerHTML=L.length?L.map(vcard).join(""):'<p class="empty">Bu filtrelere uyan mekân yok.</p>';
+ $("#vcount").textContent=fil?total+" mekân bulundu":(vAll?total+" mekân":"Her şehirden öne çıkanlar · toplam "+total+" mekân");
+ $("#vmore").style.display=fil?"none":"";
+ $("#vmore").textContent=vAll?"Daha az göster":"Tüm mekânları göster ("+VENUES.length+")"}
+$("#vmore").onclick=()=>{vAll=!vAll;renderVenues()};
+$("#vs").onchange=e=>{V.s=e.target.value;V.d="";fillDist($("#vd"),V.s);renderVenues()};
+$("#vd").onchange=e=>{V.d=e.target.value;renderVenues()};
+$("#vq").oninput=e=>{V.q=e.target.value;renderVenues()};
+document.addEventListener("click",e=>{const b=e.target.closest("[data-vq]");if(!b)return;const v=VM[b.dataset.vq];
+ F.s=v.s;F.d=v.d;F.v=v.id;F.q="";F.cat="";$("#fq").value="";$("#fs").value=v.s;fillDist($("#fd"),v.s);$("#fd").value=v.d;
+ chips($("#fchips"),"","data-fc");fillFV();drawRooms();$("#odalar").scrollIntoView({behavior:"smooth"})});
+renderVenues();
+(function(){let ok=false;try{ok=localStorage.getItem("ck1")==="1"}catch(e){}if(!ok){$("#ckbar").hidden=false;$("#ckok").onclick=()=>{try{localStorage.setItem("ck1","1")}catch(e){}$("#ckbar").hidden=true}}})();
+$("#sn1").textContent=CITIES.length;$("#sn2").textContent=VENUES.length;
+/* 18+ girişi */
+(function(){let ok=false;try{ok=localStorage.getItem("age18")==="1"}catch(e){}
+ if(ok)return;const d=$("#ageg");d.addEventListener("cancel",e=>e.preventDefault());d.showModal();
+ $("#ageyes").onclick=()=>{try{localStorage.setItem("age18","1")}catch(e){}d.close()};
+ $("#ageno").onclick=()=>{d.querySelector("p").textContent="Üzgünüz, bu siteye yalnızca 18 yaş ve üzeri kişiler girebilir.";$("#ageyes").remove();$("#ageno").remove()}})();
+</script>
+</body>
+</html>
