@@ -278,9 +278,9 @@ select:disabled{opacity:.6;background:#f1eee5;cursor:not-allowed}
 <p class="lead">Odalara göz atmak ve oda kurmak ücretsiz. Bir odaya katılma isteği 20 coin. Oda sahibi isteği reddederse ya da isteğini geri çekersen coinin iade edilir.</p>
 <p class="hvb"><b>Havale/EFT ile <span id="hdisc">%15</span> indirim</b> · Ödemen onaylandığı anda coinlerin hesabına tanımlanır.</p>
 <div class="grid">
-<div class="card pack"><div class="amt">40</div><div class="price"><span data-tp="40">84,15 ₺</span> <s data-lp="40">99 ₺</s></div><small>Havale/EFT ile · 2 odaya katılım</small><button class="btn-g" data-buy="40">Satın al</button></div>
-<div class="card pack best"><span class="tag">En çok tercih edilen</span><div class="amt">120</div><div class="price"><span data-tp="120">169,15 ₺</span> <s data-lp="120">199 ₺</s></div><small>Havale/EFT ile · 6 odaya katılım</small><button class="btn-g" data-buy="120">Satın al</button></div>
-<div class="card pack"><div class="amt">300</div><div class="price"><span data-tp="300">254,15 ₺</span> <s data-lp="300">299 ₺</s></div><small>Havale/EFT ile · 15 odaya katılım</small><button class="btn-g" data-buy="300">Satın al</button></div>
+<div class="card pack"><div class="amt">40</div><div class="price"><span data-tp="40">84 ₺</span> <s data-lp="40">99 ₺</s></div><small>Havale/EFT ile · 2 odaya katılım</small><button class="btn-g" data-buy="40">Satın al</button></div>
+<div class="card pack best"><span class="tag">En çok tercih edilen</span><div class="amt">120</div><div class="price"><span data-tp="120">169 ₺</span> <s data-lp="120">199 ₺</s></div><small>Havale/EFT ile · 6 odaya katılım</small><button class="btn-g" data-buy="120">Satın al</button></div>
+<div class="card pack"><div class="amt">300</div><div class="price"><span data-tp="300">254 ₺</span> <s data-lp="300">299 ₺</s></div><small>Havale/EFT ile · 15 odaya katılım</small><button class="btn-g" data-buy="300">Satın al</button></div>
 </div>
 <p class="lead" style="margin-top:20px">Fiyatlara KDV dahildir. Coinler yalnızca ISDAMBUL üzerinde kullanılır; kullanıcılar arasında aktarılamaz ve nakde çevrilemez. Ayrıntılar için <a href="mesafeli-satis.html" style="color:var(--gold)">Mesafeli Satış Sözleşmesi</a> ve <a href="iade-ve-coin.html" style="color:var(--gold)">Coin ve iade koşulları</a> sayfalarına bakabilirsin.</p>
 </div></section>
@@ -653,7 +653,7 @@ $("#accb").addEventListener("click",async e=>{const b=e.target.closest("button,a
   if(r.error){b.disabled=false;return msg(m,"Gönderilemedi: "+terr(r.error),false)}
   msg(m,"Fotoğrafın gönderildi. İnceleme sonucu hesabına yansıyacak.",true);openAcc()}});
 /* ---- Havale ile coin satın alma ---- */
-let SITE={transfer_discount:15,packages:[{coins:40,price:99,transfer_price:84.15},{coins:120,price:199,transfer_price:169.15},{coins:300,price:299,transfer_price:254.15}],iban:"",account_holder:"",bank_name:"",company_info:""};
+let SITE={transfer_discount:15,packages:[{coins:40,price:99,transfer_price:84},{coins:120,price:199,transfer_price:169},{coins:300,price:299,transfer_price:254}],iban:"",account_holder:"",bank_name:"",company_info:""};
 const tl=n=>Number(n).toLocaleString("tr-TR",{minimumFractionDigits:Number(n)%1?2:0,maximumFractionDigits:2})+" ₺";
 async function loadSite(){if(!sb)return;try{const{data,error}=await sb.rpc("site_info");if(error||!data)return;SITE=data;
  (SITE.packages||[]).forEach(p=>{const a=document.querySelector(`[data-tp="${p.coins}"]`),b=document.querySelector(`[data-lp="${p.coins}"]`);if(a)a.textContent=tl(p.transfer_price);if(b){b.textContent=tl(p.price);b.hidden=Number(p.price)===Number(p.transfer_price)}});
