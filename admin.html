@@ -93,9 +93,11 @@ async function ozet(){const s=STATS;
  $("#pane").insertAdjacentHTML("beforeend",`<div class="card" style="margin-top:16px;max-width:720px"><h3 style="margin-top:0">Havale / ödeme ayarları</h3>
  <div class="bar"><label>IBAN<input id="s_iban" value="${esc(st.iban||"")}" style="width:300px"></label><label>Alıcı (hesap sahibi)<input id="s_holder" value="${esc(st.account_holder||"")}" style="width:240px" placeholder="Ad Soyad / Ünvan"></label></div>
  <div class="bar"><label>Banka<input id="s_bank" value="${esc(st.bank_name||"")}" placeholder="Örn. QNB"></label><label>Havale indirimi (%)<input type="number" id="s_disc" min="0" max="50" value="${esc(st.transfer_discount||"0")}" style="width:110px"></label></div>
+ <label style="display:flex;gap:8px;align-items:center;color:var(--ink);margin:4px 0 10px"><input type="checkbox" id="s_fw"> Kadın üyelere odalara katılım ücretsiz</label>
  <label>Sayfa altında görünecek şirket bilgileri (ünvan, adres, vergi dairesi/no, MERSİS)<textarea id="s_comp" rows="2" style="width:100%">${esc(st.company_info||"")}</textarea></label>
  <p style="margin:10px 0 0"><button class="g" id="s_save">Ayarları kaydet</button></p></div>`);
- $("#s_save").onclick=async()=>{try{for(const [k,id] of [["iban","s_iban"],["account_holder","s_holder"],["bank_name","s_bank"],["company_info","s_comp"]])await rpc("admin_set_setting",{p_key:k,p_value:$("#"+id).value.trim()});
+ sb.rpc("site_info").then(r=>{if(r.data&&$("#s_fw"))$("#s_fw").checked=!!r.data.free_for_women});
+ $("#s_save").onclick=async()=>{try{await rpc("admin_set_setting",{p_key:"free_for_women",p_value:$("#s_fw").checked});for(const [k,id] of [["iban","s_iban"],["account_holder","s_holder"],["bank_name","s_bank"],["company_info","s_comp"]])await rpc("admin_set_setting",{p_key:k,p_value:$("#"+id).value.trim()});
   await rpc("admin_set_setting",{p_key:"transfer_discount",p_value:parseInt($("#s_disc").value||"0",10)});flash("Ayarlar kaydedildi.",true)}catch(e){flash(e.message,false)}};
  $("#wbs").onclick=async()=>{try{await rpc("admin_set_setting",{p_key:"welcome_bonus",p_value:parseInt($("#wb").value||"0",10)});flash("Kaydedildi.",true)}catch(e){flash(e.message,false)}}}
 

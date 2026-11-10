@@ -276,6 +276,7 @@ select:disabled{opacity:.6;background:#f1eee5;cursor:not-allowed}
 <section class="dark" id="coin"><div class="wrap">
 <div class="eyebrow">Coin</div><h2>Sadece katıldığında öde</h2>
 <p class="lead">Odalara göz atmak ve oda kurmak ücretsiz. Bir odaya katılma isteği 20 coin. Oda sahibi isteği reddederse ya da isteğini geri çekersen coinin iade edilir.</p>
+<p class="hvb" id="fwb" hidden><b>Kadın üyelere katılım ücretsiz</b> · Odalara katılma isteği coin gerektirmez.</p>
 <p class="hvb"><b>Havale/EFT ile <span id="hdisc">%15</span> indirim</b> · Ödemen onaylandığı anda coinlerin hesabına tanımlanır.</p>
 <div class="grid">
 <div class="card pack"><div class="amt">40</div><div class="price"><span data-tp="40">84 ₺</span> <s data-lp="40">99 ₺</s></div><small>Havale/EFT ile · 2 odaya katılım</small><button class="btn-g" data-buy="40">Satın al</button></div>
@@ -506,10 +507,11 @@ function venOpts(L,c){const g={};L.forEach(v=>{const k=c?v.d:v.s+" · "+v.d;(g[k
 function fillFV(){const L=VENUES.filter(v=>(!F.s||v.s===F.s)&&(!F.d||v.d===F.d)&&(!F.cat||v.c.includes(F.cat)));
  if(F.v&&!L.some(v=>v.id===F.v))F.v="";
  $("#fv").innerHTML=`<option value="">Tümü (${L.length})</option>`+venOpts(L,F.s);$("#fv").value=F.v}
+let MEG="";const freeMe=()=>!!(typeof SITE!=="undefined"&&SITE.free_for_women&&MEG==="Kadın");
 async function loadRooms(){isDemo=true;ROOMS=[];
  const mapR=r=>({id:r.id,vid:r.venue_id,t:r.title,v:r.venue,s:r.city||(VM[r.venue_id]||{}).s||"",d:r.district,c:r.categories||[],w:fmt(r.starts_at),og:r.owner_gender,n:r.seeking_count,got:r.approved_count,by:r.owner_name||"",note:r.note,own:r.is_owner,st:r.my_status});
  if(sb&&!(await user())){try{const{data,error}=await sb.rpc("list_public_rooms");if(!error&&data)ROOMS=data.map(mapR)}catch(e){}}
- if(sb&&await user()){const{data,error}=await sb.rpc("list_open_rooms");
+ if(sb&&await user()){try{const pr=await myProfile();MEG=pr?pr.gender:""}catch(e){}const{data,error}=await sb.rpc("list_open_rooms");
   if(!error&&data){isDemo=false;ROOMS=data.map(r=>({id:r.id,vid:r.venue_id,t:r.title,v:r.venue,s:r.city||(VM[r.venue_id]||{}).s||"",d:r.district,c:r.categories||[],w:fmt(r.starts_at),og:r.owner_gender,n:r.seeking_count,got:r.approved_count,by:r.owner_name,note:r.note,own:r.is_owner,st:r.my_status}))}}
  $("#rlead").textContent=isDemo?"Şu an açık olan odalar. Katılma isteği göndermek için ücretsiz üye ol.":"Tür, il, ilçe ya da mekâna göre filtrele; sana uygun odaya katılma isteği gönder.";
  drawRooms()}
@@ -519,7 +521,7 @@ function rbtn(r){if(isDemo)return `<button class="btn-g" data-auth="register">Ka
  if(r.st==="pending")return `<button disabled>İsteğin bekliyor</button>`;
  if(r.st==="rejected")return `<button disabled>İstek reddedildi</button>`;
  if(r.got>=r.n)return `<button disabled>Oda dolu</button>`;
- return `<button class="btn-g" data-join="${r.id}">Katıl · 20 coin</button>`}
+ return `<button class="btn-g" data-join="${r.id}">Katıl · ${freeMe()?"Ücretsiz":"20 coin"}</button>`}
 function drawRooms(){const q=F.q.trim().toLocaleLowerCase("tr");
  const L=ROOMS.filter(r=>(!F.cat||r.c.includes(F.cat))&&(!F.s||r.s===F.s)&&(!F.d||r.d===F.d)&&(!F.v||r.vid===F.v)&&(!F.g||other(r.og)===F.g)&&(!q||(r.v+" "+r.t).toLocaleLowerCase("tr").includes(q)));
  $("#rooms").innerHTML=L.length?L.map(r=>`<article class="card room">${r.vid&&VM[r.vid]?vimg(VM[r.vid]):""}<h3>${esc(r.t)}</h3><div class="meta">${esc(r.v)} · ${esc(r.s||"")}, ${esc(r.d)}<br>${esc(r.w)}${r.by?` · oda sahibi ${esc(r.by)}`:""}</div><div>${r.c.map(k=>`<span class="chip">${CATS[k]||esc(k)}</span>`).join("")}<span class="chip">${other(r.og)} aranıyor: ${r.got}/${r.n}</span></div>${r.note?`<p class="note2">“${esc(r.note)}”</p>`:""}${rbtn(r)}</article>`).join(""):`<p class="empty">${ROOMS.length?"Bu filtrelere uyan oda yok.":"Şu an açık oda yok."} <a href="#oda-kur">İlk odayı sen kur</a>.</p>`}
@@ -542,7 +544,7 @@ document.addEventListener("click",async e=>{
  if(c){C.cat=c.dataset.cc;chips($("#cchips"),C.cat,"data-cc");fillVenues()}
  if(j){const m=$("#rmsg");
   if(!sb||isDemo){tab(true);$("#authd").showModal();return}
-  if(!confirm("Katılma isteği 20 coin. Oda sahibi reddederse ya da isteğini geri çekersen coinin iade edilir. Gönderilsin mi?"))return;
+  if(!confirm(freeMe()?"Katılma isteği gönderilsin mi? Kadın üyeler için ücretsiz.":"Katılma isteği 20 coin. Oda sahibi reddederse ya da isteğini geri çekersen coinin iade edilir. Gönderilsin mi?"))return;
   j.disabled=true;const{error}=await sb.rpc("request_join",{rid:j.dataset.join});j.disabled=false;
   msg(m,error?terr(error):"Katılma isteğin oda sahibine iletildi. Durumunu Hesabım > İsteklerim bölümünden takip edebilirsin.",!error);if(!error)loadRooms();m.scrollIntoView({behavior:"smooth",block:"center"})}});
 $("#cf").onsubmit=async e=>{e.preventDefault();const m=$("#cmsg"),f=new FormData(e.target);
@@ -610,7 +612,7 @@ async function accProfile(u,p){
  return `<p><strong>${esc(p.display_name)}</strong>${p.verified?" · <span style='color:#15602e'>Onaylı üye</span>":""}<br><span style="color:var(--mute);font-size:.9rem">${esc(u.email)}</span></p>
  ${p.banned?`<p class="msg err" style="display:block">Hesabın askıya alındı. Bir hata olduğunu düşünüyorsan isdambul.info@gmail.com adresine yaz.</p>`:`<p style="color:var(--mute)">${ST[p.photo_status]||""}</p>`}
  ${canUp?`<label>Kendi çektiğin bir fotoğraf (yüzün net görünmeli)<input type="file" id="ph" accept="image/*" capture="user"></label><div class="chk"><input type="checkbox" id="phc"><label for="phc" style="margin:0;color:var(--ink)">Yüzümün göründüğü fotoğrafımın yalnızca profil doğrulaması amacıyla ISDAMBUL ekibince incelenmesine ve saklanmasına açık rıza veriyorum. <a href="gizlilik-kvkk.html" target="_blank" rel="noopener">Aydınlatma Metni</a></label></div><div style="margin-top:14px"><button type="button" class="btn-g" id="up">Fotoğrafı gönder</button></div>`:""}
- <p style="margin-top:16px"><strong>Coin bakiyesi:</strong> ${bal} <a href="#coin" data-go="1" style="margin-left:8px;font-size:.9rem">Coin satın al</a><br><span style="color:var(--mute);font-size:.88rem">Bir odaya katılma isteği 20 coin. Reddedilirsen ya da isteğini geri çekersen iade edilir.</span></p>
+ <p style="margin-top:16px"><strong>Coin bakiyesi:</strong> ${bal} <a href="#coin" data-go="1" style="margin-left:8px;font-size:.9rem">Coin satın al</a><br><span style="color:var(--mute);font-size:.88rem">${SITE.free_for_women&&p.gender==="Kadın"?"Kadın üye olarak odalara ücretsiz katılırsın.":"Bir odaya katılma isteği 20 coin. Reddedilirsen ya da isteğini geri çekersen iade edilir."}</span></p>
  ${await accPays()}
  <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">${adm?`<a class="btn btn-g" href="admin.html">Admin paneli</a>`:""}<button type="button" id="out">Çıkış yap</button></div>`}
 async function accPays(){try{const{data}=await sb.rpc("my_payments");if(!data||!data.length)return "";
@@ -658,7 +660,7 @@ const tl=n=>Number(n).toLocaleString("tr-TR",{minimumFractionDigits:Number(n)%1?
 async function loadSite(){if(!sb)return;try{const{data,error}=await sb.rpc("site_info");if(error||!data)return;SITE=data;
  (SITE.packages||[]).forEach(p=>{const a=document.querySelector(`[data-tp="${p.coins}"]`),b=document.querySelector(`[data-lp="${p.coins}"]`);if(a)a.textContent=tl(p.transfer_price);if(b){b.textContent=tl(p.price);b.hidden=Number(p.price)===Number(p.transfer_price)}});
  $("#hdisc").textContent="%"+(SITE.transfer_discount||0);
- $("#cinfo").textContent=SITE.company_info||""}catch(e){}}
+ $("#cinfo").textContent=SITE.company_info||"";$("#fwb").hidden=!SITE.free_for_women;drawRooms()}catch(e){}}
 loadSite();
 let PAY=null;
 function payClose(){if(PAY){clearInterval(PAY.t);try{if(PAY.ch)sb.removeChannel(PAY.ch)}catch(e){}}PAY=null}
