@@ -110,6 +110,14 @@ section{scroll-margin-top:70px}
 .todo{background:#fff3b0;color:#5c4a00;padding:1px 5px;border-radius:3px;font-size:.84rem}
 .flinks{display:flex;flex-wrap:wrap;gap:8px 18px;max-width:420px;align-content:flex-start}.flinks a{margin:0}
 .ckbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:30;background:var(--navy);color:#e6eaf6;border:1px solid #2c3c66;border-radius:12px;padding:12px 16px;display:flex;gap:14px;align-items:center;justify-content:space-between;max-width:760px;margin:0 auto;font-size:.9rem;box-shadow:0 8px 30px rgba(0,0,0,.35)}
+.bell{position:relative;width:42px;height:42px;padding:0;display:grid;place-items:center;color:#fff;border-color:#4a5a85;margin-left:auto}.bell[hidden]{display:none}
+.bell .bdg{position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;padding:0 5px;border-radius:99px;background:#d64545;color:#fff;font:700 .72rem/20px "Segoe UI",sans-serif;text-align:center}
+#notd{max-width:480px;padding:22px 0 10px}#notd h3{padding:0 22px}#notd .close{margin-right:14px}
+.nbar{display:flex;gap:8px;flex-wrap:wrap;padding:0 22px 10px;border-bottom:1px solid var(--line)}.nbar button{padding:6px 12px;font-size:.84rem}
+.nlist{max-height:min(64vh,520px);overflow-y:auto}
+.ni{display:flex;gap:12px;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:12px 22px;background:#fff;font-weight:400;color:var(--ink)}
+.ni:hover{background:#faf7f0}.ni.un{background:#fff8e6}.ni .dot2{width:9px;height:9px;border-radius:50%;background:transparent;flex:none;margin-top:7px}.ni.un .dot2{background:var(--gold)}
+.ni b{display:block;font-size:.95rem}.ni span{display:block;font-size:.88rem;color:var(--mute)}.ni time{display:block;font-size:.75rem;color:var(--mute);margin-top:2px}
 .ckbar[hidden]{display:none}.ckbar p{margin:0}.ckbar a{color:var(--gold)}.ckbar button{padding:7px 16px;white-space:nowrap}
 /* hero v2 */
 .slide:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(8,14,30,.88),transparent 48%)}
@@ -185,7 +193,7 @@ select:disabled{opacity:.6;background:#f1eee5;cursor:not-allowed}
 <a class="logo" href="#top" aria-label="ISDAMBUL ana sayfa"><svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path d="M21 4a12 12 0 1 0 7 21A10 10 0 0 1 21 4z" fill="#c9a24b"/><circle cx="25" cy="9" r="1.7" fill="#c9a24b"/></svg><span>ISDAMBUL</span></a>
 <nav aria-label="Ana menü"><ul><li><a href="#odalar">Oda ara</a></li><li><a href="#oda-kur">Oda kur</a></li><li><a href="#mekanlar">Mekânlar</a></li><li><a href="#nasil">Nasıl çalışır</a></li><li><a href="#coin">Coin</a></li><li><a href="#hakkimizda">Hakkımızda</a></li></ul></nav>
 <div class="navbtn" id="navbtn"><button data-auth="login">Giriş yap</button><button class="btn-g" data-auth="register">Üye ol</button></div>
-<button class="burger" id="burger" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mnav">&#9776;</button></div>
+<button class="bell" id="bell" aria-label="Bildirimler" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10 20a2 2 0 0 0 4 0"/></svg><span class="bdg" id="bdg" hidden></span></button><button class="burger" id="burger" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mnav">&#9776;</button></div>
 <div class="mnav" id="mnav" hidden><div class="wrap"><ul><li><a href="#odalar">Oda ara</a></li><li><a href="#oda-kur">Oda kur</a></li><li><a href="#mekanlar">Mekânlar</a></li><li><a href="#nasil">Nasıl çalışır</a></li><li><a href="#coin">Coin</a></li><li><a href="#hakkimizda">Hakkımızda</a></li><li><a href="#sss">Sık sorulanlar</a></li></ul><div id="mauth"></div></div></div></header>
 
 <main id="top">
@@ -334,6 +342,8 @@ select:disabled{opacity:.6;background:#f1eee5;cursor:not-allowed}
 
 <dialog id="accd" class="wide" aria-labelledby="acct"><button class="close" aria-label="Kapat" data-close>&times;</button>
 <h3 id="acct">Hesabım</h3><div class="msg" id="accm" role="status"></div><div id="accb">Yükleniyor…</div></dialog>
+<dialog id="notd" aria-labelledby="ntt"><button class="close" aria-label="Kapat" data-close>&times;</button>
+<h3 id="ntt">Bildirimler</h3><div class="nbar"><button type="button" id="nall">Tümünü okundu say</button><button type="button" class="btn-g" id="nperm2" hidden>Telefon/tarayıcı bildirimlerini aç</button></div><div class="nlist" id="nlist"></div></dialog>
 <dialog id="welcomed" aria-labelledby="wlt"><button class="close" aria-label="Kapat" data-close>&times;</button>
 <div class="wel"><div class="wic">✓</div><h3 id="wlt">Tebrikler, başarıyla üye oldun!</h3><p id="wln">ISDAMBUL'a hoş geldin.</p>
 <ol><li><b>Profil fotoğrafını gönder.</b> Ekibimiz onaylayınca rozetin gelir.</li><li><b>Odanı kur ya da bir odaya katıl.</b> Gideceğin mekânı seç, ekibini tamamla.</li><li><b>Onayla, yaz, buluş.</b> Grup sohbetinde buluşma saatini netleştirin.</li></ol>
@@ -714,6 +724,7 @@ async function openChat(rid){const d=$("#chatd");closeChat();CH={id:rid,last:0,m
  if(!CH||CH.id!==rid)return;
  if(r.error){$("#chlog").innerHTML="";return msg($("#chmsg"),terr(r.error),false)}
  renderChat(r.data,true);
+ {const ids=NT.items.filter(n=>!n.read&&n.kind==="message"&&n.room_id===rid).map(n=>n.id);if(ids.length)sb.rpc("mark_notifications_read",{p_ids:ids}).then(()=>loadNotifs())}
  try{CH.ch=sb.channel("room-"+rid).on("postgres_changes",{event:"INSERT",schema:"public",table:"room_messages",filter:"room_id=eq."+rid},()=>pullChat()).subscribe()}catch(e){}
  CH.timer=setInterval(pullChat,7000);setTimeout(()=>$("#chi").focus(),50)}
 function renderChat(d,full){const c=CH;if(!c)return;c.me=d.me;d.members.forEach(x=>c.mem[x.id]=x);
@@ -743,9 +754,40 @@ $("#chmem").addEventListener("click",async e=>{const b=e.target.closest("[data-r
 document.addEventListener("click",e=>{const c=e.target.closest("[data-chat]"),o=e.target.closest("[data-myroom]");
  if(c){e.preventDefault();openChat(c.dataset.chat)}
  if(o){e.preventDefault();openAcc("r")}});
+/* ---- Bildirimler ---- */
+let NT={uid:null,ch:null,t:null,items:[],unread:0,seen:0};
+const BASE_T=document.title;
+function ago(s){const m=Math.round((Date.now()-new Date(s))/6e4);if(m<1)return "şimdi";if(m<60)return m+" dk önce";const h=Math.round(m/60);if(h<24)return h+" sa önce";return new Date(s).toLocaleDateString("tr-TR",{day:"numeric",month:"short"})}
+function notifStart(u){const id=u?u.id:null;if(NT.uid===id)return;
+ if(NT.ch){try{sb.removeChannel(NT.ch)}catch(e){}}clearInterval(NT.t);NT={uid:id,ch:null,t:null,items:[],unread:0,seen:0};
+ $("#bell").hidden=!id;if(!id){$("#bdg").hidden=true;document.title=BASE_T;return}
+ loadNotifs(true);
+ try{NT.ch=sb.channel("ntf-"+id).on("postgres_changes",{event:"INSERT",schema:"public",table:"notifications",filter:"user_id=eq."+id},()=>loadNotifs()).subscribe()}catch(e){}
+ NT.t=setInterval(()=>loadNotifs(),45000)}
+async function loadNotifs(first){if(!NT.uid)return;const r=await sb.rpc("my_notifications",{p_limit:30});if(r.error||!r.data)return;
+ const prevTop=NT.items[0]?NT.items[0].id:0;NT.items=r.data.items||[];NT.unread=r.data.unread||0;
+ const b=$("#bdg");b.hidden=!NT.unread;b.textContent=NT.unread>9?"9+":NT.unread;document.title=(NT.unread?"("+NT.unread+") ":"")+BASE_T;
+ if(!first&&NT.items[0]&&NT.items[0].id>prevTop&&!NT.items[0].read){const n=NT.items[0];
+  if(CH&&n.kind==="message"&&n.room_id===CH.id&&!document.hidden){sb.rpc("mark_notifications_read",{p_ids:[n.id]}).then(()=>loadNotifs());}
+  else{try{if(("Notification" in window)&&Notification.permission==="granted"){const x=new Notification(n.title,{body:n.body||"",icon:"favicon.svg",tag:"isd-"+n.id});x.onclick=()=>{window.focus();openNotif(n)}}}catch(e){}}}
+ if($("#notd").open)renderNotifs()}
+function renderNotifs(){const L=NT.items;
+ $("#nlist").innerHTML=L.length?L.map(n=>`<button type="button" class="ni${n.read?"":" un"}" data-nid="${n.id}"><i class="dot2"></i><div><b>${esc(n.title)}</b>${n.body?`<span>${esc(n.body)}</span>`:""}<time>${ago(n.created_at)}</time></div></button>`).join(""):'<p class="empty" style="padding:20px 22px">Henüz bildirimin yok. Oda isteklerin, onaylar ve mesajlar burada görünecek.</p>';
+ const p=$("#nperm2");p.hidden=!(("Notification" in window)&&Notification.permission==="default")}
+function openNotif(n){if(!n.read)sb.rpc("mark_notifications_read",{p_ids:[n.id]}).then(()=>loadNotifs());
+ if($("#notd").open)$("#notd").close();const k=n.kind;
+ if(k.startsWith("admin_")){location.href="admin.html";return}
+ if((k==="message"||k==="approved"||k==="joined")&&n.room_id){openChat(n.room_id);return}
+ if(k==="request"||k==="left")return openAcc("r");
+ if(k==="rejected"||k==="removed"||k==="cancelled")return openAcc("q");
+ openAcc("p")}
+$("#bell").onclick=()=>{renderNotifs();$("#notd").showModal();loadNotifs()};
+$("#nlist").addEventListener("click",e=>{const b=e.target.closest("[data-nid]");if(!b)return;const n=NT.items.find(x=>String(x.id)===b.dataset.nid);if(n)openNotif(n)});
+$("#nall").onclick=async()=>{await sb.rpc("mark_notifications_read",{p_ids:null});loadNotifs()};
+$("#nperm2").onclick=async()=>{try{await Notification.requestPermission()}catch(e){}renderNotifs()};
 async function refreshNav(){const u=await user();
  const x=u?`<button class="btn-g" data-auth="account">Hesabım</button>`:`<button data-auth="login">Giriş yap</button><button class="btn-g" data-auth="register">Üye ol</button>`;
- $("#navbtn").innerHTML=x;$("#mauth").innerHTML=x}
+ $("#navbtn").innerHTML=x;$("#mauth").innerHTML=x;notifStart(u)}
 if(sb){refreshNav();sb.auth.onAuthStateChange((ev)=>{refreshNav();if(ev==="PASSWORD_RECOVERY")$("#pwd").showModal()})}
 $("#mauth").innerHTML=$("#navbtn").innerHTML;
 /* mobil menü */
