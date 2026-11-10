@@ -69,27 +69,67 @@ async function boot(){
  $("#who").textContent=u.email;$("#out").hidden=false;
  let ok=false;try{ok=await rpc("is_admin")}catch(e){}
  if(!ok){app.innerHTML=`<div class="login card"><h2>Yetkisiz</h2><p class="mute">Bu hesabın (${esc(u.email)}) admin yetkisi yok.</p><button id="o2">Farklı hesapla gir</button></div>`;$("#o2").onclick=logout;return}
- render()}
+ render();watchPayments()}
 function loginView(){app.innerHTML=`<form class="login card" id="lf"><h2 style="margin-top:0;font-family:Georgia,serif">Admin girişi</h2><label>E-posta<input type="email" name="e" required autocomplete="email"></label><label>Şifre<input type="password" name="p" required autocomplete="current-password"></label><button class="g" type="submit">Giriş yap</button><p class="msg" id="lm"></p></form>`;
  $("#lf").onsubmit=async e=>{e.preventDefault();const f=new FormData(e.target);const{error}=await sb.auth.signInWithPassword({email:f.get("e").trim(),password:f.get("p")});
   if(error){const m=$("#lm");m.className="msg err";m.textContent="Giriş yapılamadı: "+error.message;return}boot()}}
 async function logout(){await sb.auth.signOut();location.reload()}
 $("#out").onclick=e=>{e.preventDefault();logout()};
 
-const TABS=[["ozet","Özet"],["foto","Fotoğraf onayı","pending_photos"],["uye","Üyeler"],["oda","Odalar"],["sik","Şikâyetler","open_reports"],["mekan","Mekânlar"]];
+const TABS=[["ozet","Özet"],["odeme","Ödemeler","pending_payments"],["foto","Fotoğraf onayı","pending_photos"],["uye","Üyeler"],["oda","Odalar"],["sik","Şikâyetler","open_reports"],["mekan","Mekânlar"]];
 async function render(){
  try{STATS=await rpc("admin_stats")}catch(e){STATS={}}
  app.innerHTML=`<nav>${TABS.map(([k,l,s])=>`<button data-tab="${k}" aria-selected="${TAB===k}">${l}${s&&STATS[s]?`<span class="badge">${STATS[s]}</span>`:""}</button>`).join("")}</nav><div class="msg" id="flash"></div><div id="pane"><p class="empty">Yükleniyor…</p></div>`;
  app.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{TAB=b.dataset.tab;render()});
- try{await ({ozet,foto,uye,oda,sik,mekan})[TAB]()}catch(e){$("#pane").innerHTML=`<p class="msg err" style="display:block">${esc(e.message)}</p>`}}
+ try{await ({ozet,odeme,foto,uye,oda,sik,mekan})[TAB]()}catch(e){$("#pane").innerHTML=`<p class="msg err" style="display:block">${esc(e.message)}</p>`}}
 
 /* Özet */
 async function ozet(){const s=STATS;
- const c=[["users","Toplam üye"],["users_7d","Son 7 gün yeni üye"],["verified","Onaylı üye"],["pending_photos","Bekleyen fotoğraf"],["open_rooms","Açık oda"],["rooms_total","Toplam oda"],["pending_requests","Bekleyen katılma isteği"],["messages","Sohbet mesajı"],["open_reports","Açık şikâyet"],["banned","Askıya alınan"]];
+ const c=[["pending_payments","Onay bekleyen ödeme"],["revenue_30d","Son 30 gün gelir (₺)"],["users","Toplam üye"],["users_7d","Son 7 gün yeni üye"],["verified","Onaylı üye"],["pending_photos","Bekleyen fotoğraf"],["open_rooms","Açık oda"],["rooms_total","Toplam oda"],["pending_requests","Bekleyen katılma isteği"],["messages","Sohbet mesajı"],["open_reports","Açık şikâyet"],["banned","Askıya alınan"]];
  $("#pane").innerHTML=`<div class="cards">${c.map(([k,l])=>`<div class="card"><b>${s[k]??0}</b><span>${l}</span></div>`).join("")}</div>
  <div class="card" style="margin-top:16px;max-width:520px"><h3 style="margin-top:0">Hoş geldin coini</h3><p class="mute" style="margin-top:0">Yeni üye olan herkese otomatik verilecek coin. Coin satışı açılana kadar üyeler odalara katılabilsin diye örneğin 40 yapabilirsin (2 katılım). 0 = kapalı.</p>
  <div class="bar"><label>Coin<input type="number" id="wb" min="0" max="1000" value="${s.welcome_bonus??0}" style="width:110px"></label><button class="g" id="wbs">Kaydet</button></div></div>`;
+ const st=s.settings||{};
+ $("#pane").insertAdjacentHTML("beforeend",`<div class="card" style="margin-top:16px;max-width:720px"><h3 style="margin-top:0">Havale / ödeme ayarları</h3>
+ <div class="bar"><label>IBAN<input id="s_iban" value="${esc(st.iban||"")}" style="width:300px"></label><label>Alıcı (hesap sahibi)<input id="s_holder" value="${esc(st.account_holder||"")}" style="width:240px" placeholder="Ad Soyad / Ünvan"></label></div>
+ <div class="bar"><label>Banka<input id="s_bank" value="${esc(st.bank_name||"")}" placeholder="Örn. QNB"></label><label>Havale indirimi (%)<input type="number" id="s_disc" min="0" max="50" value="${esc(st.transfer_discount||"0")}" style="width:110px"></label></div>
+ <label>Sayfa altında görünecek şirket bilgileri (ünvan, adres, vergi dairesi/no, MERSİS)<textarea id="s_comp" rows="2" style="width:100%">${esc(st.company_info||"")}</textarea></label>
+ <p style="margin:10px 0 0"><button class="g" id="s_save">Ayarları kaydet</button></p></div>`);
+ $("#s_save").onclick=async()=>{try{for(const [k,id] of [["iban","s_iban"],["account_holder","s_holder"],["bank_name","s_bank"],["company_info","s_comp"]])await rpc("admin_set_setting",{p_key:k,p_value:$("#"+id).value.trim()});
+  await rpc("admin_set_setting",{p_key:"transfer_discount",p_value:parseInt($("#s_disc").value||"0",10)});flash("Ayarlar kaydedildi.",true)}catch(e){flash(e.message,false)}};
  $("#wbs").onclick=async()=>{try{await rpc("admin_set_setting",{p_key:"welcome_bonus",p_value:parseInt($("#wb").value||"0",10)});flash("Kaydedildi.",true)}catch(e){flash(e.message,false)}}}
+
+/* Ödemeler */
+let PSCOPE="open",PWATCH=null,BASE_TITLE=document.title;
+const tl=n=>Number(n).toLocaleString("tr-TR",{minimumFractionDigits:2,maximumFractionDigits:2})+" ₺";
+async function odeme(){const L=await rpc("admin_payments",{p_status:PSCOPE});
+ const sl={awaiting:["Ödeme bekleniyor",""],submitted:["Ödendi bildirildi","wait"],approved:["Onaylandı","ok"],rejected:["Reddedildi","no"]};
+ const perm=("Notification" in window)?Notification.permission:"unsupported";
+ $("#pane").innerHTML=`<div class="bar"><label>Göster<select id="pss"><option value="open">Bekleyenler</option><option value="approved">Onaylananlar</option><option value="rejected">Reddedilenler</option><option value="all">Tümü</option></select></label>
+ ${perm==="default"?`<button class="g" id="nperm">Masaüstü bildirimlerini aç</button>`:perm==="granted"?`<span class="st ok">Bildirimler açık</span>`:perm==="denied"?`<span class="st no">Tarayıcıda bildirimler engelli</span>`:""}
+ <span class="mute">Yeni ödeme bildirimi geldiğinde bu sekme açıkken sesli uyarı ve bildirim alırsın.</span></div>
+ ${L.length?`<div class="tw"><table><thead><tr><th>Tarih</th><th>Üye</th><th>Paket / tutar</th><th>Referans · gönderen</th><th>Durum</th><th>İşlemler</th></tr></thead><tbody>${L.map(p=>`<tr>
+ <td>${dt(p.submitted_at||p.created_at)}</td><td><strong>${esc(p.name)}</strong><br><span class="mute">${esc(p.email)}</span></td>
+ <td><b>${tl(p.amount)}</b><br><span class="mute">${p.coins} coin · liste ${tl(p.list_price)}</span></td>
+ <td><b style="font-family:monospace">${esc(p.ref_code)}</b><br><span class="mute">${esc(p.sender_name||"–")}</span></td>
+ <td><span class="st ${(sl[p.status]||["",""])[1]}">${(sl[p.status]||[p.status])[0]}</span>${p.admin_note?`<br><span class="mute">${esc(p.admin_note)}</span>`:""}</td>
+ <td><div class="acts">${p.status==="awaiting"||p.status==="submitted"?`<button class="sm g" data-pok="${p.id}">Onayla · ${p.coins} coin yükle</button><button class="sm r" data-pno="${p.id}">Reddet</button>`:""}</div></td></tr>`).join("")}</tbody></table></div>`:'<p class="empty">Ödeme yok.</p>'}
+ <p class="mute" style="font-size:.85rem">Onaylamadan önce banka hesabında tutarın ve açıklamadaki referans kodunun geldiğini kontrol et. Onayladığında coinler üyenin hesabına anında yüklenir ve üyeye "Ödemeniz onaylandı" mesajı gösterilir.</p>`;
+ $("#pss").value=PSCOPE;$("#pss").onchange=e=>{PSCOPE=e.target.value;render()};
+ const np=$("#nperm");if(np)np.onclick=async()=>{await Notification.requestPermission();render()};
+ $("#pane").onclick=async e=>{const b=e.target.closest("[data-pok],[data-pno]");if(!b)return;
+  try{if(b.dataset.pok){if(!confirm("Ödeme hesabına geçtiyse onayla. Coinler üyenin hesabına yüklenecek."))return;b.disabled=true;await rpc("admin_decide_payment",{p_id:b.dataset.pok,p_approve:true});flash("Ödeme onaylandı, coinler yüklendi.",true)}
+   else{const why=prompt("Reddetme nedeni (üyeye gösterilir, isteğe bağlı):","Ödeme hesabımıza ulaşmadı.");if(why===null)return;await rpc("admin_decide_payment",{p_id:b.dataset.pno,p_approve:false,p_note:why});flash("Ödeme reddedildi.",true)}
+   render()}catch(x){flash(x.message,false);b.disabled=false}}}
+function beep(){try{const a=new (window.AudioContext||window.webkitAudioContext)(),o=a.createOscillator(),g=a.createGain();o.connect(g);g.connect(a.destination);o.frequency.value=880;g.gain.setValueAtTime(.15,a.currentTime);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+.6);o.start();o.stop(a.currentTime+.6)}catch(e){}}
+function watchPayments(){if(PWATCH)return;let last=null;
+ const notify=(t,b)=>{beep();document.title="(!) "+BASE_TITLE;try{if(("Notification" in window)&&Notification.permission==="granted")new Notification(t,{body:b})}catch(e){}};
+ const poll=async()=>{try{const s=await rpc("admin_stats");const n=s.pending_payments||0;if(last!==null&&n>last)notify("Yeni havale bildirimi","Onay bekleyen "+n+" ödeme var.");last=n;
+  const bd=document.querySelector('[data-tab="odeme"]');if(bd)bd.innerHTML="Ödemeler"+(n?`<span class="badge">${n}</span>`:"");if(!n)document.title=BASE_TITLE;
+  if(TAB==="odeme"&&n!==STATS.pending_payments){STATS.pending_payments=n;if(!document.querySelector("dialog[open]"))odeme().catch(()=>{})}}catch(e){}};
+ PWATCH=setInterval(poll,20000);poll();
+ try{sb.channel("adm-pay").on("postgres_changes",{event:"*",schema:"public",table:"payments"},()=>poll()).subscribe()}catch(e){}
+ document.addEventListener("visibilitychange",()=>{if(!document.hidden)document.title=BASE_TITLE})}
 
 /* Fotoğraflar */
 async function foto(){const L=await rpc("admin_pending_photos");
