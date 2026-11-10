@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ISDAMBUL Admin Paneli</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+:root{--navy:#0f1a33;--navy2:#1a2848;--gold:#c9a24b;--gold-d:#7a5c14;--ivory:#f8f5ee;--ink:#1c2236;--mute:#5d6578;--line:#e2dccd;color-scheme:light}
+*{box-sizing:border-box}body{margin:0;background:var(--ivory);color:var(--ink);font:15px/1.5 "Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+header{background:var(--navy);color:#fff;position:sticky;top:0;z-index:5}
+.wrap{max-width:1200px;margin:0 auto;padding:0 18px}
+.hd{display:flex;align-items:center;justify-content:space-between;height:58px;gap:12px}
+.hd b{font:700 1.1rem Georgia,serif;letter-spacing:.14em}.hd span{color:#c3cae0;font-size:.88rem}
+.hd a{color:#e9d9a8;text-decoration:none;font-size:.9rem;margin-left:14px}
+nav{display:flex;gap:4px;flex-wrap:wrap;padding:10px 0;border-bottom:1px solid var(--line);margin-bottom:16px}
+button,.btn{font:inherit;cursor:pointer;border-radius:7px;padding:7px 14px;border:1px solid var(--navy);background:#fff;color:var(--navy);font-weight:600;text-decoration:none;display:inline-block}
+button:disabled{opacity:.5;cursor:not-allowed}
+.g{background:var(--gold);border-color:var(--gold);color:var(--navy)}.r{border-color:#b3361f;color:#b3361f}.sm{padding:4px 9px;font-size:.82rem}
+nav button[aria-selected="true"]{background:var(--navy);color:#fff}
+nav .badge{background:#b3361f;color:#fff;border-radius:99px;padding:0 7px;font-size:.75rem;margin-left:4px}
+input,select,textarea{font:inherit;padding:7px 9px;border:1px solid #cfc8b6;border-radius:7px;background:#fff}
+label{font-size:.85rem;color:var(--mute);display:block}
+.cards{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+.card b{display:block;font:700 1.8rem Georgia,serif;color:var(--navy)}.card span{color:var(--mute);font-size:.85rem}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top;font-size:.9rem}
+th{background:#f1ede3;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:var(--mute)}
+.tw{overflow-x:auto}
+.st{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:99px;background:#eef0f5;color:var(--mute);font-weight:600;white-space:nowrap}
+.ok{background:#e8f6ec;color:#15602e}.no{background:#fdecea;color:#9b2216}.wait{background:#fff3d6;color:#7a5c14}
+.acts{display:flex;gap:5px;flex-wrap:wrap}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.msg{padding:10px 12px;border-radius:8px;margin:0 0 12px;display:none}.msg.okm{display:block;background:#e8f6ec;color:#15602e}.msg.err{display:block;background:#fdecea;color:#9b2216}
+.ph{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.ph .card img{width:100%;height:260px;object-fit:cover;border-radius:8px;background:#eee}
+.mute{color:var(--mute)}.empty{color:var(--mute);padding:20px 0}
+.login{max-width:380px;margin:60px auto}.login input{width:100%;margin:4px 0 10px}
+dialog{border:0;border-radius:14px;padding:22px;max-width:680px;width:calc(100% - 24px)}dialog::backdrop{background:rgba(10,18,38,.6)}
+.chat{max-height:60vh;overflow-y:auto;background:var(--ivory);border:1px solid var(--line);border-radius:8px;padding:10px;margin-top:10px}
+.cm{padding:6px 0;border-bottom:1px solid var(--line);font-size:.9rem}.cm b{color:var(--gold-d)}
+.cats{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:4px}.cats label{display:flex;gap:4px;align-items:center;color:var(--ink)}
+</style>
+</head>
+<body>
+<header><div class="wrap hd"><div><b>ISDAMBUL</b> <span>Admin paneli</span></div><div><span id="who"></span><a href="index.html">Siteye dön</a><a href="#" id="out" hidden>Çıkış</a></div></div></header>
+<main class="wrap" id="app"><p class="empty">Yükleniyor…</p></main>
+<dialog id="dlg"><div id="dlgb"></div><p style="margin-top:14px;text-align:right"><button id="dlgc">Kapat</button></p></dialog>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+const SUPABASE_URL="https://pxfeaepuwuagwbgqxpqe.supabase.co";
+const SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4ZmVhZXB1d3VhZ3diZ3F4cHFlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQyNDYwMzUsImV4cCI6MjEwOTgyMjAzNX0.nc2irS2C0e_8A2v-AoTZ9G08XQ7u-Sa_kuJRFgjUOwM";
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+const $=s=>document.querySelector(s),app=$("#app");
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const dt=s=>s?new Date(s).toLocaleString("tr-TR",{day:"numeric",month:"short",year:"2-digit",hour:"2-digit",minute:"2-digit"}):"–";
+const CATS={kokteyl:"Kokteyl",kulup:"Kulüp",bar:"Bar",pub:"Pub",raki:"Rakı masası",meyhane:"Yeni nesil meyhane",techno:"Techno",canli:"Canlı müzik",rooftop:"Rooftop"};
+let TAB="ozet",STATS={};
+function flash(t,ok){const m=$("#flash");if(!m)return;m.className="msg "+(ok?"okm":"err");m.textContent=t;window.scrollTo({top:0,behavior:"smooth"})}
+async function rpc(fn,args){const r=await sb.rpc(fn,args||{});if(r.error)throw new Error(r.error.message);return r.data}
+function dlg(html){$("#dlgb").innerHTML=html;$("#dlg").showModal()}
+$("#dlgc").onclick=()=>$("#dlg").close();
+
+async function boot(){
+ const{data}=await sb.auth.getSession();const u=data.session&&data.session.user;
+ if(!u)return loginView();
+ $("#who").textContent=u.email;$("#out").hidden=false;
+ let ok=false;try{ok=await rpc("is_admin")}catch(e){}
+ if(!ok){app.innerHTML=`<div class="login card"><h2>Yetkisiz</h2><p class="mute">Bu hesabın (${esc(u.email)}) admin yetkisi yok.</p><button id="o2">Farklı hesapla gir</button></div>`;$("#o2").onclick=logout;return}
+ render()}
+function loginView(){app.innerHTML=`<form class="login card" id="lf"><h2 style="margin-top:0;font-family:Georgia,serif">Admin girişi</h2><label>E-posta<input type="email" name="e" required autocomplete="email"></label><label>Şifre<input type="password" name="p" required autocomplete="current-password"></label><button class="g" type="submit">Giriş yap</button><p class="msg" id="lm"></p></form>`;
+ $("#lf").onsubmit=async e=>{e.preventDefault();const f=new FormData(e.target);const{error}=await sb.auth.signInWithPassword({email:f.get("e").trim(),password:f.get("p")});
+  if(error){const m=$("#lm");m.className="msg err";m.textContent="Giriş yapılamadı: "+error.message;return}boot()}}
+async function logout(){await sb.auth.signOut();location.reload()}
+$("#out").onclick=e=>{e.preventDefault();logout()};
+
+const TABS=[["ozet","Özet"],["foto","Fotoğraf onayı","pending_photos"],["uye","Üyeler"],["oda","Odalar"],["sik","Şikâyetler","open_reports"],["mekan","Mekânlar"]];
+async function render(){
+ try{STATS=await rpc("admin_stats")}catch(e){STATS={}}
+ app.innerHTML=`<nav>${TABS.map(([k,l,s])=>`<button data-tab="${k}" aria-selected="${TAB===k}">${l}${s&&STATS[s]?`<span class="badge">${STATS[s]}</span>`:""}</button>`).join("")}</nav><div class="msg" id="flash"></div><div id="pane"><p class="empty">Yükleniyor…</p></div>`;
+ app.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{TAB=b.dataset.tab;render()});
+ try{await ({ozet,foto,uye,oda,sik,mekan})[TAB]()}catch(e){$("#pane").innerHTML=`<p class="msg err" style="display:block">${esc(e.message)}</p>`}}
+
+/* Özet */
+async function ozet(){const s=STATS;
+ const c=[["users","Toplam üye"],["users_7d","Son 7 gün yeni üye"],["verified","Onaylı üye"],["pending_photos","Bekleyen fotoğraf"],["open_rooms","Açık oda"],["rooms_total","Toplam oda"],["pending_requests","Bekleyen katılma isteği"],["messages","Sohbet mesajı"],["open_reports","Açık şikâyet"],["banned","Askıya alınan"]];
+ $("#pane").innerHTML=`<div class="cards">${c.map(([k,l])=>`<div class="card"><b>${s[k]??0}</b><span>${l}</span></div>`).join("")}</div>
+ <div class="card" style="margin-top:16px;max-width:520px"><h3 style="margin-top:0">Hoş geldin coini</h3><p class="mute" style="margin-top:0">Yeni üye olan herkese otomatik verilecek coin. Coin satışı açılana kadar üyeler odalara katılabilsin diye örneğin 40 yapabilirsin (2 katılım). 0 = kapalı.</p>
+ <div class="bar"><label>Coin<input type="number" id="wb" min="0" max="1000" value="${s.welcome_bonus??0}" style="width:110px"></label><button class="g" id="wbs">Kaydet</button></div></div>`;
+ $("#wbs").onclick=async()=>{try{await rpc("admin_set_setting",{p_key:"welcome_bonus",p_value:parseInt($("#wb").value||"0",10)});flash("Kaydedildi.",true)}catch(e){flash(e.message,false)}}}
+
+/* Fotoğraflar */
+async function foto(){const L=await rpc("admin_pending_photos");
+ if(!L.length){$("#pane").innerHTML='<p class="empty">Bekleyen fotoğraf yok.</p>';return}
+ const urls={};await Promise.all(L.map(async p=>{const r=await sb.storage.from("selfies").createSignedUrl(p.photo_path,600);urls[p.id]=r.data&&r.data.signedUrl}));
+ const age=b=>{const d=new Date(b),n=new Date();let y=n.getFullYear()-d.getFullYear();if(n<new Date(n.getFullYear(),d.getMonth(),d.getDate()))y--;return y};
+ $("#pane").innerHTML=`<p class="mute">Yüzün net göründüğü, kişinin kendisine ait gerçek bir fotoğraf olmalı. Ünlü fotoğrafı, çizim, grup fotoğrafı ya da uygunsuz içerik reddedilmeli.</p><div class="ph">${L.map(p=>`<div class="card">${urls[p.id]?`<a href="${urls[p.id]}" target="_blank" rel="noopener"><img src="${urls[p.id]}" alt="${esc(p.display_name)} fotoğrafı"></a>`:'<p class="mute">Fotoğraf açılamadı</p>'}<p><strong>${esc(p.display_name)}</strong> · ${esc(p.gender)}, ${age(p.birth_date)}<br><span class="mute">Kayıt: ${dt(p.created_at)}</span></p><div class="acts"><button class="g" data-ap="${p.id}">Onayla</button><button class="r" data-rj="${p.id}">Reddet</button></div></div>`).join("")}</div>`;
+ $("#pane").onclick=async e=>{const a=e.target.closest("[data-ap],[data-rj]");if(!a)return;a.disabled=true;
+  try{await rpc("admin_review_photo",{p_user:a.dataset.ap||a.dataset.rj,p_approve:!!a.dataset.ap});flash(a.dataset.ap?"Profil onaylandı.":"Fotoğraf reddedildi.",true);render()}catch(x){flash(x.message,false);a.disabled=false}}}
+
+/* Üyeler */
+let USEARCH="";
+async function uye(){const L=await rpc("admin_users",{p_search:USEARCH||null});
+ const ps={none:["Fotoğraf yok",""],pending:["İnceleniyor","wait"],approved:["Onaylı","ok"],rejected:["Reddedildi","no"]};
+ $("#pane").innerHTML=`<div class="bar"><label>Ara (e-posta ya da ad)<input id="us" value="${esc(USEARCH)}" style="width:260px"></label><button id="usb">Ara</button><span class="mute">${L.length} üye</span></div>
+ <div class="tw"><table><thead><tr><th>Üye</th><th>Durum</th><th>Coin</th><th>Kayıt / son giriş</th><th>İşlemler</th></tr></thead><tbody>${L.map(u=>`<tr>
+ <td><strong>${esc(u.name)}</strong>${u.admin?' <span class="st ok">admin</span>':""}<br><span class="mute">${esc(u.email)}</span><br>${esc(u.gender)}, ${u.age} yaş</td>
+ <td><span class="st ${(ps[u.photo_status]||["",""])[1]}">${(ps[u.photo_status]||[u.photo_status])[0]}</span>${u.banned?`<br><span class="st no">Askıda</span>${u.banned_reason?`<br><span class="mute">${esc(u.banned_reason)}</span>`:""}`:""}${u.reports?`<br><span class="st no">${u.reports} şikâyet</span>`:""}<br><span class="mute">${u.rooms} oda</span></td>
+ <td><b>${u.balance}</b></td>
+ <td>${dt(u.created_at)}<br><span class="mute">${dt(u.last_sign_in)}</span></td>
+ <td><div class="acts">
+  ${u.verified?`<button class="sm" data-unv="${u.id}">Onayı kaldır</button>`:`<button class="sm g" data-ver="${u.id}">Onayla</button>`}
+  ${u.photo_path?`<button class="sm" data-pic="${esc(u.photo_path)}">Fotoğraf</button>`:""}
+  <button class="sm" data-coin="${u.id}" data-nm="${esc(u.name)}">Coin ±</button>
+  ${u.admin?"":u.banned?`<button class="sm" data-unban="${u.id}">Askıyı kaldır</button>`:`<button class="sm r" data-ban="${u.id}" data-nm="${esc(u.name)}">Askıya al</button>`}
+ </div></td></tr>`).join("")}</tbody></table></div>`;
+ $("#usb").onclick=()=>{USEARCH=$("#us").value.trim();render()};$("#us").onkeydown=e=>{if(e.key==="Enter"){USEARCH=e.target.value.trim();render()}};
+ $("#pane").onclick=async e=>{const b=e.target.closest("button");if(!b)return;const d=b.dataset;
+  try{
+   if(d.ver){await rpc("admin_set_verified",{p_user:d.ver,p_verified:true});flash("Üye onaylandı.",true)}
+   else if(d.unv){if(!confirm("Onay kaldırılsın mı? Üye oda kuramaz ve katılamaz."))return;await rpc("admin_set_verified",{p_user:d.unv,p_verified:false});flash("Onay kaldırıldı.",true)}
+   else if(d.pic){const r=await sb.storage.from("selfies").createSignedUrl(d.pic,600);dlg(r.data?`<img src="${r.data.signedUrl}" style="max-width:100%;border-radius:8px" alt="Üye fotoğrafı">`:"Fotoğraf açılamadı.");return}
+   else if(d.coin){const v=prompt(d.nm+" için coin miktarı (eklemek için 40, düşmek için -20 gibi):");if(!v)return;const n=parseInt(v,10);if(!n)return flash("Geçerli bir sayı yaz.",false);await rpc("admin_adjust_tokens",{p_user:d.coin,p_amount:n,p_reason:n>0?"bonus":"admin_duzeltme"});flash("Coin güncellendi.",true)}
+   else if(d.ban){const why=prompt(d.nm+" askıya alınacak. Açık odaları iptal edilir, bekleyen istekleri iade edilir. Neden (isteğe bağlı):");if(why===null)return;await rpc("admin_set_ban",{p_user:d.ban,p_banned:true,p_reason:why});flash("Üye askıya alındı.",true)}
+   else if(d.unban){await rpc("admin_set_ban",{p_user:d.unban,p_banned:false});flash("Askı kaldırıldı.",true)}
+   else return;
+   render()}catch(x){flash(x.message,false)}}}
+
+/* Odalar */
+let RSCOPE="upcoming";
+async function oda(){const L=await rpc("admin_rooms",{p_scope:RSCOPE});
+ const sl={open:["Açık","ok"],cancelled:["İptal","no"],closed:["Kapalı",""]};
+ $("#pane").innerHTML=`<div class="bar"><label>Göster<select id="rs"><option value="upcoming">Yaklaşan açık odalar</option><option value="all">Tüm odalar</option></select></label><span class="mute">${L.length} oda</span></div>
+ ${L.length?`<div class="tw"><table><thead><tr><th>Oda</th><th>Mekân / tarih</th><th>Sahibi</th><th>Katılım</th><th>İşlemler</th></tr></thead><tbody>${L.map(r=>`<tr>
+ <td><strong>${esc(r.title)}</strong> <span class="st ${(sl[r.status]||["",""])[1]}">${(sl[r.status]||[r.status])[0]}</span>${r.note?`<br><span class="mute">${esc(r.note)}</span>`:""}</td>
+ <td>${esc(r.venue)}<br><span class="mute">${esc(r.city||"")}, ${esc(r.district||"")} · ${dt(r.starts_at)}</span></td>
+ <td>${esc(r.owner_name)}<br><span class="mute">${esc(r.owner_email)}</span></td>
+ <td>${r.approved}/${r.seeking_count} onaylı<br><span class="mute">${r.pending} bekleyen · ${r.messages} mesaj</span></td>
+ <td><div class="acts"><button class="sm" data-chat="${r.id}">Sohbeti gör</button>${r.status==="open"?`<button class="sm r" data-cancel="${r.id}">İptal et</button>`:""}</div></td></tr>`).join("")}</tbody></table></div>`:'<p class="empty">Oda yok.</p>'}`;
+ $("#rs").value=RSCOPE;$("#rs").onchange=e=>{RSCOPE=e.target.value;render()};
+ $("#pane").onclick=async e=>{const b=e.target.closest("button");if(!b)return;
+  try{if(b.dataset.cancel){if(!confirm("Oda iptal edilsin mi? Tüm katılımcıların coini iade edilir."))return;await rpc("admin_cancel_room",{p_room:b.dataset.cancel});flash("Oda iptal edildi.",true);render()}
+   else if(b.dataset.chat)showChat(b.dataset.chat)}catch(x){flash(x.message,false)}}}
+async function showChat(id){try{const d=await rpc("room_chat",{p_room:id,p_after:0});const nm={};d.members.forEach(m=>nm[m.id]=m.name);
+ dlg(`<h3 style="margin-top:0">${esc(d.room.title)}</h3><p class="mute">${esc(d.room.venue)} · ${dt(d.room.starts_at)}<br>Katılımcılar: ${d.members.map(m=>esc(m.name)+(m.owner?" (sahibi)":"")).join(", ")}</p><div class="chat">${d.messages.length?d.messages.map(m=>`<div class="cm"><b>${esc(nm[m.user_id]||"Eski üye")}</b> <span class="mute">${dt(m.created_at)}</span> <button class="sm r" data-del="${m.id}" style="float:right">Sil</button><br>${esc(m.body)}</div>`).join(""):'<p class="mute">Mesaj yok.</p>'}</div>`);
+ $("#dlgb").onclick=async e=>{const b=e.target.closest("[data-del]");if(!b||!confirm("Mesaj silinsin mi?"))return;try{await rpc("admin_delete_message",{p_message:+b.dataset.del});b.closest(".cm").remove()}catch(x){alert(x.message)}}}catch(x){flash(x.message,false)}}
+
+/* Şikâyetler */
+let PSTAT="open";
+async function sik(){const L=await rpc("admin_reports",{p_status:PSTAT});
+ $("#pane").innerHTML=`<div class="bar"><label>Göster<select id="ps"><option value="open">Açık şikâyetler</option><option value="all">Tümü</option></select></label></div>
+ ${L.length?`<div class="tw"><table><thead><tr><th>Tarih</th><th>Şikâyet eden</th><th>Şikâyet edilen</th><th>Neden</th><th>İşlemler</th></tr></thead><tbody>${L.map(r=>`<tr>
+ <td>${dt(r.created_at)}<br><span class="st ${r.status==="open"?"wait":"ok"}">${r.status==="open"?"Açık":"Çözüldü"}</span></td>
+ <td>${esc(r.reporter_name||"–")}</td><td>${esc(r.reported_name||"–")}${r.reported_banned?' <span class="st no">askıda</span>':""}</td>
+ <td>${esc(r.reason)}${r.room_title?`<br><span class="mute">Oda: ${esc(r.room_title)}</span>`:""}${r.message?`<br><span class="mute">Mesaj: “${esc(r.message)}”</span>`:""}</td>
+ <td><div class="acts">${r.room_id?`<button class="sm" data-chat="${r.room_id}">Sohbet</button>`:""}${r.reported_id&&!r.reported_banned?`<button class="sm r" data-ban="${r.reported_id}">Askıya al</button>`:""}${r.status==="open"?`<button class="sm g" data-res="${r.id}">Çözüldü</button>`:""}</div></td></tr>`).join("")}</tbody></table></div>`:'<p class="empty">Şikâyet yok.</p>'}`;
+ $("#ps").value=PSTAT;$("#ps").onchange=e=>{PSTAT=e.target.value;render()};
+ $("#pane").onclick=async e=>{const b=e.target.closest("button");if(!b)return;
+  try{if(b.dataset.res){await rpc("admin_resolve_report",{p_report:+b.dataset.res});flash("Şikâyet kapatıldı.",true);render()}
+   else if(b.dataset.ban){const why=prompt("Askıya alma nedeni (isteğe bağlı):");if(why===null)return;await rpc("admin_set_ban",{p_user:b.dataset.ban,p_banned:true,p_reason:why});flash("Üye askıya alındı.",true);render()}
+   else if(b.dataset.chat)showChat(b.dataset.chat)}catch(x){flash(x.message,false)}}}
+
+/* Mekânlar */
+let VQ="";
+async function mekan(){const{data,error}=await sb.from("venues").select("*").order("city").order("district").order("name");if(error)throw new Error(error.message);
+ const q=VQ.toLocaleLowerCase("tr"),L=data.filter(v=>!q||(v.name+" "+v.city+" "+v.district+" "+v.id).toLocaleLowerCase("tr").includes(q));
+ const form=v=>`<form id="vf" class="card" style="margin-bottom:16px"><h3 style="margin-top:0">${v?"Mekânı düzenle":"Yeni mekân ekle"}</h3>
+ <div class="bar"><label>Kod (adres için, örn. yeni-bar)<input name="id" required pattern="[a-z0-9-]{2,40}" value="${esc(v?v.id:"")}" ${v?"readonly":""}></label>
+ <label>Mekân adı<input name="name" required value="${esc(v?v.name:"")}" style="width:260px"></label>
+ <label>İl<input name="city" required value="${esc(v?v.city:"")}" list="cl"></label><label>İlçe<input name="district" required value="${esc(v?v.district:"")}"></label>
+ <label style="display:flex;gap:6px;align-items:center;color:var(--ink)"><input type="checkbox" name="active" ${!v||v.active?"checked":""}> Aktif</label></div>
+ <label>Türler</label><div class="cats">${Object.entries(CATS).map(([k,l])=>`<label><input type="checkbox" name="c" value="${k}" ${v&&v.categories.includes(k)?"checked":""}> ${l}</label>`).join("")}</div>
+ <p class="mute" style="font-size:.85rem">Mekân fotoğrafı için GitHub'daki img klasörüne <b>kod.jpg</b> adında bir fotoğraf yükleyin.</p>
+ <div class="acts"><button class="g" type="submit">Kaydet</button>${v?'<button type="button" id="vfc">Vazgeç</button>':""}</div>
+ <datalist id="cl">${[...new Set(data.map(x=>x.city))].map(c=>`<option>${esc(c)}`).join("")}</datalist></form>`;
+ $("#pane").innerHTML=`<div id="vfw">${form(null)}</div><div class="bar"><label>Ara<input id="vq" value="${esc(VQ)}"></label><span class="mute">${L.length} / ${data.length} mekân · pasif mekânlar sitede görünmez ve yeni oda kurulamaz</span></div>
+ <div class="tw"><table><thead><tr><th>Mekân</th><th>Konum</th><th>Türler</th><th>Durum</th><th></th></tr></thead><tbody>${L.map(v=>`<tr><td><strong>${esc(v.name)}</strong><br><span class="mute">${esc(v.id)}</span></td><td>${esc(v.city)}, ${esc(v.district)}</td><td>${v.categories.map(k=>CATS[k]||k).join(", ")}</td><td>${v.active?'<span class="st ok">Aktif</span>':'<span class="st no">Pasif</span>'}</td><td><div class="acts"><button class="sm" data-ed="${esc(v.id)}">Düzenle</button><button class="sm" data-tg="${esc(v.id)}">${v.active?"Pasif yap":"Aktif yap"}</button></div></td></tr>`).join("")}</tbody></table></div>`;
+ const bind=()=>{$("#vf").onsubmit=async e=>{e.preventDefault();const f=new FormData(e.target);
+   try{await rpc("admin_upsert_venue",{p_id:f.get("id"),p_name:f.get("name"),p_city:f.get("city"),p_district:f.get("district"),p_categories:f.getAll("c"),p_active:!!f.get("active")});flash("Mekân kaydedildi.",true);render()}catch(x){flash(x.message,false)}};
+  const c=$("#vfc");if(c)c.onclick=()=>{$("#vfw").innerHTML=form(null);bind()}};bind();
+ $("#vq").oninput=e=>{VQ=e.target.value;clearTimeout(window._vt);window._vt=setTimeout(()=>{render().then(()=>{const i=$("#vq");i.focus();i.setSelectionRange(i.value.length,i.value.length)})},350)};
+ $("#pane").onclick=async e=>{const b=e.target.closest("[data-ed],[data-tg]");if(!b)return;const v=data.find(x=>x.id===(b.dataset.ed||b.dataset.tg));
+  if(b.dataset.ed){$("#vfw").innerHTML=form(v);bind();window.scrollTo({top:0,behavior:"smooth"});return}
+  try{await rpc("admin_upsert_venue",{p_id:v.id,p_name:v.name,p_city:v.city,p_district:v.district,p_categories:v.categories,p_active:!v.active});flash(v.active?"Mekân pasif yapıldı.":"Mekân aktif yapıldı.",true);render()}catch(x){flash(x.message,false)}}}
+
+boot();
+</script>
+</body>
+</html>
