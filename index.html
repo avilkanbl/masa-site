@@ -376,7 +376,7 @@ const SUPABASE_URL="https://pxfeaepuwuagwbgqxpqe.supabase.co";
 const SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4ZmVhZXB1d3VhZ3diZ3F4cHFlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQyNDYwMzUsImV4cCI6MjEwOTgyMjAzNX0.nc2irS2C0e_8A2v-AoTZ9G08XQ7u-Sa_kuJRFgjUOwM";
 /* ========================================================================= */
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
-const sb=(SUPABASE_URL&&SUPABASE_ANON_KEY&&window.supabase)?supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY):null;
+const sb=(SUPABASE_URL&&SUPABASE_ANON_KEY&&window.supabase)?supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY,{auth:{lock:(n,t,f)=>f()}}):null;
 const fmt=s=>new Date(s).toLocaleString("tr-TR",{weekday:"short",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
