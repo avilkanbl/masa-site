@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.isdambul.com.tr/</loc><lastmod>2026-11-10</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.isdambul.com.tr/</loc><lastmod>2026-11-12</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
   <url><loc>https://www.isdambul.com.tr/istanbul-gece-hayati.html</loc><lastmod>2026-11-10</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.isdambul.com.tr/ankara-gece-hayati.html</loc><lastmod>2026-11-10</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.isdambul.com.tr/izmir-gece-hayati.html</loc><lastmod>2026-11-10</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
@@ -14,4 +14,10 @@
   <url><loc>https://www.isdambul.com.tr/cerez-politikasi.html</loc><lastmod>2026-11-10</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://www.isdambul.com.tr/mesafeli-satis.html</loc><lastmod>2026-11-10</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://www.isdambul.com.tr/iade-ve-coin.html</loc><lastmod>2026-11-10</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.isdambul.com.tr/rehber.html</loc><lastmod>2026-11-12</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.isdambul.com.tr/kulube-dam-olmadan-girmek.html</loc><lastmod>2026-11-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.isdambul.com.tr/istanbulda-tek-basina-gece-hayati.html</loc><lastmod>2026-11-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.isdambul.com.tr/kadikoy-gece-hayati-rehberi.html</loc><lastmod>2026-11-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.isdambul.com.tr/beyoglu-nevizade-meyhane-rehberi.html</loc><lastmod>2026-11-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.isdambul.com.tr/yeni-sehirde-arkadas-bulmak.html</loc><lastmod>2026-11-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
