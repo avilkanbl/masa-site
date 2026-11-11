@@ -5,7 +5,7 @@
   "description": "Gece hayatında mekâna birlikte gideceğin onaylı arkadaşları bul.",
   "lang": "tr",
   "dir": "ltr",
-  "start_url": "/?src=app",
+  "start_url": "/app?src=pwa",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
