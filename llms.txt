@@ -1,0 +1,51 @@
+# ISDAMBUL
+
+> ISDAMBUL (isdambul.com.tr), Türkiye'de gece hayatında birlikte dışarı çıkacak arkadaş bulma platformudur. Kullanıcılar bir kulüp, bar, pub ya da meyhane seçip "oda" kurar veya açık odalara katılma isteği gönderir; oda sahibinin onayladığı kişilerle küçük gruplar hâlinde mekânda buluşur. Özellikle mekâna "dam" (eşlik edecek kişi) ya da karma grup arayanlar için kullanılır.
+
+ISDAMBUL is a Turkish platform for finding people to go out with at nightlife venues (clubs, bars, pubs, meyhanes). Users pick a venue, open a "room" for a date, and approve who joins; approved members get a group chat and meet at the venue in small groups. Membership is free; sending a join request costs coins. 18+ only.
+
+## Temel bilgiler
+
+- Web sitesi: https://www.isdambul.com.tr/
+- Uygulama: https://www.isdambul.com.tr/app (web uygulaması; Android APK: https://www.isdambul.com.tr/isdambul.apk)
+- İletişim: isdambul.info@gmail.com
+- Dil: Türkçe
+- Yaş sınırı: 18+
+- Şehirler: İstanbul (90+ mekân), İzmir (18), Ankara (14), Bursa (7), Antalya (4), Bodrum ve Marmaris (4), Eskişehir (4), İzmit (3)
+
+## Nasıl çalışır
+
+1. Üye ol (ücretsiz). İstersen kendi çektiğin bir fotoğrafla profilini onaylat; onaylanan profiller rozet alır.
+2. Mekânı, günü ve kaç kişi aradığını yazarak oda kur ya da açık odalara katılma isteği gönder.
+3. Oda sahibi isteği onaylar, grup sohbeti açılır, herkes kamuya açık mekânda buluşur ve kendi hesabını öder.
+
+## Ücretler
+
+- Üyelik, odalara göz atma ve oda kurma ücretsizdir.
+- Bir odaya katılma isteği 20 coin'dir. İstek reddedilirse veya onaydan önce geri çekilirse coin iade edilir.
+- Onaylı kadın üyeler odalara ücretsiz katılır.
+- Coin paketleri: 40 coin 99 ₺, 120 coin 199 ₺, 300 coin 299 ₺ (KDV dahil). Havale/EFT ile %15 indirim; kredi/banka kartıyla da ödenebilir.
+
+## Güvenlik ve kurallar
+
+- Yalnızca oda sahibinin onayladığı kişiler odaya girer ve mesaj yazabilir.
+- Şikâyet ve engelleme her profilde ve odada vardır.
+- Para karşılığı buluşma, eşlik ya da ödeme teklifi yasaktır; bu hesaplar kapatılır.
+- ISDAMBUL listelenen mekânların ortağı veya temsilcisi değildir; mekânlarda rezervasyon ya da satış yapmaz. Kapı politikası mekâna aittir.
+
+## Şehir sayfaları
+
+- [İstanbul gece hayatı](https://www.isdambul.com.tr/istanbul-gece-hayati.html): Kadıköy, Beyoğlu, Beşiktaş ve diğer semtlerdeki mekânlar
+- [Ankara gece hayatı](https://www.isdambul.com.tr/ankara-gece-hayati.html)
+- [İzmir gece hayatı](https://www.isdambul.com.tr/izmir-gece-hayati.html)
+- [Bursa gece hayatı](https://www.isdambul.com.tr/bursa-gece-hayati.html)
+- [Antalya gece hayatı](https://www.isdambul.com.tr/antalya-gece-hayati.html)
+- [Bodrum ve Marmaris gece hayatı](https://www.isdambul.com.tr/bodrum-marmaris-gece-hayati.html)
+- [Eskişehir gece hayatı](https://www.isdambul.com.tr/eskisehir-gece-hayati.html)
+- [İzmit gece hayatı](https://www.isdambul.com.tr/izmit-gece-hayati.html)
+
+## Sık sorulanlar
+
+- Mekâna dam olmadan girilebilir mi? Birçok kulüp ve bar kapıda karma grup ister. ISDAMBUL'da gideceğin mekân için oda kurup katılanları onaylayarak mekâna grup olarak gidebilirsin.
+- Fotoğrafımı kimler görür? Doğrulama fotoğrafını yalnızca sen ve inceleyen ekip görür.
+- Kişisel veriler 6698 sayılı KVKK'ya uygun işlenir.
