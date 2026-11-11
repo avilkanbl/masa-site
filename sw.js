@@ -1,5 +1,5 @@
 /* ISDAMBUL service worker – sayfalar her zaman önce internetten alınır; çevrimdışıyken son kopya gösterilir. */
-const CACHE = "isdambul-v2";
+const CACHE = "isdambul-v3";
 const PRECACHE = ["/", "/favicon.svg", "/manifest.webmanifest", "/icon-192.png", "/icon-512.png"];
 
 self.addEventListener("install", (e) => {
