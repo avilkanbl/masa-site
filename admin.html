@@ -99,6 +99,8 @@ async function ozet(){const s=STATS;
  sb.rpc("site_info").then(r=>{if(r.data&&$("#s_fw"))$("#s_fw").checked=!!r.data.free_for_women});
  $("#s_save").onclick=async()=>{try{await rpc("admin_set_setting",{p_key:"free_for_women",p_value:$("#s_fw").checked});for(const [k,id] of [["iban","s_iban"],["account_holder","s_holder"],["bank_name","s_bank"],["company_info","s_comp"]])await rpc("admin_set_setting",{p_key:k,p_value:$("#"+id).value.trim()});
   await rpc("admin_set_setting",{p_key:"transfer_discount",p_value:parseInt($("#s_disc").value||"0",10)});flash("Ayarlar kaydedildi.",true)}catch(e){flash(e.message,false)}};
+ rpc("admin_seed_count").then(n=>{if(!n)return;$("#pane").insertAdjacentHTML("beforeend",`<div class="card" style="margin-top:16px;max-width:520px;border:1px solid #b3361f"><h3 style="margin-top:0">Demo hesaplar</h3><p class="mute" style="margin-top:0">Sitede deneme için açılmış <b>${n}</b> demo hesap ve odaları var. Siteyi herkese açmadan önce sil.</p><button class="r" id="purge">Demo hesapların hepsini sil</button></div>`);
+  $("#purge").onclick=async()=>{if(!confirm(n+" demo hesap, odaları, istekleri ve mesajları kalıcı olarak silinecek. Emin misin?"))return;try{const k=await rpc("admin_purge_seed");flash(k+" demo hesap silindi.",true);render()}catch(e){flash(e.message,false)}}}).catch(()=>{});
  $("#wbs").onclick=async()=>{try{await rpc("admin_set_setting",{p_key:"welcome_bonus",p_value:parseInt($("#wb").value||"0",10)});flash("Kaydedildi.",true)}catch(e){flash(e.message,false)}}}
 
 /* Ödemeler */
