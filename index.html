@@ -682,7 +682,7 @@ async function loadSite(){if(!sb)return;try{const{data,error}=await sb.rpc("site
  document.querySelectorAll(".cardp").forEach(e=>e.hidden=!SITE.card_enabled);$("#cinfo").textContent=SITE.company_info||"";$("#fwb").hidden=!SITE.free_for_women;drawRooms()}catch(e){}}
 loadSite();
 let PAY=null;
-function payClose(){if(PAY){clearInterval(PAY.t);try{if(PAY.ch)sb.removeChannel(PAY.ch)}catch(e){}}PAY=null}
+function payClose(){if(PAY){clearInterval(PAY.t);clearInterval(PAY.wt);try{if(PAY.ch)sb.removeChannel(PAY.ch)}catch(e){}}PAY=null}
 $("#payd").addEventListener("close",payClose);
 async function openBuy(coins){const pk=(SITE.packages||[]).find(p=>p.coins===coins);if(!pk)return;
  if(!sb)return;const u=await user();
@@ -704,20 +704,25 @@ async function openBuy(coins){const pk=(SITE.packages||[]).find(p=>p.coins===coi
   if(r.error)return msg($("#pym"),terr(r.error),false);payStep(r.data)}}
 function cardStep(c){$("#pym").className="msg";$("#pyt").textContent="Kartla ödeme";const t0=Date.now();
  $("#pyb").innerHTML=`<div class="psum"><div><b>${c.coins} coin</b><br><span style="color:var(--mute);font-size:.88rem">${Math.floor(c.coins/20)} odaya katılım</span></div><div class="pc"><b>${tl(c.price)}</b></div></div>
- <ol class="csteps"><li>Ödeme sayfasındaki <b>sipariş notu</b> alanına üyelik e-postanı yaz (coinlerin doğru hesaba yüklenmesi için):<div class="cmail"><b>${esc(c.email||"")}</b><button type="button" data-copy="${esc(c.email||"")}">Kopyala</button></div></li>
- <li>Kart bilgilerinle ödemeyi tamamla.</li><li>Bu pencereye dön; ödeme onaylanınca ${c.coins} coin hesabına <b>otomatik</b> yüklenir.</li></ol>
- <a class="btn btn-g" id="cgo" href="${esc(c.url)}" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:6px">Güvenli ödeme sayfasına git · ${tl(c.price)}</a>
- <p style="font-size:.8rem;color:var(--mute);margin:10px 0 0">Kart ödemeleri lisanslı ödeme altyapısı Shopier üzerinden, 3D Secure ile alınır. Kart bilgilerin ISDAMBUL'a iletilmez.</p>
+ <ol class="csteps"><li>Açılan ödeme penceresindeki <b>sipariş notu</b> alanına üyelik e-postanı yapıştır (butona basınca otomatik kopyalanır):<div class="cmail"><b>${esc(c.email||"")}</b><button type="button" data-copy="${esc(c.email||"")}">Kopyala</button></div></li>
+ <li>Kart bilgilerinle ödemeyi tamamla.</li><li>Ödeme onaylanınca ${c.coins} coin hesabına <b>otomatik</b> yüklenir.</li></ol>
+ <button type="button" class="btn-g" id="cgo" style="width:100%;margin-top:6px">Kartla öde · ${tl(c.price)}</button>
+ <p style="font-size:.8rem;color:var(--mute);margin:10px 0 0">🔒 Kart bilgilerin 3D Secure ile lisanslı ödeme kuruluşunun güvenli penceresinde alınır, ISDAMBUL'a iletilmez. Pencere açılmadıysa <a href="${esc(c.url)}" target="_blank" rel="noopener" id="cgo2">buraya dokun</a>.</p>
  <div id="cwait" hidden class="pdone" style="padding-top:8px"><div class="spin" aria-hidden="true"></div><p style="margin:6px 0 0;color:var(--mute);font-size:.9rem">Ödemen bekleniyor… Bu pencereyi açık bırakabilir ya da kapatabilirsin; coinler yine de hesabına yüklenir ve bildirim alırsın.</p></div>`;
  $("#pyb").onclick=async e=>{const cp=e.target.closest("[data-copy]");if(cp){try{await navigator.clipboard.writeText(cp.dataset.copy);cp.textContent="Kopyalandı"}catch(x){cp.textContent="Kopyalanamadı"}setTimeout(()=>cp.textContent="Kopyala",1500)}
-  if(e.target.closest("#cgo")){$("#cwait").hidden=false;cardWatch(c,t0)}};
+  if(e.target.closest("#cgo2")){$("#cwait").hidden=false;cardWatch(c,t0);return}
+  if(e.target.closest("#cgo")){try{navigator.clipboard.writeText(c.email||"")}catch(x){}const W=480,H=Math.min(780,screen.availHeight-40),L=Math.max(0,(screen.availWidth-W)/2+(screen.availLeft||0)),T=Math.max(0,(screen.availHeight-H)/2+(screen.availTop||0));
+   const w=window.open(c.url,"isdpay",`popup=yes,width=${W},height=${H},left=${L},top=${T}`);
+   if(!w){location.href=c.url;return}
+   try{w.focus()}catch(x){}$("#cwait").hidden=false;cardWatch(c,t0,w)}};
  cardWatch(c,t0)}
-function cardWatch(c,t0){if(PAY&&PAY.card)return;payClose();PAY={card:1,t:null,ch:null};const me=PAY;
+function cardWatch(c,t0,w){if(PAY&&PAY.card){if(w)PAY.w=w;return}payClose();PAY={card:1,t:null,ch:null,w:w||null,wt:null};const me=PAY;
  const check=async()=>{if(PAY!==me)return;const r=await sb.rpc("my_payments");if(!r.data)return;
   const x=r.data.find(q=>/^SHP/.test(q.ref_code||"")&&q.status==="approved"&&new Date(q.created_at).getTime()>t0-60000);
-  if(x){payClose();payStep(x);loadRooms()}};
+  if(x){try{if(me.w&&!me.w.closed)me.w.close()}catch(e){}payClose();payStep(x);loadRooms()}};
  user().then(u=>{if(u&&PAY===me)try{PAY.ch=sb.channel("cpay-"+u.id).on("postgres_changes",{event:"*",schema:"public",table:"payments",filter:"user_id=eq."+u.id},check).subscribe()}catch(e){}});
- PAY.t=setInterval(check,6000)}
+ PAY.t=setInterval(check,6000);
+ PAY.wt=setInterval(()=>{if(PAY!==me){return}if(me.w&&me.w.closed){me.w=null;const p=$("#cwait p");if(p)p.textContent="Ödemen kontrol ediliyor… Ödemeyi tamamladıysan coinlerin birkaç saniye içinde yüklenecek.";check();setTimeout(check,3000)}},1000)}
 function payStep(p){$("#pym").className="msg";
  if(p.status==="awaiting"){$("#pyt").textContent="Havale bilgileri";
   const row=(l,v,c)=>`<div><span>${l}</span><b>${esc(v)}</b>${c?`<button type="button" data-copy="${esc(c)}">Kopyala</button>`:""}</div>`;
