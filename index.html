@@ -652,8 +652,11 @@ async function accProfile(u,p){
  ${p.banned?`<p class="msg err" style="display:block">Hesabın askıya alındı. Bir hata olduğunu düşünüyorsan isdambul.info@gmail.com adresine yaz.</p>`:`<p style="color:var(--mute)">${ST[p.photo_status]||""}</p>`}
  ${canUp?`<label>Kendi çektiğin bir fotoğraf (yüzün net görünmeli)<input type="file" id="ph" accept="image/*" capture="user"></label><div class="chk"><input type="checkbox" id="phc"><label for="phc" style="margin:0;color:var(--ink)">Yüzümün göründüğü fotoğrafımın yalnızca profil doğrulaması amacıyla ISDAMBUL ekibince incelenmesine ve saklanmasına açık rıza veriyorum. <a href="gizlilik-kvkk.html" target="_blank" rel="noopener">Aydınlatma Metni</a></label></div><div style="margin-top:14px"><button type="button" class="btn-g" id="up">Fotoğrafı gönder</button></div>`:""}
  <p style="margin-top:16px"><strong>Coin bakiyesi:</strong> ${bal} <a href="#coin" data-go="1" style="margin-left:8px;font-size:.9rem">Coin satın al</a><br><span style="color:var(--mute);font-size:.88rem">${SITE.free_for_women&&p.gender==="Kadın"?(p.verified?"Onaylı kadın üye olarak gruplara ücretsiz katılırsın.":"Profil fotoğrafın onaylanınca gruplara ücretsiz katılırsın."):"Bir odaya katılma isteği 20 coin. Reddedilirsen ya da isteğini geri çekersen iade edilir."}</span></p>
+ ${await accInvite()}
  ${await accPays()}
  <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">${adm?`<a class="btn btn-g" href="admin.html">Admin paneli</a>`:""}<button type="button" id="out">Çıkış yap</button></div>`}
+async function accInvite(){try{const{data}=await sb.rpc("my_referral");const r=data&&data[0];if(!r||!r.code)return "";const link="https://www.isdambul.com.tr/?ref="+r.code;
+ return `<div style="margin-top:18px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fffdf7"><h4 style="margin:0 0 4px;font-family:Georgia,serif">Arkadaşını getir, ${r.bonus} coin kazan</h4><p style="margin:0 0 10px;color:var(--mute);font-size:.9rem">Davet linkinle üye olan arkadaşın profilini onaylatınca hesabına ${r.bonus} coin eklenir.</p><div style="padding:8px 10px;border-radius:8px;background:#f3eee2;font-size:.88rem;word-break:break-all">${esc(link)}</div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><button type="button" class="btn-g" data-invcopy="${esc(link)}">Linki kopyala</button><button type="button" data-invshare="${esc(link)}">Paylaş</button></div><p style="margin:8px 0 0;font-size:.85rem;color:var(--mute)">Davet ettiğin: ${r.invited} · Ödül kazandığın: ${r.rewarded}</p></div>`}catch(e){return ""}}
 async function accPays(){try{const{data}=await sb.rpc("my_payments");if(!data||!data.length)return "";
  const L={awaiting:["Ödeme bekleniyor","wait"],submitted:["Kontrol ediliyor","wait"],approved:["Onaylandı","ok"],rejected:["Onaylanmadı","no"]};
  return `<h4 style="margin:18px 0 4px;font-family:Georgia,serif">Ödemelerim</h4><div class="plist">`+data.slice(0,6).map(p=>`<div class="rq"><span>${p.coins} coin · ${tl(p.amount)}<br><span style="color:var(--mute)">${esc(p.ref_code)} · ${fmt(p.created_at)}</span></span><span class="bt"><span class="st ${(L[p.status]||["",""])[1]}">${(L[p.status]||[p.status])[0]}</span>${p.status==="awaiting"||p.status==="submitted"?`<button type="button" data-paystat="${p.id}">Detay</button>`:""}</span></div>`).join("")+`</div>`}catch(e){return ""}}
@@ -676,6 +679,8 @@ async function accReqs(){
  return data.map(q=>`<div class="acr"><h4>${esc(q.title)} ${q.room_status==="cancelled"?`<span class="st no">Oda iptal</span>`:stb(q.status)}</h4><div class="meta">${esc(q.venue)} · ${esc(q.city||"")}, ${esc(q.district||"")} · ${fmt(q.starts_at)}<br>Oda sahibi: ${esc(q.owner_name)}</div>
   <div class="bt" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">${q.status==="approved"&&q.room_status!=="cancelled"?`<button type="button" class="btn-g" data-chat="${q.room_id}">Sohbete gir</button><button type="button" data-leave="${q.id}">Odadan ayrıl</button>`:""}${q.status==="pending"?`<button type="button" data-wd="${q.id}">İsteği geri çek (coin iade)</button>`:""}</div></div>`).join("")}
 $("#accb").addEventListener("click",async e=>{const b=e.target.closest("button,a");if(!b)return;const m=$("#accm");
+ if(b.dataset.invcopy){try{await navigator.clipboard.writeText(b.dataset.invcopy);b.textContent="Kopyalandı"}catch(x){b.textContent="Kopyalanamadı"}setTimeout(()=>b.textContent="Linki kopyala",1500);return}
+ if(b.dataset.invshare){const t="ISDAMBUL'da mekâna birlikte gidecek ekip bul. Davet linkimle üye ol:";if(navigator.share){try{await navigator.share({title:"ISDAMBUL",text:t,url:b.dataset.invshare})}catch(x){}}else{window.open("https://wa.me/?text="+encodeURIComponent(t+" "+b.dataset.invshare),"_blank","noopener")}return}
  const run=async(fn,args,ok)=>{b.disabled=true;const r=await sb.rpc(fn,args);b.disabled=false;msg(m,r.error?terr(r.error):ok,!r.error);await openAcc();if(!r.error)loadRooms()};
  if(b.dataset.at){accTab=b.dataset.at;$("#accm").className="msg";return openAcc()}
  if(b.dataset.go){$("#accd").close();return}
@@ -845,9 +850,11 @@ $("#bell").onclick=()=>{renderNotifs();$("#notd").showModal();loadNotifs()};
 $("#nlist").addEventListener("click",e=>{const b=e.target.closest("[data-nid]");if(!b)return;const n=NT.items.find(x=>String(x.id)===b.dataset.nid);if(n)openNotif(n)});
 $("#nall").onclick=async()=>{await sb.rpc("mark_notifications_read",{p_ids:null});loadNotifs()};
 $("#nperm2").onclick=async()=>{try{await Notification.requestPermission()}catch(e){}renderNotifs()};
+const REFK="isd_ref";try{const rp=new URLSearchParams(location.search).get("ref");if(rp&&/^[A-Za-z0-9]{4,16}$/.test(rp))localStorage.setItem(REFK,rp)}catch(e){}
+async function claimRef(u){if(!u||!sb)return;let c=null;try{c=localStorage.getItem(REFK)}catch(e){}if(!c)return;try{const r=await sb.rpc("claim_referral",{p_code:c});if(!r.error&&r.data!=="no_profile")localStorage.removeItem(REFK)}catch(e){}}
 async function refreshNav(){const u=await user();
  const x=u?`<button class="btn-g" data-auth="account">Profilim</button>`:`<button data-auth="login">Giriş yap</button><button class="btn-g" data-auth="register">Üye ol</button>`;
- $("#navbtn").innerHTML=x;$("#mauth").innerHTML=x;notifStart(u)}
+ $("#navbtn").innerHTML=x;$("#mauth").innerHTML=x;notifStart(u);claimRef(u)}
 if(sb){refreshNav();sb.auth.onAuthStateChange((ev)=>{refreshNav();if(ev==="PASSWORD_RECOVERY")$("#pwd").showModal()})}
 $("#mauth").innerHTML=$("#navbtn").innerHTML;
 /* mobil menü */

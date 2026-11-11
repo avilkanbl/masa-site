@@ -412,7 +412,10 @@ async function enterMain(){$("#main").hidden=false;$("#main").classList.add("fad
  const h=new Date().getHours();$("#hkick").textContent=h<5?"İyi geceler":h<12?"Günaydın":h<18?"İyi günler":"İyi akşamlar";
  await Promise.all([loadVenues(),loadSiteInfo(),loadMe()]);await loadRooms();tab(TAB);notifStart()}
 async function loadSiteInfo(){try{const r=await sb.rpc("site_info");if(r.data)SITE=r.data}catch(e){}}
-async function loadMe(){U=await user();P=null;BAL=0;if(U){try{const r=await sb.from("profiles").select("*").eq("id",U.id).maybeSingle();P=r.data}catch(e){}
+let REF=null;try{const rp=new URLSearchParams(location.search).get("ref");if(rp&&/^[A-Za-z0-9]{4,16}$/.test(rp))localStorage.setItem("isd_ref",rp)}catch(e){}
+async function loadMe(){U=await user();P=null;BAL=0;REF=null;if(U){try{const c=localStorage.getItem("isd_ref");if(c){const r=await sb.rpc("claim_referral",{p_code:c});if(!r.error&&r.data!=="no_profile")localStorage.removeItem("isd_ref")}}catch(e){}
+  try{const r=await sb.rpc("my_referral");REF=r.data&&r.data[0]||null}catch(e){}
+  try{const r=await sb.from("profiles").select("*").eq("id",U.id).maybeSingle();P=r.data}catch(e){}
   try{const r=await sb.from("my_token_balance").select("balance").maybeSingle();BAL=r.data?r.data.balance:0}catch(e){}}
  $("#coinpill").hidden=!U;$("#bell").hidden=!U;$("#bal").textContent=BAL}
 async function loadVenues(){if(VENUES.length)return;try{const{data}=await sb.from("venues").select("id,name,city,district,categories").limit(3000);
@@ -585,6 +588,7 @@ function renderMe(){const v=$("#v-me");if(!U||!P){v.innerHTML=guestBox("Profilin
  <div class="wal"><div><small>Coin bakiyen</small><b>${BAL}</b><small>${freeMe()?"Onaylı kadın üye: katılım ücretsiz":`${Math.floor(BAL/20)} odaya katılım`}</small></div><button class="bs g" id="buy">Coin al</button></div>
  ${P.banned?`<div class="row"><p style="margin:0;color:#ffb4b4">Hesabın askıya alındı. isdambul.info@gmail.com adresine yazabilirsin.</p></div>`:`<div class="row"><h4>Profil doğrulama ${P.photo_status==="approved"?'<span class="st ok">Onaylı</span>':P.photo_status==="pending"?'<span class="st wait">İnceleniyor</span>':""}</h4><div class="m">${PST[P.photo_status]||PST.none}</div>
  ${canUp?`<label class="fld" style="margin-top:10px"><span>Yüzünün net göründüğü bir fotoğraf</span><input type="file" id="phf" accept="image/*" capture="user"></label><label class="chk"><input type="checkbox" id="phc"><span>Fotoğrafımın yalnızca profil doğrulaması için ISDAMBUL ekibince incelenmesine açık rıza veriyorum. <a href="/gizlilik-kvkk.html" target="_blank">Aydınlatma Metni</a></span></label><button class="bs g" id="phup">Fotoğrafı gönder</button>`:""}</div>`}
+ ${REF&&REF.code?`<div class="row"><h4>Arkadaşını getir, ${REF.bonus} coin kazan</h4><div class="m">Davet linkinle üye olan arkadaşın profilini onaylatınca hesabına ${REF.bonus} coin eklenir. Davet ettiğin: ${REF.invited} · Ödül: ${REF.rewarded}</div><div style="margin-top:10px;padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.06);font-size:.82rem;word-break:break-all">https://www.isdambul.com.tr/?ref=${esc(REF.code)}</div><div style="display:flex;gap:8px;margin-top:10px"><button class="bs g" data-copy="https://www.isdambul.com.tr/?ref=${esc(REF.code)}">Kopyala</button><button class="bs" id="invsh">Paylaş</button></div></div>`:""}
  <div class="menu">
   <button id="mpay"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>Ödemelerim<span class="r">›</span></button>
   <button id="mnot"><svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/></svg>Bildirimler<span class="r">›</span></button>
@@ -594,6 +598,7 @@ function renderMe(){const v=$("#v-me");if(!U||!P){v.innerHTML=guestBox("Profilin
   <button id="mintro"><svg viewBox="0 0 24 24"><path d="M5 4l14 8-14 8z"/></svg>Tanıtımı tekrar izle<span class="r">›</span></button>
   <button id="mout" style="color:#ffb4b4"><svg viewBox="0 0 24 24" style="stroke:#ffb4b4"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/></svg>Çıkış yap</button>
  </div><p style="text-align:center;color:var(--mute);font-size:.72rem">ISDAMBUL · 18+</p>`;
+ const ish=$("#invsh");if(ish)ish.onclick=async()=>{const l="https://www.isdambul.com.tr/?ref="+REF.code,t="ISDAMBUL'da mekâna birlikte gidecek ekip bul. Davet linkimle üye ol:";if(navigator.share){try{await navigator.share({title:"ISDAMBUL",text:t,url:l})}catch(x){}}else window.open("https://wa.me/?text="+encodeURIComponent(t+" "+l),"_blank","noopener")};
  $("#buy").onclick=()=>buySheet();$("#mpay").onclick=paysSheet;$("#mnot").onclick=notifSheet;
  $("#mintro").onclick=()=>{SKIP=false;$("#istart").classList.remove("on");$("#skip").hidden=false;$("#iph").innerHTML="";intro()};
  $("#mout").onclick=async()=>{await sb.auth.signOut();U=null;P=null;notifStart();$("#main").hidden=true;showAuth(false)};
