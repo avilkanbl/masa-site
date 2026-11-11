@@ -352,12 +352,11 @@ async function user(){if(!sb)return null;const{data}=await sb.auth.getSession();
 
 /* ================= INTRO ================= */
 const LINES=[
- {t:"İSDAMBUL",cap:1,gold:1,d:2.4,hold:900},
- {t:"Hoş geldin",d:2.2,hold:700},
- {t:"Arkadaş bulmaya hazır mısın?",d:2.8,hold:800,sub:"Mekâna yalnız gitme"},
- {t:"Çok az kaldı",d:2.0,hold:700},
- {t:"Tek yapman gereken",d:2.0,hold:200,sub:"odalara dahil olmak"},
- {t:"odalara dahil olmak",gold:1,d:2.4,hold:900}
+ {t:"Hoş geldiniz",gold:1,d:2.2,hold:900},
+ {t:"Tüm mekânlara girmek",d:2.2,hold:200,sub:"artık çok kolay"},
+ {t:"artık çok kolay",d:2.0,hold:800},
+ {t:"Son bir adım kaldı",d:2.0,hold:700},
+ {t:"Kayıt ol, arkadaşlarını bul",gold:1,d:2.6,hold:1000}
 ];
 const SHOW_V=[["360 İstanbul","rooftop"],["Mikla","rooftop"],["Nardis Jazz Club","canli"],["Sortie","kulup"],["Babylon","canli"],["Kuruçeşme","kokteyl"],["Bebek","bar"]];
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
