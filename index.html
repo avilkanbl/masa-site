@@ -9,6 +9,10 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#0f1a33">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="ISDAMBUL">
 <meta property="og:type" content="website"><meta property="og:locale" content="tr_TR">
 <meta property="og:title" content="ISDAMBUL | Mekâna Dam Bul, Gece Hayatında Ekibini Tamamla"><meta property="og:url" content="https://www.isdambul.com.tr/"><meta property="og:site_name" content="ISDAMBUL">
 <meta property="og:description" content="İstanbul, Ankara, İzmir, Bursa, Antalya, Muğla, Eskişehir ve Kocaeli’nin gece mekânlarında küçük, onaylı gruplarla güvenle buluş.">
@@ -118,7 +122,7 @@ section{scroll-margin-top:70px}
 .ni{display:flex;gap:12px;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:12px 22px;background:#fff;font-weight:400;color:var(--ink)}
 .ni:hover{background:#faf7f0}.ni.un{background:#fff8e6}.ni .dot2{width:9px;height:9px;border-radius:50%;background:transparent;flex:none;margin-top:7px}.ni.un .dot2{background:var(--gold)}
 .ni b{display:block;font-size:.95rem}.ni span{display:block;font-size:.88rem;color:var(--mute)}.ni time{display:block;font-size:.75rem;color:var(--mute);margin-top:2px}
-.ckbar[hidden]{display:none}.ckbar p{margin:0}.ckbar a{color:var(--gold)}.ckbar button{padding:7px 16px;white-space:nowrap}
+.ckbar[hidden]{display:none}.appbar{bottom:12px;z-index:31}.appbar [hidden]{display:none!important}.appbar img{width:40px;height:40px;border-radius:10px;flex:none}.appbar .x{background:none;border:0;color:#9aa6c4;font-size:1.3rem;padding:4px 6px;cursor:pointer}.appbar .ios{display:block;font-size:.85rem;color:#c9d0e4;margin-top:2px}.ckbar p{margin:0}.ckbar a{color:var(--gold)}.ckbar button{padding:7px 16px;white-space:nowrap}
 /* hero v2 */
 .slide:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(8,14,30,.88),transparent 48%)}
 .slide .hi{object-position:center 30%}
@@ -325,6 +329,7 @@ select:disabled{opacity:.6;background:#f1eee5;cursor:not-allowed}
 <p style="margin-top:24px;font-size:.84rem">© 2026 ISDAMBUL. Tüm hakları saklıdır. Listelenen mekânlar bilgi amaçlıdır; ISDAMBUL bu mekânlarla bağlantılı değildir. Aşırı alkol tüketimi sağlığa zararlıdır; sorumlu davranın.</p>
 </div></footer>
 
+<div class="ckbar appbar" id="appbar" hidden role="region" aria-label="Uygulamayı yükle"><img src="/icon-192.png" alt=""><p style="flex:1"><b>ISDAMBUL uygulamasını yükle</b><span class="ios" id="appios" hidden>Safari'de alttaki <b>Paylaş</b> simgesine, ardından <b>Ana Ekrana Ekle</b>'ye dokun.</span><span class="ios" id="appand">Ana ekrandan tek dokunuşla aç, bildirimleri kaçırma.</span></p><button class="btn-g" id="appgo">Yükle</button><button class="x" id="appx" aria-label="Kapat">×</button></div>
 <div class="ckbar" id="ckbar" hidden role="region" aria-label="Çerez bilgilendirmesi"><p>Bu sitede yalnızca oturum ve yaş onayı gibi zorunlu çerez/yerel depolama kullanılır. <a href="cerez-politikasi.html">Ayrıntılar</a></p><button class="btn-g" id="ckok">Tamam</button></div>
 
 <dialog id="authd" aria-labelledby="atitle"><button class="close" aria-label="Kapat" data-close>&times;</button>
@@ -876,6 +881,19 @@ $("#sn1").textContent=CITIES.length;$("#sn2").textContent=VENUES.length;
  if(ok)return;const d=$("#ageg");d.addEventListener("cancel",e=>e.preventDefault());d.showModal();
  $("#ageyes").onclick=()=>{try{localStorage.setItem("age18","1")}catch(e){}d.close()};
  $("#ageno").onclick=()=>{d.querySelector("p").textContent="Üzgünüz, bu siteye yalnızca 18 yaş ve üzeri kişiler girebilir.";$("#ageyes").remove();$("#ageno").remove()}})();
+</script>
+<script>
+/* PWA: servis çalışanı ve "uygulamayı yükle" bandı */
+if("serviceWorker" in navigator){addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}))}
+(function(){const sa=matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;let dis=false;try{dis=localStorage.getItem("app1")==="x"}catch(e){}
+ const mob=matchMedia("(pointer:coarse)").matches&&innerWidth<900;if(sa||dis||!mob)return;
+ const ios=/iphone|ipad|ipod/i.test(navigator.userAgent)&&!/crios|fxios/i.test(navigator.userAgent);let ev=null;const bar=document.getElementById("appbar");
+ const show=()=>{const ck=document.getElementById("ckbar");if(ck&&!ck.hidden){setTimeout(show,4000);return}bar.hidden=false};
+ document.getElementById("appx").onclick=()=>{bar.hidden=true;try{localStorage.setItem("app1","x")}catch(e){}};
+ if(ios){document.getElementById("appios").hidden=false;document.getElementById("appand").hidden=true;document.getElementById("appgo").hidden=true;setTimeout(show,6000);return}
+ addEventListener("beforeinstallprompt",e=>{e.preventDefault();ev=e;setTimeout(show,3000)});
+ document.getElementById("appgo").onclick=async()=>{if(!ev)return;ev.prompt();try{await ev.userChoice}catch(e){}ev=null;bar.hidden=true};
+ addEventListener("appinstalled",()=>{bar.hidden=true})})();
 </script>
 </body>
 </html>
