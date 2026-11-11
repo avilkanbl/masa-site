@@ -175,6 +175,7 @@ select:disabled{opacity:.6;background:#f1eee5;cursor:not-allowed}
 .psum{display:flex;justify-content:space-between;align-items:center;background:var(--ivory);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:6px 0 14px}
 .psum b{font:700 1.5rem Georgia,serif}.psum s{color:var(--mute);margin-right:6px}.psum .pc{text-align:right}
 .pmeth{display:flex;gap:12px;align-items:center;border:2px solid var(--gold);border-radius:12px;padding:12px 14px;background:#fffaf0}
+.pmeth.sel{cursor:pointer}.pmeth.off{border-color:var(--line);background:#fff}.pmeth+.pmeth{margin-top:10px}.csteps{margin:4px 0 0;padding-left:20px}.csteps li{margin:0 0 10px}.cmail{display:flex;gap:8px;align-items:center;background:var(--ivory);border:1px solid var(--line);border-radius:10px;padding:9px 12px;margin-top:6px}.cmail b{flex:1;word-break:break-all}
 .pmeth .bd{margin-left:auto;background:var(--gold);color:var(--navy);font-weight:700;font-size:.78rem;padding:3px 10px;border-radius:99px}
 .bank{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:8px 0 12px}
 .bank div{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line)}
@@ -291,9 +292,9 @@ select:disabled{opacity:.6;background:#f1eee5;cursor:not-allowed}
 <p class="hvb" id="fwb" hidden><b>Onaylı kadın üyelere katılım ücretsiz</b> · Odalara katılma isteği coin gerektirmez.</p>
 <p class="hvb"><b>Havale/EFT ile <span id="hdisc">%15</span> indirim</b> · Ödemen onaylandığı anda coinlerin hesabına tanımlanır.</p>
 <div class="grid">
-<div class="card pack"><div class="amt">40</div><div class="price"><span data-tp="40">84 ₺</span> <s data-lp="40">99 ₺</s></div><small>Havale/EFT ile · 2 odaya katılım</small><button class="btn-g" data-buy="40">Satın al</button></div>
-<div class="card pack best"><span class="tag">En çok tercih edilen</span><div class="amt">120</div><div class="price"><span data-tp="120">169 ₺</span> <s data-lp="120">199 ₺</s></div><small>Havale/EFT ile · 6 odaya katılım</small><button class="btn-g" data-buy="120">Satın al</button></div>
-<div class="card pack"><div class="amt">300</div><div class="price"><span data-tp="300">254 ₺</span> <s data-lp="300">299 ₺</s></div><small>Havale/EFT ile · 15 odaya katılım</small><button class="btn-g" data-buy="300">Satın al</button></div>
+<div class="card pack"><div class="amt">40</div><div class="price"><span data-tp="40">84 ₺</span> <s data-lp="40">99 ₺</s></div><small>Havale/EFT ile<span class="cardp" hidden> · kartla 99 ₺</span> · 2 odaya katılım</small><button class="btn-g" data-buy="40">Satın al</button></div>
+<div class="card pack best"><span class="tag">En çok tercih edilen</span><div class="amt">120</div><div class="price"><span data-tp="120">169 ₺</span> <s data-lp="120">199 ₺</s></div><small>Havale/EFT ile<span class="cardp" hidden> · kartla 199 ₺</span> · 6 odaya katılım</small><button class="btn-g" data-buy="120">Satın al</button></div>
+<div class="card pack"><div class="amt">300</div><div class="price"><span data-tp="300">254 ₺</span> <s data-lp="300">299 ₺</s></div><small>Havale/EFT ile<span class="cardp" hidden> · kartla 299 ₺</span> · 15 odaya katılım</small><button class="btn-g" data-buy="300">Satın al</button></div>
 </div>
 <p class="lead" style="margin-top:20px">Fiyatlara KDV dahildir. Coinler yalnızca ISDAMBUL üzerinde kullanılır; kullanıcılar arasında aktarılamaz ve nakde çevrilemez. Ayrıntılar için <a href="mesafeli-satis.html" style="color:var(--gold)">Mesafeli Satış Sözleşmesi</a> ve <a href="iade-ve-coin.html" style="color:var(--gold)">Coin ve iade koşulları</a> sayfalarına bakabilirsin.</p>
 </div></section>
@@ -678,7 +679,7 @@ const tl=n=>Number(n).toLocaleString("tr-TR",{minimumFractionDigits:Number(n)%1?
 async function loadSite(){if(!sb)return;try{const{data,error}=await sb.rpc("site_info");if(error||!data)return;SITE=data;
  (SITE.packages||[]).forEach(p=>{const a=document.querySelector(`[data-tp="${p.coins}"]`),b=document.querySelector(`[data-lp="${p.coins}"]`);if(a)a.textContent=tl(p.transfer_price);if(b){b.textContent=tl(p.price);b.hidden=Number(p.price)===Number(p.transfer_price)}});
  $("#hdisc").textContent="%"+(SITE.transfer_discount||0);
- $("#cinfo").textContent=SITE.company_info||"";$("#fwb").hidden=!SITE.free_for_women;drawRooms()}catch(e){}}
+ document.querySelectorAll(".cardp").forEach(e=>e.hidden=!SITE.card_enabled);$("#cinfo").textContent=SITE.company_info||"";$("#fwb").hidden=!SITE.free_for_women;drawRooms()}catch(e){}}
 loadSite();
 let PAY=null;
 function payClose(){if(PAY){clearInterval(PAY.t);try{if(PAY.ch)sb.removeChannel(PAY.ch)}catch(e){}}PAY=null}
@@ -686,15 +687,37 @@ $("#payd").addEventListener("close",payClose);
 async function openBuy(coins){const pk=(SITE.packages||[]).find(p=>p.coins===coins);if(!pk)return;
  if(!sb)return;const u=await user();
  if(!u){tab(true);$("#authd").showModal();msg($("#amsg"),"Coin satın almak için önce ücretsiz üye ol ya da giriş yap.",true);return}
- payClose();$("#pym").className="msg";$("#pyt").textContent="Coin satın al";
+ payClose();const CARD=!!SITE.card_enabled;let M="havale";$("#pym").className="msg";$("#pyt").textContent="Coin satın al";
  $("#pyb").innerHTML=`<div class="psum"><div><b>${coins} coin</b><br><span style="color:var(--mute);font-size:.88rem">${Math.floor(coins/20)} odaya katılım</span></div><div class="pc"><s>${tl(pk.price)}</s><b>${tl(pk.transfer_price)}</b></div></div>
  <div style="font-size:.88rem;color:var(--mute);margin-bottom:6px">Ödeme yöntemi</div>
- <div class="pmeth"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 10h18M5 10V8l7-4 7 4v2M6 10v7M10 10v7M14 10v7M18 10v7M4 20h16"/></svg><div><b>Havale / EFT</b><br><span style="font-size:.85rem;color:var(--mute)">Banka hesabına para transferi</span></div><span class="bd">%${SITE.transfer_discount||0} indirim</span></div>
- <div style="margin-top:16px"><button class="btn-g" id="pgo" style="width:100%">Havale ile öde · ${tl(pk.transfer_price)}</button></div>
+ <div class="pmeth sel" data-m="havale"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 10h18M5 10V8l7-4 7 4v2M6 10v7M10 10v7M14 10v7M18 10v7M4 20h16"/></svg><div><b>Havale / EFT</b><br><span style="font-size:.85rem;color:var(--mute)">Banka hesabına para transferi</span></div><span class="bd">%${SITE.transfer_discount||0} indirim</span></div>
+ ${CARD?`<div class="pmeth sel off" data-m="card"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 10h19M6 15h4"/></svg><div><b>Kredi / banka kartı</b><br><span style="font-size:.85rem;color:var(--mute)">Anında yüklenir · ${tl(pk.price)}</span></div></div>`:""}
+<div style="margin-top:16px"><button class="btn-g" id="pgo" style="width:100%">Havale ile öde · ${tl(pk.transfer_price)}</button></div>
  <p style="font-size:.8rem;color:var(--mute);margin:10px 0 0">Satın alarak <a href="mesafeli-satis.html" target="_blank" rel="noopener">Mesafeli Satış Sözleşmesi</a>'ni ve <a href="iade-ve-coin.html" target="_blank" rel="noopener">Coin ve iade koşulları</a>'nı kabul etmiş olursun.</p>`;
  if(!$("#payd").open)$("#payd").showModal();
- $("#pgo").onclick=async()=>{const b=$("#pgo");b.disabled=true;const r=await sb.rpc("create_payment",{p_coins:coins});b.disabled=false;
+ $("#pyb").onclick=e=>{const m=e.target.closest("[data-m]");if(!m)return;M=m.dataset.m;
+  document.querySelectorAll("#pyb [data-m]").forEach(x=>x.classList.toggle("off",x.dataset.m!==M));
+  $("#pgo").textContent=M==="card"?"Kartla öde · "+tl(pk.price):"Havale ile öde · "+tl(pk.transfer_price)};
+ $("#pgo").onclick=async()=>{const b=$("#pgo");b.disabled=true;
+  if(M==="card"){const r=await sb.rpc("create_card_intent",{p_coins:coins});b.disabled=false;if(r.error)return msg($("#pym"),terr(r.error),false);return cardStep(r.data)}
+  const r=await sb.rpc("create_payment",{p_coins:coins});b.disabled=false;
   if(r.error)return msg($("#pym"),terr(r.error),false);payStep(r.data)}}
+function cardStep(c){$("#pym").className="msg";$("#pyt").textContent="Kartla ödeme";const t0=Date.now();
+ $("#pyb").innerHTML=`<div class="psum"><div><b>${c.coins} coin</b><br><span style="color:var(--mute);font-size:.88rem">${Math.floor(c.coins/20)} odaya katılım</span></div><div class="pc"><b>${tl(c.price)}</b></div></div>
+ <ol class="csteps"><li>Ödeme sayfasındaki <b>sipariş notu</b> alanına üyelik e-postanı yaz (coinlerin doğru hesaba yüklenmesi için):<div class="cmail"><b>${esc(c.email||"")}</b><button type="button" data-copy="${esc(c.email||"")}">Kopyala</button></div></li>
+ <li>Kart bilgilerinle ödemeyi tamamla.</li><li>Bu pencereye dön; ödeme onaylanınca ${c.coins} coin hesabına <b>otomatik</b> yüklenir.</li></ol>
+ <a class="btn btn-g" id="cgo" href="${esc(c.url)}" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:6px">Güvenli ödeme sayfasına git · ${tl(c.price)}</a>
+ <p style="font-size:.8rem;color:var(--mute);margin:10px 0 0">Kart ödemeleri lisanslı ödeme altyapısı Shopier üzerinden, 3D Secure ile alınır. Kart bilgilerin ISDAMBUL'a iletilmez.</p>
+ <div id="cwait" hidden class="pdone" style="padding-top:8px"><div class="spin" aria-hidden="true"></div><p style="margin:6px 0 0;color:var(--mute);font-size:.9rem">Ödemen bekleniyor… Bu pencereyi açık bırakabilir ya da kapatabilirsin; coinler yine de hesabına yüklenir ve bildirim alırsın.</p></div>`;
+ $("#pyb").onclick=async e=>{const cp=e.target.closest("[data-copy]");if(cp){try{await navigator.clipboard.writeText(cp.dataset.copy);cp.textContent="Kopyalandı"}catch(x){cp.textContent="Kopyalanamadı"}setTimeout(()=>cp.textContent="Kopyala",1500)}
+  if(e.target.closest("#cgo")){$("#cwait").hidden=false;cardWatch(c,t0)}};
+ cardWatch(c,t0)}
+function cardWatch(c,t0){if(PAY&&PAY.card)return;payClose();PAY={card:1,t:null,ch:null};const me=PAY;
+ const check=async()=>{if(PAY!==me)return;const r=await sb.rpc("my_payments");if(!r.data)return;
+  const x=r.data.find(q=>/^SHP/.test(q.ref_code||"")&&q.status==="approved"&&new Date(q.created_at).getTime()>t0-60000);
+  if(x){payClose();payStep(x);loadRooms()}};
+ user().then(u=>{if(u&&PAY===me)try{PAY.ch=sb.channel("cpay-"+u.id).on("postgres_changes",{event:"*",schema:"public",table:"payments",filter:"user_id=eq."+u.id},check).subscribe()}catch(e){}});
+ PAY.t=setInterval(check,6000)}
 function payStep(p){$("#pym").className="msg";
  if(p.status==="awaiting"){$("#pyt").textContent="Havale bilgileri";
   const row=(l,v,c)=>`<div><span>${l}</span><b>${esc(v)}</b>${c?`<button type="button" data-copy="${esc(c)}">Kopyala</button>`:""}</div>`;

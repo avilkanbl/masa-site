@@ -76,12 +76,12 @@ function loginView(){app.innerHTML=`<form class="login card" id="lf"><h2 style="
 async function logout(){await sb.auth.signOut();location.reload()}
 $("#out").onclick=e=>{e.preventDefault();logout()};
 
-const TABS=[["ozet","Özet"],["odeme","Ödemeler","pending_payments"],["foto","Fotoğraf onayı","pending_photos"],["uye","Üyeler"],["oda","Odalar"],["sik","Şikâyetler","open_reports"],["mekan","Mekânlar"]];
+const TABS=[["ozet","Özet"],["odeme","Ödemeler","pending_payments"],["kart","Kart (Shopier)"],["foto","Fotoğraf onayı","pending_photos"],["uye","Üyeler"],["oda","Odalar"],["sik","Şikâyetler","open_reports"],["mekan","Mekânlar"]];
 async function render(){
  try{STATS=await rpc("admin_stats")}catch(e){STATS={}}
  app.innerHTML=`<nav>${TABS.map(([k,l,s])=>`<button data-tab="${k}" aria-selected="${TAB===k}">${l}${s&&STATS[s]?`<span class="badge">${STATS[s]}</span>`:""}</button>`).join("")}</nav><div class="msg" id="flash"></div><div id="pane"><p class="empty">Yükleniyor…</p></div>`;
  app.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{TAB=b.dataset.tab;render()});
- try{await ({ozet,odeme,foto,uye,oda,sik,mekan})[TAB]()}catch(e){$("#pane").innerHTML=`<p class="msg err" style="display:block">${esc(e.message)}</p>`}}
+ try{await ({ozet,odeme,kart,foto,uye,oda,sik,mekan})[TAB]()}catch(e){$("#pane").innerHTML=`<p class="msg err" style="display:block">${esc(e.message)}</p>`}}
 
 /* Özet */
 async function ozet(){const s=STATS;
@@ -123,6 +123,24 @@ async function odeme(){const L=await rpc("admin_payments",{p_status:PSCOPE});
   try{if(b.dataset.pok){if(!confirm("Ödeme hesabına geçtiyse onayla. Coinler üyenin hesabına yüklenecek."))return;b.disabled=true;await rpc("admin_decide_payment",{p_id:b.dataset.pok,p_approve:true});flash("Ödeme onaylandı, coinler yüklendi.",true)}
    else{const why=prompt("Reddetme nedeni (üyeye gösterilir, isteğe bağlı):","Ödeme hesabımıza ulaşmadı.");if(why===null)return;await rpc("admin_decide_payment",{p_id:b.dataset.pno,p_approve:false,p_note:why});flash("Ödeme reddedildi.",true)}
    render()}catch(x){flash(x.message,false);b.disabled=false}}}
+/* Kart ödemeleri (Shopier) */
+let KSCOPE="all";
+async function kart(){const L=await rpc("admin_shopier_orders",{p_status:KSCOPE});
+ const sl={credited:["Coin yüklendi","ok"],unmatched:["Eşleşmedi","wait"],test:["Test","" ],ignored:["Tanınmayan ürün","no"]};
+ $("#pane").innerHTML=`<div class="bar"><label>Göster<select id="kss"><option value="all">Tümü</option><option value="unmatched">Eşleşmeyenler</option><option value="credited">Yüklenenler</option><option value="test">Testler</option></select></label>
+ <span class="mute">Shopier'den gelen kart ödemeleri burada listelenir. Üye, sipariş notuna yazdığı e-postayla otomatik eşleştirilir.</span></div>
+ ${L.length?`<div class="tw"><table><thead><tr><th>Tarih</th><th>Sipariş</th><th>Alıcı (Shopier)</th><th>Paket / tutar</th><th>Not</th><th>Durum · üye</th><th>İşlem</th></tr></thead><tbody>${L.map(o=>`<tr>
+ <td>${dt(o.created_at)}</td><td><b style="font-family:monospace">${esc(o.order_id)}</b></td>
+ <td>${esc(o.buyer_name||"–")}<br><span class="mute">${esc(o.email||"")}</span></td>
+ <td>${o.coins??"?"} coin<br><span class="mute">${o.price!=null?tl(o.price):"–"}</span></td>
+ <td><span class="mute">${esc(o.note||"–")}</span></td>
+ <td><span class="st ${(sl[o.status]||["",""])[1]}">${(sl[o.status]||[o.status])[0]}</span>${o.user_email?`<br><span class="mute">${esc(o.user_name||"")} · ${esc(o.user_email)}</span>`:""}</td>
+ <td>${o.status==="unmatched"?`<button class="sm g" data-kas="${esc(o.order_id)}">Üyeye ata</button>`:""}</td></tr>`).join("")}</tbody></table></div>`:'<p class="empty">Henüz kart ödemesi yok.</p>'}
+ <p class="mute" style="font-size:.85rem">"Eşleşmedi" görünen ödemelerde, alıcıyla iletişime geçip sitedeki üyelik e-postasını öğren ve "Üyeye ata" ile coinleri yükle.</p>`;
+ $("#kss").value=KSCOPE;$("#kss").onchange=e=>{KSCOPE=e.target.value;render()};
+ $("#pane").onclick=async e=>{const b=e.target.closest("[data-kas]");if(!b)return;
+  const m=prompt("Coinlerin yükleneceği üyenin sitedeki e-posta adresi:","");if(!m)return;
+  try{b.disabled=true;await rpc("admin_assign_shopier",{p_order:b.dataset.kas,p_email:m.trim()});flash("Coinler üyeye yüklendi.",true);render()}catch(x){flash(x.message,false);b.disabled=false}}}
 function beep(){try{const a=new (window.AudioContext||window.webkitAudioContext)(),o=a.createOscillator(),g=a.createGain();o.connect(g);g.connect(a.destination);o.frequency.value=880;g.gain.setValueAtTime(.15,a.currentTime);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+.6);o.start();o.stop(a.currentTime+.6)}catch(e){}}
 function watchPayments(){if(PWATCH)return;let last=null;
  const notify=(t,b)=>{beep();document.title="(!) "+BASE_TITLE;try{if(("Notification" in window)&&Notification.permission==="granted")new Notification(t,{body:b})}catch(e){}};
