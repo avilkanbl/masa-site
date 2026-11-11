@@ -35,6 +35,8 @@ a{color:var(--gold2)}
 #intro .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,.55),rgba(5,5,5,.25) 40%,rgba(5,5,5,.85))}
 @keyframes kb{from{transform:scale(1.18)}to{transform:scale(1)}}
 #stage{position:relative;width:min(92vw,560px);height:46vh;display:flex;align-items:center;justify-content:center}
+#stage.list{flex-direction:column;height:auto;gap:2px;z-index:2}
+#stage .ln{width:100%;height:clamp(40px,7.5vh,64px);display:flex;justify-content:center}
 #stage svg{width:100%;height:100%;overflow:visible}
 #stage text{font-family:"Dancing Script",cursive;font-weight:700;fill:transparent;stroke:#fff;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round}
 #stage text.cap{font-family:"Playfair Display",Georgia,serif;letter-spacing:.18em;font-weight:700}
@@ -353,15 +355,16 @@ async function user(){if(!sb)return null;try{const r=await Promise.race([sb.auth
 /* ================= INTRO ================= */
 const LINES=[
  {t:"Hoş geldiniz",gold:1,d:2.2,hold:900},
- {t:"Tüm mekânlara girmek",d:2.2,hold:200,sub:"artık çok kolay"},
+ {t:"Tüm mekânlara girmek",d:2.2,hold:200},
  {t:"artık çok kolay",d:2.0,hold:800},
  {t:"Son bir adım kaldı",d:2.0,hold:700},
  {t:"Kayıt ol, arkadaşlarını bul",gold:1,d:2.6,hold:1000}
 ];
-const SHOW_V=[["360 İstanbul","rooftop"],["Mikla","rooftop"],["Nardis Jazz Club","canli"],["Sortie","kulup"],["Babylon","canli"],["Kuruçeşme","kokteyl"],["Bebek","bar"]];
+const SHOW_G=[{ph:["Sortie","kulup"],v:["Sortie","Ruby","Blackk","Oligark"]},{ph:["360 İstanbul","rooftop"],v:["360 İstanbul","Mikla","Nardis Jazz Club","Karga Bar"]}];
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
 let SKIP=false;
-function drawText(o){const st=$("#stage");const NS="http://www.w3.org/2000/svg";
+function drawText(o,keep){const st0=$("#stage");const NS="http://www.w3.org/2000/svg";let st=st0;
+ if(keep){st0.classList.add("list");st=document.createElement("div");st.className="ln";st0.appendChild(st)}else st0.classList.remove("list");
  st.innerHTML=`<svg xmlns="${NS}"><defs><linearGradient id="gg" x1="0" x2="1"><stop offset="0" stop-color="#f6e6c4"/><stop offset=".5" stop-color="#ecd3a0"/><stop offset="1" stop-color="#b8955a"/></linearGradient></defs><text x="0" y="0"></text></svg>`;
  const svg=st.querySelector("svg"),tx=svg.querySelector("text");tx.textContent=o.t;if(o.cap)tx.classList.add("cap");if(o.gold)tx.classList.add("gold");
  tx.setAttribute("font-size",o.cap?40:56);
@@ -374,14 +377,20 @@ async function intro(){const el=$("#intro");el.hidden=false;
   const tx=drawText(o);$("#isub").textContent=o.sub||"";$("#isub").classList.toggle("on",!!o.sub);
   await wait(o.d*1000+o.hold);if(SKIP)break;if(i<LINES.length-1){tx.classList.add("out");await wait(450)}}
  dots.innerHTML="";
- // mekân slaytları
- if(!SKIP){$("#stage .draw")&&$("#stage text").classList.add("out");await wait(400);
-  const box=$("#iph");box.innerHTML=SHOW_V.map(([n,c],i)=>`<div class="ph"><img src="${vph({id:n,c:[c]},1100,1600)}" alt="" onerror="this.remove()"></div>`).join("");
-  $("#isub").textContent="her mekân seni bekliyor";$("#isub").classList.add("on");
-  for(let i=0;i<SHOW_V.length&&!SKIP;i++){[...box.children].forEach((p,j)=>p.classList.toggle("on",j===i));drawText({t:SHOW_V[i][0],d:1.3});await wait(1650)}}
+ // mekân isimleri alt alta, 2 görsel
+ if(!SKIP){$("#stage text")&&$("#stage text").classList.add("out");await wait(450);$("#stage").innerHTML="";
+  const box=$("#iph");box.innerHTML=SHOW_G.map(g=>`<div class="ph"><img src="${vph({id:g.ph[0],c:[g.ph[1]]},1100,1600)}" alt="" onerror="this.remove()"></div>`).join("");
+  for(let g=0;g<SHOW_G.length&&!SKIP;g++){[...box.children].forEach((p,j)=>p.classList.toggle("on",j===g));
+   if(g>0){[...$("#stage").querySelectorAll("text")].forEach(t=>t.classList.add("out"));await wait(600);$("#stage").innerHTML=""}
+   for(let i=0;i<SHOW_G[g].v.length&&!SKIP;i++){drawText({t:SHOW_G[g].v[i],d:1.1},true);await wait(900)}
+   if(!SKIP)await wait(900)}}
  finishIntro()}
-function finishIntro(){SKIP=true;const box=$("#iph");if(!box.children.length)box.innerHTML=`<div class="ph on"><img src="${INTRO_PH[0]}" alt=""></div>`;else{[...box.children].forEach((p,j)=>p.classList.toggle("on",j===box.children.length-1))}
- drawText({t:"Hazırsan başlayalım",d:1.6});$("#isub").textContent="";$("#istart").classList.add("on");$("#skip").hidden=true}
+function finishIntro(){SKIP=true;const last=SHOW_G[SHOW_G.length-1],box=$("#iph");
+ if(!box.children.length)box.innerHTML=SHOW_G.map(g=>`<div class="ph"><img src="${vph({id:g.ph[0],c:[g.ph[1]]},1100,1600)}" alt="" onerror="this.remove()"></div>`).join("");
+ [...box.children].forEach((p,j)=>p.classList.toggle("on",j===box.children.length-1));
+ const st=$("#stage"),cur=[...st.querySelectorAll("text")].map(t=>t.textContent).join("|");
+ if(cur!==last.v.join("|")){st.innerHTML="";last.v.forEach(n=>drawText({t:n,d:.6},true))}
+ $("#isub").textContent="";$("#istart").classList.add("on");$("#skip").hidden=true}
 $("#skip").onclick=()=>{if(!SKIP)finishIntro()};
 $("#igo").onclick=()=>{LS.set("intro1","1");LS.set("age18","1");$("#intro").style.transition="opacity .5s";$("#intro").style.opacity=0;setTimeout(()=>{$("#intro").hidden=true;$("#intro").style.opacity=1},500);afterIntro()};
 
