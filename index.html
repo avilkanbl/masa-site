@@ -583,14 +583,14 @@ function tab(reg){$("#lf").hidden=reg;$("#rf").hidden=!reg;$("#tl").setAttribute
 $("#tl").onclick=()=>tab(false);$("#tr").onclick=()=>tab(true);
 document.addEventListener("click",async e=>{
  const a=e.target.closest("[data-auth]");
- if(a){const u=await user();if(u)return openAcc("p");tab(a.dataset.auth==="register");$("#authd").showModal();
+ if(a){if(a.dataset.auth==="account")return openAcc("p");tab(a.dataset.auth==="register");if(!$("#authd").open)$("#authd").showModal();
   if(!sb)msg($("#amsg"),"Üyelik sistemi çok yakında açılıyor. Lütfen daha sonra tekrar deneyin.",false)}
  if(e.target.closest("[data-close]"))e.target.closest("dialog").close();
 
 });
 
 /* ---- Üyelik ---- */
-async function user(){if(!sb)return null;const{data}=await sb.auth.getSession();return data.session?data.session.user:null}
+async function user(){if(!sb)return null;try{const r=await Promise.race([sb.auth.getSession(),new Promise(ok=>setTimeout(()=>ok({data:{session:null}}),4000))]);return r&&r.data&&r.data.session?r.data.session.user:null}catch(e){return null}}
 function adult(b){const d=new Date(b),n=new Date();if(isNaN(d))return false;let y=n.getFullYear()-d.getFullYear();if(n<new Date(n.getFullYear(),d.getMonth(),d.getDate()))y--;return y>=18}
 const ERR=[[/rate limit|too many/i,"Çok fazla deneme yapıldı. Lütfen birkaç dakika sonra tekrar dene."],[/already registered|already been registered|already exists/i,"Bu e-posta ile zaten bir hesap var. Giriş yapmayı ya da şifreni sıfırlamayı dene."],[/Invalid login credentials/i,"E-posta ya da şifre hatalı."],[/Email not confirmed/i,"E-posta adresin henüz onaylanmamış. Gelen kutunu kontrol et."],[/Password should be at least/i,"Şifre en az 8 karakter olmalı."],[/valid email|invalid format|Unable to validate email/i,"Geçerli bir e-posta adresi yaz."],[/Failed to fetch|NetworkError|Load failed/i,"Bağlantı kurulamadı. İnternetini kontrol edip tekrar dene."],[/Database error saving new user/i,"Kayıt bilgilerinde bir sorun var. Doğum tarihi, cinsiyet ve görünen adı kontrol et."],[/JWT|not authenticated|session/i,"Oturumun sona ermiş. Lütfen tekrar giriş yap."]];
 function terr(e){const t=(e&&(e.message||e.error_description||e.msg))||String(e||"");for(const[r,m]of ERR)if(r.test(t))return m;return t}

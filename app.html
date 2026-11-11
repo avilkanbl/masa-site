@@ -348,7 +348,7 @@ const INTRO_PH=["1519214605650-76a613ee3245","1572116469696-31de0f17cc34","16365
 /* ================= STATE ================= */
 let U=null,P=null,BAL=0,SITE={transfer_discount:15,packages:[{coins:40,price:99,transfer_price:84},{coins:120,price:199,transfer_price:169},{coins:300,price:299,transfer_price:254}]};
 let VENUES=[],VM={},CITIES=[],ROOMS=[],CITY=LS.get("app_city")||"",CAT="",Q="",TAB="home";
-async function user(){if(!sb)return null;const{data}=await sb.auth.getSession();return data.session?data.session.user:null}
+async function user(){if(!sb)return null;try{const r=await Promise.race([sb.auth.getSession(),new Promise(ok=>setTimeout(()=>ok({data:{session:null}}),4000))]);return r&&r.data&&r.data.session?r.data.session.user:null}catch(e){return null}}
 
 /* ================= INTRO ================= */
 const LINES=[
