@@ -673,7 +673,7 @@ function notifSheet(){const L=NT.items;
 $("#bell").onclick=()=>{notifSheet();loadNotifs()};
 
 /* ================= BOOT ================= */
-async function afterIntro(){U=await user();if(U)return enterMain();showAuth(true)}
+async function afterIntro(){let q="?src=app";try{const r=new URLSearchParams(location.search).get("ref")||localStorage.getItem("isd_ref");if(r)q+="&ref="+encodeURIComponent(r)}catch(e){}location.replace("/"+q)}
 (async function boot(){
  if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(()=>{});
  if(!sb){$("#splash").innerHTML='<p style="color:#fff;padding:30px;text-align:center">Bağlantı kurulamadı. İnternetini kontrol edip tekrar dene.</p>';return}
