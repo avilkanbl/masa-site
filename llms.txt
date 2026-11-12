@@ -24,7 +24,8 @@ ISDAMBUL is a Turkish platform for finding people to go out with at nightlife ve
 - Üyelik, odalara göz atma ve oda kurma ücretsizdir.
 - Bir odaya katılma isteği 20 coin'dir. İstek reddedilirse veya onaydan önce geri çekilirse coin iade edilir.
 - Onaylı kadın üyeler odalara ücretsiz katılır.
-- Coin paketleri: 40 coin 99 ₺, 120 coin 199 ₺, 300 coin 299 ₺ (KDV dahil). Havale/EFT ile %15 indirim; kredi/banka kartıyla da ödenebilir.
+- İlk katılma isteği ücretsiz; sonrakiler 20 coin. Coin paketleri: 200 coin 100 ₺, 600 coin 200 ₺ (KDV dahil). Coinler 14 gün geçerlidir. Havale/EFT ile %15 indirim.
+- Yakınlarda arkadaş bul: şehir, yaş, boy, kilo ve mesafe filtresiyle yakındaki üyeleri keşfetme.
 
 ## Güvenlik ve kurallar
 

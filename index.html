@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ISDAMBUL | Mekâna Dam Bul, Gece Hayatında Ekibini Tamamla</title>
@@ -22,8 +23,8 @@
 <style>
 :root{--navy:#0b0b0b;--navy2:#181715;--gold:#d6b676;--gold-d:#7a5c14;--ivory:#f8f5ee;--ink:#1e1c19;--mute:#6b6458;--line:#e2dccd;--card:#fff;color-scheme:light}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
-body{margin:0;background:var(--ivory);color:var(--ink);font:17px/1.65 "Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.2;margin:0 0 .5em}
+body{margin:0;background:var(--ivory);color:var(--ink);font:17px/1.65 "Plus Jakarta Sans","Segoe UI",Roboto,Arial,sans-serif}
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif;line-height:1.2;margin:0 0 .5em}
 h2{font-size:clamp(1.7rem,3.5vw,2.3rem)}a{color:inherit}
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
 section{padding:72px 0}
@@ -36,7 +37,7 @@ button:disabled{opacity:.55;cursor:not-allowed}
 /* header */
 header{position:sticky;top:0;z-index:20;background:rgba(11,11,11,.96);backdrop-filter:blur(8px)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
-.logo{font:700 1.5rem Georgia,serif;color:#fff;text-decoration:none;letter-spacing:.02em}.logo{display:flex;align-items:center;gap:10px;letter-spacing:.16em;font-size:1.15rem}
+.logo{font:700 1.5rem "Playfair Display",Georgia,serif;color:#fff;text-decoration:none;letter-spacing:.02em}.logo{display:flex;align-items:center;gap:10px;letter-spacing:.16em;font-size:1.15rem}
 nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
 nav a{color:#e2dccf;text-decoration:none;font-size:.95rem}nav a:hover{color:var(--gold)}
 .navbtn{display:flex;gap:8px}.navbtn button{padding:8px 16px;color:#fff;border-color:#5c5547;font-size:.92rem}
@@ -62,11 +63,11 @@ nav ul{gap:18px}.burger{display:none;width:44px;height:44px;padding:0;color:#fff
 /* cards */
 .grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-top:32px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
-.num{width:42px;height:42px;border-radius:50%;background:var(--navy);color:var(--gold);display:grid;place-items:center;font:700 1.2rem Georgia,serif;margin-bottom:14px}
+.num{width:42px;height:42px;border-radius:50%;background:var(--navy);color:var(--gold);display:grid;place-items:center;font:700 1.2rem "Playfair Display",Georgia,serif;margin-bottom:14px}
 .card h3{font-size:1.2rem}.card p{margin:0;color:var(--mute);font-size:.97rem}
 .dark{background:var(--navy);color:#fff}.dark .lead,.dark .card p{color:#d3ccbe}
 .dark .card{background:var(--navy2);border-color:#3a352d}.dark .eyebrow{color:var(--gold)}
-.pack{text-align:center;position:relative}.pack .amt{font:700 2.6rem Georgia,serif;color:var(--gold-d)}
+.pack{text-align:center;position:relative}.pack .amt{font:700 2.6rem "Playfair Display",Georgia,serif;color:var(--gold-d)}
 .pack .price{font-size:1.5rem;font-weight:700}.pack small{display:block;color:var(--mute);margin:4px 0 18px}
 .pack.best{border:2px solid var(--gold)}.tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-size:.75rem;font-weight:700;padding:3px 12px;border-radius:99px}
 .room h3{font-size:1.1rem;margin-bottom:2px}.room .meta{color:var(--mute);font-size:.9rem}
@@ -116,7 +117,7 @@ section{scroll-margin-top:70px}
 .flinks{display:flex;flex-wrap:wrap;gap:8px 18px;max-width:420px;align-content:flex-start}.flinks a{margin:0}
 .ckbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:30;background:var(--navy);color:#efe9de;border:1px solid #3a352d;border-radius:12px;padding:12px 16px;display:flex;gap:14px;align-items:center;justify-content:space-between;max-width:760px;margin:0 auto;font-size:.9rem;box-shadow:0 8px 30px rgba(0,0,0,.35)}
 .bell{position:relative;width:42px;height:42px;padding:0;display:grid;place-items:center;color:#fff;border-color:#5c5547;margin-left:auto}.bell[hidden]{display:none}
-.bell .bdg{position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;padding:0 5px;border-radius:99px;background:#d64545;color:#fff;font:700 .72rem/20px "Segoe UI",sans-serif;text-align:center}
+.bell .bdg{position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;padding:0 5px;border-radius:99px;background:#d64545;color:#fff;font:700 .72rem/20px "Plus Jakarta Sans",sans-serif;text-align:center}
 #notd{max-width:480px;padding:22px 0 10px}#notd h3{padding:0 22px}#notd .close{margin-right:14px}
 .nbar{display:flex;gap:8px;flex-wrap:wrap;padding:0 22px 10px;border-bottom:1px solid var(--line)}.nbar button{padding:6px 12px;font-size:.84rem}
 .nlist{max-height:min(64vh,520px);overflow-y:auto}
@@ -130,7 +131,7 @@ section{scroll-margin-top:70px}
 .slide.on .hi{animation:kb 16s ease-out both}
 @keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.13)}}
 .slide .kick{display:flex;align-items:center;gap:12px;margin-bottom:18px;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:#e9d9a8}
-.slide .kick b{font:700 .95rem Georgia,serif;letter-spacing:.3em;color:#fff}
+.slide .kick b{font:700 .95rem "Playfair Display",Georgia,serif;letter-spacing:.3em;color:#fff}
 .slide .kick i{width:38px;height:1px;background:var(--gold)}
 .slide h1{text-shadow:0 2px 24px rgba(0,0,0,.45);letter-spacing:-.005em}
 .slide .cta{margin-top:26px;max-width:none}
@@ -141,13 +142,13 @@ section{scroll-margin-top:70px}
 @keyframes fill{to{transform:scaleX(1)}}
 @media(hover:hover){.hero:hover .slide .bar{animation-play-state:paused}}
 .hero.paused .slide .bar,.hero.paused .slide.on .hi{animation-play-state:paused}
-.wm{position:absolute;right:2%;bottom:.1em;z-index:1;pointer-events:none;user-select:none;font:700 clamp(4.5rem,15vw,12rem)/1 Georgia,"Times New Roman",serif;letter-spacing:.08em;color:transparent;-webkit-text-stroke:1px rgba(214,182,118,.3)}
-.ctl{bottom:26px}.cnt{font:600 .8rem/1 "Segoe UI",sans-serif;letter-spacing:.14em;color:#e9d9a8;margin-right:8px}
+.wm{position:absolute;right:2%;bottom:.1em;z-index:1;pointer-events:none;user-select:none;font:700 clamp(4.5rem,15vw,12rem)/1 "Playfair Display",Georgia,serif;letter-spacing:.08em;color:transparent;-webkit-text-stroke:1px rgba(214,182,118,.3)}
+.ctl{bottom:26px}.cnt{font:600 .8rem/1 "Plus Jakarta Sans",sans-serif;letter-spacing:.14em;color:#e9d9a8;margin-right:8px}
 .pp{width:34px;height:34px;padding:0;border-radius:50%;color:#fff;border-color:rgba(255,255,255,.45);background:rgba(11,11,11,.5);font-size:.7rem;margin-left:8px}
 .strip{background:var(--navy2);color:#fff;border-bottom:1px solid #3a352d}
 .strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .strip .it{padding:22px 10px;text-align:center;border-right:1px solid #3a352d}.strip .it:last-child{border:0}
-.strip b{display:block;font:700 1.9rem Georgia,serif;color:var(--gold);line-height:1.1}
+.strip b{display:block;font:700 1.9rem "Playfair Display",Georgia,serif;color:var(--gold);line-height:1.1}
 .strip span{font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:#bdb5a6}
 @media(max-width:700px){.strip .wrap{grid-template-columns:1fr 1fr}.strip .it:nth-child(2){border-right:0}.strip .it{border-bottom:1px solid #3a352d}.slide h1{font-size:1.9rem}}
 @media(prefers-reduced-motion:reduce){.slide .bar{display:none}.slide.on .hi{animation:none}}
@@ -158,10 +159,10 @@ select:disabled{opacity:.6;background:#f1eee5;cursor:not-allowed}
 .tabs button{padding:8px 6px;font-size:.92rem}
 .lnk{border:0;padding:0 2px;background:none;color:var(--mute);font-size:.85rem;cursor:pointer;border-radius:4px}
 .acr{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0}
-.acr h4{margin:0 0 2px;font:700 1rem Georgia,serif}.acr .meta{color:var(--mute);font-size:.88rem}
+.acr h4{margin:0 0 2px;font:700 1rem "Playfair Display",Georgia,serif}.acr .meta{color:var(--mute);font-size:.88rem}
 .rq{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:8px 0;border-top:1px solid var(--line);font-size:.92rem;margin-top:8px}
 .rq .bt{display:flex;gap:6px;flex-wrap:wrap}.rq button,.acr .bt button,.acr .bt a{padding:6px 12px;font-size:.86rem}
-.st{display:inline-block;font:600 .74rem "Segoe UI",sans-serif;padding:1px 8px;border-radius:99px;background:#f2efe8;color:var(--mute);vertical-align:middle}.st.ok{background:#e8f6ec;color:#15602e}.st.no{background:#fdecea;color:#9b2216}.st.wait{background:#fff3d6;color:#7a5c14}
+.st{display:inline-block;font:600 .74rem "Plus Jakarta Sans",sans-serif;padding:1px 8px;border-radius:99px;background:#f2efe8;color:var(--mute);vertical-align:middle}.st.ok{background:#e8f6ec;color:#15602e}.st.no{background:#fdecea;color:#9b2216}.st.wait{background:#fff3d6;color:#7a5c14}
 #chatd{max-width:660px}#chatd .close{align-self:flex-end}#chatd[open]{display:flex;flex-direction:column;height:min(90vh,740px)}
 .cmeta{color:var(--mute);font-size:.88rem}.cmem{margin:6px 0;font-size:.85rem;color:var(--mute)}.cmem .chip{margin:4px 6px 4px 0;color:var(--ink)}
 .clog{flex:1;overflow-y:auto;background:var(--ivory);border:1px solid var(--line);border-radius:10px;padding:12px;min-height:180px}
@@ -178,7 +179,7 @@ select:disabled{opacity:.6;background:#f1eee5;cursor:not-allowed}
 @keyframes pop{0%{transform:scale(.4);opacity:0}70%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 .wel h3{font-size:1.45rem;margin-bottom:6px}.wel p{color:var(--mute);margin:0 0 12px}.wel ol{text-align:left;padding-left:20px;margin:0 0 16px;font-size:.94rem}.wel li{margin:6px 0}.wbt{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
 .psum{display:flex;justify-content:space-between;align-items:center;background:var(--ivory);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:6px 0 14px}
-.psum b{font:700 1.5rem Georgia,serif}.psum s{color:var(--mute);margin-right:6px}.psum .pc{text-align:right}
+.psum b{font:700 1.5rem "Playfair Display",Georgia,serif}.psum s{color:var(--mute);margin-right:6px}.psum .pc{text-align:right}
 .pmeth{display:flex;gap:12px;align-items:center;border:2px solid var(--gold);border-radius:12px;padding:12px 14px;background:#fffaf0}
 .pmeth.sel{cursor:pointer}.pmeth.off{border-color:var(--line);background:#fff}.pmeth+.pmeth{margin-top:10px}.csteps{margin:4px 0 0;padding-left:20px}.csteps li{margin:0 0 10px}.cmail{display:flex;gap:8px;align-items:center;background:var(--ivory);border:1px solid var(--line);border-radius:10px;padding:9px 12px;margin-top:6px}.cmail b{flex:1;word-break:break-all}
 .pmeth .bd{margin-left:auto;background:var(--gold);color:var(--navy);font-weight:700;font-size:.78rem;padding:3px 10px;border-radius:99px}
@@ -202,7 +203,7 @@ body.pg .hero,body.pg .strip,body.pg #tiles{display:none}
 #pgbar{display:none;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08)}body.pg #pgbar{display:block}
 #pgbar .wrap{display:flex;align-items:center;gap:14px;padding-top:12px;padding-bottom:12px}
 #pgbar a{color:var(--gold);text-decoration:none;font-weight:600;white-space:nowrap}
-#pgbar span{color:#efe9de;font-family:Georgia,serif;font-size:1.15rem}
+#pgbar span{color:#efe9de;font-family:"Playfair Display",Georgia,serif;font-size:1.15rem}
 #tiles{padding:34px 0 48px}
 #tiles h2{margin:0 0 18px;font-size:1.5rem}
 .tg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
@@ -212,6 +213,7 @@ body.pg .hero,body.pg .strip,body.pg #tiles{display:none}
 .tl svg{width:26px;height:26px;stroke:var(--gold-d);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .tl b{font-size:1rem;line-height:1.25}
 .tl small{color:var(--mute);font-size:.82rem;line-height:1.35}
+.pk2{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));max-width:720px}.pack .cl{color:#bdb5a6;font-size:.85rem;margin:-6px 0 6px;letter-spacing:.1em;text-transform:uppercase}
 .tl.pr{background:var(--navy);border-color:var(--navy);color:#fff}.tl.pr svg{stroke:var(--gold)}.tl.pr small{color:#bdb5a6}
 /* sosyal */
 .tabs{flex-wrap:wrap}
@@ -221,8 +223,8 @@ textarea{width:100%;padding:10px;border:1px solid #cfc8b6;border-radius:8px;font
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}
 .sm{color:var(--mute);font-size:.86rem}
 .sh{font-size:1.15rem;margin:26px 0 8px}
-.bcnt{display:inline-block;min-width:22px;padding:0 7px;border-radius:99px;background:var(--gold);color:var(--navy);font:700 .78rem/22px "Segoe UI",Roboto,sans-serif;text-align:center;vertical-align:middle}
-.av{position:relative;border-radius:50%;overflow:hidden;background:var(--navy);color:var(--gold);display:inline-flex;align-items:center;justify-content:center;flex:none;font-family:Georgia,serif;font-weight:700}
+.bcnt{display:inline-block;min-width:22px;padding:0 7px;border-radius:99px;background:var(--gold);color:var(--navy);font:700 .78rem/22px "Plus Jakarta Sans",Roboto,sans-serif;text-align:center;vertical-align:middle}
+.av{position:relative;border-radius:50%;overflow:hidden;background:var(--navy);color:var(--gold);display:inline-flex;align-items:center;justify-content:center;flex:none;font-family:"Playfair Display",Georgia,serif;font-weight:700}
 .av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .plist2{display:grid;gap:10px}
 .pc{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
@@ -230,7 +232,7 @@ textarea{width:100%;padding:10px;border:1px solid #cfc8b6;border-radius:8px;font
 .pa{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.pa button{padding:7px 14px;font-size:.88rem}
 @media(max-width:560px){.pc{flex-wrap:wrap}.pa{width:100%;justify-content:flex-start}}
 .pl{cursor:pointer}.pl:hover{text-decoration:underline}
-.okb{color:#15602e;font-size:.8rem;font-family:"Segoe UI",Roboto,sans-serif;font-weight:700}
+.okb{color:#15602e;font-size:.8rem;font-family:"Plus Jakarta Sans",Roboto,sans-serif;font-weight:700}
 .live{display:flex;align-items:center;gap:8px;color:#15602e;font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
 .live i,.live2 i{width:9px;height:9px;border-radius:50%;background:#2fa35a;flex:none;animation:lvp 1.6s infinite}
 @keyframes lvp{0%{box-shadow:0 0 0 0 rgba(47,163,90,.6)}70%{box-shadow:0 0 0 9px rgba(47,163,90,0)}100%{box-shadow:0 0 0 0 rgba(47,163,90,0)}}
@@ -248,7 +250,7 @@ textarea{width:100%;padding:10px;border:1px solid #cfc8b6;border-radius:8px;font
 .prev{max-width:180px;max-height:180px;border-radius:10px;margin-top:10px;display:block}
 .phd{display:flex;gap:16px;align-items:center;margin-bottom:8px}
 .bio{margin:10px 0;white-space:pre-wrap;overflow-wrap:anywhere}
-.tg2{margin-top:12px}.tg2 h4{margin:0 0 6px;font-size:.78rem;color:var(--mute);text-transform:uppercase;letter-spacing:.08em;font-family:"Segoe UI",Roboto,sans-serif}
+.tg2{margin-top:12px}.tg2 h4{margin:0 0 6px;font-size:.78rem;color:var(--mute);text-transform:uppercase;letter-spacing:.08em;font-family:"Plus Jakarta Sans",Roboto,sans-serif}
 .ttag{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:4px 12px;font-size:.86rem;margin:0 6px 6px 0;background:#fff;font-weight:500;color:var(--ink)}
 button.ttag{cursor:pointer}.ttag.on{background:var(--navy);color:var(--gold);border-color:var(--navy)}.ttag.com{border-color:var(--gold);background:#fff3d4}
 .tp{border:1px solid var(--line);border-radius:12px;padding:10px 12px 6px;margin:14px 0 0}.tp legend{font-size:.88rem;color:var(--mute);padding:0 6px}
@@ -272,15 +274,15 @@ button.ttag{cursor:pointer}.ttag.on{background:var(--navy);color:var(--gold);bor
 .bhg{position:absolute;left:0;right:0;bottom:0;height:55%;background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.85))}
 .bhn{position:absolute;left:20px;right:20px;bottom:18px;color:#fff;z-index:1;font-size:.98rem}
 .bhn h2{margin:0 0 2px;font-size:2rem;color:#fff}.bhn h2 span{font-weight:400}
-.bv{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--gold);color:var(--navy);font:700 .85rem "Segoe UI",sans-serif;margin-left:10px;vertical-align:middle}
-.bh.nop .bi{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:700 8rem Georgia,serif;color:rgba(214,182,118,.3)}
+.bv{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--gold);color:var(--navy);font:700 .85rem "Plus Jakarta Sans",sans-serif;margin-left:10px;vertical-align:middle}
+.bh.nop .bi{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:700 8rem "Playfair Display",Georgia,serif;color:rgba(214,182,118,.3)}
 .lk2{position:absolute;top:16px;left:16px;background:rgba(0,0,0,.6);color:#fff;padding:6px 12px;border-radius:99px;font-size:.82rem;z-index:1}
 .bo{display:inline-flex;align-items:center;gap:6px;margin-top:8px;background:rgba(47,163,90,.92);padding:3px 11px;border-radius:99px;font-size:.82rem}.bo i{width:7px;height:7px;border-radius:50%;background:#fff}
 .bpi{position:relative;aspect-ratio:4/5;border-radius:22px;overflow:hidden;margin-bottom:12px;background:#111}
 .bc{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px 20px;margin-bottom:12px}
-.bc h4{margin:0 0 10px;font:700 .76rem "Segoe UI",Roboto,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.bc h4{margin:0 0 10px;font:700 .76rem "Plus Jakarta Sans",Roboto,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
 .bc>p{margin:0;font-size:1.05rem;white-space:pre-wrap;overflow-wrap:anywhere}
-.bp h5{margin:0 0 8px;font:600 .92rem "Segoe UI",Roboto,sans-serif;color:var(--gold-d)}.bp>p{font:1.4rem/1.35 Georgia,serif}
+.bp h5{margin:0 0 8px;font:600 .92rem "Plus Jakarta Sans",Roboto,sans-serif;color:var(--gold-d)}.bp>p{font:1.4rem/1.35 "Playfair Display",Georgia,serif}
 .bcom{background:var(--navy);color:var(--gold);border-color:var(--navy);text-align:center}
 .bchips{display:flex;flex-wrap:wrap;gap:8px}
 .bch{display:inline-flex;gap:6px;align-items:center;background:#f3eee2;border:0;border-radius:99px;padding:7px 14px;font:inherit;font-size:.92rem;font-weight:400;color:var(--ink)}
@@ -300,15 +302,54 @@ button.bch{cursor:pointer}.bch.com{background:#fff3d4;box-shadow:inset 0 0 0 1.5
 #prd.bprd{max-width:580px;padding:18px;background:var(--ivory)}
 @media(max-width:600px){#prd.bprd{width:100%;max-width:100%;height:100%;max-height:100%;margin:0;border-radius:0;padding:12px}}
 #prd.bprd .close{position:sticky;top:0;z-index:3;background:#fff;border-radius:50%;width:40px;height:40px;padding:0;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+/* kayıt soruları */
+#onbd{max-width:520px;padding:26px 24px}
+#onbd h3{font-size:1.5rem;margin:6px 0 6px}
+.obd{display:flex;gap:6px;margin-bottom:14px}.obd i{flex:1;height:5px;border-radius:99px;background:#ece6d8}.obd i.on{background:var(--gold)}
+.obnav{justify-content:space-between;margin-top:20px}.obnav .btn-g{min-width:140px}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin-top:10px}
+.cch{border:1px solid var(--line);background:#fff;border-radius:12px;padding:12px;font-weight:600;color:var(--ink)}.cch.on{background:var(--navy);color:var(--gold);border-color:var(--navy)}
+.rng{margin-top:14px}.rng label b{float:right;color:var(--gold-d)}.rng input[type=range]{width:100%;accent-color:#b8913f;padding:0;border:0;margin:8px 0 2px}
+/* yakınlarda arkadaş bul */
+.dfil{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 18px;margin:18px 0}
+.drow{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}.drow label{margin:0}
+.mm{display:flex;gap:6px;align-items:center}.mm input{margin-top:4px}.mm span{color:var(--mute)}
+.dtog{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}.dtog select{width:auto;margin:0;padding:8px}
+.tg3{display:inline-flex;margin:0;cursor:pointer}.tg3 input{position:absolute;opacity:0;width:1px;height:1px}
+.tg3 span{border:1px solid var(--line);border-radius:99px;padding:8px 14px;color:var(--ink);font-weight:600;font-size:.9rem;background:#fff}
+.tg3 input:checked+span{background:var(--navy);color:var(--gold);border-color:var(--navy)}.tg3 input:focus-visible+span{outline:3px solid var(--gold);outline-offset:2px}
+.dfil details{margin-top:12px}.dfil summary{cursor:pointer;color:var(--gold-d);font-weight:600;font-size:.92rem}.dfil details .drow{margin-top:10px}
+.dgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media(min-width:760px){.dgrid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.dcard{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.dimg{position:relative;display:block;aspect-ratio:3/4;padding:0;border:0;border-radius:0;background:linear-gradient(160deg,#2c2820,#0b0b0b);width:100%;overflow:hidden;text-align:left}
+.dimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .3s}.dcard:hover .dimg img{transform:scale(1.03)}
+.dimg .bi{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:700 4rem "Playfair Display",Georgia,serif;color:rgba(214,182,118,.35)}
+.dg{position:absolute;left:0;right:0;bottom:0;height:50%;background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.82))}
+.dn{position:absolute;left:12px;right:12px;bottom:10px;color:#fff}.dn b{font:700 1.15rem "Playfair Display",Georgia,serif}.dn small{display:block;font-size:.8rem;opacity:.9}.dn .bv{width:20px;height:20px;font-size:.7rem;margin-left:6px}
+.don{position:absolute;top:10px;right:10px;width:12px;height:12px;border-radius:50%;background:#2fa35a;box-shadow:0 0 0 3px rgba(255,255,255,.85)}
+.dmeta{display:flex;flex-wrap:wrap;gap:4px 8px;padding:10px 12px 0;font-size:.8rem;color:var(--mute);min-height:26px}.dout{color:#15602e;font-weight:600}.dcom{color:var(--gold-d);font-weight:600}
+.dact{margin:10px 12px 12px;padding:8px 10px;font-size:.88rem}
+.live3{display:inline-flex;align-items:center;gap:8px;font-size:.88rem;color:var(--mute);margin:-8px 0 16px}.live3 i{width:8px;height:8px;border-radius:50%;background:#2fa35a;animation:lvp 1.6s infinite}
+.dark .live3{color:#bdb5a6}
+/* native uygulama: mağaza kuralları gereği uygulama içi satış kapalı */
+.nativeonly{display:none}.native .nativeonly{display:block}
+.native [data-buy],.native .pack .price,.native .hvb.pay,.native .cardp,.native [data-coinbuy]{display:none!important}
+
+/* yazı tipleri */
+body{font-family:"Plus Jakarta Sans","Segoe UI",Roboto,Arial,sans-serif;letter-spacing:-.005em;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif;font-weight:700;letter-spacing:-.01em}
+button,.btn,input,select,textarea{font-family:inherit}
+.eyebrow{letter-spacing:.16em}
 </style>
 </head>
 <body>
 <header><div class="wrap nav">
 <a class="logo" href="#top" aria-label="ISDAMBUL ana sayfa"><svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path d="M21 4a12 12 0 1 0 7 21A10 10 0 0 1 21 4z" fill="#d6b676"/><circle cx="25" cy="9" r="1.7" fill="#d6b676"/></svg><span>ISDAMBUL</span></a>
-<nav aria-label="Ana menü"><ul><li><a href="#odalar">Mekân arkadaşı bul</a></li><li><a href="#oda-kur">Arkadaş ara</a></li><li><a href="#mekanlar">Mekânlar</a></li><li><a href="#nasil">Nasıl çalışır</a></li><li><a href="#coin">Coin</a></li><li><a href="#hakkimizda">Hakkımızda</a></li><li><a href="rehber.html">Rehber</a></li></ul></nav>
+<nav aria-label="Ana menü"><ul><li><a href="#yakinda">Yakınımda</a></li><li><a href="#odalar">Mekân arkadaşı bul</a></li><li><a href="#oda-kur">Arkadaş ara</a></li><li><a href="#mekanlar">Mekânlar</a></li><li><a href="#nasil">Nasıl çalışır</a></li><li><a href="#coin">Coin</a></li><li><a href="#hakkimizda">Hakkımızda</a></li><li><a href="rehber.html">Rehber</a></li></ul></nav>
 <div class="navbtn" id="navbtn"><button data-auth="login">Giriş yap</button><button class="btn-g" data-auth="register">Üye ol</button></div>
 <button class="bell" id="bell" aria-label="Bildirimler" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10 20a2 2 0 0 0 4 0"/></svg><span class="bdg" id="bdg" hidden></span></button><button class="burger" id="burger" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mnav">&#9776;</button></div>
-<div class="mnav" id="mnav" hidden><div class="wrap"><ul><li><a href="#odalar">Mekân arkadaşı bul</a></li><li><a href="#oda-kur">Arkadaş ara</a></li><li><a href="#profil">Profilim</a></li><li><a href="#disarida">Bu gece dışarıdayım</a></li><li><a href="#akis">Akış</a></li><li><a href="#arkadaslar">Arkadaşlar</a></li><li><a href="#mesajlar">Mesajlar</a></li><li><a href="#mekanlar">Mekânlar</a></li><li><a href="#nasil">Nasıl çalışır</a></li><li><a href="#coin">Coin</a></li><li><a href="#hakkimizda">Hakkımızda</a></li><li><a href="#sss">Sık sorulanlar</a></li><li><a href="rehber.html">Rehber</a></li></ul><div id="mauth"></div></div></div></header>
+<div class="mnav" id="mnav" hidden><div class="wrap"><ul><li><a href="#odalar">Mekân arkadaşı bul</a></li><li><a href="#oda-kur">Arkadaş ara</a></li><li><a href="#yakinda">Yakınlarda arkadaş bul</a></li><li><a href="#profil">Profilim</a></li><li><a href="#disarida">Bu gece dışarıdayım</a></li><li><a href="#akis">Akış</a></li><li><a href="#arkadaslar">Arkadaşlar</a></li><li><a href="#mesajlar">Mesajlar</a></li><li><a href="#mekanlar">Mekânlar</a></li><li><a href="#nasil">Nasıl çalışır</a></li><li><a href="#coin">Coin</a></li><li><a href="#hakkimizda">Hakkımızda</a></li><li><a href="#sss">Sık sorulanlar</a></li><li><a href="rehber.html">Rehber</a></li></ul><div id="mauth"></div></div></div></header>
 
 <main id="top">
 <div id="pgbar"><div class="wrap"><a href="#top">← Ana sayfa</a><span id="pgt"></span></div></div>
@@ -319,7 +360,12 @@ button.bch{cursor:pointer}.bch.com{background:#fff3d4;box-shadow:inset 0 0 0 1.5
 <div class="it"><b>18+</b><span>yaş sınırı</span></div>
 <div class="it"><b>Onaylı</b><span>profil rozeti</span></div>
 </div></div>
-<div id="tiles"><div class="wrap"><h2>Ne yapmak istersin?</h2><div class="tg"><a class="tl pr" href="#odalar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14.5c2.3.2 3.9 1.8 4.5 4.5"/></svg><b>Mekân arkadaşı bul</b><small>Açık odalara katıl</small></a><a class="tl" href="#oda-kur"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><b>Arkadaş ara</b><small>Oda kur, ekibini topla</small></a><a class="tl" href="#profil"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="3"/><circle cx="12" cy="10" r="3"/><path d="M8 17c.8-1.8 2.2-2.6 4-2.6s3.2.8 4 2.6"/></svg><b>Profilim</b><small>Fotoğraflar, zevklerin</small></a><a class="tl" href="#disarida"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><path d="M4 4l2 2M20 4l-2 2"/></svg><b>Bu gece dışarıdayım</b><small>Arkadaşlarına haber ver</small></a><a class="tl" href="#akis"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 8"/></svg><b>Akış</b><small>Arkadaşlarının paylaşımları</small></a><a class="tl" href="#arkadaslar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M19 8v6M16 11h6"/></svg><b>Arkadaşlar</b><small>Ekle, istekleri gör</small></a><a class="tl" href="#mesajlar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg><b>Mesajlar</b><small>Arkadaşlarınla yazış</small></a><a class="tl" href="#mekanlar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><b>Mekânlar</b><small>Seçkin mekânlar</small></a><a class="tl" href="#nasil"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.3 2.4c-.5.2-.8.7-.8 1.2V14M12 17.5v.01"/></svg><b>Nasıl çalışır?</b><small>3 adımda masaya otur</small></a><a class="tl" href="#coin"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7.5v9M9.5 9.5c0-1 1-1.6 2.5-1.6s2.5.7 2.5 1.7-1 1.4-2.5 1.6-2.5.6-2.5 1.7 1 1.7 2.5 1.7 2.5-.6 2.5-1.6"/></svg><b>Coin</b><small>Paketler ve fiyatlar</small></a><a class="tl" href="#guven"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="m9 12 2 2 4-4"/></svg><b>Güvenlik</b><small>Onaylı profiller</small></a><a class="tl" href="#sehirler"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V9l5-3v15M10 21V4l9 4v13"/></svg><b>Şehirler</b><small>8 büyükşehir</small></a><a class="tl" href="#sss"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg><b>Sık sorulanlar</b><small>Merak ettiklerin</small></a><a class="tl" href="#hakkimizda"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg><b>Hakkımızda</b><small>ISDAMBUL kimdir</small></a><a class="tl" href="/app"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg><b>Uygulama</b><small>Telefonuna yükle</small></a></div></div></div>
+<div id="tiles"><div class="wrap"><h2>Ne yapmak istersin?</h2><p class="live3" data-live hidden></p><div class="tg"><a class="tl pr" href="#yakinda"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="7.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22"/></svg><b>Yakınlarda arkadaş bul</b><small>Şehir, yaş, boy filtresi</small></a><a class="tl pr" href="#odalar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14.5c2.3.2 3.9 1.8 4.5 4.5"/></svg><b>Mekân arkadaşı bul</b><small>Açık odalara katıl</small></a><a class="tl" href="#oda-kur"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><b>Arkadaş ara</b><small>Oda kur, ekibini topla</small></a><a class="tl" href="#profil"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="3"/><circle cx="12" cy="10" r="3"/><path d="M8 17c.8-1.8 2.2-2.6 4-2.6s3.2.8 4 2.6"/></svg><b>Profilim</b><small>Fotoğraflar, zevklerin</small></a><a class="tl" href="#disarida"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><path d="M4 4l2 2M20 4l-2 2"/></svg><b>Bu gece dışarıdayım</b><small>Arkadaşlarına haber ver</small></a><a class="tl" href="#akis"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 8"/></svg><b>Akış</b><small>Arkadaşlarının paylaşımları</small></a><a class="tl" href="#arkadaslar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M19 8v6M16 11h6"/></svg><b>Arkadaşlar</b><small>Ekle, istekleri gör</small></a><a class="tl" href="#mesajlar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg><b>Mesajlar</b><small>Arkadaşlarınla yazış</small></a><a class="tl" href="#mekanlar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><b>Mekânlar</b><small>Seçkin mekânlar</small></a><a class="tl" href="#nasil"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.3 2.4c-.5.2-.8.7-.8 1.2V14M12 17.5v.01"/></svg><b>Nasıl çalışır?</b><small>3 adımda masaya otur</small></a><a class="tl" href="#coin"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7.5v9M9.5 9.5c0-1 1-1.6 2.5-1.6s2.5.7 2.5 1.7-1 1.4-2.5 1.6-2.5.6-2.5 1.7 1 1.7 2.5 1.7 2.5-.6 2.5-1.6"/></svg><b>Coin</b><small>Paketler ve fiyatlar</small></a><a class="tl" href="#guven"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="m9 12 2 2 4-4"/></svg><b>Güvenlik</b><small>Onaylı profiller</small></a><a class="tl" href="#sehirler"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V9l5-3v15M10 21V4l9 4v13"/></svg><b>Şehirler</b><small>8 büyükşehir</small></a><a class="tl" href="#sss"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg><b>Sık sorulanlar</b><small>Merak ettiklerin</small></a><a class="tl" href="#hakkimizda"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg><b>Hakkımızda</b><small>ISDAMBUL kimdir</small></a><a class="tl" href="/app"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg><b>Uygulama</b><small>Telefonuna yükle</small></a></div></div></div>
+
+<section id="yakinda"><div class="wrap">
+<div class="eyebrow">Yakınlarda arkadaş bul</div><h2>Yakınındaki gece ekibi</h2>
+<p class="lead">Şehre, yaşa, boya göre filtrele ya da konumunu paylaşıp yakınındakileri gör. Kapak fotoğrafları tüm üyelere açıktır; diğer fotoğraflar arkadaş olunca görünür.</p><p class="live3" data-live hidden></p>
+<div id="dsb"><p class="empty">Yükleniyor…</p></div></div></section>
 
 <section id="profil"><div class="wrap">
 <div id="myb"><p class="empty">Yükleniyor…</p></div></div></section>
@@ -422,15 +468,16 @@ button.bch{cursor:pointer}.bch.com{background:#fff3d4;box-shadow:inset 0 0 0 1.5
 </div></div></section>
 
 <section class="dark" id="coin"><div class="wrap">
-<div class="eyebrow">Coin</div><h2>Sadece katıldığında öde</h2>
-<p class="lead">Odalara göz atmak ve oda kurmak ücretsiz. Bir odaya katılma isteği 20 coin. Oda sahibi isteği reddederse ya da isteğini geri çekersen coinin iade edilir.</p>
+<div class="eyebrow">Coin</div><h2>İlk isteğin bizden</h2>
+<p class="lead">Odalara göz atmak, oda kurmak ve yakınındaki üyeleri keşfetmek ücretsiz. <b style="color:var(--gold)">İlk katılma isteğin ücretsiz</b>; sonraki her katılma isteği 20 coin. Oda sahibi isteği reddederse ya da isteğini geri çekersen coinin iade edilir.</p>
 <p class="hvb" id="fwb" hidden><b>Onaylı kadın üyelere katılım ücretsiz</b> · Odalara katılma isteği coin gerektirmez.</p>
-<p class="hvb"><b>Havale/EFT ile <span id="hdisc">%15</span> indirim</b> · Ödemen onaylandığı anda coinlerin hesabına tanımlanır.</p>
-<div class="grid">
-<div class="card pack"><div class="amt">40</div><div class="price"><span data-tp="40">84 ₺</span> <s data-lp="40">99 ₺</s></div><small>Havale/EFT ile<span class="cardp" hidden> · kartla 99 ₺</span> · 2 odaya katılım</small><button class="btn-g" data-buy="40">Satın al</button></div>
-<div class="card pack best"><span class="tag">En çok tercih edilen</span><div class="amt">120</div><div class="price"><span data-tp="120">169 ₺</span> <s data-lp="120">199 ₺</s></div><small>Havale/EFT ile<span class="cardp" hidden> · kartla 199 ₺</span> · 6 odaya katılım</small><button class="btn-g" data-buy="120">Satın al</button></div>
-<div class="card pack"><div class="amt">300</div><div class="price"><span data-tp="300">254 ₺</span> <s data-lp="300">299 ₺</s></div><small>Havale/EFT ile<span class="cardp" hidden> · kartla 299 ₺</span> · 15 odaya katılım</small><button class="btn-g" data-buy="300">Satın al</button></div>
+<p class="hvb pay"><b>Havale/EFT ile <span id="hdisc">%15</span> indirim</b> · Ödemen onaylandığı anda coinlerin hesabına tanımlanır.</p>
+<p class="hvb nativeonly"><b>Uygulamada ilk katılma isteğin ücretsiz.</b> Coin bakiyeni Profilim › Hesap ayarları bölümünden görebilirsin.</p>
+<div class="grid pk2">
+<div class="card pack"><div class="amt">200</div><div class="cl">coin</div><div class="price"><span data-tp="200">85 ₺</span> <s data-lp="200">100 ₺</s></div><small>Havale/EFT ile<span class="cardp" data-cardp="200" hidden> · kartla 100 ₺</span> · 10 odaya katılım</small><button class="btn-g" data-buy="200">Satın al</button></div>
+<div class="card pack best"><span class="tag">En avantajlı · 3 kat coin</span><div class="amt">600</div><div class="cl">coin</div><div class="price"><span data-tp="600">170 ₺</span> <s data-lp="600">200 ₺</s></div><small>Havale/EFT ile<span class="cardp" data-cardp="600" hidden> · kartla 200 ₺</span> · 30 odaya katılım</small><button class="btn-g" data-buy="600">Satın al</button></div>
 </div>
+<p class="lead" style="margin-top:16px;font-size:.92rem">⏳ Coinler hesabına yüklendiği andan itibaren <b>14 gün</b> geçerlidir; süresi dolan coinler otomatik silinir. Önce en eski coinlerin harcanır.</p>
 <p class="lead" style="margin-top:20px">Fiyatlara KDV dahildir. Coinler yalnızca ISDAMBUL üzerinde kullanılır; kullanıcılar arasında aktarılamaz ve nakde çevrilemez. Ayrıntılar için <a href="mesafeli-satis.html" style="color:var(--gold)">Mesafeli Satış Sözleşmesi</a> ve <a href="iade-ve-coin.html" style="color:var(--gold)">Coin ve iade koşulları</a> sayfalarına bakabilirsin.</p>
 </div></section>
 
@@ -455,7 +502,7 @@ button.bch{cursor:pointer}.bch.com{background:#fff3d4;box-shadow:inset 0 0 0 1.5
 </main>
 
 <footer><div class="wrap">
-<div class="row"><div><strong style="color:#fff;font-family:Georgia,serif;font-size:1.3rem;letter-spacing:.14em">ISDAMBUL</strong><br>Yalnızca 18 yaş ve üzeri içindir.<br>İletişim: <a href="mailto:isdambul.info@gmail.com">isdambul.info@gmail.com</a><br><span id="cinfo"></span><p class="dlapp" style="margin:14px 0 0"><a href="/isdambul.apk" download="ISDAMBUL.apk" class="btn-g" style="display:inline-flex;gap:8px;align-items:center;padding:9px 16px;border-radius:10px;text-decoration:none;font-weight:700"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 18a1 1 0 0 0 1 1h1v3a1.5 1.5 0 0 0 3 0v-3h2v3a1.5 1.5 0 0 0 3 0v-3h1a1 1 0 0 0 1-1V8H6zM3.5 8A1.5 1.5 0 0 0 2 9.5v7a1.5 1.5 0 0 0 3 0v-7A1.5 1.5 0 0 0 3.5 8m17 0A1.5 1.5 0 0 0 19 9.5v7a1.5 1.5 0 0 0 3 0v-7A1.5 1.5 0 0 0 20.5 8M15.5 2.2l1.3-1.3-.7-.7-1.5 1.5A6 6 0 0 0 12 1a6 6 0 0 0-2.6.6L7.9.2l-.7.7 1.3 1.3A5.9 5.9 0 0 0 6 7h12a5.9 5.9 0 0 0-2.5-4.8M10 5H9V4h1zm5 0h-1V4h1z"/></svg>Android uygulamasını indir</a> <button type="button" id="iosbtn" style="display:inline-flex;gap:8px;align-items:center;padding:9px 16px;border-radius:10px;font-weight:700;margin-top:8px;background:#fff;color:#0b0b0b;border:0;cursor:pointer"><svg width="16" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9M262.1 104.5c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3"/></svg>iPhone'a yükle</button></p></div>
+<div class="row"><div><strong style="color:#fff;font-family:"Playfair Display",Georgia,serif;font-size:1.3rem;letter-spacing:.14em">ISDAMBUL</strong><br>Yalnızca 18 yaş ve üzeri içindir.<br>İletişim: <a href="mailto:isdambul.info@gmail.com">isdambul.info@gmail.com</a><br><span id="cinfo"></span><p class="dlapp" style="margin:14px 0 0"><a href="/isdambul.apk" download="ISDAMBUL.apk" class="btn-g" style="display:inline-flex;gap:8px;align-items:center;padding:9px 16px;border-radius:10px;text-decoration:none;font-weight:700"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 18a1 1 0 0 0 1 1h1v3a1.5 1.5 0 0 0 3 0v-3h2v3a1.5 1.5 0 0 0 3 0v-3h1a1 1 0 0 0 1-1V8H6zM3.5 8A1.5 1.5 0 0 0 2 9.5v7a1.5 1.5 0 0 0 3 0v-7A1.5 1.5 0 0 0 3.5 8m17 0A1.5 1.5 0 0 0 19 9.5v7a1.5 1.5 0 0 0 3 0v-7A1.5 1.5 0 0 0 20.5 8M15.5 2.2l1.3-1.3-.7-.7-1.5 1.5A6 6 0 0 0 12 1a6 6 0 0 0-2.6.6L7.9.2l-.7.7 1.3 1.3A5.9 5.9 0 0 0 6 7h12a5.9 5.9 0 0 0-2.5-4.8M10 5H9V4h1zm5 0h-1V4h1z"/></svg>Android uygulamasını indir</a> <button type="button" id="iosbtn" style="display:inline-flex;gap:8px;align-items:center;padding:9px 16px;border-radius:10px;font-weight:700;margin-top:8px;background:#fff;color:#0b0b0b;border:0;cursor:pointer"><svg width="16" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9M262.1 104.5c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3"/></svg>iPhone'a yükle</button></p></div>
 <div class="flinks"><a href="kullanim-kosullari.html">Kullanım koşulları</a><a href="gizlilik-kvkk.html">Gizlilik ve KVKK</a><a href="cerez-politikasi.html">Çerez politikası</a><a href="mesafeli-satis.html">Mesafeli satış sözleşmesi</a><a href="iade-ve-coin.html">Coin ve iade</a><a href="rehber.html">Gece hayatı rehberi</a><a href="istanbul-gece-hayati.html">İstanbul</a><a href="ankara-gece-hayati.html">Ankara</a><a href="izmir-gece-hayati.html">İzmir</a><a href="bursa-gece-hayati.html">Bursa</a><a href="antalya-gece-hayati.html">Antalya</a><a href="bodrum-marmaris-gece-hayati.html">Bodrum ve Marmaris</a><a href="eskisehir-gece-hayati.html">Eskişehir</a><a href="izmit-gece-hayati.html">İzmit</a></div></div>
 <p style="margin-top:24px;font-size:.84rem">© 2026 ISDAMBUL. Tüm hakları saklıdır. Listelenen mekânlar bilgi amaçlıdır; ISDAMBUL bu mekânlarla bağlantılı değildir. Aşırı alkol tüketimi sağlığa zararlıdır; sorumlu davranın.</p>
 </div></footer>
@@ -524,7 +571,7 @@ const S=[
  {h:330,k:"Canlı müzik, açık masa",t:"Moda’dan Nişantaşı’na, geceye bir masa ekle.",p:"Canlı müzik, rooftop’lar ve kalabalık sokaklar arasında senin masan hazır.",v:"İstanbul · Kadıköy · Nişantaşı"},
  {h:195,k:"Sadece İstanbul değil",t:"İzmir, Ankara, Bursa, Antalya, Bodrum, Eskişehir, İzmit…",p:"Büyük şehirlerin seçkin mekânlarında oda kur ya da bir odaya katıl.",v:"8 büyükşehir · 140+ mekân",l:"#mekanlar",lt:"Mekânlara göz at"},
  {h:35,k:"Önce onay, sonra masa",t:"Odaya yalnızca oda sahibinin onayladığı kişiler katılır.",p:"18 yaş sınırı, onaylı profil rozeti, şikâyet ve engelleme: güven buluşmanın ilk şartı.",v:"Güvenli buluşma",l:"#guven",lt:"Güvenlik"},
- {h:150,k:"Sadece katıldığında öde",t:"Göz atmak ve oda kurmak ücretsiz.",p:"Katılma isteği 20 coin. Reddedilirse ya da geri çekersen coinin iade edilir.",v:"Havale/EFT ile %15 indirim",l:"#coin",lt:"Coin paketleri"}];
+ {h:150,k:"Sadece katıldığında öde",t:"Göz atmak ve oda kurmak ücretsiz.",p:"İlk katılma isteğin ücretsiz, sonrakiler 20 coin. Reddedilirse coinin iade edilir.",v:"Havale/EFT ile %15 indirim",l:"#coin",lt:"Coin paketleri"}];
 function scene(h,seed){let s=seed,r=()=>(s=(s*9301+49297)%233280)/233280,c="";
  for(let i=0;i<30;i++)c+=`<circle cx="${r()*100}%" cy="${r()*100}%" r="${1.5+r()*7}%" fill="hsl(${h+r()*60-15} 85% 62%)" opacity="${.1+r()*.3}"/>`;
  return `<svg aria-hidden="true"><defs><linearGradient id="g${seed}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="hsl(${h} 55% 14%)"/><stop offset="1" stop-color="hsl(${h+40} 60% 24%)"/></linearGradient><filter id="f${seed}"><feGaussianBlur stdDeviation="7"/></filter></defs><rect width="100%" height="100%" fill="url(#g${seed})"/><g filter="url(#f${seed})">${c}</g></svg>`}
@@ -658,7 +705,7 @@ function venOpts(L,c){const g={};L.forEach(v=>{const k=c?v.d:v.s+" · "+v.d;(g[k
 function fillFV(){const L=VENUES.filter(v=>(!F.s||v.s===F.s)&&(!F.d||v.d===F.d)&&(!F.cat||v.c.includes(F.cat)));
  if(F.v&&!L.some(v=>v.id===F.v))F.v="";
  $("#fv").innerHTML=`<option value="">Tümü (${L.length})</option>`+venOpts(L,F.s);$("#fv").value=F.v}
-let MEG="";const freeMe=()=>!!(typeof SITE!=="undefined"&&SITE.free_for_women&&MEG==="Kadın");
+let MEG="";const freeMe=()=>window.MYC?window.MYC.join_cost===0:!!(typeof SITE!=="undefined"&&SITE.free_for_women&&MEG==="Kadın");
 async function loadRooms(){isDemo=true;ROOMS=[];
  const mapR=r=>({id:r.id,vid:r.venue_id,t:r.title,v:r.venue,s:r.city||(VM[r.venue_id]||{}).s||"",d:r.district,c:r.categories||[],w:fmt(r.starts_at),og:r.owner_gender,n:r.seeking_count,got:r.approved_count,by:r.owner_name||"",note:r.note,own:r.is_owner,st:r.my_status,ver:!!r.owner_verified});
  if(sb&&!(await user())){try{const{data,error}=await sb.rpc("list_public_rooms");if(!error&&data)ROOMS=data.map(mapR)}catch(e){}}
@@ -672,7 +719,7 @@ function rbtn(r){if(isDemo)return `<button class="btn-g" data-auth="register">Ka
  if(r.st==="pending")return `<button disabled>İsteğin bekliyor</button>`;
  if(r.st==="rejected")return `<button disabled>İstek reddedildi</button>`;
  if(r.got>=r.n)return `<button disabled>Oda dolu</button>`;
- return `<button class="btn-g" data-join="${r.id}">Katıl · ${freeMe()?"Ücretsiz":"20 coin"}</button>`}
+ return `<button class="btn-g" data-join="${r.id}">Katıl · ${freeMe()?(window.MYC&&window.MYC.first_free?"İlk istek ücretsiz":"Ücretsiz"):"20 coin"}</button>`}
 function drawRooms(){const q=F.q.trim().toLocaleLowerCase("tr");
  const L=ROOMS.filter(r=>(!F.cat||r.c.includes(F.cat))&&(!F.s||r.s===F.s)&&(!F.d||r.d===F.d)&&(!F.v||r.vid===F.v)&&(!F.g||other(r.og)===F.g)&&(!q||(r.v+" "+r.t).toLocaleLowerCase("tr").includes(q)));
  $("#rooms").innerHTML=L.length?L.map(r=>`<article class="card room">${r.vid&&VM[r.vid]?vimg(VM[r.vid]):""}<h3>${esc(r.t)}</h3>${r.ver?`<span class="vb">✓ Onaylı profil</span>`:""}<div class="meta">${esc(r.v)} · ${esc(r.s||"")}, ${esc(r.d)}<br>${esc(r.w)}${r.by?` · oda sahibi ${esc(r.by)}`:""}</div><div>${r.c.map(k=>`<span class="chip">${CATS[k]||esc(k)}</span>`).join("")}<span class="chip">${other(r.og)} aranıyor: ${r.got}/${r.n}</span></div>${r.note?`<p class="note2">“${esc(r.note)}”</p>`:""}${rbtn(r)}</article>`).join(""):`<p class="empty">${ROOMS.length?"Bu filtrelere uyan oda yok.":"Şu an açık oda yok."} <a href="#oda-kur">İlk odayı sen kur</a>.</p>`}
@@ -695,8 +742,8 @@ document.addEventListener("click",async e=>{
  if(c){C.cat=c.dataset.cc;chips($("#cchips"),C.cat,"data-cc");fillVenues()}
  if(j){const m=$("#rmsg");
   if(!sb||isDemo){tab(true);$("#authd").showModal();return}
-  if(!confirm(freeMe()?"Katılma isteği gönderilsin mi? Kadın üyeler için ücretsiz.":"Katılma isteği 20 coin. Oda sahibi reddederse ya da isteğini geri çekersen coinin iade edilir. Gönderilsin mi?"))return;
-  j.disabled=true;const{error}=await sb.rpc("request_join",{rid:j.dataset.join});j.disabled=false;
+  if(!confirm(freeMe()?(window.MYC&&window.MYC.first_free?"İlk katılma isteğin ücretsiz! Gönderilsin mi?":"Katılma isteği gönderilsin mi? Bu istek senin için ücretsiz."):"Katılma isteği 20 coin. Oda sahibi reddederse ya da isteğini geri çekersen coinin iade edilir. Gönderilsin mi?"))return;
+  j.disabled=true;const{error}=await sb.rpc("request_join",{rid:j.dataset.join});j.disabled=false;if(typeof loadCoins==="function")loadCoins();
   msg(m,error?terr(error):"Katılma isteğin oda sahibine iletildi. Durumunu Profilim > İsteklerim bölümünden takip edebilirsin.",!error);if(!error)loadRooms();m.scrollIntoView({behavior:"smooth",block:"center"})}});
 $("#cf").onsubmit=async e=>{e.preventDefault();const m=$("#cmsg"),f=new FormData(e.target);
  if(!sb)return msg(m,"Oda kurma, üyelik sistemi açıldığında etkinleşecek.",false);
@@ -741,7 +788,7 @@ $("#lf").onsubmit=async e=>{e.preventDefault();const m=$("#amsg");if(!sb)return 
  const{error}=await sb.auth.signInWithPassword({email:f.get("e").trim(),password:f.get("p")});btn.disabled=false;
  if(error)return msg(m,"Giriş yapılamadı: "+terr(error),false);
  e.target.reset();$("#authd").close();await refreshNav();openAcc("p")};
-function showWelcome(n){const d=$("#welcomed");$("#wln").textContent=(n&&String(n).trim()?String(n).trim()+", ":"")+"ISDAMBUL'a hoş geldin. Hesabın hazır.";d.showModal();$("#wph").onclick=()=>{d.close();openAcc("p")};$("#wod").onclick=()=>d.close()}
+function showWelcome(n){if(typeof openOnboarding==="function"){setTimeout(()=>openOnboarding(),300);return}const d=$("#welcomed");$("#wln").textContent=(n&&String(n).trim()?String(n).trim()+", ":"")+"ISDAMBUL'a hoş geldin. Hesabın hazır.";d.showModal();$("#wph").onclick=()=>{d.close();openAcc("p")};$("#wod").onclick=()=>d.close()}
 async function myProfile(){const u=await user();if(!u)return null;const{data}=await sb.from("profiles").select("*").eq("id",u.id).maybeSingle();return data}
 const ST={none:"Profil fotoğrafı zorunlu değil. Ama fotoğrafı onaylanan profiller \"Onaylı profil\" rozeti alır, daha çok güven verir ve istekleri daha sık kabul edilir.",pending:"Fotoğrafın inceleniyor. Sonuç en kısa sürede hesabına yansır.",approved:"Profilin onaylandı, \"Onaylı profil\" rozetin aktif.",rejected:"Fotoğrafın uygun bulunmadı. Yüzünün net göründüğü yeni bir fotoğraf gönderebilirsin."};
 const RS={pending:["Bekliyor","wait"],approved:["Onaylandı","ok"],rejected:["Reddedildi","no"],withdrawn:["Geri çekildi",""]};
@@ -757,21 +804,21 @@ async function openAcc(t,note){if(typeof t==="string")accTab=t;const d=$("#accd"
  $("#accb").innerHTML=tabs+body;if(typeof signAll==="function")signAll($("#accb"))}
 async function accProfile(u,p){
  let bal=0,adm=false;
- try{const r=await sb.from("my_token_balance").select("balance").maybeSingle();bal=r.data?r.data.balance:0}catch(e){}
+ let MC=null;try{const r=await sb.rpc("my_coins");if(!r.error){MC=r.data;window.MYC=MC;bal=MC.balance}}catch(e){}if(!MC){try{const r=await sb.from("my_token_balance").select("balance").maybeSingle();bal=r.data?r.data.balance:0}catch(e){}}
  try{const r=await sb.rpc("is_admin");adm=!!r.data}catch(e){}
  const canUp=!p.banned&&p.photo_status!=="pending"&&p.photo_status!=="approved";
  return `<p><strong>${esc(p.display_name)}</strong>${p.verified?" · <span style='color:#15602e'>Onaylı üye</span>":""}<br><span style="color:var(--mute);font-size:.9rem">${esc(u.email)}</span></p>
  ${p.banned?`<p class="msg err" style="display:block">Hesabın askıya alındı. Bir hata olduğunu düşünüyorsan isdambul.info@gmail.com adresine yaz.</p>`:`<p style="color:var(--mute)">${ST[p.photo_status]||""}</p>`}
  ${canUp?`<label>Kendi çektiğin bir fotoğraf (yüzün net görünmeli)<input type="file" id="ph" accept="image/*" capture="user"></label><div class="chk"><input type="checkbox" id="phc"><label for="phc" style="margin:0;color:var(--ink)">Yüzümün göründüğü fotoğrafımın yalnızca profil doğrulaması amacıyla ISDAMBUL ekibince incelenmesine ve saklanmasına açık rıza veriyorum. <a href="gizlilik-kvkk.html" target="_blank" rel="noopener">Aydınlatma Metni</a></label></div><div style="margin-top:14px"><button type="button" class="btn-g" id="up">Fotoğrafı gönder</button></div>`:""}
- <p style="margin-top:16px"><strong>Coin bakiyesi:</strong> ${bal} <a href="#coin" data-go="1" style="margin-left:8px;font-size:.9rem">Coin satın al</a><br><span style="color:var(--mute);font-size:.88rem">${SITE.free_for_women&&p.gender==="Kadın"?(p.verified?"Onaylı kadın üye olarak gruplara ücretsiz katılırsın.":"Profil fotoğrafın onaylanınca gruplara ücretsiz katılırsın."):"Bir odaya katılma isteği 20 coin. Reddedilirsen ya da isteğini geri çekersen iade edilir."}</span></p>
+ <p style="margin-top:16px"><strong>Coin bakiyesi:</strong> ${bal} <a href="#coin" data-go="1" data-coinbuy="1" style="margin-left:8px;font-size:.9rem">Coin satın al</a>${MC&&MC.lots&&MC.lots.length?`<br><span style="color:var(--gold-d);font-size:.88rem">⏳ ${MC.lots[0].remaining} coinin ${new Date(MC.lots[0].expires_at).toLocaleDateString("tr-TR",{day:"numeric",month:"long"})} tarihinde sona erecek.</span>`:""}<br><span style="color:var(--mute);font-size:.88rem">${SITE.free_for_women&&p.gender==="Kadın"?(p.verified?"Onaylı kadın üye olarak gruplara ücretsiz katılırsın.":"Profil fotoğrafın onaylanınca gruplara ücretsiz katılırsın."):(MC&&MC.first_free?"İlk katılma isteğin ücretsiz! Sonraki istekler 20 coin.":"Bir odaya katılma isteği 20 coin. Reddedilirsen ya da isteğini geri çekersen iade edilir.")+" Coinler yüklendikten 14 gün sonra sona erer."}</span></p>
  ${await accInvite()}
  ${await accPays()}
  <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">${adm?`<a class="btn btn-g" href="admin.html">Admin paneli</a>`:""}<button type="button" id="out">Çıkış yap</button></div>`}
 async function accInvite(){try{const{data}=await sb.rpc("my_referral");const r=data&&data[0];if(!r||!r.code)return "";const link="https://www.isdambul.com.tr/?ref="+r.code;
- return `<div style="margin-top:18px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fffdf7"><h4 style="margin:0 0 4px;font-family:Georgia,serif">Arkadaşını getir, ${r.bonus} coin kazan</h4><p style="margin:0 0 10px;color:var(--mute);font-size:.9rem">Davet linkinle üye olan arkadaşın profilini onaylatınca hesabına ${r.bonus} coin eklenir.</p><div style="padding:8px 10px;border-radius:8px;background:#f3eee2;font-size:.88rem;word-break:break-all">${esc(link)}</div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><button type="button" class="btn-g" data-invcopy="${esc(link)}">Linki kopyala</button><button type="button" data-invshare="${esc(link)}">Paylaş</button></div><p style="margin:8px 0 0;font-size:.85rem;color:var(--mute)">Davet ettiğin: ${r.invited} · Ödül kazandığın: ${r.rewarded}</p></div>`}catch(e){return ""}}
+ return `<div style="margin-top:18px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fffdf7"><h4 style="margin:0 0 4px;font-family:"Playfair Display",Georgia,serif">Arkadaşını getir, ${r.bonus} coin kazan</h4><p style="margin:0 0 10px;color:var(--mute);font-size:.9rem">Davet linkinle üye olan arkadaşın profilini onaylatınca hesabına ${r.bonus} coin eklenir.</p><div style="padding:8px 10px;border-radius:8px;background:#f3eee2;font-size:.88rem;word-break:break-all">${esc(link)}</div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><button type="button" class="btn-g" data-invcopy="${esc(link)}">Linki kopyala</button><button type="button" data-invshare="${esc(link)}">Paylaş</button></div><p style="margin:8px 0 0;font-size:.85rem;color:var(--mute)">Davet ettiğin: ${r.invited} · Ödül kazandığın: ${r.rewarded}</p></div>`}catch(e){return ""}}
 async function accPays(){try{const{data}=await sb.rpc("my_payments");if(!data||!data.length)return "";
  const L={awaiting:["Ödeme bekleniyor","wait"],submitted:["Kontrol ediliyor","wait"],approved:["Onaylandı","ok"],rejected:["Onaylanmadı","no"]};
- return `<h4 style="margin:18px 0 4px;font-family:Georgia,serif">Ödemelerim</h4><div class="plist">`+data.slice(0,6).map(p=>`<div class="rq"><span>${p.coins} coin · ${tl(p.amount)}<br><span style="color:var(--mute)">${esc(p.ref_code)} · ${fmt(p.created_at)}</span></span><span class="bt"><span class="st ${(L[p.status]||["",""])[1]}">${(L[p.status]||[p.status])[0]}</span>${p.status==="awaiting"||p.status==="submitted"?`<button type="button" data-paystat="${p.id}">Detay</button>`:""}</span></div>`).join("")+`</div>`}catch(e){return ""}}
+ return `<h4 style="margin:18px 0 4px;font-family:"Playfair Display",Georgia,serif">Ödemelerim</h4><div class="plist">`+data.slice(0,6).map(p=>`<div class="rq"><span>${p.coins} coin · ${tl(p.amount)}<br><span style="color:var(--mute)">${esc(p.ref_code)} · ${fmt(p.created_at)}</span></span><span class="bt"><span class="st ${(L[p.status]||["",""])[1]}">${(L[p.status]||[p.status])[0]}</span>${p.status==="awaiting"||p.status==="submitted"?`<button type="button" data-paystat="${p.id}">Detay</button>`:""}</span></div>`).join("")+`</div>`}catch(e){return ""}}
 async function accRooms(p){
  const{data,error}=await sb.rpc("my_rooms");if(error)throw error;
  const head=p.verified?"":`<p class="note" style="margin-top:0">İpucu: Fotoğrafını onaylatırsan ilanın "Onaylı profil" rozetiyle görünür ve daha çok istek alır.</p>`;
@@ -820,16 +867,16 @@ const tl=n=>Number(n).toLocaleString("tr-TR",{minimumFractionDigits:Number(n)%1?
 async function loadSite(){if(!sb)return;try{const{data,error}=await sb.rpc("site_info");if(error||!data)return;SITE=data;
  (SITE.packages||[]).forEach(p=>{const a=document.querySelector(`[data-tp="${p.coins}"]`),b=document.querySelector(`[data-lp="${p.coins}"]`);if(a)a.textContent=tl(p.transfer_price);if(b){b.textContent=tl(p.price);b.hidden=Number(p.price)===Number(p.transfer_price)}});
  $("#hdisc").textContent="%"+(SITE.transfer_discount||0);
- document.querySelectorAll(".cardp").forEach(e=>e.hidden=!SITE.card_enabled);$("#cinfo").textContent=SITE.company_info||"";$("#fwb").hidden=!SITE.free_for_women;drawRooms()}catch(e){}}
+ document.querySelectorAll(".cardp").forEach(e=>{const pk=(SITE.packages||[]).find(p=>String(p.coins)===e.dataset.cardp);e.hidden=!SITE.card_enabled||!pk||pk.card===false});$("#cinfo").textContent=SITE.company_info||"";$("#fwb").hidden=!SITE.free_for_women;drawRooms()}catch(e){}}
 loadSite();
 let PAY=null;
 function payClose(){if(PAY){clearInterval(PAY.t);clearInterval(PAY.wt);try{if(PAY.ch)sb.removeChannel(PAY.ch)}catch(e){}}PAY=null}
 $("#payd").addEventListener("close",payClose);
-async function openBuy(coins){const pk=(SITE.packages||[]).find(p=>p.coins===coins);if(!pk)return;
+async function openBuy(coins){if(document.documentElement.classList.contains("native"))return;const pk=(SITE.packages||[]).find(p=>p.coins===coins);if(!pk)return;
  if(!sb)return;const u=await user();
  if(!u){tab(true);$("#authd").showModal();msg($("#amsg"),"Coin satın almak için önce ücretsiz üye ol ya da giriş yap.",true);return}
- payClose();const CARD=!!SITE.card_enabled;let M="havale";$("#pym").className="msg";$("#pyt").textContent="Coin satın al";
- $("#pyb").innerHTML=`<div class="psum"><div><b>${coins} coin</b><br><span style="color:var(--mute);font-size:.88rem">${Math.floor(coins/20)} odaya katılım</span></div><div class="pc"><s>${tl(pk.price)}</s><b>${tl(pk.transfer_price)}</b></div></div>
+ payClose();const CARD=!!SITE.card_enabled&&pk.card!==false;let M="havale";$("#pym").className="msg";$("#pyt").textContent="Coin satın al";
+ $("#pyb").innerHTML=`<div class="psum"><div><b>${coins} coin</b><br><span style="color:var(--mute);font-size:.88rem">${Math.floor(coins/20)} odaya katılım · 14 gün geçerli</span></div><div class="pc"><s>${tl(pk.price)}</s><b>${tl(pk.transfer_price)}</b></div></div>
  <div style="font-size:.88rem;color:var(--mute);margin-bottom:6px">Ödeme yöntemi</div>
  <div class="pmeth sel" data-m="havale"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 10h18M5 10V8l7-4 7 4v2M6 10v7M10 10v7M14 10v7M18 10v7M4 20h16"/></svg><div><b>Havale / EFT</b><br><span style="font-size:.85rem;color:var(--mute)">Banka hesabına para transferi</span></div><span class="bd">%${SITE.transfer_discount||0} indirim</span></div>
  ${CARD?`<div class="pmeth sel off" data-m="card"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 10h19M6 15h4"/></svg><div><b>Kredi / banka kartı</b><br><span style="font-size:.85rem;color:var(--mute)">Anında yüklenir · ${tl(pk.price)}</span></div></div>`:""}
@@ -1027,6 +1074,7 @@ $("#sn1").textContent=CITIES.length;$("#sn2").textContent=VENUES.length;
  $("#ageno").onclick=()=>{d.querySelector("p").textContent="Üzgünüz, bu siteye yalnızca 18 yaş ve üzeri kişiler girebilir.";$("#ageyes").remove();$("#ageno").remove()}})();
 </script>
 <dialog id="prd" class="wide" aria-labelledby="prn"><button class="close" aria-label="Kapat" data-close>&times;</button><div id="prb"></div></dialog>
+<dialog id="onbd" aria-labelledby="onbt"><div id="onbb"></div></dialog>
 <dialog id="dmd" class="wide" aria-labelledby="dmt"><button class="close" aria-label="Kapat" data-close>&times;</button>
 <div id="dmh"></div><div class="clog" id="dmlog" aria-live="polite"></div>
 <form id="dmf" class="cin"><input id="dmi" maxlength="1000" autocomplete="off" placeholder="Mesaj yaz…" aria-label="Mesaj"><button class="btn-g" type="submit">Gönder</button></form>
@@ -1146,17 +1194,18 @@ $("#dmf").onsubmit=async e=>{e.preventDefault();const i=$("#dmi"),t=i.value.trim
 const PROMPTS=["İdeal bir gece benim için…","Dans pistinde beni şununla bulursun…","En sevdiğim gece hayatı semti…","Beni en iyi anlatan şarkı…","Bir mekânda beni etkileyen şey…","Masaya ilk ben ısmarlarım, çünkü…","Sabaha karşı en iyi atıştırmalık…","Benimle dışarı çıkmak için bilmen gereken…"];
 const TIC={venue_types:"🏙️",drinks:"🍸",music:"🎶"};
 const bchip=(ic,t,com)=>t?`<span class="bch${com?" com":""}">${ic?`<span aria-hidden="true">${ic}</span>`:""}${esc(t)}</span>`:"";
-function bumble(p){const ph=p.open?(p.photos||[]):[],self=p.state==="self",cm=p.common||{};
- const top=`<div class="bh${ph[0]?"":" nop"}">${ph[0]?`<img data-sp="${esc(ph[0])}" alt="${esc(p.name)} fotoğrafı">`:`<span class="bi" aria-hidden="true">${ini(p.name)}</span>`}${!p.open?`<span class="lk2">🔒 ${p.photo_count?p.photo_count+" fotoğraf · ":""}arkadaş olunca görünür</span>`:(!ph[0]&&self?`<span class="lk2">Henüz fotoğraf eklemedin</span>`:"")}<div class="bhg"></div><div class="bhn"><h2>${esc(p.name)}${p.age?`<span>, ${p.age}</span>`:""}${p.verified?'<i class="bv" title="Onaylı profil" aria-label="Onaylı profil">✓</i>':""}</h2><div>${[p.job,p.city].filter(Boolean).map(esc).join(" · ")}</div>${p.out?`<div class="bo"><i></i>Bu gece: ${esc(p.out.venue)}</div>`:""}</div></div>`;
+function bumble(p){const ph=p.open?(p.photos||[]):(p.cover?[p.cover]:[]),self=p.state==="self",cm=p.common||{};
+ const top=`<div class="bh${ph[0]?"":" nop"}">${ph[0]?`<img data-sp="${esc(ph[0])}" alt="${esc(p.name)} fotoğrafı">`:`<span class="bi" aria-hidden="true">${ini(p.name)}</span>`}${!p.open&&(p.photo_count>1||!p.cover)?`<span class="lk2">🔒 ${p.photo_count>1?(p.photo_count-1)+" fotoğraf daha · ":""}arkadaş olunca görünür</span>`:(!ph[0]&&self?`<span class="lk2">Henüz fotoğraf eklemedin</span>`:"")}<div class="bhg"></div><div class="bhn"><h2>${esc(p.name)}${p.age?`<span>, ${p.age}</span>`:""}${p.verified?'<i class="bv" title="Onaylı profil" aria-label="Onaylı profil">✓</i>':""}</h2><div>${[p.job,p.city].filter(Boolean).map(esc).join(" · ")}</div>${p.out?`<div class="bo"><i></i>Bu gece: ${esc(p.out.venue)}</div>`:""}</div></div>`;
  const pr=(p.prompts||[]).map(x=>`<div class="bc bp"><h5>${esc(x.q)}</h5><p>${esc(x.a)}</p></div>`);
  const photo=i=>ph[i]?`<div class="bpi"><img data-sp="${esc(ph[i])}" alt="${esc(p.name)} fotoğrafı ${i+1}" loading="lazy"></div>`:"";
  const about=p.bio?`<div class="bc"><h4>Hakkımda</h4><p>${esc(p.bio)}</p></div>`:"";
- const basics=`<div class="bc"><h4>Temel bilgiler</h4><div class="bchips">${bchip("👤",p.gender)}${bchip("🎂",p.age?p.age+" yaş":"")}${bchip("💼",p.job)}${bchip("📍",p.city)}${bchip("👥",p.friends+" arkadaş")}${p.verified?bchip("✓","Onaylı profil"):""}</div></div>`;
+ const basics=`<div class="bc"><h4>Temel bilgiler</h4><div class="bchips">${bchip("👤",p.gender)}${bchip("🎂",p.age?p.age+" yaş":"")}${bchip("💼",p.job)}${bchip("📍",p.city)}${bchip("📏",p.height?p.height+" cm":"")}${bchip("⚖️",p.weight?p.weight+" kg":"")}${bchip("👥",p.friends+" arkadaş")}${p.verified?bchip("✓","Onaylı profil"):""}</div></div>`;
  const ncom=["venue_types","drinks","music"].reduce((n,k)=>n+(cm[k]||[]).length,0);
  const taste=k=>(p[k]||[]).length?`<div class="bc"><h4>${TIC[k]} ${self?TLM[k]:TL[k]}</h4><div class="bchips">${p[k].map(t=>bchip("",t,(cm[k]||[]).includes(t))).join("")}</div></div>`:"";
+ const look=(p.looking_for||[]).length?`<div class="bc"><h4>🔎 ${self?"Aradığın":"Aradığı"}</h4><div class="bchips">${p.looking_for.map(t=>bchip("",t)).join("")}</div></div>`:"";
  const fav=(p.fav_venues||[]).length?`<div class="bc"><h4>📍 Takip ettiği mekânlar</h4><div class="bchips">${p.fav_venues.map(v=>`<button type="button" class="bch" data-vq="${esc(v.id)}">${esc(v.name)}</button>`).join("")}</div></div>`:"";
  const com=!self&&ncom?`<div class="bc bcom">✨ <b>${ncom} ortak zevkiniz var</b></div>`:"";
- return `<div class="bwrap">${[top,com,about,photo(1),pr[0],basics,photo(2),taste("venue_types"),pr[1],photo(3),taste("drinks"),taste("music"),photo(4),pr[2],photo(5),fav].filter(Boolean).join("")}</div>`}
+ return `<div class="bwrap">${[top,com,about,photo(1),pr[0],basics,look,photo(2),taste("venue_types"),pr[1],photo(3),taste("drinks"),taste("music"),photo(4),pr[2],photo(5),fav].filter(Boolean).join("")}</div>`}
 let PR=null;
 async function openProfile(uid){if(uid===SO.me){const d=$("#prd");if(d.open)d.close();["#accd","#dmd"].forEach(s=>{const x=$(s);if(x&&x.open)x.close()});SO.pm="view";return goSec("profil")}
  PR={id:uid};const d=$("#prd");d.classList.add("bprd");$("#prb").innerHTML='<p class="empty">Yükleniyor…</p>';if(!d.open)d.showModal();
@@ -1175,7 +1224,7 @@ function tagAct(b,m){if(b.dataset.tg!==undefined){const on=!b.classList.contains
   if(ex){ex.classList.add("on");ex.setAttribute("aria-pressed","true")}else b.parentNode.insertAdjacentHTML("beforebegin",`<button type="button" class="ttag on" aria-pressed="true" data-tg="${esc(v)}">${esc(v)}</button>`);i.value="";return true}return false}
 function pickTags(k,cur){cur=cur||[];const opts=[...new Set([...TASTE[k],...cur])];
  return `<fieldset class="tp" data-tk="${k}"><legend>${TIC[k]} ${TLM[k]}</legend>${opts.map(o=>`<button type="button" class="ttag${cur.includes(o)?" on":""}" aria-pressed="${cur.includes(o)}" data-tg="${esc(o)}">${esc(o)}</button>`).join("")}<span class="addt"><input maxlength="30" placeholder="Başka ekle" aria-label="${TLM[k]}: başka ekle"><button type="button" data-tadd="1">Ekle</button></span></fieldset>`}
-function pscore(p){const c=[(p.photos||[]).length>=1,(p.photos||[]).length>=3,!!p.bio,!!p.job,!!p.city,(p.prompts||[]).length>=1,(p.venue_types||[]).length>0,(p.drinks||[]).length>0,(p.music||[]).length>0,!!p.verified];return Math.round(c.filter(Boolean).length/c.length*100)}
+function pscore(p){const c=[(p.photos||[]).length>=1,(p.photos||[]).length>=3,!!p.bio,!!p.job,!!p.city,!!p.height,(p.prompts||[]).length>=1,(p.venue_types||[]).length>0,(p.drinks||[]).length>0,(p.music||[]).length>0,!!p.verified];return Math.round(c.filter(Boolean).length/c.length*100)}
 function slotsHtml(ph){return [0,1,2,3,4,5].map(i=>ph[i]?`<div class="ps has"><img data-sp="${esc(ph[i])}" alt="Fotoğraf ${i+1}">${i===0?'<span class="cv">Kapak</span>':`<button type="button" class="mk" data-pmain="${i}">Kapak yap</button>`}<button type="button" class="x" data-pdelp="${i}" aria-label="Fotoğraf ${i+1}'i sil">×</button></div>`:`<label class="ps add" title="Fotoğraf ekle"><input type="file" accept="image/*" data-padd="1" hidden aria-label="Fotoğraf ekle">+</label>`).join("")}
 function editHtml(p){const sc=pscore(p);
  const pq=i=>{const x=(p.prompts||[])[i]||{};return `<div class="pq"><select data-pq="${i}" aria-label="Soru ${i+1}"><option value="">Bir soru seç</option>${[...new Set([...PROMPTS,x.q].filter(Boolean))].map(q=>`<option${q===x.q?" selected":""}>${esc(q)}</option>`).join("")}</select><textarea data-pa="${i}" maxlength="200" rows="2" placeholder="Cevabın">${esc(x.a||"")}</textarea></div>`};
@@ -1183,6 +1232,7 @@ function editHtml(p){const sc=pscore(p);
  <div class="sbox"><div style="display:flex;justify-content:space-between;align-items:center"><b>Profil gücü</b><b style="color:var(--gold-d)">%${sc}</b></div><div class="meter"><i style="width:${sc}%"></i></div><p class="sm" style="margin:4px 0 0">${sc<100?"Fotoğraf, soru cevapları ve zevklerini ekledikçe profilin güçlenir; ortak zevki olanlar seni daha kolay bulur.":"Harika, profilin eksiksiz!"}${!p.verified?' <a href="#" data-accopen="1">Profilini onaylat</a>':""}</p></div>
  <div class="sbox"><h3 style="margin:0 0 4px">Fotoğraflar</h3><p class="sm" style="margin:0 0 12px">En fazla 6 fotoğraf. İlki profil kapağın olur. Fotoğraflarını yalnızca arkadaşların görür.</p><div class="pgrid" id="pgrid">${slotsHtml(p.photos||[])}</div><div class="msg" id="phm" role="status"></div></div>
  <div class="sbox"><h3 style="margin:0">Hakkımda</h3><label>Kendini anlat<textarea id="sbio" maxlength="300" rows="3" placeholder="Örn. Hafta sonu rooftop, hafta içi caz barı. Yeni mekân keşfetmeye bayılırım.">${esc(p.bio||"")}</textarea></label><div class="filters"><label>Meslek<input id="sjob" maxlength="40" value="${esc(p.job||"")}" placeholder="Örn. Mimar"></label><label>Yaşadığın şehir<input id="scity" maxlength="40" list="citylist" value="${esc(p.city||"")}" placeholder="Örn. İstanbul"></label></div><datalist id="citylist">${CITIES.map(c=>`<option value="${esc(c)}">`).join("")}</datalist></div>
+ <div class="sbox"><h3 style="margin:0">Temel bilgiler</h3><div class="filters"><label>Boy (cm)<input id="sh" type="number" min="130" max="230" inputmode="numeric" value="${esc(p.height||"")}" placeholder="Örn. 175"></label><label>Kilo (kg)<input id="sw" type="number" min="35" max="250" inputmode="numeric" value="${esc(p.weight||"")}" placeholder="Boş bırakabilirsin"></label></div><fieldset class="tp" data-tk="look"><legend>🔎 Ne arıyorsun?</legend>${[...new Set([...(typeof LOOK!=="undefined"?LOOK:[]),...(p.looking_for||[])])].map(o=>`<button type="button" class="ttag${(p.looking_for||[]).includes(o)?" on":""}" aria-pressed="${(p.looking_for||[]).includes(o)}" data-tg="${esc(o)}">${esc(o)}</button>`).join("")}</fieldset><p class="sm" style="margin:8px 0 0">📍 Konum: ${p.geo?"açık":"kapalı"} · <button type="button" class="lnk" data-mygeo="1">${p.geo?"Güncelle":"Konumumu kullan"}</button></p></div>
  <div class="sbox"><h3 style="margin:0">Sorular</h3><p class="sm" style="margin:2px 0 0">En fazla 3 soruya cevap ver; profilinde büyük kartlar olarak görünür.</p>${pq(0)}${pq(1)}${pq(2)}</div>
  <div class="sbox"><h3 style="margin:0">Zevklerin</h3>${pickTags("venue_types",p.venue_types)}${pickTags("drinks",p.drinks)}${pickTags("music",p.music)}</div>
  <div class="msg" id="psm" role="status"></div>
@@ -1194,7 +1244,8 @@ async function loadMyProfile(){const box=$("#myb");const u=await needLogin(box,"
  box.innerHTML=`<div class="ptabs" role="tablist">${tb("edit")}${tb("view")}</div>`+(SO.pm==="view"?`<p class="sm" style="text-align:center;margin:-6px 0 14px">Arkadaşların profilini böyle görür.</p>`+bumble(p)+`<div class="pacts"><button type="button" class="btn-g" data-pm="edit">Profili düzenle</button><button type="button" data-accopen="1">Hesap ayarları</button></div>`:editHtml(p));signAll(box)}
 async function savePhotos(ph){const m=$("#phm");const r=await sb.rpc("set_my_photos",{p_photos:ph});if(r.error){msg(m,terr(r.error),false);return false}
  SO.myp.photos=ph;$("#pgrid").innerHTML=slotsHtml(ph);m.className="msg";signAll($("#pgrid"));return true}
-$("#myb").addEventListener("click",async e=>{const b=e.target.closest("[data-pm],[data-pmain],[data-pdelp],[data-accopen],[data-tg],[data-tadd],#psave");if(!b)return;
+$("#myb").addEventListener("click",async e=>{const b=e.target.closest("[data-pm],[data-pmain],[data-pdelp],[data-accopen],[data-tg],[data-tadd],[data-mygeo],#psave");if(!b)return;
+ if(b.dataset.mygeo){b.disabled=true;const ok=await askGeo($("#psm"));b.disabled=false;if(ok){toast("Konumun kaydedildi.");b.textContent="Güncelle"}return}
  if(tagAct(b,$("#psm")))return;
  if(b.dataset.accopen!==undefined){e.preventDefault();accTab="p";return openAcc("p")}
  if(b.dataset.pm){SO.pm=b.dataset.pm;window.scrollTo({top:0});return loadMyProfile()}
@@ -1202,7 +1253,8 @@ $("#myb").addEventListener("click",async e=>{const b=e.target.closest("[data-pm]
  if(b.dataset.pdelp!==undefined){if(!confirm("Bu fotoğrafı silmek istiyor musun?"))return;const ph=[...SO.myp.photos],[x]=ph.splice(+b.dataset.pdelp,1);if(await savePhotos(ph)){sb.storage.from("posts").remove([x]);toast("Fotoğraf silindi.")}return}
  if(b.id==="psave"){const m=$("#psm"),g=k=>[...document.querySelectorAll(`#myb .tp[data-tk="${k}"] .ttag.on`)].map(x=>x.dataset.tg);
   const pr=[0,1,2].map(i=>({q:$(`[data-pq="${i}"]`).value,a:$(`[data-pa="${i}"]`).value.trim()})).filter(x=>x.q&&x.a);
-  b.disabled=true;const r=await sb.rpc("update_my_profile",{p_bio:$("#sbio").value,p_city:$("#scity").value,p_avatar:null,p_venue_types:g("venue_types"),p_drinks:g("drinks"),p_music:g("music"),p_job:$("#sjob").value,p_prompts:pr});
+  b.disabled=true;const nv=v=>v===""?null:+v;let r=await sb.rpc("update_my_profile",{p_bio:$("#sbio").value,p_city:$("#scity").value,p_avatar:null,p_venue_types:g("venue_types"),p_drinks:g("drinks"),p_music:g("music"),p_job:$("#sjob").value,p_prompts:pr});
+  if(!r.error)r=await sb.rpc("update_my_basics",{p_height:nv($("#sh").value),p_weight:nv($("#sw").value),p_looking:g("look")});
   b.disabled=false;if(r.error)return msg(m,"Kaydedilemedi: "+terr(r.error),false);toast("Profilin kaydedildi.");SO.pm="view";window.scrollTo({top:0});loadMyProfile()}});
 $("#myb").addEventListener("change",async e=>{const i=e.target.closest("[data-padd]");if(!i||!i.files[0])return;const m=$("#phm");
  if((SO.myp.photos||[]).length>=6)return msg(m,"En fazla 6 fotoğraf ekleyebilirsin.",false);msg(m,"Fotoğraf yükleniyor…",true);
@@ -1269,11 +1321,101 @@ function socRoute(){const h=location.hash.slice(1);if(SECLOAD[h])SECLOAD[h]()}
 addEventListener("hashchange",socRoute);
 let SOC_U;function socialAuth(u){const id=u?u.id:null;if(SOC_U===id)return;SOC_U=id;SO.me=id;SO.urls={};SOV.only=false;loadVenueStats();socRoute()}
 if(sb)user().then(socialAuth);else socRoute();
+
+/* ===== Kayıt sonrası sorular, yakınlarda arkadaş bul, coin durumu ===== */
+const LOOK=["Mekân arkadaşı","Dam / karma grup","Yeni arkadaşlar","Bu gece dışarı çıkacak ekip","Konser ve etkinlik arkadaşı","Şehirde yeniyim"];
+window.MYC=null;
+async function loadCoins(){if(!sb)return;try{const u=await user();if(!u){window.MYC=null;return}const r=await sb.rpc("my_coins");if(!r.error){window.MYC=r.data;if(typeof drawRooms==="function")drawRooms()}}catch(e){}}
+const fmtD=s=>new Date(s).toLocaleDateString("tr-TR",{day:"numeric",month:"long"});
+
+/* ---- Kayıt sonrası sorular (fotoğraf zorunlu) ---- */
+let OB=null;
+async function needOnboarding(){try{const p=await myProfile();return !!(p&&!p.banned&&(!(p.photos||[]).length||!p.onboarded_at))}catch(e){return false}}
+async function openOnboarding(){const p=await myProfile();if(!p)return;
+ OB={step:(p.photos||[]).length?1:0,photos:[...(p.photos||[])],city:p.home_city||"",h:p.height_cm||170,w:p.weight_kg||65,hideW:!p.weight_kg&&!!p.onboarded_at,noH:false,look:[...(p.looking_for||[])],geo:p.geo_lat!=null,name:p.display_name};
+ const d=$("#onbd");["#accd","#prd","#welcomed"].forEach(s=>{const x=$(s);if(x&&x.open)x.close()});if(!d.open)d.showModal();renderOb()}
+const OBN=5;
+function renderOb(){const s=OB.step,box=$("#onbb");const dots=`<div class="obd" aria-hidden="true">${[...Array(OBN)].map((_,i)=>`<i class="${i<=s?"on":""}"></i>`).join("")}</div>`;let h="";
+ if(s===0)h=`<h3 id="onbt">Önce bir fotoğrafını ekle</h3><p class="sm">Profilinde en az <b>1 fotoğraf zorunlu</b>. Yüzünün net göründüğü fotoğraflar çok daha fazla istek alır. Kapak fotoğrafını tüm üyeler, diğerlerini yalnızca arkadaşların görür.</p>
+  <div class="pgrid">${[0,1,2].map(i=>OB.photos[i]?`<div class="ps has"><img data-sp="${esc(OB.photos[i])}" alt="Fotoğraf ${i+1}">${i===0?'<span class="cv">Kapak</span>':""}</div>`:`<label class="ps add" title="Fotoğraf ekle"><input type="file" accept="image/*" data-obadd="1" hidden aria-label="Fotoğraf ekle">+</label>`).join("")}</div>`;
+ if(s===1)h=`<h3 id="onbt">Hangi şehirdesin?</h3><p class="sm">Seni yakınındaki üyelerle ve mekânlarla buluşturalım.</p><div class="cgrid">${[...CITIES,"Diğer"].map(c=>`<button type="button" class="cch${(OB.city===c||(c==="Diğer"&&OB.city&&!CITIES.includes(OB.city)))?" on":""}" data-obcity="${esc(c)}">${esc(c)}</button>`).join("")}</div>${OB.city&&!CITIES.includes(OB.city)||OB.city==="Diğer"?`<label>Şehrin<input id="obcity" maxlength="40" value="${esc(OB.city==="Diğer"?"":OB.city)}" placeholder="Şehrini yaz"></label>`:""}`;
+ if(s===2)h=`<h3 id="onbt">Boyun ve kilon</h3><p class="sm">Profilinde ve arama filtrelerinde kullanılır. İstersen gizleyebilirsin.</p>
+  <div class="rng"><label for="obh">Boy <b id="obhv">${OB.noH?"Belirtilmedi":OB.h+" cm"}</b></label><input type="range" id="obh" min="140" max="210" value="${OB.h}"${OB.noH?" disabled":""}><div class="chk"><input type="checkbox" id="obhn"${OB.noH?" checked":""}><label for="obhn" style="margin:0">Boyumu belirtmek istemiyorum</label></div></div>
+  <div class="rng"><label for="obw">Kilo <b id="obwv">${OB.hideW?"Belirtilmedi":OB.w+" kg"}</b></label><input type="range" id="obw" min="40" max="150" value="${OB.w}"${OB.hideW?" disabled":""}><div class="chk"><input type="checkbox" id="obwn"${OB.hideW?" checked":""}><label for="obwn" style="margin:0">Kilomu belirtmek istemiyorum</label></div></div>`;
+ if(s===3)h=`<h3 id="onbt">ISDAMBUL'da ne arıyorsun?</h3><p class="sm">Birden fazla seçebilirsin.</p><div class="bchips">${LOOK.map(l=>`<button type="button" class="ttag${OB.look.includes(l)?" on":""}" aria-pressed="${OB.look.includes(l)}" data-oblook="${esc(l)}">${esc(l)}</button>`).join("")}</div>`;
+ if(s===4)h=`<h3 id="onbt">Yakınındakileri gör</h3><p class="sm">Konumunu paylaşırsan yakınındaki üyeleri mesafeleriyle görürsün. Konumun yaklaşık tutulur (yaklaşık 1 km); kesin konumun hiçbir zaman kimseye gösterilmez. İstediğin zaman kapatabilirsin.</p>
+  <div class="row"><button type="button" class="btn-g" data-obgeo="1">${OB.geo?"✓ Konum açık · güncelle":"📍 Konumumu kullan"}</button></div>`;
+ box.innerHTML=dots+h+`<div class="msg" id="obm" role="status"></div><div class="row obnav">${s>0?`<button type="button" data-obback="1">Geri</button>`:`<button type="button" class="lnk" data-oblogout="1">Çıkış yap</button>`}<button type="button" class="btn-g" data-obnext="1"${s===0&&!OB.photos.length?" disabled":""}>${s===OBN-1?"Bitir":"Devam"}</button></div>`;
+ signAll(box);const f=box.querySelector("button.btn-g,input");if(f&&s>0)setTimeout(()=>f.focus(),30)}
+function obCollect(){const s=OB.step;
+ if(s===1){const i=$("#obcity");if(i)OB.city=i.value.trim()||"Diğer"}
+ if(s===2){OB.noH=$("#obhn").checked;OB.hideW=$("#obwn").checked;OB.h=+$("#obh").value;OB.w=+$("#obw").value}}
+$("#onbb").addEventListener("input",e=>{if(e.target.id==="obh")$("#obhv").textContent=e.target.value+" cm";if(e.target.id==="obw")$("#obwv").textContent=e.target.value+" kg"});
+$("#onbb").addEventListener("change",async e=>{
+ if(e.target.id==="obhn"||e.target.id==="obwn"){obCollect();renderOb();return}
+ const i=e.target.closest("[data-obadd]");if(!i||!i.files[0])return;const m=$("#obm");msg(m,"Fotoğraf yükleniyor…",true);
+ try{const path=await upMedia(i.files[0]);const ph=[...OB.photos,path].slice(0,6);const r=await sb.rpc("set_my_photos",{p_photos:ph});if(r.error)throw r.error;OB.photos=ph;renderOb();toast("Fotoğraf eklendi.")}catch(x){msg(m,"Yüklenemedi: "+terr(x),false)}});
+$("#onbb").addEventListener("click",async e=>{const b=e.target.closest("button");if(!b)return;const ds=b.dataset,m=$("#obm");
+ if(ds.oblogout){await sb.auth.signOut();$("#onbd").close();refreshNav();return}
+ if(ds.obcity){OB.city=ds.obcity;renderOb();const i=$("#obcity");if(i)i.focus();return}
+ if(ds.oblook){const on=!OB.look.includes(ds.oblook);OB.look=on?[...OB.look,ds.oblook]:OB.look.filter(x=>x!==ds.oblook);b.classList.toggle("on",on);b.setAttribute("aria-pressed",on);return}
+ if(ds.obgeo){b.disabled=true;const ok=await askGeo(m);b.disabled=false;if(ok){OB.geo=true;renderOb();msg($("#obm"),"Konumun kaydedildi.",true)}return}
+ if(ds.obback){obCollect();OB.step--;renderOb();return}
+ if(ds.obnext){obCollect();
+  if(OB.step===0&&!OB.photos.length)return msg(m,"Devam etmek için en az 1 fotoğraf yükle.",false);
+  if(OB.step===1&&(!OB.city||OB.city==="Diğer"))return msg(m,"Lütfen şehrini seç ya da yaz.",false);
+  if(OB.step<OBN-1){OB.step++;renderOb();return}
+  b.disabled=true;const r=await sb.rpc("save_onboarding",{p_city:OB.city,p_height:OB.noH?null:OB.h,p_weight:OB.hideW?null:OB.w,p_looking:OB.look,p_finish:true});b.disabled=false;
+  if(r.error)return msg(m,terr(r.error),false);$("#onbd").close();toast("Profilin hazır! Yakınındaki üyelere göz at.");DF.city=DF.city||(CITIES.includes(OB.city)?OB.city:"");goSec("yakinda")}});
+$("#onbd").addEventListener("cancel",e=>{if(!OB||!OB.photos.length)e.preventDefault()});
+async function askGeo(m){if(!("geolocation" in navigator)){if(m)msg(m,"Cihazın konum paylaşımını desteklemiyor.",false);return false}
+ return new Promise(res=>navigator.geolocation.getCurrentPosition(async p=>{const r=await sb.rpc("set_location",{p_lat:p.coords.latitude,p_lng:p.coords.longitude});if(r.error){if(m)msg(m,terr(r.error),false);res(false)}else res(true)},
+  ()=>{if(m)msg(m,"Konum izni verilmedi. Tarayıcı ya da telefon ayarlarından izin verebilirsin.",false);res(false)},{enableHighAccuracy:false,timeout:12000,maximumAge:600000}))}
+
+/* ---- Yakınlarda arkadaş bul ---- */
+const DF=(()=>{try{return Object.assign({city:"",gender:"",amin:"",amax:"",hmin:"",hmax:"",wmin:"",wmax:"",near:false,km:"10",out:false},JSON.parse(localStorage.getItem("isd_df")||"{}"))}catch(e){return {city:"",gender:"",amin:"",amax:"",hmin:"",hmax:"",wmin:"",wmax:"",near:false,km:"10",out:false}}})();
+let DOFF=0,DBUSY=false;
+async function loadLive(){if(!sb)return;try{const r=await sb.rpc("live_stats");if(r.error||!r.data)return;const d=r.data,t=[d.rooms?`${d.rooms} açık oda`:"",d.out?`${d.out} kişi bu gece dışarıda`:"",d.online?`${d.online} üye çevrimiçi`:""].filter(Boolean).join(" · ");
+ document.querySelectorAll("[data-live]").forEach(e=>{e.innerHTML=t?`<i></i>${t}`:"";e.hidden=!t})}catch(e){}}
+function dfForm(){const opt=(v,l,c)=>`<option value="${esc(v)}"${c===v?" selected":""}>${esc(l)}</option>`;
+ return `<form id="dff" class="dfil"><div class="drow"><label>Şehir<select name="city">${opt("","Tüm şehirler",DF.city)}${CITIES.map(c=>opt(c,c,DF.city)).join("")}</select></label>
+ <label>Cinsiyet<select name="gender">${opt("","Herkes",DF.gender)}${opt("Kadın","Kadın",DF.gender)}${opt("Erkek","Erkek",DF.gender)}</select></label>
+ <label>Yaş<span class="mm"><input name="amin" type="number" min="18" max="99" inputmode="numeric" placeholder="18" value="${esc(DF.amin)}" aria-label="En düşük yaş"><span>–</span><input name="amax" type="number" min="18" max="99" inputmode="numeric" placeholder="60" value="${esc(DF.amax)}" aria-label="En yüksek yaş"></span></label></div>
+ <div class="dtog"><label class="tg3"><input type="checkbox" name="near"${DF.near?" checked":""}><span>📍 Yakınımda</span></label><select name="km" aria-label="Mesafe">${["2","5","10","25","50"].map(k=>opt(k,k+" km içinde",DF.km)).join("")}</select><label class="tg3"><input type="checkbox" name="out"${DF.out?" checked":""}><span>🌙 Bu gece dışarıda</span></label></div>
+ <details${DF.hmin||DF.hmax||DF.wmin||DF.wmax?" open":""}><summary>Daha fazla filtre</summary><div class="drow"><label>Boy (cm)<span class="mm"><input name="hmin" type="number" min="130" max="230" inputmode="numeric" placeholder="150" value="${esc(DF.hmin)}" aria-label="En düşük boy"><span>–</span><input name="hmax" type="number" min="130" max="230" inputmode="numeric" placeholder="200" value="${esc(DF.hmax)}" aria-label="En yüksek boy"></span></label>
+ <label>Kilo (kg)<span class="mm"><input name="wmin" type="number" min="35" max="250" inputmode="numeric" placeholder="45" value="${esc(DF.wmin)}" aria-label="En düşük kilo"><span>–</span><input name="wmax" type="number" min="35" max="250" inputmode="numeric" placeholder="120" value="${esc(DF.wmax)}" aria-label="En yüksek kilo"></span></label></div></details>
+ <div class="row"><button class="btn-g" type="submit">Ara</button><button type="button" class="lnk" data-dreset="1">Filtreleri temizle</button></div><div class="msg" id="dfm" role="status"></div></form>`}
+function dcard(p){const st=FST[p.state];return `<article class="dcard"><button type="button" class="dimg" data-prof="${p.id}" aria-label="${esc(p.name)} profilini aç">${p.cover?`<img data-sp="${esc(p.cover)}" alt="" loading="lazy">`:`<span class="bi">${ini(p.name)}</span>`}<span class="dg"></span>${p.online?'<span class="don" title="Çevrimiçi"></span>':""}<span class="dn"><b>${esc(p.name)}, ${p.age}</b>${p.verified?'<i class="bv" aria-label="Onaylı profil">✓</i>':""}<small>${[p.km!=null?"~"+p.km+" km":"",p.city].filter(Boolean).map(esc).join(" · ")}</small></span></button>
+ <div class="dmeta">${p.out?`<span class="dout">🌙 ${esc(p.out)}</span>`:""}${p.common?`<span class="dcom">✨ ${p.common} ortak zevk</span>`:""}${p.height?`<span>📏 ${p.height} cm</span>`:""}</div>
+ ${p.state==="none"?`<button type="button" class="btn-g dact" data-fr="${p.id}">Arkadaş ekle</button>`:st?`<button type="button" class="dact${st[2]?" btn-g":""}" data-${st[1]}="${p.id}"${p.state==="sent"?' data-c="1"':""}>${st[0]}</button>`:""}</article>`}
+async function loadDiscover(more){const box=$("#dsb");const u=await needLogin(box,"Yakınındaki üyeleri görmek için ücretsiz üye ol ya da giriş yap.");if(!u)return;
+ if(!more||!$("#dres")){box.innerHTML=dfForm()+`<div id="dres" class="dgrid"></div><p class="mt"><button type="button" id="dmore" style="display:none">Daha fazla göster</button></p>`;DOFF=0}
+ if(DBUSY)return;DBUSY=true;const res=$("#dres");if(!more)res.innerHTML='<p class="empty">Aranıyor…</p>';
+ const n=v=>v===""||v==null?null:+v;
+ const r=await sb.rpc("discover",{p_city:DF.city||null,p_gender:DF.gender||null,p_age_min:n(DF.amin),p_age_max:n(DF.amax),p_h_min:n(DF.hmin),p_h_max:n(DF.hmax),p_w_min:n(DF.wmin),p_w_max:n(DF.wmax),p_near_km:DF.near?+DF.km:null,p_out:!!DF.out,p_offset:DOFF});DBUSY=false;
+ if(!$("#dres"))return;if(!more)res.innerHTML="";
+ if(r.error){const m=terr(r.error);res.innerHTML=/konum/i.test(m)?`<div class="sbox" style="grid-column:1/-1"><p style="margin:0 0 10px">${esc(m)} Konumun yaklaşık tutulur (yaklaşık 1 km) ve kimseye gösterilmez.</p><button type="button" class="btn-g" data-dgeo="1">📍 Konumumu kullan</button></div>`:err(r.error);return}
+ const L=r.data||[];if(!more&&!L.length)res.innerHTML=`<p class="empty" style="grid-column:1/-1">Bu filtrelere uyan üye bulunamadı. Filtreleri genişletmeyi dene.</p>`;
+ res.insertAdjacentHTML("beforeend",L.map(dcard).join(""));DOFF+=L.length;$("#dmore").style.display=L.length<24?"none":"";signAll(res)}
+document.addEventListener("submit",e=>{if(e.target.id!=="dff")return;e.preventDefault();const f=new FormData(e.target);
+ ["city","gender","amin","amax","hmin","hmax","wmin","wmax","km"].forEach(k=>DF[k]=String(f.get(k)||""));DF.near=!!f.get("near");DF.out=!!f.get("out");
+ const bad=[["amin","amax"],["hmin","hmax"],["wmin","wmax"]].find(([a,b])=>DF[a]&&DF[b]&&+DF[a]>+DF[b]);if(bad)return msg($("#dfm"),"En düşük değer en yüksekten büyük olamaz.",false);
+ try{localStorage.setItem("isd_df",JSON.stringify(DF))}catch(x){}loadDiscover(false)});
+document.addEventListener("click",async e=>{const b=e.target.closest("[data-dreset],[data-dgeo],#dmore");if(!b)return;
+ if(b.id==="dmore")return loadDiscover(true);
+ if(b.dataset.dreset){Object.assign(DF,{city:"",gender:"",amin:"",amax:"",hmin:"",hmax:"",wmin:"",wmax:"",near:false,km:"10",out:false});try{localStorage.removeItem("isd_df")}catch(x){}return loadDiscover(false)}
+ if(b.dataset.dgeo){b.disabled=true;const ok=await askGeo($("#dfm"));b.disabled=false;if(ok){DF.near=true;loadDiscover(false)}}});
+SECLOAD.yakinda=()=>loadDiscover(false);
+const _socialAuth=socialAuth;
+const obCheck=()=>{if($("#onbd").open)return;needOnboarding().then(n=>{if(n&&!$("#onbd").open)openOnboarding()})};
+socialAuth=function(u){_socialAuth(u);loadCoins();loadLive();if(u)obCheck()};
+loadLive();if(sb)user().then(u=>{if(u){loadCoins();obCheck()}});
 </script>
 <script>
 /* PWA: servis çalışanı ve "uygulamayı yükle" bandı */
 if("serviceWorker" in navigator){addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}))}
-var INAPP=(function(){let v=false;try{v=new URLSearchParams(location.search).get("src")==="app"||sessionStorage.getItem("inapp")==="1";if(v)sessionStorage.setItem("inapp","1")}catch(e){}return v||matchMedia("(display-mode: standalone)").matches||navigator.standalone===true})();if(INAPP)document.documentElement.classList.add("inapp");
+var NATIVE=(function(){let v=false;try{v=new URLSearchParams(location.search).get("src")==="native"||sessionStorage.getItem("native")==="1"||!!(window.Capacitor&&window.Capacitor.isNativePlatform&&window.Capacitor.isNativePlatform());if(v)sessionStorage.setItem("native","1")}catch(e){}return v})();if(NATIVE)document.documentElement.classList.add("native");
+var INAPP=(function(){let v=false;try{v=NATIVE||new URLSearchParams(location.search).get("src")==="app"||sessionStorage.getItem("inapp")==="1";if(v)sessionStorage.setItem("inapp","1")}catch(e){}return v||matchMedia("(display-mode: standalone)").matches||navigator.standalone===true})();if(INAPP)document.documentElement.classList.add("inapp");
 (function(){const sa=matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;let dis=false;try{dis=localStorage.getItem("app1")==="x"}catch(e){}
  const mob=matchMedia("(pointer:coarse)").matches&&innerWidth<900;if(sa||dis||!mob||INAPP)return;
  const ios=/iphone|ipad|ipod/i.test(navigator.userAgent)&&!/crios|fxios/i.test(navigator.userAgent);let ev=null;const bar=document.getElementById("appbar");
@@ -1286,7 +1428,7 @@ var INAPP=(function(){let v=false;try{v=new URLSearchParams(location.search).get
  addEventListener("appinstalled",()=>{bar.hidden=true})})();
 </script>
 <script>
-(function(){const P={profil:"Profilim",disarida:"Bu gece dışarıdayım",akis:"Akış",arkadaslar:"Arkadaşlar",mesajlar:"Mesajlar",odalar:"Mekân arkadaşı bul","oda-kur":"Arkadaş ara",mekanlar:"Mekânlar",nasil:"Nasıl çalışır?",guven:"Güvenlik",hakkimizda:"Hakkımızda",coin:"Coin",sehirler:"Şehirler",sss:"Sık sorulanlar"};
+(function(){const P={yakinda:"Yakınlarda arkadaş bul",profil:"Profilim",disarida:"Bu gece dışarıdayım",akis:"Akış",arkadaslar:"Arkadaşlar",mesajlar:"Mesajlar",odalar:"Mekân arkadaşı bul","oda-kur":"Arkadaş ara",mekanlar:"Mekânlar",nasil:"Nasıl çalışır?",guven:"Güvenlik",hakkimizda:"Hakkımızda",coin:"Coin",sehirler:"Şehirler",sss:"Sık sorulanlar"};
  function route(){const id=decodeURIComponent(location.hash.slice(1)),on=Object.prototype.hasOwnProperty.call(P,id);document.body.classList.toggle("pg",on);
   Object.keys(P).forEach(k=>{const el=document.getElementById(k);if(el)el.classList.toggle("on",k===id)});
   document.getElementById("pgt").textContent=on?P[id]:"";const m=document.getElementById("mnav");if(m&&!m.hidden&&typeof menu==="function")menu(false);

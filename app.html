@@ -13,11 +13,11 @@
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="ISDAMBUL">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Dancing+Script:wght@600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0a0a0a;--bg2:#141414;--card:#1b1a18;--line:#2e2b26;--gold:#d6b676;--gold2:#ecd3a0;--ink:#f5f1e8;--mute:#a39d91;--ok:#3ccf7e;--bad:#ff6b6b;--sat:env(safe-area-inset-top);--sab:env(safe-area-inset-bottom)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overscroll-behavior:none}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:16px/1.5 "Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;overscroll-behavior:none}
 body{overflow:hidden}
 button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
@@ -682,7 +682,7 @@ function notifSheet(){const L=NT.items;
 $("#bell").onclick=()=>{notifSheet();loadNotifs()};
 
 /* ================= BOOT ================= */
-async function afterIntro(){let q="?src=app";try{const r=new URLSearchParams(location.search).get("ref")||localStorage.getItem("isd_ref");if(r)q+="&ref="+encodeURIComponent(r)}catch(e){}location.replace("/"+q)}
+async function afterIntro(){let q="?src="+(new URLSearchParams(location.search).get("src")==="native"||!!(window.Capacitor&&window.Capacitor.isNativePlatform&&window.Capacitor.isNativePlatform())?"native":"app");try{const r=new URLSearchParams(location.search).get("ref")||localStorage.getItem("isd_ref");if(r)q+="&ref="+encodeURIComponent(r)}catch(e){}location.replace("/"+q)}
 (async function boot(){
  if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(()=>{});
  if(!sb){$("#splash").innerHTML='<p style="color:#fff;padding:30px;text-align:center">Bağlantı kurulamadı. İnternetini kontrol edip tekrar dene.</p>';return}
