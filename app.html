@@ -324,7 +324,12 @@ button:disabled{opacity:.5}
 <script>
 const SUPABASE_URL="https://pxfeaepuwuagwbgqxpqe.supabase.co";
 const SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4ZmVhZXB1d3VhZ3diZ3F4cHFlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQyNDYwMzUsImV4cCI6MjEwOTgyMjAzNX0.nc2irS2C0e_8A2v-AoTZ9G08XQ7u-Sa_kuJRFgjUOwM";
-const sb=window.supabase?supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY,{auth:{lock:(n,t,f)=>f()}}):null;
+window.sbLock=window.sbLock||(async function(name,acquireTimeout,fn){if(!(navigator.locks&&navigator.locks.request))return await fn();let got=false;
+ if(acquireTimeout===0){return await navigator.locks.request(name,{mode:"exclusive",ifAvailable:true},async l=>{if(!l){const e=new Error("Oturum kilidi meşgul");e.isAcquireTimeout=true;throw e}got=true;return await fn()})}
+ const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),acquireTimeout>0?acquireTimeout:10000);
+ try{return await navigator.locks.request(name,{mode:"exclusive",signal:ac.signal},async()=>{got=true;clearTimeout(tm);return await fn()})}
+ catch(e){if(!got&&e&&e.name==="AbortError")return await fn();throw e}finally{clearTimeout(tm)}});
+const sb=window.supabase?supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY,{auth:{lock:(...a)=>window.sbLock(...a),persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}):null;
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const fmt=s=>new Date(s).toLocaleString("tr-TR",{weekday:"short",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
@@ -350,7 +355,14 @@ const INTRO_PH=["1519214605650-76a613ee3245","1572116469696-31de0f17cc34","16365
 /* ================= STATE ================= */
 let U=null,P=null,BAL=0,SITE={transfer_discount:15,packages:[{coins:40,price:99,transfer_price:84},{coins:120,price:199,transfer_price:169},{coins:300,price:299,transfer_price:254}]};
 let VENUES=[],VM={},CITIES=[],ROOMS=[],CITY=LS.get("app_city")||"",CAT="",Q="",TAB="home";
-async function user(){if(!sb)return null;try{const r=await Promise.race([sb.auth.getSession(),new Promise(ok=>setTimeout(()=>ok({data:{session:null}}),4000))]);return r&&r.data&&r.data.session?r.data.session.user:null}catch(e){return null}}
+var __uLast=null,__uP=null;
+function __uStored(){try{for(const k of Object.keys(localStorage)){if(/^sb-.*-auth-token$/.test(k)){const v=JSON.parse(localStorage.getItem(k));const s=v&&(v.currentSession||v);if(s&&s.user&&s.refresh_token)return s.user}}}catch(e){}return null}
+async function user(){if(!sb)return null;if(__uP)return __uP;
+ __uP=(async()=>{try{const r=await Promise.race([sb.auth.getSession(),new Promise(ok=>setTimeout(()=>ok({timeout:true}),12000))]);
+  if(r&&r.timeout)return __uLast||__uStored();
+  if(r&&r.error)return __uLast||__uStored();
+  __uLast=r&&r.data&&r.data.session?r.data.session.user:null;return __uLast}catch(e){return __uLast||__uStored()}finally{setTimeout(()=>{__uP=null},0)}})();
+ return __uP}
 
 /* ================= INTRO ================= */
 const LINES=[

@@ -561,7 +561,12 @@ const SUPABASE_URL="https://pxfeaepuwuagwbgqxpqe.supabase.co";
 const SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4ZmVhZXB1d3VhZ3diZ3F4cHFlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQyNDYwMzUsImV4cCI6MjEwOTgyMjAzNX0.nc2irS2C0e_8A2v-AoTZ9G08XQ7u-Sa_kuJRFgjUOwM";
 /* ========================================================================= */
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
-const sb=(SUPABASE_URL&&SUPABASE_ANON_KEY&&window.supabase)?supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY,{auth:{lock:(n,t,f)=>f()}}):null;
+window.sbLock=window.sbLock||(async function(name,acquireTimeout,fn){if(!(navigator.locks&&navigator.locks.request))return await fn();let got=false;
+ if(acquireTimeout===0){return await navigator.locks.request(name,{mode:"exclusive",ifAvailable:true},async l=>{if(!l){const e=new Error("Oturum kilidi meşgul");e.isAcquireTimeout=true;throw e}got=true;return await fn()})}
+ const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),acquireTimeout>0?acquireTimeout:10000);
+ try{return await navigator.locks.request(name,{mode:"exclusive",signal:ac.signal},async()=>{got=true;clearTimeout(tm);return await fn()})}
+ catch(e){if(!got&&e&&e.name==="AbortError")return await fn();throw e}finally{clearTimeout(tm)}});
+const sb=(SUPABASE_URL&&SUPABASE_ANON_KEY&&window.supabase)?supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY,{auth:{lock:(...a)=>window.sbLock(...a),persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}):null;
 const fmt=s=>new Date(s).toLocaleString("tr-TR",{weekday:"short",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
@@ -770,7 +775,14 @@ document.addEventListener("click",async e=>{
 });
 
 /* ---- Üyelik ---- */
-async function user(){if(!sb)return null;try{const r=await Promise.race([sb.auth.getSession(),new Promise(ok=>setTimeout(()=>ok({data:{session:null}}),4000))]);return r&&r.data&&r.data.session?r.data.session.user:null}catch(e){return null}}
+var __uLast=null,__uP=null;
+function __uStored(){try{for(const k of Object.keys(localStorage)){if(/^sb-.*-auth-token$/.test(k)){const v=JSON.parse(localStorage.getItem(k));const s=v&&(v.currentSession||v);if(s&&s.user&&s.refresh_token)return s.user}}}catch(e){}return null}
+async function user(){if(!sb)return null;if(__uP)return __uP;
+ __uP=(async()=>{try{const r=await Promise.race([sb.auth.getSession(),new Promise(ok=>setTimeout(()=>ok({timeout:true}),12000))]);
+  if(r&&r.timeout)return __uLast||__uStored();
+  if(r&&r.error)return __uLast||__uStored();
+  __uLast=r&&r.data&&r.data.session?r.data.session.user:null;return __uLast}catch(e){return __uLast||__uStored()}finally{setTimeout(()=>{__uP=null},0)}})();
+ return __uP}
 function adult(b){const d=new Date(b),n=new Date();if(isNaN(d))return false;let y=n.getFullYear()-d.getFullYear();if(n<new Date(n.getFullYear(),d.getMonth(),d.getDate()))y--;return y>=18}
 const ERR=[[/rate limit|too many/i,"Çok fazla deneme yapıldı. Lütfen birkaç dakika sonra tekrar dene."],[/already registered|already been registered|already exists/i,"Bu e-posta ile zaten bir hesap var. Giriş yapmayı ya da şifreni sıfırlamayı dene."],[/Invalid login credentials/i,"E-posta ya da şifre hatalı."],[/Email not confirmed/i,"E-posta adresin henüz onaylanmamış. Gelen kutunu kontrol et."],[/Password should be at least/i,"Şifre en az 8 karakter olmalı."],[/valid email|invalid format|Unable to validate email/i,"Geçerli bir e-posta adresi yaz."],[/Failed to fetch|NetworkError|Load failed/i,"Bağlantı kurulamadı. İnternetini kontrol edip tekrar dene."],[/Database error saving new user/i,"Kayıt bilgilerinde bir sorun var. Doğum tarihi, cinsiyet ve görünen adı kontrol et."],[/JWT|not authenticated|session/i,"Oturumun sona ermiş. Lütfen tekrar giriş yap."]];
 function terr(e){const t=(e&&(e.message||e.error_description||e.msg))||String(e||"");for(const[r,m]of ERR)if(r.test(t))return m;return t}
@@ -850,7 +862,7 @@ $("#accb").addEventListener("click",async e=>{const b=e.target.closest("button,a
  if(b.dataset.cancel){if(!confirm("Odayı iptal etmek istiyor musun? Bekleyen ve onaylı herkesin coini iade edilir."))return;return run("cancel_room",{p_room:b.dataset.cancel},"Oda iptal edildi.")}
  if(b.dataset.wd)return run("withdraw_request",{req_id:b.dataset.wd},"İstek geri çekildi; coinin iade edildi.");
  if(b.dataset.leave){if(!confirm("Bu odadan ayrılmak istiyor musun?"))return;return run("leave_room",{req_id:b.dataset.leave},"Odadan ayrıldın.")}
- if(b.id==="out"){await sb.auth.signOut();$("#accd").close();refreshNav();return}
+ if(b.id==="out"){await sb.auth.signOut();__uLast=null;$("#accd").close();refreshNav();return}
  if(b.id==="up"){const fl=$("#ph").files[0],u=await user();
   if(!$("#phc").checked)return msg(m,"Devam etmek için açık rıza kutusunu işaretlemelisin.",false);
   if(!fl)return msg(m,"Önce bir fotoğraf seç.",false);
@@ -1022,7 +1034,7 @@ async function claimRef(u){if(!u||!sb)return;let c=null;try{c=localStorage.getIt
 async function refreshNav(){const u=await user();
  const x=u?`<button class="btn-g" data-auth="account">Profilim</button>`:`<button data-auth="login">Giriş yap</button><button class="btn-g" data-auth="register">Üye ol</button>`;
  $("#navbtn").innerHTML=x;$("#mauth").innerHTML=x;notifStart(u);claimRef(u);if(typeof socialAuth==="function")socialAuth(u)}
-if(sb){refreshNav();sb.auth.onAuthStateChange((ev)=>{refreshNav();if(ev==="PASSWORD_RECOVERY")$("#pwd").showModal()})}
+if(sb){refreshNav();sb.auth.onAuthStateChange((ev,ss)=>{if(ev==="SIGNED_OUT")__uLast=null;else if(ss&&ss.user)__uLast=ss.user;refreshNav();if(ev==="PASSWORD_RECOVERY")$("#pwd").showModal()})}
 $("#mauth").innerHTML=$("#navbtn").innerHTML;
 /* mobil menü */
 const bg=$("#burger"),mn=$("#mnav");
