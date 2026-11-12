@@ -213,6 +213,58 @@ body.pg .hero,body.pg .strip,body.pg #tiles{display:none}
 .tl b{font-size:1rem;line-height:1.25}
 .tl small{color:var(--mute);font-size:.82rem;line-height:1.35}
 .tl.pr{background:var(--navy);border-color:var(--navy);color:#fff}.tl.pr svg{stroke:var(--gold)}.tl.pr small{color:#bdb5a6}
+/* sosyal */
+.tabs{flex-wrap:wrap}
+textarea{width:100%;padding:10px;border:1px solid #cfc8b6;border-radius:8px;font:inherit;margin-top:4px;background:#fff;resize:vertical}
+.sbox{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin:16px 0}
+.sbox.on{border-color:var(--gold);background:#fffdf7}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.sm{color:var(--mute);font-size:.86rem}
+.sh{font-size:1.15rem;margin:26px 0 8px}
+.bcnt{display:inline-block;min-width:22px;padding:0 7px;border-radius:99px;background:var(--gold);color:var(--navy);font:700 .78rem/22px "Segoe UI",Roboto,sans-serif;text-align:center;vertical-align:middle}
+.av{position:relative;border-radius:50%;overflow:hidden;background:var(--navy);color:var(--gold);display:inline-flex;align-items:center;justify-content:center;flex:none;font-family:Georgia,serif;font-weight:700}
+.av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.plist2{display:grid;gap:10px}
+.pc{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.pi{flex:1;min-width:0}.pi b{display:block}.pi span{display:block;font-size:.86rem;color:var(--mute)}.pi .nt{color:var(--gold-d)}
+.pa{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.pa button{padding:7px 14px;font-size:.88rem}
+@media(max-width:560px){.pc{flex-wrap:wrap}.pa{width:100%;justify-content:flex-start}}
+.pl{cursor:pointer}.pl:hover{text-decoration:underline}
+.okb{color:#15602e;font-size:.8rem;font-family:"Segoe UI",Roboto,sans-serif;font-weight:700}
+.live{display:flex;align-items:center;gap:8px;color:#15602e;font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
+.live i,.live2 i{width:9px;height:9px;border-radius:50%;background:#2fa35a;flex:none;animation:lvp 1.6s infinite}
+@keyframes lvp{0%{box-shadow:0 0 0 0 rgba(47,163,90,.6)}70%{box-shadow:0 0 0 9px rgba(47,163,90,0)}100%{box-shadow:0 0 0 0 rgba(47,163,90,0)}}
+.live2{display:flex;align-items:center;gap:8px;font-size:.92rem}
+.hot{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.hv{display:flex;flex-direction:column;align-items:flex-start;text-align:left;background:#fff;border:1px solid var(--line);font-weight:400;color:var(--ink)}.hv b{font-weight:600}.hv span{font-size:.82rem;color:var(--gold-d)}
+.hv:hover{border-color:var(--gold)}
+.post{background:#fff;border:1px solid var(--line);border-radius:14px;margin:12px 0;overflow:hidden}
+.post header{z-index:auto;top:auto;display:flex;gap:10px;align-items:center;padding:12px 14px;position:static;background:none;backdrop-filter:none}
+.post header>div{flex:1;min-width:0}.post header b{display:block}.post header span{font-size:.82rem;color:var(--mute)}
+.pb{margin:0;padding:0 14px 10px;white-space:pre-wrap;overflow-wrap:anywhere}
+.ph{background:#111}.ph img{display:block;width:100%;max-height:560px;object-fit:contain}
+.post footer{padding:4px 8px;border-top:1px solid var(--line);background:none;color:inherit}
+.lk{border:0;padding:6px 10px;font-weight:600;color:var(--ink)}.lk.on{color:#b3261e}
+.prev{max-width:180px;max-height:180px;border-radius:10px;margin-top:10px;display:block}
+.phd{display:flex;gap:16px;align-items:center;margin-bottom:8px}
+.bio{margin:10px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.tg2{margin-top:12px}.tg2 h4{margin:0 0 6px;font-size:.78rem;color:var(--mute);text-transform:uppercase;letter-spacing:.08em;font-family:"Segoe UI",Roboto,sans-serif}
+.ttag{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:4px 12px;font-size:.86rem;margin:0 6px 6px 0;background:#fff;font-weight:500;color:var(--ink)}
+button.ttag{cursor:pointer}.ttag.on{background:var(--navy);color:var(--gold);border-color:var(--navy)}.ttag.com{border-color:var(--gold);background:#fff3d4}
+.tp{border:1px solid var(--line);border-radius:12px;padding:10px 12px 6px;margin:14px 0 0}.tp legend{font-size:.88rem;color:var(--mute);padding:0 6px}
+.addt{display:inline-flex;gap:6px;margin:0 0 6px}.addt input{width:140px;margin:0;padding:5px 10px;font-size:.86rem}.addt button{padding:4px 12px;font-size:.86rem}
+.lock{background:#f3eee2;border-radius:12px;padding:16px;color:var(--mute);font-size:.92rem}
+#dmd{max-width:620px}#dmd .close{align-self:flex-end}#dmd[open]{display:flex;flex-direction:column;height:min(90vh,720px)}
+.cco{border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:4px 0 8px;font-size:.88rem;background:#fffdf7}
+.cco .chip{margin:3px 6px 3px 0}.cco .row{margin-top:6px}.sm2 button{padding:6px 12px;font-size:.84rem}.sm2 select{width:auto;flex:1;min-width:160px;margin:0;padding:6px}
+.nx{color:var(--gold-d)}
+.vst{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:.82rem;color:#bdb5a6;margin-top:4px}.vst .hot1{color:#7ee2a0}
+.dark .fol{color:#fff;border-color:#5c5547}.fol.on,.dark .fol.on{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.vtools{margin:12px 0 0}
+.chl .av{margin-top:2px}.chl .bcnt{align-self:center}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--navy);color:#fff;padding:10px 18px;border-radius:10px;opacity:0;transition:.25s;z-index:9999;pointer-events:none;max-width:90vw;font-size:.92rem}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+.okb,.pi .okb,.chl .okb{display:inline;background:none;padding:0;margin:0}
 </style>
 </head>
 <body>
@@ -221,7 +273,7 @@ body.pg .hero,body.pg .strip,body.pg #tiles{display:none}
 <nav aria-label="Ana menü"><ul><li><a href="#odalar">Mekân arkadaşı bul</a></li><li><a href="#oda-kur">Arkadaş ara</a></li><li><a href="#mekanlar">Mekânlar</a></li><li><a href="#nasil">Nasıl çalışır</a></li><li><a href="#coin">Coin</a></li><li><a href="#hakkimizda">Hakkımızda</a></li><li><a href="rehber.html">Rehber</a></li></ul></nav>
 <div class="navbtn" id="navbtn"><button data-auth="login">Giriş yap</button><button class="btn-g" data-auth="register">Üye ol</button></div>
 <button class="bell" id="bell" aria-label="Bildirimler" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10 20a2 2 0 0 0 4 0"/></svg><span class="bdg" id="bdg" hidden></span></button><button class="burger" id="burger" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mnav">&#9776;</button></div>
-<div class="mnav" id="mnav" hidden><div class="wrap"><ul><li><a href="#odalar">Mekân arkadaşı bul</a></li><li><a href="#oda-kur">Arkadaş ara</a></li><li><a href="#mekanlar">Mekânlar</a></li><li><a href="#nasil">Nasıl çalışır</a></li><li><a href="#coin">Coin</a></li><li><a href="#hakkimizda">Hakkımızda</a></li><li><a href="#sss">Sık sorulanlar</a></li><li><a href="rehber.html">Rehber</a></li></ul><div id="mauth"></div></div></div></header>
+<div class="mnav" id="mnav" hidden><div class="wrap"><ul><li><a href="#odalar">Mekân arkadaşı bul</a></li><li><a href="#oda-kur">Arkadaş ara</a></li><li><a href="#disarida">Bu gece dışarıdayım</a></li><li><a href="#akis">Akış</a></li><li><a href="#arkadaslar">Arkadaşlar</a></li><li><a href="#mesajlar">Mesajlar</a></li><li><a href="#mekanlar">Mekânlar</a></li><li><a href="#nasil">Nasıl çalışır</a></li><li><a href="#coin">Coin</a></li><li><a href="#hakkimizda">Hakkımızda</a></li><li><a href="#sss">Sık sorulanlar</a></li><li><a href="rehber.html">Rehber</a></li></ul><div id="mauth"></div></div></div></header>
 
 <main id="top">
 <div id="pgbar"><div class="wrap"><a href="#top">← Ana sayfa</a><span id="pgt"></span></div></div>
@@ -232,7 +284,27 @@ body.pg .hero,body.pg .strip,body.pg #tiles{display:none}
 <div class="it"><b>18+</b><span>yaş sınırı</span></div>
 <div class="it"><b>Onaylı</b><span>profil rozeti</span></div>
 </div></div>
-<div id="tiles"><div class="wrap"><h2>Ne yapmak istersin?</h2><div class="tg"><a class="tl pr" href="#odalar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14.5c2.3.2 3.9 1.8 4.5 4.5"/></svg><b>Mekân arkadaşı bul</b><small>Açık odalara katıl</small></a><a class="tl" href="#oda-kur"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><b>Arkadaş ara</b><small>Oda kur, ekibini topla</small></a><a class="tl" href="#mekanlar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><b>Mekânlar</b><small>Seçkin mekânlar</small></a><a class="tl" href="#nasil"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.3 2.4c-.5.2-.8.7-.8 1.2V14M12 17.5v.01"/></svg><b>Nasıl çalışır?</b><small>3 adımda masaya otur</small></a><a class="tl" href="#coin"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7.5v9M9.5 9.5c0-1 1-1.6 2.5-1.6s2.5.7 2.5 1.7-1 1.4-2.5 1.6-2.5.6-2.5 1.7 1 1.7 2.5 1.7 2.5-.6 2.5-1.6"/></svg><b>Coin</b><small>Paketler ve fiyatlar</small></a><a class="tl" href="#guven"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="m9 12 2 2 4-4"/></svg><b>Güvenlik</b><small>Onaylı profiller</small></a><a class="tl" href="#sehirler"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V9l5-3v15M10 21V4l9 4v13"/></svg><b>Şehirler</b><small>8 büyükşehir</small></a><a class="tl" href="#sss"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg><b>Sık sorulanlar</b><small>Merak ettiklerin</small></a><a class="tl" href="#hakkimizda"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg><b>Hakkımızda</b><small>ISDAMBUL kimdir</small></a><a class="tl" href="/app"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg><b>Uygulama</b><small>Telefonuna yükle</small></a></div></div></div>
+<div id="tiles"><div class="wrap"><h2>Ne yapmak istersin?</h2><div class="tg"><a class="tl pr" href="#odalar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14.5c2.3.2 3.9 1.8 4.5 4.5"/></svg><b>Mekân arkadaşı bul</b><small>Açık odalara katıl</small></a><a class="tl" href="#oda-kur"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><b>Arkadaş ara</b><small>Oda kur, ekibini topla</small></a><a class="tl" href="#disarida"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><path d="M4 4l2 2M20 4l-2 2"/></svg><b>Bu gece dışarıdayım</b><small>Arkadaşlarına haber ver</small></a><a class="tl" href="#akis"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 8"/></svg><b>Akış</b><small>Arkadaşlarının paylaşımları</small></a><a class="tl" href="#arkadaslar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M19 8v6M16 11h6"/></svg><b>Arkadaşlar</b><small>Ekle, istekleri gör</small></a><a class="tl" href="#mesajlar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg><b>Mesajlar</b><small>Arkadaşlarınla yazış</small></a><a class="tl" href="#mekanlar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><b>Mekânlar</b><small>Seçkin mekânlar</small></a><a class="tl" href="#nasil"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.3 2.4c-.5.2-.8.7-.8 1.2V14M12 17.5v.01"/></svg><b>Nasıl çalışır?</b><small>3 adımda masaya otur</small></a><a class="tl" href="#coin"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7.5v9M9.5 9.5c0-1 1-1.6 2.5-1.6s2.5.7 2.5 1.7-1 1.4-2.5 1.6-2.5.6-2.5 1.7 1 1.7 2.5 1.7 2.5-.6 2.5-1.6"/></svg><b>Coin</b><small>Paketler ve fiyatlar</small></a><a class="tl" href="#guven"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="m9 12 2 2 4-4"/></svg><b>Güvenlik</b><small>Onaylı profiller</small></a><a class="tl" href="#sehirler"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V9l5-3v15M10 21V4l9 4v13"/></svg><b>Şehirler</b><small>8 büyükşehir</small></a><a class="tl" href="#sss"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg><b>Sık sorulanlar</b><small>Merak ettiklerin</small></a><a class="tl" href="#hakkimizda"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg><b>Hakkımızda</b><small>ISDAMBUL kimdir</small></a><a class="tl" href="/app"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg><b>Uygulama</b><small>Telefonuna yükle</small></a></div></div></div>
+
+<section id="disarida"><div class="wrap">
+<div class="eyebrow">Bu gece dışarıdayım</div><h2>Bu gece neredesin?</h2>
+<p class="lead">Gittiğin mekânı tek dokunuşla arkadaşlarına haber ver, onlar da sana katılsın. Sinyalin sabah 06:00’da kendiliğinden kapanır.</p>
+<div id="outb"><p class="empty">Yükleniyor…</p></div></div></section>
+
+<section id="akis"><div class="wrap">
+<div class="eyebrow">Akış</div><h2>Arkadaşlarının geceleri</h2>
+<p class="lead">Anlarını fotoğrafla paylaş, mekân etiketle. Paylaşımlarını yalnızca arkadaşların görür.</p>
+<div id="feedb"><p class="empty">Yükleniyor…</p></div></div></section>
+
+<section id="arkadaslar"><div class="wrap">
+<div class="eyebrow">Arkadaşlar</div><h2>Arkadaşlarını bul</h2>
+<p class="lead">Kişi ara, odalarından tanıdıklarını ekle. Arkadaşlık isteğin kabul edilince birbirinizin fotoğraflarını görebilir ve mesajlaşabilirsiniz.</p>
+<div id="frb"><p class="empty">Yükleniyor…</p></div></div></section>
+
+<section id="mesajlar"><div class="wrap">
+<div class="eyebrow">Mesajlar</div><h2>Özel mesajların</h2>
+<p class="lead">Yalnızca arkadaşlarınla mesajlaşabilirsin.</p>
+<div id="dmb"><p class="empty">Yükleniyor…</p></div></div></section>
 
 <section id="odalar"><div class="wrap">
 <div class="eyebrow">Mekân arkadaşı bul</div><h2>Gideceğin mekâna arkadaş bul</h2>
@@ -276,6 +348,7 @@ body.pg .hero,body.pg .strip,body.pg #tiles{display:none}
 <label>İlçe<select id="vd" disabled><option value="">Önce il seçin</option></select></label>
 <label>Mekân ara<input id="vq" type="search" placeholder="Mekân adı yaz"></label>
 </div>
+<div class="vtools"><button type="button" id="vfolb" class="fol" aria-pressed="false">♡ Takip ettiklerim</button></div>
 <p class="vcount" id="vcount" aria-live="polite"></p>
 <div class="vgrid" id="vgrid"></div><p class="mt"><button id="vmore"></button></p></div></section>
 
@@ -381,7 +454,7 @@ body.pg .hero,body.pg .strip,body.pg #tiles{display:none}
 <dialog id="payd" aria-labelledby="pyt"><button class="close" aria-label="Kapat" data-close>&times;</button>
 <h3 id="pyt">Coin satın al</h3><div id="pyb"></div><div class="msg" id="pym" role="status"></div></dialog>
 <dialog id="chatd" class="wide" aria-labelledby="cht"><button class="close" aria-label="Kapat" data-close>&times;</button>
-<h3 id="cht" style="margin-bottom:2px">Oda sohbeti</h3><div class="cmeta" id="chm"></div><div class="cmem" id="chmem"></div>
+<h3 id="cht" style="margin-bottom:2px">Oda sohbeti</h3><div class="cmeta" id="chm"></div><div class="cmem" id="chmem"></div><div class="cco" id="chco" hidden></div>
 <div class="clog" id="chlog" aria-live="polite"></div>
 <form id="chf" class="cin"><input id="chi" maxlength="500" autocomplete="off" placeholder="Mesaj yaz…" aria-label="Mesaj"><button class="btn-g" type="submit">Gönder</button></form>
 <div class="msg" id="chmsg" role="status"></div></dialog>
@@ -640,10 +713,10 @@ async function openAcc(t,note){if(typeof t==="string")accTab=t;const d=$("#accd"
  if(note)msg($("#accm"),note.t,note.ok);
  const u=await user();if(!u){d.close();return}
  const p=await myProfile();if(!p){$("#accb").textContent="Profil yüklenemedi. Lütfen sayfayı yenile.";return}
- const tabs=`<div class="tabs" role="tablist">${[["p","Bilgilerim"],["r","Odalarım"],["c","Sohbetlerim"],["q","İsteklerim"]].map(([k,l])=>`<button type="button" role="tab" data-at="${k}" aria-selected="${accTab===k}">${l}</button>`).join("")}</div>`;
+ const tabs=`<div class="tabs" role="tablist">${[["p","Bilgilerim"],["s","Sosyal profil"],["r","Odalarım"],["c","Sohbetlerim"],["q","İsteklerim"]].map(([k,l])=>`<button type="button" role="tab" data-at="${k}" aria-selected="${accTab===k}">${l}</button>`).join("")}</div>`;
  let body="";
- try{body=accTab==="c"?await accChats():accTab==="r"?await accRooms(p):accTab==="q"?await accReqs():await accProfile(u,p)}catch(e){body=`<p class="empty">Yüklenemedi: ${esc(terr(e))}</p>`}
- $("#accb").innerHTML=tabs+body}
+ try{body=accTab==="s"?await accSocial(p):accTab==="c"?await accChats():accTab==="r"?await accRooms(p):accTab==="q"?await accReqs():await accProfile(u,p)}catch(e){body=`<p class="empty">Yüklenemedi: ${esc(terr(e))}</p>`}
+ $("#accb").innerHTML=tabs+body;if(typeof signAll==="function")signAll($("#accb"))}
 async function accProfile(u,p){
  let bal=0,adm=false;
  try{const r=await sb.from("my_token_balance").select("balance").maybeSingle();bal=r.data?r.data.balance:0}catch(e){}
@@ -783,19 +856,19 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-buy]");if(
  const o=e.target.closest("[data-paystat]");if(o){e.preventDefault();sb.rpc("my_payments").then(r=>{const x=(r.data||[]).find(q=>q.id===o.dataset.paystat);if(x){if($("#accd").open)$("#accd").close();$("#payd").showModal();payStep(x)}})}});
 /* ---- Oda sohbeti ---- */
 let CH=null,pulling=false;
-async function openChat(rid){const d=$("#chatd");closeChat();CH={id:rid,last:0,mem:{},me:null,timer:null,ch:null};
+async function openChat(rid){const d=$("#chatd");closeChat();CH={id:rid,last:0,mem:{},me:null,timer:null,ch:null};$("#chco").hidden=true;$("#chco").innerHTML="";
  $("#cht").textContent="Oda sohbeti";$("#chm").textContent="";$("#chmem").innerHTML="";$("#chlog").innerHTML='<p class="empty">Yükleniyor…</p>';$("#chmsg").className="msg";
  if($("#accd").open)$("#accd").close();if(!d.open)d.showModal();
  const r=await sb.rpc("room_chat",{p_room:rid,p_after:0});
  if(!CH||CH.id!==rid)return;
  if(r.error){$("#chlog").innerHTML="";return msg($("#chmsg"),terr(r.error),false)}
- renderChat(r.data,true);
+ renderChat(r.data,true);if(typeof loadCoord==="function")loadCoord();
  {const ids=NT.items.filter(n=>!n.read&&n.kind==="message"&&n.room_id===rid).map(n=>n.id);if(ids.length)sb.rpc("mark_notifications_read",{p_ids:ids}).then(()=>loadNotifs())}
  try{CH.ch=sb.channel("room-"+rid).on("postgres_changes",{event:"INSERT",schema:"public",table:"room_messages",filter:"room_id=eq."+rid},()=>pullChat()).subscribe()}catch(e){}
  CH.timer=setInterval(pullChat,7000);setTimeout(()=>$("#chi").focus(),50)}
 function renderChat(d,full){const c=CH;if(!c)return;c.me=d.me;d.members.forEach(x=>c.mem[x.id]=x);
  if(full||d.members.length!==c.nm){c.nm=d.members.length;
-  $("#chmem").innerHTML="Katılımcılar: "+d.members.map(x=>`<span class="chip">${esc(x.name)}${x.owner?" · oda sahibi":""}${x.id!==d.me?` <button type="button" class="lnk" data-rep="${x.id}" aria-label="${esc(x.name)} adlı üyeyi şikâyet et" title="Şikâyet et / engelle">⚑</button>`:""}</span>`).join("")}
+  $("#chmem").innerHTML="Katılımcılar: "+d.members.map(x=>`<span class="chip">${esc(x.name)}${x.owner?" · oda sahibi":""}${x.id!==d.me?` <button type="button" class="lnk" data-prof="${x.id}" aria-label="${esc(x.name)} profilini gör" title="Profili gör">👤</button>`:""}${x.id!==d.me?` <button type="button" class="lnk" data-rep="${x.id}" aria-label="${esc(x.name)} adlı üyeyi şikâyet et" title="Şikâyet et / engelle">⚑</button>`:""}</span>`).join("")}
  if(full){$("#cht").textContent=d.room.title;$("#chm").textContent=`${d.room.venue} · ${d.room.city||""}, ${d.room.district||""} · ${fmt(d.room.starts_at)}`;
   $("#chlog").innerHTML="";const cl=!!d.room.closed;$("#chi").disabled=cl;$("#chf button").disabled=cl;
   if(cl)msg($("#chmsg"),d.room.status==="cancelled"?"Bu oda iptal edildi.":"Bu odanın sohbeti kapandı.",false)}
@@ -807,7 +880,7 @@ function renderChat(d,full){const c=CH;if(!c)return;c.me=d.me;d.members.forEach(
  if(full||atEnd)log.scrollTop=log.scrollHeight}
 async function pullChat(){if(!CH||pulling)return;pulling=true;const id=CH.id;
  try{const r=await sb.rpc("room_chat",{p_room:id,p_after:CH.last});if(!CH||CH.id!==id)return;
-  if(r.error)msg($("#chmsg"),terr(r.error),false);else renderChat(r.data,false)}finally{pulling=false}}
+  if(r.error)msg($("#chmsg"),terr(r.error),false);else{renderChat(r.data,false);if(typeof loadCoord==="function")loadCoord()}}finally{pulling=false}}
 function closeChat(){if(!CH)return;clearInterval(CH.timer);try{if(CH.ch)sb.removeChannel(CH.ch)}catch(e){}CH=null}
 $("#chatd").addEventListener("close",closeChat);
 $("#chf").onsubmit=async e=>{e.preventDefault();const i=$("#chi"),t=i.value.trim();if(!t||!CH)return;const b=$("#chf button");b.disabled=true;
@@ -838,11 +911,17 @@ async function loadNotifs(first){if(!NT.uid)return;const r=await sb.rpc("my_noti
   else{try{if(("Notification" in window)&&Notification.permission==="granted"){const x=new Notification(n.title,{body:n.body||"",icon:"favicon.svg",tag:"isd-"+n.id});x.onclick=()=>{window.focus();openNotif(n)}}}catch(e){}}}
  if($("#notd").open)renderNotifs()}
 function renderNotifs(){const L=NT.items;
- $("#nlist").innerHTML=L.length?L.map(n=>`<button type="button" class="ni${n.read?"":" un"}" data-nid="${n.id}"><i class="dot2"></i><div><b>${esc(n.title)}</b>${n.body?`<span>${esc(n.body)}</span>`:""}<time>${ago(n.created_at)}</time></div></button>`).join(""):'<p class="empty" style="padding:20px 22px">Henüz bildirimin yok. Oda isteklerin, onaylar ve mesajlar burada görünecek.</p>';
+ $("#nlist").innerHTML=L.length?L.map(n=>`<button type="button" class="ni${n.read?"":" un"}" data-nid="${n.id}"><i class="dot2"></i><div><b>${esc(n.title)}</b>${n.body?`<span>${esc(n.body)}</span>`:""}<time>${ago(n.created_at)}</time></div></button>`).join(""):'<p class="empty" style="padding:20px 22px">Henüz bildirimin yok. Oda istekleri, arkadaşlık istekleri ve mesajlar burada görünecek.</p>';
  const p=$("#nperm2");p.hidden=!(("Notification" in window)&&Notification.permission==="default")}
 function openNotif(n){if(!n.read)sb.rpc("mark_notifications_read",{p_ids:[n.id]}).then(()=>loadNotifs());
  if($("#notd").open)$("#notd").close();const k=n.kind;
  if(k.startsWith("admin_")){location.href="admin.html";return}
+ if((k==="dm"||k==="out_join")&&n.room_id){openDM(n.room_id);return}
+ if(k==="friend_ok"&&n.room_id){openProfile(n.room_id);return}
+ if(k==="friend_req"){goSec("arkadaslar");return}
+ if(k==="out"){goSec("disarida");return}
+ if(k==="like"){goSec("akis");return}
+ if(k==="venue"){location.hash="#odalar";return}
  if((k==="message"||k==="approved"||k==="joined")&&n.room_id){openChat(n.room_id);return}
  if(k==="request"||k==="left")return openAcc("r");
  if(k==="rejected"||k==="removed"||k==="cancelled")return openAcc("q");
@@ -855,7 +934,7 @@ const REFK="isd_ref";try{const rp=new URLSearchParams(location.search).get("ref"
 async function claimRef(u){if(!u||!sb)return;let c=null;try{c=localStorage.getItem(REFK)}catch(e){}if(!c)return;try{const r=await sb.rpc("claim_referral",{p_code:c});if(!r.error&&r.data!=="no_profile")localStorage.removeItem(REFK)}catch(e){}}
 async function refreshNav(){const u=await user();
  const x=u?`<button class="btn-g" data-auth="account">Profilim</button>`:`<button data-auth="login">Giriş yap</button><button class="btn-g" data-auth="register">Üye ol</button>`;
- $("#navbtn").innerHTML=x;$("#mauth").innerHTML=x;notifStart(u);claimRef(u)}
+ $("#navbtn").innerHTML=x;$("#mauth").innerHTML=x;notifStart(u);claimRef(u);if(typeof socialAuth==="function")socialAuth(u)}
 if(sb){refreshNav();sb.auth.onAuthStateChange((ev)=>{refreshNav();if(ev==="PASSWORD_RECOVERY")$("#pwd").showModal()})}
 $("#mauth").innerHTML=$("#navbtn").innerHTML;
 /* mobil menü */
@@ -874,10 +953,10 @@ $("#pf").onsubmit=async e=>{e.preventDefault();const m=$("#pmsg");
  if(error)return msg(m,"Şifre değiştirilemedi: "+terr(error),false);
  msg(m,"Şifren güncellendi.",true);setTimeout(()=>$("#pwd").close(),1500)};
 /* mekânlar */
-let vAll=false;const V={s:"",d:"",q:""};
-function vcard(v){return `<article class="vc">${vimg(v)}<div class="b"><h3>${esc(v.n)}</h3><div class="m">${esc(v.s)} · ${esc(v.d)}</div><div>${v.c.map(k=>`<span class="chip">${CATS[k]}</span>`).join("")}</div><p style="margin:12px 0 0"><button data-vq="${v.id}">Bu mekânda oda ara</button></p></div></article>`}
-function renderVenues(){const q=V.q.trim().toLocaleLowerCase("tr"),fil=!!(V.s||V.d||q);
- let L=VENUES.filter(v=>(!V.s||v.s===V.s)&&(!V.d||v.d===V.d)&&(!q||v.n.toLocaleLowerCase("tr").includes(q)));
+let vAll=false;var SOV={stats:{},fol:new Set(),only:false};const V={s:"",d:"",q:""};
+function vcard(v){return `<article class="vc">${vimg(v)}<div class="b"><h3>${esc(v.n)}</h3><div class="m">${esc(v.s)} · ${esc(v.d)}</div><div>${v.c.map(k=>`<span class="chip">${CATS[k]}</span>`).join("")}</div>${(()=>{const st=SOV.stats[v.id]||{};return st.f||st.o||st.r?`<div class="vst">${st.o?`<span class="hot1">● bu gece ${st.o} kişi burada</span>`:""}${st.r?`<span>${st.r} açık oda</span>`:""}${st.f?`<span>${st.f} takipçi</span>`:""}</div>`:""})()}<p style="margin:12px 0 0;display:flex;gap:8px;flex-wrap:wrap"><button data-vq="${v.id}">Bu mekânda oda ara</button><button type="button" class="fol${SOV.fol.has(v.id)?" on":""}" data-fol="${v.id}" aria-pressed="${SOV.fol.has(v.id)}">${SOV.fol.has(v.id)?"♥ Takip ediliyor":"♡ Takip et"}</button></p></div></article>`}
+function renderVenues(){const q=V.q.trim().toLocaleLowerCase("tr"),fil=!!(V.s||V.d||q||SOV.only);
+ let L=VENUES.filter(v=>(!V.s||v.s===V.s)&&(!V.d||v.d===V.d)&&(!q||v.n.toLocaleLowerCase("tr").includes(q))&&(!SOV.only||SOV.fol.has(v.id)));
  const total=L.length;
  if(!fil&&!vAll){const o=[];for(let i=0;i<2;i++)CITIES.forEach(c=>{const x=VENUES.filter(v=>v.s===c)[i];if(x)o.push(x)});L=o}
  $("#vgrid").innerHTML=L.length?L.map(vcard).join(""):'<p class="empty">Bu filtrelere uyan mekân yok.</p>';
@@ -909,6 +988,224 @@ $("#sn1").textContent=CITIES.length;$("#sn2").textContent=VENUES.length;
  $("#ageyes").onclick=()=>{try{localStorage.setItem("age18","1")}catch(e){}d.close()};
  $("#ageno").onclick=()=>{d.querySelector("p").textContent="Üzgünüz, bu siteye yalnızca 18 yaş ve üzeri kişiler girebilir.";$("#ageyes").remove();$("#ageno").remove()}})();
 </script>
+<dialog id="prd" class="wide" aria-labelledby="prn"><button class="close" aria-label="Kapat" data-close>&times;</button><div id="prb"></div></dialog>
+<dialog id="dmd" class="wide" aria-labelledby="dmt"><button class="close" aria-label="Kapat" data-close>&times;</button>
+<div id="dmh"></div><div class="clog" id="dmlog" aria-live="polite"></div>
+<form id="dmf" class="cin"><input id="dmi" maxlength="1000" autocomplete="off" placeholder="Mesaj yaz…" aria-label="Mesaj"><button class="btn-g" type="submit">Gönder</button></form>
+<div class="msg" id="dmm" role="status"></div></dialog>
+<script>
+/* ===== Sosyal: profil, arkadaşlık, akış, özel mesaj, dışarıdayım, mekân takibi, grup koordinasyonu ===== */
+const TASTE={venue_types:["Kulüp","Rooftop","Kokteyl bar","Pub","Meyhane","Rakı masası","Canlı müzik","Techno kulübü","Jazz bar","Beach club","Lounge","Karaoke"],
+ drinks:["Rakı","Bira","Şarap","Kokteyl","Viski","Votka","Cin tonik","Tekila","Shot","Şampanya","Alkolsüz"],
+ music:["Techno","House","Elektronik","Pop","Türkçe pop","Rock","Hip-hop / Rap","R&B","Jazz","Latin / Reggaeton","Fasıl","Arabesk"]};
+const TL={venue_types:"Sevdiği mekânlar",drinks:"Sevdiği içkiler",music:"Sevdiği müzik"};
+const TLM={venue_types:"Sevdiğin mekân türleri",drinks:"Sevdiğin içkiler",music:"Sevdiğin müzik türleri"};
+const SO={me:null,urls:{},feedLast:null,feedEnd:false,q:""};
+function toast(t){let e=$("#toast");if(!e){e=document.createElement("div");e.id="toast";e.setAttribute("role","status")}
+ const host=[...document.querySelectorAll("dialog[open]")].pop()||document.body;if(e.parentNode!==host)host.appendChild(e);
+ e.textContent=t;e.className="";void e.offsetWidth;e.className="on";clearTimeout(e._t);e._t=setTimeout(()=>e.className="",3400)}
+const ini=n=>esc((String(n||"?").trim()[0]||"?").toLocaleUpperCase("tr"));
+function av(name,path,sz){sz=sz||44;return `<span class="av" style="width:${sz}px;height:${sz}px;font-size:${Math.round(sz*.42)}px"><i aria-hidden="true">${ini(name)}</i>${path?`<img data-sp="${esc(path)}" alt="">`:""}</span>`}
+const vb=v=>v?' <span class="okb" title="Onaylı profil">✓</span>':"";
+const meta=p=>[p.gender,p.age?p.age+" yaş":"",p.city].filter(Boolean).map(esc).join(" · ");
+async function signAll(root){if(!sb)return;root=root||document;const els=[...root.querySelectorAll("img[data-sp]:not([src])")];if(!els.length)return;
+ const need=[...new Set(els.map(e=>e.dataset.sp).filter(p=>!SO.urls[p]))];
+ if(need.length){try{const{data}=await sb.storage.from("posts").createSignedUrls(need,3600);(data||[]).forEach(d=>{if(d.signedUrl&&d.path)SO.urls[d.path]=d.signedUrl})}catch(e){}}
+ els.forEach(e=>{const u=SO.urls[e.dataset.sp];if(u)e.src=u;else e.remove()})}
+async function shrink(f){if(!/^image\/(jpeg|png|webp)$/.test(f.type))return f;
+ try{const b=await createImageBitmap(f),k=Math.min(1,1600/Math.max(b.width,b.height)),c=document.createElement("canvas");c.width=Math.round(b.width*k);c.height=Math.round(b.height*k);
+  c.getContext("2d").drawImage(b,0,0,c.width,c.height);const o=await new Promise(r=>c.toBlob(r,"image/jpeg",.85));return o&&o.size<f.size?new File([o],"foto.jpg",{type:"image/jpeg"}):f}catch(e){return f}}
+async function upMedia(f){const u=await user();if(!u)throw new Error("Giriş yapmalısın.");
+ if(!/^image\//.test(f.type))throw new Error("Lütfen bir fotoğraf dosyası seç.");f=await shrink(f);
+ if(f.size>6*1024*1024)throw new Error("Fotoğraf 6 MB’tan küçük olmalı.");
+ const ext=f.type==="image/jpeg"?"jpg":((f.type.split("/")[1]||"jpg").replace(/[^a-z0-9]/g,"")||"jpg"),path=u.id+"/"+Date.now()+Math.random().toString(36).slice(2,6)+"."+ext;
+ const r=await sb.storage.from("posts").upload(path,f,{contentType:f.type});if(r.error)throw r.error;return path}
+function askLogin(){const b=$("#navbtn [data-auth='login']")||$("#mauth [data-auth='login']");if(b)b.click()}
+async function needLogin(box,txt){const u=await user();if(u){SO.me=u.id;return u}
+ box.innerHTML=`<div class="sbox"><p style="margin:0 0 12px">${txt}</p><div class="row"><button type="button" class="btn-g" data-auth="register">Üye ol</button><button type="button" data-auth="login">Giriş yap</button></div></div>`;return null}
+async function nudge(){try{const p=await myProfile();if(p&&!p.bio&&!(p.fav_drinks||[]).length&&!(p.fav_music||[]).length&&!(p.fav_venue_types||[]).length)
+ return `<div class="note" style="margin:0 0 16px">Profilini tamamla: sevdiğin mekânları, içkileri ve müzik türlerini ekle; ortak zevkleri olan insanlar seni daha kolay bulsun. <button type="button" class="btn-g" data-acc="s" style="margin-left:6px;padding:6px 14px">Profilimi düzenle</button></div>`}catch(e){}return ""}
+const err=e=>`<p class="empty">${esc(terr(e))}</p>`;
+
+/* ---- Bu gece dışarıdayım ---- */
+async function loadOut(){const box=$("#outb");const u=await needLogin(box,"Bu gece hangi mekânda olduğunu arkadaşlarına haber vermek için giriş yap.");if(!u)return;
+ const r=await sb.rpc("tonight");if(r.error){box.innerHTML=err(r.error);return}const d=r.data;let h="";
+ if(d.me)h+=`<div class="sbox on"><div class="live"><i></i>Şu an dışarıdasın</div><h3 style="margin:8px 0 2px">${esc(d.me.venue)}</h3>${d.me.note?`<p style="margin:0;color:var(--mute)">${esc(d.me.note)}</p>`:""}<p class="sm" style="margin:6px 0 0">Arkadaşların seni görüyor · sinyal ${new Date(d.me.until).toLocaleTimeString("tr-TR",{hour:"2-digit",minute:"2-digit"})}'da kapanır</p><div class="row"><button type="button" data-outchg="1">Mekânı değiştir</button><button type="button" data-outoff="1">Sinyali kapat</button></div></div>`;
+ h+=`<form id="outf" class="sbox"${d.me?" hidden":""}><h3 style="margin:0">Dışarıdayım</h3><div class="filters"><label>İl<select id="ocity"></select></label><label>Mekân<select id="oven"></select></label><label>Not (isteğe bağlı)<input id="onote" maxlength="80" placeholder="Örn. 23:00 gibi oradayım"></label></div><div class="row"><button class="btn-g" type="submit">Arkadaşlarıma haber ver</button>${d.me?`<button type="button" data-outcancel="1">Vazgeç</button>`:""}</div><div class="msg" id="outm" role="status"></div></form>`;
+ h+=`<h3 class="sh">Bu gece dışarıda olan arkadaşların</h3>`+(d.friends.length?`<div class="plist2">`+d.friends.map(f=>`<div class="pc">${av(f.name,f.avatar,48)}<div class="pi"><b class="pl" data-prof="${f.id}">${esc(f.name)}${vb(f.verified)}</b><span>📍 ${esc(f.venue)} · ${ago(f.at)}</span>${f.note?`<span class="nt">${esc(f.note)}</span>`:""}</div><div class="pa"><button type="button" class="btn-g" data-join="${f.id}">Ben de geliyorum</button><button type="button" data-dm="${f.id}">Mesaj</button></div></div>`).join("")+`</div>`
+  :`<p class="empty">Şu an dışarıda olan arkadaşın yok. <a href="#arkadaslar">Arkadaş ekle</a>; onlar dışarı çıktığında burada görürsün.</p>`);
+ if(d.hot.length)h+=`<h3 class="sh">Bu gece hareketli mekânlar</h3><div class="hot">`+d.hot.map(x=>`<button type="button" class="hv" data-vq="${esc(x.venue_id)}"><b>${esc(x.venue)}</b><span>${x.n} kişi dışarıda · odalara bak</span></button>`).join("")+`</div>`;
+ box.innerHTML=h;const cs=$("#ocity"),vs=$("#oven");fillCity(cs,"Tümü");
+ const fv=()=>{const L=VENUES.filter(v=>!cs.value||v.s===cs.value);vs.innerHTML='<option value="">Mekân seç</option>'+venOpts(L,!!cs.value)};cs.onchange=fv;
+ if(d.me&&VM[d.me.venue_id])cs.value=VM[d.me.venue_id].s;fv();if(d.me)vs.value=d.me.venue_id;signAll(box)}
+
+/* ---- Akış ---- */
+function postHtml(p){const mine=p.user_id===SO.me;return `<article class="post" data-pid="${p.id}"><header>${av(p.name,p.avatar,40)}<div><b class="pl" data-prof="${p.user_id}">${esc(p.name)}${vb(p.verified)}</b><span>${ago(p.created_at)}${p.venue?` · 📍 ${esc(p.venue)}`:""}</span></div>${mine?`<button type="button" class="lnk" data-pdel="${p.id}" aria-label="Paylaşımı sil">Sil</button>`:`<button type="button" class="lnk" data-prep="${p.id}" data-u="${p.user_id}" title="Şikâyet et" aria-label="Paylaşımı şikâyet et">⚑</button>`}</header>${p.body?`<p class="pb">${esc(p.body)}</p>`:""}${p.photo?`<div class="ph"><img data-sp="${esc(p.photo)}" alt="${esc(p.name)} paylaşımı" loading="lazy"></div>`:""}<footer><button type="button" class="lk${p.liked?" on":""}" data-like="${p.id}" aria-pressed="${!!p.liked}" aria-label="Beğen">${p.liked?"♥":"♡"} <span>${p.likes}</span></button></footer></article>`}
+function composer(){return `<form id="pcf" class="sbox"><label style="margin:0">Bir an paylaş<textarea id="pct" maxlength="500" rows="3" placeholder="Bu gece neredesin, nasıl geçiyor?"></textarea></label><div class="filters"><label>Fotoğraf (isteğe bağlı)<input type="file" id="pcp" accept="image/*"></label><label>Mekân etiketi (isteğe bağlı)<select id="pcv"><option value="">Mekân yok</option>${venOpts(VENUES,false)}</select></label></div><div id="pcprev"></div><div class="row"><button class="btn-g" type="submit">Paylaş</button><span class="sm">Paylaşımlarını yalnızca arkadaşların görür.</span></div><div class="msg" id="pcm" role="status"></div></form>`}
+function initComposer(){const f=$("#pcf");if(!f)return;
+ $("#pcp").onchange=e=>{const x=e.target.files[0];$("#pcprev").innerHTML=x?`<img src="${URL.createObjectURL(x)}" alt="Seçilen fotoğraf" class="prev">`:""};
+ f.onsubmit=async e=>{e.preventDefault();const m=$("#pcm"),bt=f.querySelector("[type=submit]"),t=$("#pct").value.trim(),fl=$("#pcp").files[0];
+  if(!t&&!fl)return msg(m,"Bir yazı ya da fotoğraf ekle.",false);bt.disabled=true;msg(m,fl?"Fotoğraf yükleniyor…":"Paylaşılıyor…",true);let path=null;
+  try{if(fl)path=await upMedia(fl);const r=await sb.rpc("create_post",{p_body:t,p_photo:path,p_venue:$("#pcv").value||null});if(r.error)throw r.error;toast("Paylaşıldı.");loadFeed(true)}
+  catch(x){bt.disabled=false;if(path)sb.storage.from("posts").remove([path]);msg(m,"Paylaşılamadı: "+terr(x),false)}}}
+async function loadFeed(reset){const box=$("#feedb");const u=await needLogin(box,"Arkadaşlarının paylaşımlarını görmek ve kendi anını paylaşmak için giriş yap.");if(!u)return;
+ const tk=SO.ft=(SO.ft||0)+(reset||!$("#feedl")?1:0);if(reset||!$("#feedl")){SO.feedLast=null;SO.feedEnd=false;box.innerHTML=(await nudge())+composer()+`<div id="feedl"></div><p class="mt"><button type="button" id="fmore" data-more="1" style="display:none">Daha eski paylaşımlar</button></p>`;initComposer()}
+ const r=await sb.rpc("feed",{p_before:SO.feedLast}),L=$("#feedl");if(!L||tk!==SO.ft)return;if(r.error){L.insertAdjacentHTML("beforeend",err(r.error));return}
+ const d=r.data||[];if(!SO.feedLast&&!d.length)L.innerHTML=`<p class="empty">Akışın henüz boş. İlk anını paylaş ya da <a href="#arkadaslar">arkadaş ekle</a>; arkadaşlarının paylaşımları burada görünür.</p>`;
+ L.insertAdjacentHTML("beforeend",d.map(postHtml).join(""));if(d.length)SO.feedLast=d[d.length-1].id;SO.feedEnd=d.length<20;$("#fmore").style.display=SO.feedEnd?"none":"";signAll(L)}
+
+/* ---- Arkadaşlar ---- */
+const FST={none:["Arkadaş ekle","fr","btn-g"],sent:["İsteği geri çek","frm",""],received:["Kabul et","fa","btn-g"],friends:["Mesaj","dm","btn-g"]};
+function pcard(p,act,extra){return `<div class="pc">${av(p.name,p.avatar,46)}<div class="pi"><b class="pl" data-prof="${p.id}">${esc(p.name)}${vb(p.verified)}</b><span>${meta(p)}</span>${extra||""}</div><div class="pa">${act}</div></div>`}
+async function loadFriends(){const box=$("#frb");const u=await needLogin(box,"Arkadaş eklemek, mesajlaşmak ve birbirinizin paylaşımlarını görmek için giriş yap.");if(!u)return;
+ const r=await sb.rpc("my_social");if(r.error){box.innerHTML=err(r.error);return}const d=r.data;
+ let h=(await nudge())+`<form id="psf" class="sbox" role="search"><label style="margin:0">Kişi ara<input id="psq" type="search" placeholder="Görünen ada göre ara (en az 2 harf)"></label><div id="psr"></div></form>`;
+ if(d.incoming.length)h+=`<h3 class="sh">Arkadaşlık istekleri <span class="bcnt">${d.incoming.length}</span></h3><div class="plist2">`+d.incoming.map(p=>pcard(p,`<button type="button" class="btn-g" data-fa="${p.id}">Kabul et</button><button type="button" data-fd="${p.id}">Reddet</button>`)).join("")+`</div>`;
+ h+=`<h3 class="sh">Arkadaşların <span class="bcnt">${d.friends.length}</span></h3>`+(d.friends.length?`<div class="plist2">`+d.friends.map(p=>pcard(p,`<button type="button" class="btn-g" data-dm="${p.id}">Mesaj</button><button type="button" data-prof="${p.id}">Profil</button>`,p.out?`<span class="nt">📍 Bu gece: ${esc(p.out.venue)}</span>`:"")).join("")+`</div>`
+  :`<p class="empty">Henüz arkadaşın yok. Yukarıdan arama yap ya da birlikte oda paylaştığın kişileri ekle.</p>`);
+ if(d.met.length)h+=`<h3 class="sh">Odalarından tanıdıkların</h3><div class="plist2">`+d.met.map(p=>pcard(p,`<button type="button" class="btn-g" data-fr="${p.id}">Arkadaş ekle</button>`)).join("")+`</div>`;
+ if(d.outgoing.length)h+=`<h3 class="sh">Gönderdiğin istekler</h3><div class="plist2">`+d.outgoing.map(p=>pcard(p,`<button type="button" data-frm="${p.id}" data-c="1">İsteği geri çek</button>`)).join("")+`</div>`;
+ box.innerHTML=h;signAll(box);let t=null;const q=$("#psq");q.value=SO.q;if(SO.q)search(SO.q);
+ q.oninput=()=>{clearTimeout(t);t=setTimeout(()=>search(q.value),300)};$("#psf").onsubmit=e=>{e.preventDefault();search(q.value)}}
+async function search(q){const box=$("#psr");if(!box)return;q=q.trim();SO.q=q;if(q.length<2){box.innerHTML="";return}
+ const r=await sb.rpc("search_people",{p_q:q});if(r.error){box.innerHTML=err(r.error);return}if(SO.q!==q)return;
+ box.innerHTML=r.data.length?`<div class="plist2" style="margin-top:12px">`+r.data.map(p=>{const s=FST[p.state]||FST.none;return pcard(p,`<button type="button" class="${s[2]}" data-${s[1]}="${p.id}"${p.state==="sent"?' data-c="1"':""}>${s[0]}</button>`)}).join("")+`</div>`:`<p class="empty" style="padding-bottom:0">Bu isimde kimse bulunamadı.</p>`}
+
+/* ---- Mesajlar ---- */
+async function loadDms(){const box=$("#dmb");const u=await needLogin(box,"Arkadaşlarınla mesajlaşmak için giriş yap.");if(!u)return;
+ const[a,b]=await Promise.all([sb.rpc("my_dms"),sb.rpc("my_social")]);if(a.error){box.innerHTML=err(a.error);return}
+ const L=a.data||[],have=new Set(L.map(x=>x.id)),fr=((b.data&&b.data.friends)||[]).filter(f=>!have.has(f.id));
+ let h=L.length?L.map(c=>`<button type="button" class="chl${c.unread?" un":""}" data-dm="${c.id}">${av(c.name,c.avatar,42)}<div style="flex:1;min-width:0"><b>${esc(c.name)}${vb(c.verified)}</b><span class="lm">${c.last_mine?"Sen: ":""}${esc(c.last_body)}</span></div><time>${ago(c.last_at)}</time>${c.unread?`<span class="bcnt">${c.unread}</span>`:""}</button>`).join("")
+  :`<p class="empty">Henüz mesajın yok. Mesajlaşmak için önce arkadaş olmanız gerekir. <a href="#arkadaslar">Arkadaşlarına git</a>.</p>`;
+ if(fr.length)h+=`<h3 class="sh">Yeni mesaj başlat</h3><div class="hot">`+fr.map(f=>`<button type="button" class="hv" data-dm="${f.id}"><b>${esc(f.name)}</b><span>Mesaj yaz</span></button>`).join("")+`</div>`;
+ box.innerHTML=h;signAll(box)}
+let DM=null;
+async function openDM(uid){const d=$("#dmd");closeDM(true);DM={id:uid,last:0,t:null,ch:null,busy:false};
+ $("#dmh").innerHTML='<h3 id="dmt" style="margin:0">Mesajlar</h3>';$("#dmlog").innerHTML='<p class="empty">Yükleniyor…</p>';$("#dmm").className="msg";
+ ["#prd","#accd","#notd"].forEach(s=>{const x=$(s);if(x&&x.open)x.close()});if(!d.open)d.showModal();
+ await pullDM(true);if(!DM||DM.id!==uid)return;
+ try{DM.ch=sb.channel("dm-"+uid+"-"+Date.now()).on("postgres_changes",{event:"INSERT",schema:"public",table:"direct_messages",filter:"recipient=eq."+SO.me},()=>pullDM()).subscribe()}catch(e){}
+ DM.t=setInterval(()=>pullDM(),6000);setTimeout(()=>$("#dmi").focus(),50)}
+async function pullDM(full){if(!DM||DM.busy)return;DM.busy=true;const id=DM.id;
+ try{const r=await sb.rpc("dm_thread",{p_user:id,p_after:DM.last});if(!DM||DM.id!==id)return;
+  if(r.error){if(full)$("#dmlog").innerHTML="";return msg($("#dmm"),terr(r.error),false)}
+  const x=r.data;SO.me=x.me;const log=$("#dmlog");
+  if(full){$("#dmh").innerHTML=`<div class="pc" style="border:0;padding:0 0 8px">${av(x.other.name,x.other.avatar,40)}<div class="pi"><b id="dmt" class="pl" data-prof="${x.other.id}">${esc(x.other.name)}${vb(x.other.verified)}</b><span>Özel mesaj</span></div></div>`;signAll($("#dmh"));
+   log.innerHTML=x.messages.length?"":'<p class="empty" id="dmempty">Henüz mesaj yok. İlk mesajı sen yaz. Güvenliğin için kişisel bilgilerini paylaşmadan önce düşün.</p>';
+   $("#dmi").disabled=!x.can_send;$("#dmf button").disabled=!x.can_send;if(!x.can_send)msg($("#dmm"),"Mesaj göndermek için arkadaş olmanız gerekir.",false)}
+  const atEnd=log.scrollHeight-log.scrollTop-log.clientHeight<80;
+  x.messages.forEach(m=>{if(m.id<=DM.last)return;DM.last=m.id;log.insertAdjacentHTML("beforeend",`<div class="cm${m.mine?" me":""}"><div class="cb">${esc(m.body)}<time>${new Date(m.created_at).toLocaleString("tr-TR",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})}</time></div></div>`)});
+  if(x.messages.length){const em=$("#dmempty");if(em)em.remove()}
+  if(full||atEnd)log.scrollTop=log.scrollHeight;if(x.messages.some(m=>!m.mine)&&typeof loadNotifs==="function")loadNotifs()}
+ finally{if(DM&&DM.id===id)DM.busy=false}}
+function closeDM(quiet){if(!DM)return;clearInterval(DM.t);try{if(DM.ch)sb.removeChannel(DM.ch)}catch(e){}DM=null;if(!quiet&&location.hash==="#mesajlar")loadDms()}
+$("#dmd").addEventListener("close",()=>closeDM());
+$("#dmf").onsubmit=async e=>{e.preventDefault();const i=$("#dmi"),t=i.value.trim();if(!t||!DM)return;const b=$("#dmf button");b.disabled=true;
+ const r=await sb.rpc("send_dm",{p_user:DM.id,p_body:t});b.disabled=false;if(r.error)return msg($("#dmm"),terr(r.error),false);
+ i.value="";$("#dmm").className="msg";await pullDM();i.focus()};
+
+/* ---- Profil penceresi ---- */
+let PR=null;
+async function openProfile(uid){PR={id:uid};const d=$("#prd");$("#prb").innerHTML='<p class="empty">Yükleniyor…</p>';if(!d.open)d.showModal();
+ const u=await user();if(!u){$("#prb").innerHTML='<p>Profilleri görmek için giriş yap.</p>';return}SO.me=u.id;
+ const r=await sb.rpc("user_profile",{p_user:uid});if(!PR||PR.id!==uid)return;if(r.error){$("#prb").innerHTML=err(r.error);return}
+ const p=r.data,cm=p.common||{},self=p.state==="self";
+ const tags=k=>(p[k]||[]).length?`<div class="tg2"><h4>${self?TLM[k]:TL[k]}</h4>${p[k].map(t=>`<span class="ttag${(cm[k]||[]).includes(t)?" com":""}"${(cm[k]||[]).includes(t)?' title="Ortak zevkiniz"':""}>${esc(t)}</span>`).join("")}</div>`:"";
+ const ncom=["venue_types","drinks","music"].reduce((n,k)=>n+(cm[k]||[]).length,0),empty=!["venue_types","drinks","music"].some(k=>(p[k]||[]).length);
+ const act={self:`<button type="button" class="btn-g" data-acc="s">Profilimi düzenle</button>`,none:`<button type="button" class="btn-g" data-fr="${p.id}">Arkadaş ekle</button>`,sent:`<button type="button" data-frm="${p.id}" data-c="1">İsteği geri çek</button>`,
+  received:`<button type="button" class="btn-g" data-fa="${p.id}">Kabul et</button><button type="button" data-fd="${p.id}">Reddet</button>`,friends:`<button type="button" class="btn-g" data-dm="${p.id}">Mesaj gönder</button><button type="button" data-frm="${p.id}">Arkadaşlıktan çıkar</button>`}[p.state]||"";
+ $("#prb").innerHTML=`<div class="phd">${av(p.name,p.avatar,84)}<div><h3 id="prn" style="margin:0">${esc(p.name)}${p.verified?' <span class="okb" title="Onaylı profil">✓ Onaylı</span>':""}</h3><div class="sm">${meta(p)}</div><div class="sm">${p.friends} arkadaş · ${p.post_count} paylaşım</div></div></div>
+ ${p.bio?`<p class="bio">${esc(p.bio)}</p>`:""}${p.out?`<p class="live2"><i></i>Bu gece dışarıda: <b>${esc(p.out.venue)}</b>${p.out.note?" · "+esc(p.out.note):""}</p>`:""}
+ ${!self&&ncom?`<p class="sm" style="color:var(--gold-d);margin:8px 0 0">${ncom} ortak zevkiniz var</p>`:""}
+ ${tags("venue_types")}${tags("drinks")}${tags("music")}
+ ${(p.fav_venues||[]).length?`<div class="tg2"><h4>Takip ettiği mekânlar</h4>${p.fav_venues.map(v=>`<button type="button" class="ttag" data-vq="${esc(v.id)}">${esc(v.name)}</button>`).join("")}</div>`:""}
+ ${self&&empty?`<p class="note" style="margin-top:12px">Sevdiğin mekânları, içkileri ve müzik türlerini ekle; ortak zevkleri olan insanlar seni daha kolay bulsun.</p>`:""}
+ <div class="row">${act}</div><h4 class="sh" style="font-size:1.05rem">Paylaşımlar</h4>
+ ${p.open?(p.posts.length?p.posts.map(postHtml).join(""):`<p class="empty">Henüz paylaşım yok.</p>`):`<div class="lock">🔒 Fotoğraflar ve paylaşımlar yalnızca arkadaşlara açık. Arkadaşlık isteğin kabul edilince birbirinizin fotoğraflarını görebilir ve mesajlaşabilirsiniz.</div>`}
+ ${!self?`<p style="margin-top:14px"><button type="button" class="lnk" data-urep="${p.id}" data-n="${esc(p.name)}">⚑ Şikâyet et / engelle</button></p>`:""}`;
+ signAll($("#prb"))}
+
+/* ---- Hesabım: sosyal profil sekmesi ---- */
+async function accSocial(p){const pick=k=>{const cur=p["fav_"+k]||[],opts=[...new Set([...TASTE[k],...cur])];
+  return `<fieldset class="tp" data-tk="${k}"><legend>${TLM[k]}</legend>${opts.map(o=>`<button type="button" class="ttag${cur.includes(o)?" on":""}" aria-pressed="${cur.includes(o)}" data-tg="${esc(o)}">${esc(o)}</button>`).join("")}<span class="addt"><input maxlength="30" placeholder="Başka ekle" aria-label="${TLM[k]}: başka ekle"><button type="button" data-tadd="1">Ekle</button></span></fieldset>`};
+ return `<p class="sm" style="margin-top:0">Bu bilgiler profilinde görünür; ortak zevkleri olan insanlar seni daha kolay bulur. Fotoğrafların ve paylaşımların yalnızca arkadaşlarına açıktır.</p>
+ <div class="phd">${av(p.display_name,p.avatar_path,72)}<label style="margin:0;flex:1">Profil fotoğrafı (yalnızca arkadaşların görür)<input type="file" id="avf" accept="image/*"></label></div>
+ <label>Hakkımda<textarea id="sbio" maxlength="160" rows="2" placeholder="Kendini birkaç kelimeyle anlat">${esc(p.bio||"")}</textarea></label>
+ <label>Yaşadığın şehir<input id="scity" maxlength="40" list="citylist" value="${esc(p.home_city||"")}" placeholder="Örn. İstanbul"></label><datalist id="citylist">${CITIES.map(c=>`<option value="${esc(c)}">`).join("")}</datalist>
+ ${pick("venue_types")}${pick("drinks")}${pick("music")}
+ <div class="row"><button type="button" class="btn-g" id="ssave">Kaydet</button><button type="button" data-prof="${p.id}">Profilimi gör</button></div>`}
+$("#accb").addEventListener("click",async e=>{const b=e.target.closest("[data-tg],[data-tadd],#ssave");if(!b)return;const m=$("#accm");
+ if(b.dataset.tg!==undefined){const on=!b.classList.contains("on");if(on&&b.closest(".tp").querySelectorAll(".ttag.on").length>=12)return msg(m,"Her başlıkta en fazla 12 seçim yapabilirsin.",false);b.classList.toggle("on",on);b.setAttribute("aria-pressed",on);return}
+ if(b.dataset.tadd){const i=b.previousElementSibling,v=i.value.trim().slice(0,30),fs=b.closest(".tp");if(!v)return;
+  const ex=[...fs.querySelectorAll("[data-tg]")].find(x=>x.dataset.tg.toLocaleLowerCase("tr")===v.toLocaleLowerCase("tr"));
+  if(ex){ex.classList.add("on");ex.setAttribute("aria-pressed","true")}else b.parentNode.insertAdjacentHTML("beforebegin",`<button type="button" class="ttag on" aria-pressed="true" data-tg="${esc(v)}">${esc(v)}</button>`);i.value="";return}
+ if(b.id==="ssave"){const g=k=>[...document.querySelectorAll(`.tp[data-tk="${k}"] .ttag.on`)].map(x=>x.dataset.tg);b.disabled=true;let ap=null;
+  try{const f=$("#avf").files[0];if(f){msg(m,"Fotoğraf yükleniyor…",true);ap=await upMedia(f)}
+   const r=await sb.rpc("update_my_profile",{p_bio:$("#sbio").value,p_city:$("#scity").value,p_avatar:ap,p_venue_types:g("venue_types"),p_drinks:g("drinks"),p_music:g("music")});if(r.error)throw r.error;
+   await openAcc("s",{t:"Profilin kaydedildi.",ok:true})}catch(x){b.disabled=false;msg(m,"Kaydedilemedi: "+terr(x),false)}}});
+$("#accb").addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.closest(".addt")){e.preventDefault();e.target.closest(".addt").querySelector("button").click()}});
+
+/* ---- Mekân takibi ve sayaçlar ---- */
+async function loadVenueStats(){if(!sb)return;try{const r=await sb.rpc("venue_stats");if(r.error||!r.data)return;SOV.stats=r.data.stats||{};SOV.fol=new Set(r.data.mine||[]);renderVenues();
+ const b=$("#vfolb");if(b){b.textContent=(SOV.only?"♥ ":"♡ ")+"Takip ettiklerim ("+SOV.fol.size+")"}}catch(e){}}
+$("#vfolb").onclick=async()=>{if(!(await user()))return askLogin();SOV.only=!SOV.only;const b=$("#vfolb");b.classList.toggle("on",SOV.only);b.setAttribute("aria-pressed",SOV.only);b.textContent=(SOV.only?"♥ ":"♡ ")+"Takip ettiklerim ("+SOV.fol.size+")";renderVenues()};
+
+/* ---- Oda içi grup koordinasyonu ---- */
+const PS={onway:["🚶","yolda","Yoldayım"],late:["⏳","gecikecek","Gecikeceğim"],arrived:["📍","vardı","Vardım"],left:["👋","ayrıldı","Ayrıldım"]};
+async function loadCoord(){if(!CH)return;const a=document.activeElement;if(a&&a.id==="nxv")return;const id=CH.id,r=await sb.rpc("room_status",{p_room:id});if(!CH||CH.id!==id||r.error)return;
+ const s=r.data,box=$("#chco"),mem=Object.values(CH.mem),mine=(s.presence[CH.me]||{}).s;let h="";
+ if(s.next_venue)h+=`<div class="nx">➡️ Sonraki durak: <b>${esc(s.next_venue)}</b></div>`;
+ if(s.live){h+=`<div>${mem.map(m=>{const p=s.presence[m.id],x=p?PS[p.s]:null;return `<span class="chip">${x?x[0]+" ":""}${esc(m.id===CH.me?"Sen":m.name)}${x?" · "+x[1]:""}</span>`}).join("")}</div>
+  <div class="row sm2">${Object.entries(PS).map(([k,v])=>`<button type="button" class="${mine===k?"btn-g":""}" data-pst="${k}" aria-pressed="${mine===k}">${v[0]} ${v[2]}</button>`).join("")}</div>`;
+  if(s.owner)h+=`<div class="row sm2"><select id="nxv" aria-label="Sonraki durak"><option value="">Sonraki durak (mekân değiştirirken)</option>${venOpts(VENUES,false)}</select><button type="button" data-nx="1">Kaydet</button></div>`}
+ box.innerHTML=h;box.hidden=!h;const sel=$("#nxv");if(sel)sel.value=s.next_venue_id||""}
+$("#chco").addEventListener("click",async e=>{const b=e.target.closest("[data-pst],[data-nx]");if(!b||!CH)return;b.disabled=true;
+ const r=b.dataset.pst?await sb.rpc("set_room_state",{p_room:CH.id,p_state:b.dataset.pst}):await sb.rpc("set_next_stop",{p_room:CH.id,p_venue:$("#nxv").value||null});
+ b.disabled=false;if(r.error)return msg($("#chmsg"),terr(r.error),false);$("#chmsg").className="msg";if(document.activeElement)document.activeElement.blur();await pullChat();loadCoord()});
+
+/* ---- Ortak tıklama işleyicisi ---- */
+const SECLOAD={disarida:loadOut,akis:()=>loadFeed(true),arkadaslar:loadFriends,mesajlar:loadDms};
+function goSec(id){if(location.hash==="#"+id)SECLOAD[id]();else location.hash="#"+id}
+function refreshSocial(){const h=location.hash.slice(1);if(SECLOAD[h])SECLOAD[h]();if($("#prd").open&&PR)openProfile(PR.id)}
+async function reportFlow(uid,name,reason,done){const why=prompt((name||"Bu üye")+" hakkında şikâyet nedenini kısaca yaz (iptal etmek için boş bırak):");
+ if(why&&why.trim()){const r=await sb.rpc("report_user",{p_user:uid,p_reason:(reason?reason+": ":"")+why.trim()});toast(r.error?terr(r.error):"Şikâyetin ekibimize iletildi. Teşekkürler.")}
+ if(confirm((name||"Bu üye")+" adlı üyeyi engellemek ister misin? Engellediğin kişiyle arkadaşlığın kalkar; birbirinizi göremez ve mesajlaşamazsınız.")){const r=await sb.rpc("block_user",{p_user:uid});toast(r.error?terr(r.error):"Engellendi.");if(!r.error&&done)done()}}
+document.addEventListener("click",async e=>{
+ const v=e.target.closest("[data-vq]");if(v){const d=v.closest("dialog");if(d&&d.open)d.close()}
+ const b=e.target.closest("[data-prof],[data-dm],[data-join],[data-outoff],[data-outchg],[data-outcancel],[data-fr],[data-fa],[data-fd],[data-frm],[data-like],[data-pdel],[data-prep],[data-urep],[data-fol],[data-acc],[data-more]");if(!b||!sb)return;
+ if(b.closest("#accb")&&!b.dataset.prof)return;
+ e.preventDefault();const ds=b.dataset;
+ const run=async(fn,args,ok,after)=>{b.disabled=true;const r=await sb.rpc(fn,args);b.disabled=false;if(r.error){toast(terr(r.error));return null}toast(typeof ok==="function"?ok(r.data):ok);refreshSocial();if(after)after(r.data);return r};
+ if(ds.prof)return openProfile(ds.prof);
+ if(ds.dm)return openDM(ds.dm);
+ if(ds.acc){if($("#prd").open)$("#prd").close();if(!(await user()))return askLogin();accTab=ds.acc;return openAcc(ds.acc)}
+ if(ds.fol){if(!(await user()))return askLogin();b.disabled=true;const r=await sb.rpc("toggle_follow_venue",{p_venue:ds.fol});b.disabled=false;if(r.error)return toast(terr(r.error));
+  if(r.data)SOV.fol.add(ds.fol);else SOV.fol.delete(ds.fol);const st=SOV.stats[ds.fol]=SOV.stats[ds.fol]||{f:0,o:0,r:0};st.f=Math.max(0,(st.f||0)+(r.data?1:-1));
+  toast(r.data?"Mekân takip ediliyor. Burada yeni oda açılınca haber vereceğiz.":"Takipten çıkıldı.");renderVenues();const fb=$("#vfolb");if(fb)fb.textContent=(SOV.only?"♥ ":"♡ ")+"Takip ettiklerim ("+SOV.fol.size+")";return}
+ if(ds.join)return run("join_friend_out",{p_user:ds.join},"Arkadaşına haber verildi.",()=>openDM(ds.join));
+ if(ds.outoff){if(!confirm("Bu geceki sinyalini kapatmak istiyor musun?"))return;return run("clear_going_out",{},"Sinyal kapatıldı.",loadVenueStats)}
+ if(ds.outchg){const f=$("#outf");if(f){f.hidden=false;f.scrollIntoView({behavior:"smooth",block:"center"})}return}
+ if(ds.outcancel){$("#outf").hidden=true;return}
+ if(ds.fr)return run("send_friend_request",{p_user:ds.fr},d=>d==="friends"?"Artık arkadaşsınız.":"Arkadaşlık isteği gönderildi.");
+ if(ds.fa)return run("respond_friend_request",{p_user:ds.fa,p_accept:true},"Artık arkadaşsınız. Mesajlaşabilir ve paylaşımlarınızı görebilirsiniz.");
+ if(ds.fd)return run("respond_friend_request",{p_user:ds.fd,p_accept:false},"İstek reddedildi.");
+ if(ds.frm){if(!ds.c&&!confirm("Arkadaşlıktan çıkarmak istiyor musun?"))return;return run("remove_friend",{p_user:ds.frm},ds.c?"İstek geri çekildi.":"Arkadaşlıktan çıkarıldı.")}
+ if(ds.like){b.disabled=true;const r=await sb.rpc("toggle_like",{p_id:+ds.like});b.disabled=false;if(r.error)return toast(terr(r.error));
+  document.querySelectorAll(`[data-like="${ds.like}"]`).forEach(x=>{const n=Math.max(0,+(x.querySelector("span").textContent)+(r.data?1:-1));x.classList.toggle("on",r.data);x.setAttribute("aria-pressed",r.data);x.innerHTML=(r.data?"♥":"♡")+` <span>${n}</span>`});return}
+ if(ds.pdel){if(!confirm("Bu paylaşımı silmek istiyor musun?"))return;const r=await sb.rpc("delete_post",{p_id:+ds.pdel});if(r.error)return toast(terr(r.error));
+  if(r.data)sb.storage.from("posts").remove([r.data]);document.querySelectorAll(`[data-pid="${ds.pdel}"]`).forEach(x=>x.remove());return toast("Paylaşım silindi.")}
+ if(ds.prep)return reportFlow(ds.u,null,"Paylaşım #"+ds.prep,refreshSocial);
+ if(ds.urep)return reportFlow(ds.urep,ds.n,null,()=>{if($("#prd").open)$("#prd").close();refreshSocial()});
+ if(ds.more)return loadFeed(false)});
+document.addEventListener("submit",async e=>{if(e.target.id!=="outf")return;e.preventDefault();const m=$("#outm"),v=$("#oven").value;if(!v)return msg(m,"Lütfen bir mekân seç.",false);
+ const bt=e.target.querySelector("[type=submit]");bt.disabled=true;const r=await sb.rpc("set_going_out",{p_venue:v,p_note:$("#onote").value});bt.disabled=false;
+ if(r.error)return msg(m,terr(r.error),false);toast("Arkadaşlarına haber verildi.");loadOut();loadVenueStats()});
+$("#prd").addEventListener("close",()=>{PR=null});
+function socRoute(){const h=location.hash.slice(1);if(SECLOAD[h])SECLOAD[h]()}
+addEventListener("hashchange",socRoute);
+let SOC_U;function socialAuth(u){const id=u?u.id:null;if(SOC_U===id)return;SOC_U=id;SO.me=id;SO.urls={};SOV.only=false;loadVenueStats();socRoute()}
+if(sb)user().then(socialAuth);else socRoute();
+</script>
 <script>
 /* PWA: servis çalışanı ve "uygulamayı yükle" bandı */
 if("serviceWorker" in navigator){addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}))}
@@ -925,7 +1222,7 @@ var INAPP=(function(){let v=false;try{v=new URLSearchParams(location.search).get
  addEventListener("appinstalled",()=>{bar.hidden=true})})();
 </script>
 <script>
-(function(){const P={odalar:"Mekân arkadaşı bul","oda-kur":"Arkadaş ara",mekanlar:"Mekânlar",nasil:"Nasıl çalışır?",guven:"Güvenlik",hakkimizda:"Hakkımızda",coin:"Coin",sehirler:"Şehirler",sss:"Sık sorulanlar"};
+(function(){const P={disarida:"Bu gece dışarıdayım",akis:"Akış",arkadaslar:"Arkadaşlar",mesajlar:"Mesajlar",odalar:"Mekân arkadaşı bul","oda-kur":"Arkadaş ara",mekanlar:"Mekânlar",nasil:"Nasıl çalışır?",guven:"Güvenlik",hakkimizda:"Hakkımızda",coin:"Coin",sehirler:"Şehirler",sss:"Sık sorulanlar"};
  function route(){const id=decodeURIComponent(location.hash.slice(1)),on=Object.prototype.hasOwnProperty.call(P,id);document.body.classList.toggle("pg",on);
   Object.keys(P).forEach(k=>{const el=document.getElementById(k);if(el)el.classList.toggle("on",k===id)});
   document.getElementById("pgt").textContent=on?P[id]:"";const m=document.getElementById("mnav");if(m&&!m.hidden&&typeof menu==="function")menu(false);
